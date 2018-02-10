@@ -1,0 +1,101 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "youngjung.test"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            ext.enableCrashlytics = false
+            //ext.alwaysUpdateBuildId = false
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //빌드 시간 줄여주는 코드
+    flavorDimensions "stage", "mode"
+    productFlavors {
+
+        dev {
+            dimension "stage"
+            versionCode 100
+            minSdkVersion 21
+
+            aaptOptions.cruncherEnabled = false
+            resConfigs "ko", "xxxhdpi"
+        }
+
+        prd {
+            dimension "stage"
+            versionCode new Date().format('yyMMddHHmm').toInteger()
+        }
+
+
+        free {
+            dimension "mode"
+            applicationIdSuffix ".free"
+        }
+        paid {
+            dimension "mode"
+            applicationIdSuffix ".paid"
+        }
+    }
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
+            universalApk false
+        }
+    }
+
+    android.variantFilter { variant ->
+        def buildName = variant.buildType.name;
+        def flavorName = variant.getFlavors().get(0).name;
+
+        if (flavorName == 'dev' && buildName == 'release'
+                || flavorName == 'prd' && buildName == 'debug') {
+            variant.setIgnore(true);
+        }
+
+        splits.abi.enable = (flavorName == 'prd');
+    }
+    //여기까지
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.google.firebase:firebase-database:11.0.4'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    //firebase
+    implementation 'com.google.firebase:firebase-auth:11.0.4'
+    implementation 'com.google.android.gms:play-services-auth:11.0.4'
+
+    //animation
+    compile 'com.airbnb.android:lottie:2.5.0-rc1'
+
+    //View
+    compile 'com.android.support:recyclerview-v7:26.0.1'
+    compile 'com.android.support:design:26.1.0'
+
+    //font
+    compile 'uk.co.chrisjenx:calligraphy:2.3.0'
+}
+
+
+
+apply plugin: 'com.google.gms.google-services'
