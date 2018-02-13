@@ -22,4 +22,14 @@
         android:layout_toEndOf="@+id/btn"
         android:text="DB" />
 
+    <Button
+        android:id="@+id/btn_grpah"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/btn_db"
+        android:layout_below="@+id/btn_db"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="83dp"
+        android:text="graph" />
+
 </RelativeLayout>

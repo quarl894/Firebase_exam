@@ -20,6 +20,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    allprojects {
+        repositories {
+            maven { url "https://jitpack.io" }
+        }
+    }
 
     //빌드 시간 줄여주는 코드
     flavorDimensions "stage", "mode"
@@ -94,6 +99,9 @@ dependencies {
 
     //font
     compile 'uk.co.chrisjenx:calligraphy:2.3.0'
+
+    //graph
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
 }
 
 

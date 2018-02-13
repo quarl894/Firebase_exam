@@ -24,8 +24,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import youngjung.test.MainActivity;
+import youngjung.test.Model.profile;
 import youngjung.test.R;
 import youngjung.test.ui.base.baseActivity;
 
@@ -39,6 +45,8 @@ public class LoginActivity extends baseActivity {
     private FirebaseAuth mAuth;
     private GoogleApiClient mGoogleApiClient;
     private SignInButton signInButton;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
     String TAG = getPackageName().getClass().toString();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,6 +55,9 @@ public class LoginActivity extends baseActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference();
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -63,7 +74,7 @@ public class LoginActivity extends baseActivity {
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
-        signInButton = (SignInButton) findViewById(R.id.sign_in_button);
+        signInButton = findViewById(R.id.sign_in_button);
 
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,11 +107,14 @@ public class LoginActivity extends baseActivity {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
 
+                //회원 DB 저장
+                databaseReference.child("Profile").push().setValue(new profile(account.getDisplayName(),account.getId(), account.getEmail()));
                 Log.d(TAG, "이름 =" + account.getDisplayName());
                 Log.d(TAG, "이메일=" + account.getEmail());
                 Log.d(TAG, "getId()=" + account.getId());
                 Log.d(TAG, "getAccount()=" + account.getAccount());
                 Log.d(TAG, "getIdToken()=" + account.getIdToken());
+
                 firebaseAuthWithGoogle(account);
             } else {
                showToast("로그인에 실패하였습니다. 다시 시도해주세요.");
