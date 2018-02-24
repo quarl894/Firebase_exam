@@ -26,6 +26,9 @@
         <activity android:name=".MainActivity"/>
         <activity android:name=".DB.DBActivity"
             android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".GraphActivity"/>
+        <activity android:name=".Graph2Activity"/>
+        <activity android:name="youngjung.test.MVP.mvp_examActivity" />
     </application>
 
 </manifest>

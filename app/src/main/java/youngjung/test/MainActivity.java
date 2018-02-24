@@ -15,7 +15,7 @@ import youngjung.test.ui.base.baseActivity;
 import youngjung.test.ui.dialog.LodingDialog;
 
 public class MainActivity extends baseActivity {
-    Button btn, btn_db;
+    Button btn, btn_db, btn_graph, btn_chart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +45,24 @@ public class MainActivity extends baseActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, DBActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btn_graph = findViewById(R.id.btn_grpah);
+        btn_graph.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, GraphActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btn_chart = findViewById(R.id.btn_chart);
+        btn_chart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, Graph2Activity.class);
                 startActivity(i);
             }
         });
