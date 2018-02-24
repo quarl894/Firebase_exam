@@ -75,8 +75,6 @@ public class MainActivity extends baseActivity {
     public void changeFrag(View view){
         Fragment fr;
 
-
-
         switch (view.getId()) {
             case R.id.btn_frag1:
                 fr = new Fragment1();

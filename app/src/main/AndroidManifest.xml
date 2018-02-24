@@ -28,7 +28,16 @@
             android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".GraphActivity"/>
         <activity android:name=".Graph2Activity"/>
-        <activity android:name="youngjung.test.MVP.mvp_examActivity" />
+        <!--없길래 주석처리-->
+        <!--<activity android:name="youngjung.test.MVP.mvp_examActivity" />-->
+        <activity android:name=".ReceiptsActivity">
+            <!--메인으로 돌려서 확인가능-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
     </application>
 
 </manifest>
