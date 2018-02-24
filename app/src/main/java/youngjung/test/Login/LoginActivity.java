@@ -47,7 +47,9 @@ public class LoginActivity extends baseActivity {
     private SignInButton signInButton;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
-    String TAG = getPackageName().getClass().toString();
+    String TAG = "LoginActivity";
+//    String TAG = getPackageName().getClass().toString();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

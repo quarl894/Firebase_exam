@@ -1,5 +1,8 @@
 package youngjung.test;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +19,7 @@ import youngjung.test.ui.dialog.LodingDialog;
 
 public class MainActivity extends baseActivity {
     Button btn, btn_db, btn_graph, btn_chart;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,4 +72,29 @@ public class MainActivity extends baseActivity {
         });
     }
 
+    public void changeFrag(View view){
+        Fragment fr;
+
+
+
+        switch (view.getId()) {
+            case R.id.btn_frag1:
+                fr = new Fragment1();
+                break;
+            case R.id.btn_frag2:
+                fr = new Fragment2();
+                break;
+            case R.id.btn_frag3:
+                fr = new Fragment3();
+                break;
+            default:
+                fr = new Fragment1();
+                break;
+        }
+
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_place, fr);
+        fragmentTransaction.commit();
+    }
 }

@@ -40,4 +40,42 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="150dp"
         android:text="chart" />
+
+    <Button
+        android:id="@+id/btn_frag1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="18dp"
+        android:layout_toStartOf="@+id/btn_chart"
+        android:onClick="changeFrag"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/btn_frag2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/btn_chart"
+        android:layout_alignTop="@+id/btn_frag1"
+        android:layout_marginStart="34dp"
+        android:onClick="changeFrag"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/btn_frag3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btn_frag2"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="17dp"
+        android:onClick="changeFrag"
+        android:text="Button" />
+
+    <fragment
+        android:id="@+id/fragment_place"
+        android:name="youngjung.test.Fragment1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout="@layout/activity_main" />
+
 </RelativeLayout>
