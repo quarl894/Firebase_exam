@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#7c70f4</color>
+    <color name="colorPrimaryDark">#6254f1</color>
     <color name="colorAccent">#FF4081</color>
-
     <color name="gray">#d3d3d3</color>
+
+    <color name="cornflower">#7c70f4</color>
+    <color name="white">#ffffff</color>
+    <color name="golden_yellow">#fbce19</color>
+    <color name="purpleish_blue">#6254f1</color>
+    <color name="ice_blue">#f9faff</color>
+    <color name="lipstick">#d40e3a</color>
+    <color name="warm_grey">#9b9b9b</color>
+    <color name="dark">#1f2431</color>
 </resources>

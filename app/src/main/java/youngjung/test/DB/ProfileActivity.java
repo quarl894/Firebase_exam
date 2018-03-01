@@ -15,5 +15,4 @@ public class ProfileActivity extends baseActivity {
         super.onCreate(savedInstanceState);
     }
 
-
 }

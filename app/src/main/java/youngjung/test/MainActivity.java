@@ -2,6 +2,7 @@ package youngjung.test;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,12 +16,14 @@ import youngjung.test.ui.base.baseActivity;
 import youngjung.test.ui.dialog.LodingDialog;
 
 public class MainActivity extends baseActivity {
-    Button btn, btn_db, btn_graph, btn_chart;
+    Button btn, btn_db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         btn = (Button) findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,24 +51,5 @@ public class MainActivity extends baseActivity {
                 startActivity(i);
             }
         });
-
-        btn_graph = findViewById(R.id.btn_grpah);
-        btn_graph.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, GraphActivity.class);
-                startActivity(i);
-            }
-        });
-
-        btn_chart = findViewById(R.id.btn_chart);
-        btn_chart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, Graph2Activity.class);
-                startActivity(i);
-            }
-        });
     }
-
 }
