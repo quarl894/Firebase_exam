@@ -102,6 +102,9 @@ dependencies {
 
     //graph
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+
+    //google login button
+    compile 'com.shobhitpuri.custombuttons:google-signin:1.0.0'
 }
 
 

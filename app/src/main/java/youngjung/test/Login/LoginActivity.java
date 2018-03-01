@@ -50,7 +50,7 @@ public class LoginActivity extends baseActivity {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     public SharedPreferences prefs;
-    String TAG = getPackageName().getClass().toString();
+    String TAG = getClass().getName().toString();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,15 +111,16 @@ public class LoginActivity extends baseActivity {
             if (result.isSuccess()) {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
-
                 boolean isFirstRun = prefs.getBoolean("isFirstRun",true);
                 if(isFirstRun)
                 {
                     //회원 DB 저장
-                    databaseReference.child("Member Information").push().setValue(new profile(account.getDisplayName(),account.getId(), account.getEmail()));
+                    databaseReference.child("Member Information").child(account.getId()).setValue(new profile(account.getDisplayName(),account.getId(), account.getEmail()));
                     prefs.edit().putBoolean("isFirstRun",false).apply();
                     //처음만 true 그다음부터는 false 바꾸는 동작
+
                 }
+                Log.d(TAG, "uid=" + account.getIdToken());
                 Log.d(TAG, "이름 =" + account.getDisplayName());
                 Log.d(TAG, "이메일=" + account.getEmail());
                 Log.d(TAG, "getId()=" + account.getId());

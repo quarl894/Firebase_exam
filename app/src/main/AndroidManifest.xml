@@ -28,6 +28,9 @@
             android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".View.RequestActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
+        <activity android:name=".View.ListActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            ></activity>
     </application>
 
 </manifest>
