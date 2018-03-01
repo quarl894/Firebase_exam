@@ -19,16 +19,15 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"></activity>
         <activity android:name=".DB.DBActivity"
             android:windowSoftInputMode="adjustResize"/>
-        <activity android:name=".GraphActivity"/>
-        <activity android:name=".Graph2Activity"/>
-        <activity android:name="youngjung.test.MVP.mvp_examActivity" />
+        <activity android:name=".View.RequestActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
     </application>
 
 </manifest>
