@@ -1,9 +1,11 @@
 package youngjung.test.Login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -47,17 +49,20 @@ public class LoginActivity extends baseActivity {
     private SignInButton signInButton;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
+    public SharedPreferences prefs;
     String TAG = getPackageName().getClass().toString();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         mAuth = FirebaseAuth.getInstance();
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
+
+        prefs = getSharedPreferences("Pref", MODE_PRIVATE);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -107,8 +112,14 @@ public class LoginActivity extends baseActivity {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
 
-                //회원 DB 저장
-                databaseReference.child("Profile").push().setValue(new profile(account.getDisplayName(),account.getId(), account.getEmail()));
+                boolean isFirstRun = prefs.getBoolean("isFirstRun",true);
+                if(isFirstRun)
+                {
+                    //회원 DB 저장
+                    databaseReference.child("Member Information").push().setValue(new profile(account.getDisplayName(),account.getId(), account.getEmail()));
+                    prefs.edit().putBoolean("isFirstRun",false).apply();
+                    //처음만 true 그다음부터는 false 바꾸는 동작
+                }
                 Log.d(TAG, "이름 =" + account.getDisplayName());
                 Log.d(TAG, "이메일=" + account.getEmail());
                 Log.d(TAG, "getId()=" + account.getId());
@@ -148,6 +159,16 @@ public class LoginActivity extends baseActivity {
     private void loginGoogle() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, SIGN_IN);
+    }
+
+    //최초인지 확인
+    public void checkFirstRun(){
+        boolean isFirstRun = prefs.getBoolean("isFirstRun",true);
+        if(isFirstRun)
+        {
+            prefs.edit().putBoolean("isFirstRun",false).apply();
+            //처음만 true 그다음부터는 false 바꾸는 동작
+        }
     }
 
 

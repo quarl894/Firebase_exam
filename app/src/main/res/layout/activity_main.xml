@@ -149,7 +149,7 @@
                 />
         </LinearLayout>
         <View
-            android:layout_width="1dp"
+            android:layout_width="2dp"
             android:layout_height="63dp"
             android:layout_gravity="center"
             android:textColor="#eaeef4"></View>
@@ -206,7 +206,6 @@
         android:textColor="@color/dark"
         android:text="평가하기"
         android:background="@drawable/main_btn"
-        style="?android:attr/borderlessButtonStyle"
         android:layout_marginHorizontal="34dp"/>
 
     <Button

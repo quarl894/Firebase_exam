@@ -12,11 +12,12 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import youngjung.test.DB.DBActivity;
 import youngjung.test.Login.LoginActivity;
+import youngjung.test.View.RequestActivity;
 import youngjung.test.ui.base.baseActivity;
 import youngjung.test.ui.dialog.LodingDialog;
 
 public class MainActivity extends baseActivity {
-    Button btn, btn_db;
+    Button btn, btn_db, btn_request;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,11 +44,20 @@ public class MainActivity extends baseActivity {
                 },1000);
             }
         });
-        btn_db = (Button) findViewById(R.id.btn_db);
+        btn_db = findViewById(R.id.btn_db);
         btn_db.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, DBActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btn_request = findViewById(R.id.btn_request);
+        btn_request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, RequestActivity.class);
                 startActivity(i);
             }
         });

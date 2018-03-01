@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        android:id="@+id/request_titlebar">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif-medium"
+            android:textStyle="normal"
+            android:textColor="#1f2431"
+            android:text="의뢰서 작성"
+            android:paddingLeft="40dp"
+            android:autoSizeTextType="uniform"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/request_register"
+            android:textSize="18sp"
+            android:textColor="@color/cornflower"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:background="@color/white"
+            android:layout_weight="5"
+            android:paddingRight="24dp"
+            android:text="등록" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="24dp"
+        android:layout_below="@+id/request_titlebar">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:id="@+id/request_title"
+            android:textSize="18sp"
+            android:textColor="@color/dark"
+            android:hint="제목을 입력하세요"
+            android:autoSizeTextType="uniform"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/pale_grey"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/request_content"
+                android:textSize="14sp"
+                android:textColor="@color/dark"
+                android:hint="이번 이니스프리 파운데이션이 50가지 종류로 되어 있 고 지금 제가 쓰는 파운데이션은 제 피부에 잘 떠요. 그 리고 지금 신상 프로모션도 진행 중이라구요!! 살까요 말까요?? 고민돼요"
+                />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/pale_grey"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:textColor="@color/warm_grey"
+                android:text="가격 "
+                />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/request_price"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif-medium"
+                android:textStyle="normal"
+                android:textColor="@color/dark"
+                android:gravity="right|center"
+                android:layout_gravity="end"
+                android:inputType="number"
+                android:hint="18,000원" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/pale_grey"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="@color/warm_grey"
+            android:autoSizeTextType="uniform"
+            android:text="구매하려는 이유 " />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
