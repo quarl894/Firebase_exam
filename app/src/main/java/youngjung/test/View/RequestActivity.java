@@ -1,5 +1,6 @@
 package youngjung.test.View;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -29,6 +30,8 @@ public class RequestActivity extends baseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
 
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         title = findViewById(R.id.request_title);
         price = findViewById(R.id.request_price);
         content = findViewById(R.id.request_content);
