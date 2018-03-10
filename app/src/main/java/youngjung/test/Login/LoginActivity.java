@@ -171,6 +171,4 @@ public class LoginActivity extends baseActivity {
             //처음만 true 그다음부터는 false 바꾸는 동작
         }
     }
-
-
 }

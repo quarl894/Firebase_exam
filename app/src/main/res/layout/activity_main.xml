@@ -141,8 +141,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="20sp"
-                android:fontFamily="sans-serif-medium"
-                android:textStyle="normal"
+                android:fontFamily="font_Title_bold"
+                android:textStyle="bold"
                 android:textColor="#1f2431"
                 android:text="4,000,000원"
                 android:autoSizeTextType="uniform"
@@ -178,8 +178,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="20sp"
-                android:fontFamily="sans-serif-medium"
-                android:textStyle="normal"
+                android:fontFamily="font_Title_bold"
+                android:textStyle="bold"
                 android:textColor="#1f2431"
                 android:text="4,000,000원"
                 android:autoSizeTextType="uniform"/>
@@ -217,13 +217,13 @@
         android:layout_marginTop="17dp"
         android:text="logout" />
 
-    <Button
-        android:id="@+id/btn_db"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="75dp"
-        android:layout_toEndOf="@+id/btn"
-        android:text="DB" />
+    <com.roughike.bottombar.BottomBar
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
+        app:bb_tabXmlResource="@xml/bottombar_tabs"
+        app:bb_activeTabAlpha="1"
+        app:bb_inActiveTabAlpha="1"
+        app:bb_behavior="iconsOnly"/>
 </RelativeLayout>
