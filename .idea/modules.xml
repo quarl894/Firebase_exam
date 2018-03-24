@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Firebase_exam.iml" filepath="$PROJECT_DIR$/Firebase_exam.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Personal.iml" filepath="$PROJECT_DIR$/Personal.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
