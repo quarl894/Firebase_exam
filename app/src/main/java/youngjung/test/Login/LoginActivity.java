@@ -51,6 +51,7 @@ public class LoginActivity extends baseActivity {
     private DatabaseReference databaseReference;
     public SharedPreferences prefs;
     String TAG = getPackageName().getClass().toString();
+  
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

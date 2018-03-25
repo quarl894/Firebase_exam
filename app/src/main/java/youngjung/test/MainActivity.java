@@ -1,6 +1,5 @@
 package youngjung.test;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +13,6 @@ import youngjung.test.DB.DBActivity;
 import youngjung.test.Login.LoginActivity;
 import youngjung.test.View.RequestActivity;
 import youngjung.test.ui.base.baseActivity;
-import youngjung.test.ui.dialog.LodingDialog;
 
 public class MainActivity extends baseActivity {
     Button btn, btn_db, btn_request;

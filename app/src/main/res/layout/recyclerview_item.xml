@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:padding="5dp"
+    android:layout_width="157dp"
+    android:layout_height="231dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--하얀 영수증-->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_launcher_background"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--도장-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/sym_def_app_icon"
+                android:layout_gravity="center"
+                android:layout_marginTop="16.4dp"/>
+
+            <!--영수증 제목-->
+            <TextView
+                android:id="@+id/receipt_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#1f2431"
+                android:layout_marginHorizontal="10dp"
+                android:gravity="center"
+                android:text="이니스프리 파운데이션"/>
+
+            <!--날짜-->
+            <TextView
+                android:id="@+id/receipt_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#1f2431"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="4dp"
+                android:gravity="center"/>
+
+            <!--점선-->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="7dp">
+
+                <!--돈모양 아이콘-->
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:src="@drawable/ic_launcher_foreground" />
+
+                <!--가격-->
+                <TextView
+                    android:id="@+id/receipt_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textStyle="normal"
+                    android:textColor="#1f2431"
+                    android:layout_marginRight="10dp"
+                    android:text="15000원"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>
