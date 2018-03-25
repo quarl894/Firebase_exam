@@ -23,6 +23,7 @@ import youngjung.test.View.ListActivity;
 import youngjung.test.View.RequestActivity;
 import youngjung.test.ui.base.baseActivity;
 import youngjung.test.ui.dialog.LodingDialog;
+
 public class MainActivity extends baseActivity {
     Button btn, btn_request;
     @Override

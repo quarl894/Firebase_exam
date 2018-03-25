@@ -50,7 +50,9 @@ public class LoginActivity extends baseActivity {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     public SharedPreferences prefs;
+  
     String TAG = getClass().getName().toString();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
