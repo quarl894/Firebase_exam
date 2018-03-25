@@ -1,6 +1,7 @@
 package youngjung.test;
 
 import android.app.Application;
+import android.support.v7.app.ActionBar;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
@@ -22,7 +23,7 @@ public class DefaultApplication extends Application {
 
     private void initFont(){
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/Roboto-RobotoRegular.ttf")
+                .setDefaultFontPath("fonts/NotoSansCJKkr-Regular.otf")
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );

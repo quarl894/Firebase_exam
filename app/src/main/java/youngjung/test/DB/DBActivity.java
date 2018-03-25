@@ -77,7 +77,6 @@ public class DBActivity extends baseActivity {
                 mRecyclerview.setAdapter(mchatAdapter);
             }
 
-
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) { }
 
