@@ -36,6 +36,10 @@
         </activity>
         <activity android:name=".View.RequestActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"/>
+        <activity android:name=".View.ListActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            ></activity>
+        <activity android:name=".View.Eval_Activity"/>
     </application>
 
 </manifest>

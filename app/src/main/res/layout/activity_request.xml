@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +30,7 @@
             android:textColor="@color/cornflower"
             android:layout_gravity="center_vertical"
             android:gravity="center"
-            android:background="@color/white"
+            android:background="#00ff0000"
             android:layout_weight="5"
             android:paddingRight="24dp"
             android:text="등록" />
@@ -81,19 +82,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textSize="14sp"
-                android:gravity="center"
+                android:gravity="center|left"
                 android:textColor="@color/warm_grey"
+                android:layout_weight="1"
                 android:text="가격 "
                 />
             <EditText
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:id="@+id/request_price"
                 android:textSize="20sp"
-                android:fontFamily="sans-serif-medium"
-                android:textStyle="normal"
+                android:fontFamily="font_Title_bold"
+                android:textStyle="bold"
                 android:textColor="@color/dark"
-                android:gravity="right|center"
+                android:gravity="center"
                 android:layout_gravity="end"
                 android:inputType="number"
                 android:hint="18,000원" />
@@ -111,6 +113,11 @@
             android:textColor="@color/warm_grey"
             android:autoSizeTextType="uniform"
             android:text="구매하려는 이유 " />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_list"
+                android:text="move"/>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
