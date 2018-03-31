@@ -5,21 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.zip.Inflater;
-
 import youngjung.test.Login.LoginActivity;
-import youngjung.test.MainActivity;
 import youngjung.test.R;
-import youngjung.test.ReceiptsActivity;
 import youngjung.test.View.Eval_Activity;
+import youngjung.test.View.RequestActivity;
 
 /**
  * Created by YoungJung on 2018-03-25.
@@ -63,7 +57,7 @@ public class MainFragment extends Fragment {
         btn_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(mContext, ReceiptsActivity.class);
+                Intent i = new Intent(getActivity(), RequestActivity.class);
                 startActivity(i);
             }
         });

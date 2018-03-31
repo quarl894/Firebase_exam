@@ -1,4 +1,4 @@
-package youngjung.test;
+package youngjung.test.Fragment;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,16 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import youngjung.test.R;
+
 /**
  * Created by jy on 25/02/2018.
  */
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>  {
+public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter2.ViewHolder>  {
     private String[] mData = new String[0];
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
-    RecyclerViewAdapter(Context context, String[] data) {
+    RecyclerViewAdapter2(Context context, String[] data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }

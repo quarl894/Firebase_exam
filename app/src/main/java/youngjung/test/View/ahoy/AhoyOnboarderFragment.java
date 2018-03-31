@@ -149,14 +149,16 @@ public class AhoyOnboarderFragment extends Fragment {
         btn_yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"YES",Toast.LENGTH_SHORT).show();
+                btn_yes.setBackgroundColor(getResources().getColor(R.color.golden_yellow));
+                btn_no.setBackgroundColor(getResources().getColor(R.color.pale_grey));
             }
         });
 
         btn_no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"NO",Toast.LENGTH_SHORT).show();
+                btn_yes.setBackgroundColor(getResources().getColor(R.color.pale_grey));
+                btn_no.setBackgroundColor(getResources().getColor(R.color.golden_yellow));
             }
         });
         if(moneyKey !=null){

@@ -43,8 +43,6 @@ public class RequestActivity extends baseActivity {
         databaseReference = firebaseDatabase.getReference();
         userName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
 
-
-
         Button btn_list = findViewById(R.id.btn_list);
         btn_list.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -2,6 +2,7 @@ package youngjung.test.View;
 
 import android.animation.Animator;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -22,6 +23,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import youngjung.test.MainActivity;
 import youngjung.test.View.ahoy.AhoyOnboarderAdapter;
 import youngjung.test.View.ahoy.AhoyOnboarderCard;
 import com.codemybrainsout.onboarder.utils.ShadowTransformer;
@@ -61,7 +63,7 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
         hideActionBar();
 
         parentLayout = findViewById(com.codemybrainsout.onboarder.R.id.parent_layout);
-        circleIndicatorView = findViewById(com.codemybrainsout.onboarder.R.id.circle_indicator_view);
+        circleIndicatorView = findViewById(R.id.circle_indicator_view);
         btnSkip = findViewById(com.codemybrainsout.onboarder.R.id.btn_skip);
         buttonsLayout = findViewById(com.codemybrainsout.onboarder.R.id.buttons_layout);
         navigationControls = findViewById(com.codemybrainsout.onboarder.R.id.navigation_layout);
@@ -78,6 +80,8 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
 
         hideFinish(false);
         fadeOut(ivPrev, false);
+
+
 
         AhoyOnboarderCard ahoyOnboarderCard1 = new AhoyOnboarderCard("클리오 팬슬 아이라이너", "Label your packages with a barcode before we collect it from you.",R.drawable.barcode,R.drawable.barcode,"1");
         AhoyOnboarderCard ahoyOnboarderCard2 = new AhoyOnboarderCard("클리오 팬슬 아이라이너", "Label your packages with a barcode before we collect it from you.",R.drawable.barcode,R.drawable.barcode,"1");
@@ -99,6 +103,7 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
         }
 
         setFinishButtonTitle("Finish");
+
         showNavigationControls(false);
 
         List<Integer> colorList = new ArrayList<>();
@@ -381,7 +386,10 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
 
     @Override
     public void onFinishButtonPressed() {
-        Toast.makeText(this, "Finish Pressed", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "영수증이 전달되었습니다.", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(Eval_Activity.this, MainActivity.class);
+        startActivity(i);
+        finish();
     }
 
 }
