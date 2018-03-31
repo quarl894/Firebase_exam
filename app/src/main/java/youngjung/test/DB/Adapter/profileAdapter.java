@@ -9,7 +9,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import youngjung.test.Model.profile;
+import youngjung.test.Model.Profile;
 import youngjung.test.R;
 
 /**
@@ -18,14 +18,14 @@ import youngjung.test.R;
 
 public class profileAdapter extends RecyclerView.Adapter<profileAdapter.ViewHolder> {
     Context mcontext;
-    ArrayList<profile> profiles = new ArrayList<>();
+    ArrayList<Profile> Profiles = new ArrayList<>();
 
     public profileAdapter() {
     }
 
-    public profileAdapter(Context mcontext, ArrayList<profile> profiles) {
+    public profileAdapter(Context mcontext, ArrayList<Profile> Profiles) {
         this.mcontext = mcontext;
-        this.profiles = profiles;
+        this.Profiles = Profiles;
     }
 
     @Override

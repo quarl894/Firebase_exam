@@ -47,7 +47,7 @@ public class DBActivity extends baseActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
         mcontext = this.getApplicationContext();
-        edit= (EditText) findViewById(R.id.edit);
+        edit = (EditText) findViewById(R.id.edit);
         userName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
         sendButton = (Button) findViewById(R.id.btn_ok);
 
@@ -60,6 +60,7 @@ public class DBActivity extends baseActivity {
         mchatAdapter = new chatAdapter(list, mcontext);
         mRecyclerview.setAdapter(mchatAdapter);
 
+        // 채팅 보내기
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +70,7 @@ public class DBActivity extends baseActivity {
             }
         });
 
+        // 채팅 받기
         databaseReference.child("message").addChildEventListener(new ChildEventListener() {  // message는 child의 이벤트를 수신합니다.
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
