@@ -60,8 +60,8 @@ public class MainActivity extends FragmentActivity {
         ref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                final String result = dataSnapshot.getKey();
-
+                //final String result = dataSnapshot.getKey();
+                //child 다 받기
                 Iterable<DataSnapshot> child = dataSnapshot.getChildren();
                 if(!dataSnapshot.getKey().equals(uid)){
                     for(DataSnapshot contact : child){
