@@ -39,6 +39,7 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        //로그아웃
         btn = rootView.findViewById(R.id.btn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,19 +49,21 @@ public class MainFragment extends Fragment {
                     }
             });
 
+        // 의뢰하기
         btn_send = rootView.findViewById(R.id.btn_send);
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(mContext, ReceiptsActivity.class);
+                Intent i = new Intent(mContext, Eval_Activity.class);
                 startActivity(i);
             }
         });
+        //평가하기
         btn_request = rootView.findViewById(R.id.btn_request);
         btn_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(mContext, Eval_Activity.class);
+                Intent i = new Intent(mContext, ReceiptsActivity.class);
                 startActivity(i);
             }
         });

@@ -22,9 +22,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.codemybrainsout.onboarder.AhoyOnboarderActivity;
-import com.codemybrainsout.onboarder.AhoyOnboarderAdapter;
-import com.codemybrainsout.onboarder.AhoyOnboarderCard;
+import youngjung.test.View.ahoy.AhoyOnboarderActivity;
+import youngjung.test.View.ahoy.AhoyOnboarderAdapter;
+import youngjung.test.View.ahoy.AhoyOnboarderCard;
 import com.codemybrainsout.onboarder.utils.ShadowTransformer;
 import com.codemybrainsout.onboarder.views.CircleIndicatorView;
 import com.codemybrainsout.onboarder.views.FlowingGradientClass;
@@ -80,7 +80,7 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
         hideFinish(false);
         fadeOut(ivPrev, false);
 
-        AhoyOnboarderCard ahoyOnboarderCard1 = new AhoyOnboarderCard("Scan Barcode", "Label your packages with a barcode before we collect it from you.", R.drawable.barcode);
+        AhoyOnboarderCard ahoyOnboarderCard1 = new AhoyOnboarderCard("클리오 팬슬 아이라이너", "Label your packages with a barcode before we collect it from you.");
         AhoyOnboarderCard ahoyOnboarderCard2 = new AhoyOnboarderCard("Shipping", "Our huge network of shipping partners ensures that your packages are always on schedule.", R.drawable.truck);
         AhoyOnboarderCard ahoyOnboarderCard3 = new AhoyOnboarderCard("Payment", "Receive payments immediately after the package is delivered.", R.drawable.wallet);
 
@@ -116,8 +116,7 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
 
     }
 
-
-    public void setOnboardPages(List<AhoyOnboarderCard> pages) {
+    public void setOnboardPages(List<youngjung.test.View.ahoy.AhoyOnboarderCard> pages) {
 
         this.pages = pages;
         ahoyOnboarderAdapter = new AhoyOnboarderAdapter(pages, getSupportFragmentManager(), dpToPixels(0, this), typeface);

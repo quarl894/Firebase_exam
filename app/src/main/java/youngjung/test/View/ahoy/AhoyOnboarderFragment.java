@@ -15,8 +15,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.codemybrainsout.onboarder.AhoyOnboarderCard;
+import youngjung.test.View.ahoy.AhoyOnboarderCard;
 
 public class AhoyOnboarderFragment extends Fragment {
 
@@ -66,7 +65,7 @@ public class AhoyOnboarderFragment extends Fragment {
     public AhoyOnboarderFragment() {
     }
 
-    public static com.codemybrainsout.onboarder.AhoyOnboarderFragment newInstance(AhoyOnboarderCard card) {
+    public static AhoyOnboarderFragment newInstance(youngjung.test.View.ahoy.AhoyOnboarderCard card) {
         Bundle args = new Bundle();
         args.putString(AHOY_PAGE_TITLE, card.getTitle());
         args.putString(AHOY_PAGE_DESCRIPTION, card.getDescription());
@@ -85,7 +84,7 @@ public class AhoyOnboarderFragment extends Fragment {
         args.putInt(AHOY_PAGE_MARGIN_TOP, card.getMarginTop());
         args.putInt(AHOY_PAGE_MARGIN_BOTTOM, card.getMarginBottom());
 
-        com.codemybrainsout.onboarder.AhoyOnboarderFragment fragment = new com.codemybrainsout.onboarder.AhoyOnboarderFragment();
+        AhoyOnboarderFragment fragment = new AhoyOnboarderFragment();
         fragment.setArguments(args);
         return fragment;
     }

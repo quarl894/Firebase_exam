@@ -22,8 +22,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.codemybrainsout.onboarder.AhoyOnboarderAdapter;
-import com.codemybrainsout.onboarder.AhoyOnboarderCard;
+import youngjung.test.View.ahoy.AhoyOnboarderAdapter;
+import youngjung.test.View.ahoy.AhoyOnboarderCard;
+//import com.codemybrainsout.onboarder.AhoyOnboarderCard;
 import com.codemybrainsout.onboarder.utils.ShadowTransformer;
 import com.codemybrainsout.onboarder.views.CircleIndicatorView;
 import com.codemybrainsout.onboarder.views.FlowingGradientClass;
@@ -34,7 +35,8 @@ public abstract class AhoyOnboarderActivity extends AppCompatActivity implements
 
         private CircleIndicatorView circleIndicatorView;
         private ViewPager vpOnboarderPager;
-        private AhoyOnboarderAdapter ahoyOnboarderAdapter;
+        private youngjung.test.View.ahoy.AhoyOnboarderAdapter ahoyOnboarderAdapter;
+//        private AhoyOnboarderAdapter ahoyOnboarderAdapter;
         private TextView btnSkip;
         private ImageView ivNext, ivPrev;
         private FrameLayout navigationControls;
@@ -47,7 +49,7 @@ public abstract class AhoyOnboarderActivity extends AppCompatActivity implements
         private Typeface typeface;
         private List<Integer> colorList;
         private boolean solidBackground = false;
-        private List<AhoyOnboarderCard> pages;
+        private List<youngjung.test.View.ahoy.AhoyOnboarderCard> pages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,9 +77,12 @@ public abstract class AhoyOnboarderActivity extends AppCompatActivity implements
         fadeOut(ivPrev, false);
     }
 
-    public void setOnboardPages(List<AhoyOnboarderCard> pages) {
+    public void setOnboardPages(List<youngjung.test.View.ahoy.AhoyOnboarderCard> pages) {
 
         this.pages = pages;
+
+       // ahoyOnboarderAdapter = new AhoyOnboarderCard(pages, getSupportFragmentManager(), dpToPixels(0,this),typeface);
+
         ahoyOnboarderAdapter = new AhoyOnboarderAdapter(pages, getSupportFragmentManager(), dpToPixels(0, this), typeface);
         mCardShadowTransformer = new ShadowTransformer(vpOnboarderPager, ahoyOnboarderAdapter);
         mCardShadowTransformer.enableScaling(true);
