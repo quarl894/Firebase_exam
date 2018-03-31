@@ -54,26 +54,6 @@ public class MainActivity extends baseActivity {
         });
 
 
-        //아직 하는 중 Fragment로 바꿔야 할듯
-//        BottomBar bottomBar = findViewById(R.id.bottomBar);
-//        bottomBar.setActivated(false);
-//
-//        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
-//            @Override
-//            public void onTabSelected(int tabId) {
-//                switch (tabId){
-//                    case R.id.tab_list :
-//                        Intent i = new Intent(getApplicationContext(), ListActivity.class);
-//                        startActivity(i);
-//                        break;
-//                    case R.id.tab_mypage:
-//                        Intent i3 = new Intent(getApplicationContext(), DBActivity.class);
-//                        startActivity(i3);
-//                        break;
-//                }
-//
-//            }
-//        });
         btn_request = findViewById(R.id.btn_request);
         btn_request.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,5 +62,6 @@ public class MainActivity extends baseActivity {
                 startActivity(i);
             }
         });
+
     }
 }

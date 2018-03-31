@@ -85,8 +85,7 @@
                 android:gravity="center|left"
                 android:textColor="@color/warm_grey"
                 android:layout_weight="1"
-                android:text="가격 "
-                />
+                android:text="가격 " />
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
