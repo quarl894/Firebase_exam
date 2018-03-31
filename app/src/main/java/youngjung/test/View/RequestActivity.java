@@ -1,6 +1,7 @@
 package youngjung.test.View;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -25,6 +26,7 @@ public class RequestActivity extends baseActivity {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private String userName;
+    private final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,11 +43,21 @@ public class RequestActivity extends baseActivity {
         databaseReference = firebaseDatabase.getReference();
         userName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
 
+
+
+        Button btn_list = findViewById(R.id.btn_list);
+        btn_list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(RequestActivity.this, ListActivity.class);
+                startActivity(i);
+            }
+        });
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                databaseReference.child("Request receipt").child(userName).setValue(new RequestForm(userName, "HI",18000,"ok",2000000));
-//                databaseReference.child("Request receipt").child(userName).setValue(new RequestForm(userName, "Hello",20000,"ok",2000000));
+                databaseReference.child("Request receipt").child(uid).push().setValue(new RequestForm(userName, "Hello",20000,"ok",2000000));
             }
         });
     }
