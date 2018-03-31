@@ -12,9 +12,13 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import youngjung.test.R;
 import youngjung.test.View.ahoy.AhoyOnboarderCard;
 
 public class AhoyOnboarderFragment extends Fragment {
@@ -35,12 +39,17 @@ public class AhoyOnboarderFragment extends Fragment {
     private static final String AHOY_PAGE_MARGIN_RIGHT = "ahoy_page_margin_right";
     private static final String AHOY_PAGE_MARGIN_TOP = "ahoy_page_margin_top";
     private static final String AHOY_PAGE_MARGIN_BOTTOM = "ahoy_page_margin_bottom";
+    private static final String AHOY_PAGE_IMAGE_MONEY = "ahoy_page_image_money";
+    private static final String AHOY_PAGE_MONEY = "ahoy_page_money";
 
 
     private String title;
     private String description;
+    private String moneyKey;
+
     @StringRes
     private int titleResId;
+    private int imageMoneyKey;
     @ColorRes
     private int titleColor;
     @StringRes
@@ -56,8 +65,13 @@ public class AhoyOnboarderFragment extends Fragment {
 
     private View view;
     private ImageView ivOnboarderImage;
+    private ImageView image_money;
     private TextView tvOnboarderTitle;
     private TextView tvOnboarderDescription;
+    private TextView money;
+    private Button btn_yes;
+    private Button btn_no;
+
     private CardView cardView;
     private int iconHeight, iconWidth;
     private int marginTop, marginBottom, marginLeft, marginRight;
@@ -83,6 +97,9 @@ public class AhoyOnboarderFragment extends Fragment {
         args.putInt(AHOY_PAGE_MARGIN_RIGHT, card.getMarginRight());
         args.putInt(AHOY_PAGE_MARGIN_TOP, card.getMarginTop());
         args.putInt(AHOY_PAGE_MARGIN_BOTTOM, card.getMarginBottom());
+        args.putInt(AHOY_PAGE_IMAGE_MONEY,card.getImage_money());
+        args.putString(AHOY_PAGE_MONEY,card.getMoney());
+
 
         AhoyOnboarderFragment fragment = new AhoyOnboarderFragment();
         fragment.setArguments(args);
@@ -115,12 +132,40 @@ public class AhoyOnboarderFragment extends Fragment {
         marginBottom = bundle.getInt(AHOY_PAGE_MARGIN_BOTTOM, (int) dpToPixels(0, getActivity()));
         marginLeft = bundle.getInt(AHOY_PAGE_MARGIN_LEFT, (int) dpToPixels(0, getActivity()));
         marginRight = bundle.getInt(AHOY_PAGE_MARGIN_RIGHT, (int) dpToPixels(0, getActivity()));
+        moneyKey = bundle.getString(AHOY_PAGE_MONEY,null);
+        imageMoneyKey = bundle.getInt(AHOY_PAGE_IMAGE_MONEY,0);
 
-        view = inflater.inflate(com.codemybrainsout.onboarder.R.layout.fragment_ahoy, container, false);
-        ivOnboarderImage = (ImageView) view.findViewById(com.codemybrainsout.onboarder.R.id.iv_image);
-        tvOnboarderTitle = (TextView) view.findViewById(com.codemybrainsout.onboarder.R.id.tv_title);
-        tvOnboarderDescription = (TextView) view.findViewById(com.codemybrainsout.onboarder.R.id.tv_description);
-        cardView = (CardView) view.findViewById(com.codemybrainsout.onboarder.R.id.cv_cardview);
+        view = inflater.inflate(R.layout.fragment_ahoy, container, false);
+        ivOnboarderImage = view.findViewById(R.id.iv_image);
+        image_money = view.findViewById(R.id.image_money);
+        tvOnboarderTitle = view.findViewById(com.codemybrainsout.onboarder.R.id.tv_title);
+        tvOnboarderDescription = view.findViewById(com.codemybrainsout.onboarder.R.id.tv_description);
+        cardView = view.findViewById(com.codemybrainsout.onboarder.R.id.cv_cardview);
+
+        money = view.findViewById(R.id.money);
+        btn_yes = view.findViewById(R.id.btn_yes);
+        btn_no = view.findViewById(R.id.btn_no);
+
+        btn_yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"YES",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btn_no.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"NO",Toast.LENGTH_SHORT).show();
+            }
+        });
+        if(moneyKey !=null){
+            money.setText(moneyKey);
+        }
+
+        if(imageMoneyKey !=0){
+            image_money.setImageDrawable(ContextCompat.getDrawable(getActivity(), imageMoneyKey));
+        }
 
         if (title != null) {
             tvOnboarderTitle.setText(title);

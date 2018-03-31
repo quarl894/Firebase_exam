@@ -10,7 +10,7 @@ public class AhoyOnboarderCard {
     public String title;
     public String description;
     public Drawable imageResource;
-    public Drawable image_money;
+    public int image_money;
     public String money;
 
     @StringRes
@@ -30,10 +30,10 @@ public class AhoyOnboarderCard {
     public float descriptionTextSize;
     public int iconWidth, iconHeight, marginTop, marginLeft, marginRight, marginBottom;
 
-    public AhoyOnboarderCard(String title, String description, Drawable imageResource, Drawable image_money, String money) {
+    public AhoyOnboarderCard(String title, String description, int imageResourceId, int image_money, String money) {
         this.title = title;
         this.description = description;
-        this.imageResource = imageResource;
+        this.imageResourceId = imageResourceId;
         this.image_money = image_money;
         this.money = money;
     }
@@ -70,6 +70,22 @@ public class AhoyOnboarderCard {
         this.titleResourceId = title;
         this.descriptionResourceId = description;
         this.imageResource = imageResource;
+    }
+
+    public int getImage_money() {
+        return image_money;
+    }
+
+    public void setImage_money(int image_money) {
+        this.image_money = image_money;
+    }
+
+    public String getMoney() {
+        return money;
+    }
+
+    public void setMoney(String money) {
+        this.money = money;
     }
 
     public String getTitle() {
