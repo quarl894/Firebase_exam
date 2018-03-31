@@ -18,7 +18,7 @@ import youngjung.test.R;
  * Created by HANSUNG on 2018-03-25.
  */
 
-public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter.ItemClickListener{
+public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter2.ItemClickListener{
     private Context mContext;
     RecyclerViewAdapter2 adapter;
     String[] data = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48"};
@@ -39,6 +39,7 @@ public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter.Ite
         recyclerView.setLayoutManager(new GridLayoutManager(mContext, numberOfColumns));
         adapter = new RecyclerViewAdapter2(mContext, data);
         recyclerView.setAdapter(adapter);
+        adapter.setClickListener(this);
         return rootView;
     }
     @Override

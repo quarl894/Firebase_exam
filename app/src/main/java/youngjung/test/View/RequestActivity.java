@@ -55,7 +55,7 @@ public class RequestActivity extends baseActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                databaseReference.child("Request receipt").child(uid).push().setValue(new RequestForm(userName, "Hello",20000,"ok",2000000));
+                databaseReference.child("Request receipt").child(uid).push().setValue(new RequestForm(userName, title.getText().toString(),Integer.parseInt(price.getText().toString()),content.getText().toString(),Integer.parseInt(price.getText().toString())));
             }
         });
     }
