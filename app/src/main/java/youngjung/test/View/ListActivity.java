@@ -30,15 +30,10 @@ public class ListActivity extends baseActivity {
     private TextView show_list;
     private DatabaseReference databaseReference;
     private final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    //ArrayList<String> arr = new ArrayList<>();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-        //ArrayList<String> arr = new ArrayList<>();
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
@@ -46,22 +41,12 @@ public class ListActivity extends baseActivity {
 
         DatabaseReference ref = databaseReference.child("Request receipt");
 
-        Query query =ref.orderByPriority().equalTo("contenet","hihi").limitToFirst(100);
-        String a = query.getRef().getKey();
-
-        Log.e("what???",a);
-
         // Child 다받기
         ref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 firechild request = dataSnapshot.getValue(firechild.class);
                 String result = dataSnapshot.getKey();
-                show_list.setText(request.getId());
-                Log.e("test commit: ", show_list.getText().toString() + "clone: "+ databaseList().clone().toString()+" key: "+result);
-//                if(result!=uid){
-//                    arr.add(result);
-//                }
             }
 
             @Override
@@ -84,34 +69,5 @@ public class ListActivity extends baseActivity {
 
             }
         });
-
-
-//        databaseReference.child("Request receipt").child(uid).addChildEventListener(new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-//                RequestForm request = dataSnapshot.getValue(RequestForm.class);
-//                show_list.setText(request.getId() + " " + request.getTitle());
-//                Log.e("test commit: ", show_list.getText().toString());
-//            }
-//
-//            @Override
-//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-//            }
-//
-//            @Override
-//            public void onChildRemoved(DataSnapshot dataSnapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
     }
 }

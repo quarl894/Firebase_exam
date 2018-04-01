@@ -13,14 +13,18 @@ import youngjung.test.R;
  * Created by jy on 25/02/2018.
  */
 
-public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter2.ViewHolder>  {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>  {
     private String[] mData = new String[0];
+    private String[] mName = new String[0];
+    private String[] mPrice = new String[0];
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
-    RecyclerViewAdapter2(Context context, String[] data) {
+    RecyclerViewAdapter(Context context, String[] data, String[] name, String[] price) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
+        this.mName = name;
+        this.mPrice = price;
     }
 
     @Override
@@ -32,7 +36,11 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         String animal = mData[position];
-        holder.myTextView.setText(animal);
+        String test = mName[position];
+        String price = mPrice[position];
+        holder.receiptDate.setText(animal);
+        holder.receiptName.setText(test);
+        holder.receiptPrice.setText(price);
     }
 
     @Override
@@ -41,11 +49,15 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView myTextView;
+        TextView receiptName;
+        TextView receiptDate;
+        TextView receiptPrice;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            myTextView = itemView.findViewById(R.id.receipt_date);
+            receiptName = itemView.findViewById(R.id.receipt_name);
+            receiptDate = itemView.findViewById(R.id.receipt_date);
+            receiptPrice = itemView.findViewById(R.id.receipt_price);
             itemView.setOnClickListener(this);
         }
 
