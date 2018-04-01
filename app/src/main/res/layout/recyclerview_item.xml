@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:padding="5dp"
     android:layout_width="157dp"
@@ -14,7 +15,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_launcher_background"/>
+            app:srcCompat="@drawable/reciept_small" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,9 +26,9 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@android:drawable/sym_def_app_icon"
                 android:layout_gravity="center"
-                android:layout_marginTop="16.4dp"/>
+                android:layout_marginTop="16.4dp"
+                app:srcCompat="@drawable/ok_stamp" />
 
             <!--영수증 제목-->
             <TextView
@@ -35,6 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
+                android:layout_marginLeft="10dp"
                 android:textColor="#1f2431"
                 android:layout_marginHorizontal="10dp"
                 android:gravity="center"
@@ -45,29 +47,34 @@
                 android:id="@+id/receipt_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="#1f2431"
+                android:textSize="12sp"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="4dp"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/warm_grey"
                 android:gravity="center"/>
 
             <!--점선-->
             <ImageView
+                android:id="@+id/line"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/bot_line"
+                android:layout_marginLeft="6dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:layout_marginTop="7dp">
+                android:layout_marginTop="7dp"
+                android:gravity="right">
 
                 <!--돈모양 아이콘-->
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:src="@drawable/ic_launcher_foreground" />
+                    android:layout_marginRight="8dp"
+                    app:srcCompat="@drawable/a12" />
 
                 <!--가격-->
                 <TextView
@@ -77,7 +84,7 @@
                     android:textSize="14sp"
                     android:fontFamily="sans-serif-medium"
                     android:textStyle="normal"
-                    android:textColor="#1f2431"
+                    android:textColor="#202432"
                     android:layout_marginRight="10dp"
                     android:text="15000원"/>
 
