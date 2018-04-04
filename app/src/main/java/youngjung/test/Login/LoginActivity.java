@@ -119,7 +119,6 @@ public class LoginActivity extends baseActivity {
                     databaseReference.child("Member Information").child(account.getId()).setValue(profile);
                     prefs.edit().putBoolean("isFirstRun",false).apply();
                     //처음만 true 그다음부터는 false 바꾸는 동작
-
                 }
                 Log.d(TAG, "이름 =" + account.getDisplayName());
                 Log.d(TAG, "이메일=" + account.getEmail());

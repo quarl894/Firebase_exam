@@ -8,25 +8,49 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:582848161131:android:2604ec5be6c9e206",
+        "mobilesdk_app_id": "1:582848161131:android:99f40c860b733a6a",
         "android_client_info": {
-          "package_name": "youngjung.test.paid"
+          "package_name": "youngjung.test.free"
         }
       },
       "oauth_client": [
         {
-          "client_id": "582848161131-vbt32hat12k5djhla9lmgtv3o7i8cbmf.apps.googleusercontent.com",
+          "client_id": "582848161131-jjsjkdndc7t71dltn3b61kap7lsbaiah.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "youngjung.test.paid",
+            "package_name": "youngjung.test.free",
+            "certificate_hash": "52160afbc2661b00e54e9b15292798c86145856f"
+          }
+        },
+        {
+          "client_id": "582848161131-h4niv5rcb75vm4i2m2elh0ehne39vl4n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "youngjung.test.free",
+            "certificate_hash": "0fc641ffd171cd744337051befb9c87b13f2047e"
+          }
+        },
+        {
+          "client_id": "582848161131-9qtv6mrduhpkuq0hrsqab3qd1sgu78vk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "youngjung.test.free",
+            "certificate_hash": "bfc78b9da51ea50dc37ec597db35db30b6a266ee"
+          }
+        },
+        {
+          "client_id": "582848161131-s13q9re7rd8pe3mg0vnoajtrjc5q2uol.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "youngjung.test.free",
             "certificate_hash": "f5985d7440d5e7dd6317b4e53615dc674a49668a"
           }
         },
         {
-          "client_id": "582848161131-gojsqh4q0nrhotbvo0otk910uptrcuem.apps.googleusercontent.com",
+          "client_id": "582848161131-k0lqukc8eivqmo9306tkad4qkvopta6e.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "youngjung.test.paid",
+            "package_name": "youngjung.test.free",
             "certificate_hash": "c024be8a0e41fa0d5be058bd36c0793b8030e3fc"
           }
         },
@@ -60,25 +84,49 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:582848161131:android:99f40c860b733a6a",
+        "mobilesdk_app_id": "1:582848161131:android:2604ec5be6c9e206",
         "android_client_info": {
-          "package_name": "youngjung.test.free"
+          "package_name": "youngjung.test.paid"
         }
       },
       "oauth_client": [
         {
-          "client_id": "582848161131-s13q9re7rd8pe3mg0vnoajtrjc5q2uol.apps.googleusercontent.com",
+          "client_id": "582848161131-719n1b1t71cohe41u8jj50quhhppk5lm.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "youngjung.test.free",
+            "package_name": "youngjung.test.paid",
+            "certificate_hash": "52160afbc2661b00e54e9b15292798c86145856f"
+          }
+        },
+        {
+          "client_id": "582848161131-v87797ml17qglsrmmc9m06kaldi0t0b6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "youngjung.test.paid",
+            "certificate_hash": "0fc641ffd171cd744337051befb9c87b13f2047e"
+          }
+        },
+        {
+          "client_id": "582848161131-433n6kgb071fu7j95q9vuk7b8h8qafbc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "youngjung.test.paid",
+            "certificate_hash": "bfc78b9da51ea50dc37ec597db35db30b6a266ee"
+          }
+        },
+        {
+          "client_id": "582848161131-vbt32hat12k5djhla9lmgtv3o7i8cbmf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "youngjung.test.paid",
             "certificate_hash": "f5985d7440d5e7dd6317b4e53615dc674a49668a"
           }
         },
         {
-          "client_id": "582848161131-k0lqukc8eivqmo9306tkad4qkvopta6e.apps.googleusercontent.com",
+          "client_id": "582848161131-gojsqh4q0nrhotbvo0otk910uptrcuem.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "youngjung.test.free",
+            "package_name": "youngjung.test.paid",
             "certificate_hash": "c024be8a0e41fa0d5be058bd36c0793b8030e3fc"
           }
         },

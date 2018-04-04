@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import youngjung.test.Login.LoginActivity;
 import youngjung.test.R;
 import youngjung.test.View.Eval_Activity;
@@ -38,8 +40,9 @@ public class MainFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                        Intent i = new Intent(mContext, LoginActivity.class);
-                        startActivity(i);
+                FirebaseAuth.getInstance().signOut();
+                Intent i = new Intent(mContext, LoginActivity.class);
+                startActivity(i);
                     }
             });
 
