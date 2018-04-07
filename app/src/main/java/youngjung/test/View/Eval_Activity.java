@@ -18,6 +18,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -66,6 +67,9 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
     private List<Integer> colorList;
     private boolean solidBackground = false;
     private List<AhoyOnboarderCard> pages;
+    private TextView tv_text;
+    private TextView eval_title;
+    private Button btn_req_ok;
 
     private DatabaseReference databaseReference;
     private final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -94,6 +98,10 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
 
         hideFinish(false);
         fadeOut(ivPrev, false);
+
+        tv_text = findViewById(R.id.tv_text);
+        eval_title = findViewById(R.id.eval_title);
+        btn_req_ok = findViewById(R.id.btn_req_ok);
 
 
         if(form.size()!=0) Log.e("test: ", form.get(0).getId() +" size: "+form.size());
@@ -135,6 +143,11 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
         setFont(face);
 
         setOnboardPages(pages);
+        Typeface face2 = Typeface.createFromAsset(getAssets(), "fonts/NotoSansCJKkr-Regular.otf");
+        Typeface face3 = Typeface.createFromAsset(getAssets(), "fonts/NotoSansCJKkr-Medium.otf");
+        tv_text.setTypeface(face2);
+        eval_title.setTypeface(face3);
+        btn_req_ok.setTypeface(face2);
 
     }
 

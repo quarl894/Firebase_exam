@@ -22,24 +22,48 @@
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        android:id="@+id/request_titlebar">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:id="@+id/eval_title"
+            android:text="평가하기"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="sans-serif-medium"
+            android:paddingLeft="50dp"
+            android:gravity="center"
+            android:layout_weight="1" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/btn_req_ok"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:background="#00ff0000"
+            android:layout_weight="5"
+            android:paddingRight="24dp"
+            android:text="완료" />
+    </LinearLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/white"
-        android:text="평가하기"
-        android:layout_gravity="center_horizontal"
-        android:fontFamily="sans-serif-medium"
-        android:layout_marginTop="44dp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/tv_text"
         android:textSize="14sp"
         android:textColor="@color/white"
         android:text="의뢰가 온 영수증을 평가해주세요"
         android:layout_gravity="center_horizontal"
         android:fontFamily="sans-serif"
-        android:layout_marginTop="79dp" />
+        android:layout_marginTop="70dp" />
 </FrameLayout>
 
     <FrameLayout
