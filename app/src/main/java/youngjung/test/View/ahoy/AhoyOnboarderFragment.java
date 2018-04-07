@@ -71,6 +71,7 @@ public class AhoyOnboarderFragment extends Fragment {
     private TextView money;
     private Button btn_yes;
     private Button btn_no;
+    private ImageView stamp;
 
     private CardView cardView;
     private int iconHeight, iconWidth;
@@ -145,12 +146,14 @@ public class AhoyOnboarderFragment extends Fragment {
         money = view.findViewById(R.id.money);
         btn_yes = view.findViewById(R.id.btn_yes);
         btn_no = view.findViewById(R.id.btn_no);
+        stamp = view.findViewById(R.id.stamp);
 
         btn_yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 btn_yes.setBackgroundColor(getResources().getColor(R.color.golden_yellow));
                 btn_no.setBackgroundColor(getResources().getColor(R.color.pale_grey));
+                stamp.setImageResource(R.drawable.ok_stamp);
             }
         });
 
@@ -159,6 +162,7 @@ public class AhoyOnboarderFragment extends Fragment {
             public void onClick(View v) {
                 btn_yes.setBackgroundColor(getResources().getColor(R.color.pale_grey));
                 btn_no.setBackgroundColor(getResources().getColor(R.color.golden_yellow));
+                stamp.setImageResource(R.drawable.no_stamp);
             }
         });
         if(moneyKey !=null){

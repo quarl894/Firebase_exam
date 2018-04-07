@@ -4,6 +4,7 @@ import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -131,11 +132,4 @@ public class MainActivity extends FragmentActivity {
             }
         });
     }
-
-//    public void initFragment(){
-//        android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        transaction.add(R.id.container,mainFragment);
-//        transaction.addToBackStack(null);
-//        transaction.commit();
-//    }
 }
