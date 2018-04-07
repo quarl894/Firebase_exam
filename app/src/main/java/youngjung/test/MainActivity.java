@@ -30,6 +30,7 @@ import java.util.Map;
 import youngjung.test.Fragment.MainFragment;
 import youngjung.test.Fragment.MypageFragment;
 import youngjung.test.Fragment.ReceiptFramgent;
+import youngjung.test.Model.Profile;
 import youngjung.test.Model.RequestForm;
 import youngjung.test.Model.firechild;
 
@@ -51,7 +52,9 @@ public class MainActivity extends FragmentActivity {
         bar = findViewById(R.id.bottomBar);
         viewPager = findViewById(R.id.container);
         setupViewPager();
+        // Fragment home으로 첫화면
         viewPager.setCurrentItem(1);
+        bar.setDefaultTabPosition(1);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         DatabaseReference ref = databaseReference.child("Request receipt");
