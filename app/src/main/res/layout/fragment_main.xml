@@ -24,23 +24,32 @@
             android:gravity="center"
             />
     </LinearLayout>
+
     <FrameLayout
         android:layout_below="@+id/lin_home"
         android:layout_width="match_parent"
         android:layout_height="102dp"
         android:id="@+id/go_mypage"
-        android:background="@color/white"
         android:layout_marginHorizontal="16dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/main_paper" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="28dp"
             android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@android:drawable/sym_def_app_icon"/>
+                android:layout_marginLeft="14dp"
+                android:src="@drawable/page_1" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -121,22 +130,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@android:drawable/sym_def_app_icon"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="10sp"
-                android:textColor="@color/warm_grey"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="목표 금액"
-                android:autoSizeTextType="uniform"
-                android:layout_marginVertical="2dp"
-                />
+                android:src="@drawable/main_money" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -146,9 +145,18 @@
                 android:fontFamily="font_Title_bold"
                 android:textStyle="bold"
                 android:textColor="#1f2431"
-                android:text="4,000,000원"
-                android:autoSizeTextType="uniform"
-                />
+                android:layout_marginTop="8.1dp"
+                android:text="4,000,000원" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textColor="@color/warm_grey"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="1dp"
+                android:text="목표 금액"
+                android:layout_marginVertical="2dp" />
         </LinearLayout>
         <View
             android:layout_width="2dp"
@@ -160,21 +168,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@android:drawable/sym_def_app_icon"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="10sp"
-                android:textColor="@color/warm_grey"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="목표 금액"
-                android:layout_marginVertical="2dp"
-                android:autoSizeTextType="uniform"/>
+                android:src="@drawable/main_hand" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -184,8 +183,18 @@
                 android:fontFamily="font_Title_bold"
                 android:textStyle="bold"
                 android:textColor="#1f2431"
-                android:text="4,000,000원"
-                android:autoSizeTextType="uniform"/>
+                android:layout_marginTop="7dp"
+                android:text="1,000,000원"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textColor="@color/warm_grey"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="1dp"
+                android:text="현재 누적"
+                android:layout_marginVertical="2dp"/>
         </LinearLayout>
     </LinearLayout>
     
@@ -199,7 +208,8 @@
         android:text="의뢰하기"
         android:background="@drawable/main_btn"
         android:layout_marginHorizontal="34dp"
-        android:layout_marginVertical="24dp"/>
+        android:layout_marginTop="62dp"/>
+
     <Button
         android:layout_below="@+id/btn_request"
         android:layout_width="match_parent"
@@ -209,7 +219,8 @@
         android:textColor="@color/dark"
         android:text="평가하기"
         android:background="@drawable/main_btn"
-        android:layout_marginHorizontal="34dp"/>
+        android:layout_marginHorizontal="34dp"
+        android:layout_marginTop="40dp"/>
 
     <Button
         android:id="@+id/btn"
