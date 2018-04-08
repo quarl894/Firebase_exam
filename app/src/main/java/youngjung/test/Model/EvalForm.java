@@ -1,9 +1,7 @@
 package youngjung.test.Model;
 
-import android.provider.ContactsContract;
-
 /**
- * 의뢰서 양식
+ * 평가하기 보내는 양식
  1.성별 :  sex
  2.한달 급여 : money
  3. 한달 생활비 : monthly_money;
@@ -11,11 +9,13 @@ import android.provider.ContactsContract;
  5. 가격 : price
  6. 내용 : content
  7. 영수증 주인 uid : uuid
- 8. 영수증 보낸 날짜 : data
- 9. 카테고리 : category
+ 8. 영수증 도착한 날짜 : data
+ 9. 카테고리
+ 10. 허불허
+ 11. 이유
  */
 
-public class RequestForm{
+public class EvalForm {
     String sex;
     int money;
     int monthly_money;
@@ -25,11 +25,11 @@ public class RequestForm{
     String uuid;
     String date;
     int category;
+    boolean check;
+    String why;
 
-    public RequestForm() {
-    }
-
-    public RequestForm(String sex, int money, int monthly_money, String title, int price, String content, String uuid, String date, int category) {
+    // 이유 포함할때 생성자
+    public EvalForm(String sex, int money, int monthly_money, String title, int price, String content, String uuid, String date, int category, boolean check) {
         this.sex = sex;
         this.money = money;
         this.monthly_money = monthly_money;
@@ -39,9 +39,10 @@ public class RequestForm{
         this.uuid = uuid;
         this.date = date;
         this.category = category;
+        this.check = check;
     }
-
-    public RequestForm(String sex, int money, int monthly_money, String title, int price, String content, String uuid, String date) {
+    //이유 없을 때 생성자
+    public EvalForm(String sex, int money, int monthly_money, String title, int price, String content, String uuid, String date, int category, boolean check, String why) {
         this.sex = sex;
         this.money = money;
         this.monthly_money = monthly_money;
@@ -50,6 +51,9 @@ public class RequestForm{
         this.content = content;
         this.uuid = uuid;
         this.date = date;
+        this.category = category;
+        this.check = check;
+        this.why = why;
     }
 
     public String getSex() {
@@ -122,5 +126,21 @@ public class RequestForm{
 
     public void setCategory(int category) {
         this.category = category;
+    }
+
+    public boolean isCheck() {
+        return check;
+    }
+
+    public void setCheck(boolean check) {
+        this.check = check;
+    }
+
+    public String getWhy() {
+        return why;
+    }
+
+    public void setWhy(String why) {
+        this.why = why;
     }
 }

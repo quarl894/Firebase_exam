@@ -114,22 +114,22 @@ public class LoginActivity extends baseActivity {
                 if(isFirstRun)
                 {
                     //회원 DB 저장
-                    Profile profile = new Profile(account.getDisplayName(), account.getEmail(), FirebaseInstanceId.getInstance().getToken());
-
-                    databaseReference.child("Member Information").child(account.getId()).setValue(profile);
+//                    Profile profile = new Profile(account.getDisplayName(), account.getEmail(), FirebaseInstanceId.getInstance().getToken());
+//
+//                    databaseReference.child("Member Information").child(account.getId()).setValue(profile);
                     prefs.edit().putBoolean("isFirstRun",false).apply();
-                    firebaseAuthWithGoogle(account, 1);
-                    Log.e("login test: ", "firest");
+                    firebaseAuthWithGoogle(account, 0);
+                    Log.e("login test: ", "처음");
                     //처음만 true 그다음부터는 false 바꾸는 동작
                 }else{
-                    Log.e("login test: ", "second");
-                    firebaseAuthWithGoogle(account, 0);
+                    Log.e("login test: ", "처음아님");
+                    firebaseAuthWithGoogle(account, 1);
                 }
-                Log.d(TAG, "이름 =" + account.getDisplayName());
-                Log.d(TAG, "이메일=" + account.getEmail());
-                Log.d(TAG, "getId()=" + account.getId());
-                Log.d(TAG, "getAccount()=" + account.getAccount());
-                Log.d(TAG, "getIdToken()=" + account.getIdToken());
+//                Log.d(TAG, "이름 =" + account.getDisplayName());
+//                Log.d(TAG, "이메일=" + account.getEmail());
+//                Log.d(TAG, "getId()=" + account.getId());
+//                Log.d(TAG, "getAccount()=" + account.getAccount());
+//                Log.d(TAG, "getIdToken()=" + account.getIdToken());
 
             } else {
                showToast("로그인에 실패하였습니다. 다시 시도해주세요.");

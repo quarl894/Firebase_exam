@@ -42,7 +42,7 @@
                 android:layout_gravity="center"
                 android:src="@android:drawable/sym_def_app_icon"/>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
                 android:layout_marginLeft="26dp"
@@ -54,6 +54,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/tv_name"
                         android:autoSizeTextType="uniform"
                         android:textSize="14sp"
                         android:textColor="#1f2431"
@@ -68,15 +69,15 @@
                         android:textColor="#7f6ff1"
                         android:text="탕진이" />
                 </LinearLayout>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:autoSizeTextType="uniform"
-                    android:textSize="12sp"
-                    android:textColor="#1f2431"
-                    android:text="미국여행 비행기 티켓 값 모으기"
-                    android:layout_marginTop="2dp"
-                    />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_goal"
+                        android:autoSizeTextType="uniform"
+                        android:textSize="12sp"
+                        android:textColor="#1f2431"
+                        android:text="미국여행 비행기 티켓 값 모으기"
+                        android:layout_marginTop="2dp" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -100,11 +101,11 @@
                         android:text="2.5%" />
                 </LinearLayout>
             </LinearLayout>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@android:drawable/sym_def_app_icon"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/next_icon"/>
         </LinearLayout>
     </FrameLayout>
 
@@ -139,6 +140,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/tv_goal_money"
                 android:layout_gravity="center"
                 android:textSize="20sp"
                 android:fontFamily="font_Title_bold"
@@ -176,6 +178,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/tv_acc_money"
                 android:layout_gravity="center"
                 android:textSize="20sp"
                 android:fontFamily="font_Title_bold"
