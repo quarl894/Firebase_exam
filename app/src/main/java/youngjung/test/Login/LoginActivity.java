@@ -118,8 +118,12 @@ public class LoginActivity extends baseActivity {
 
                     databaseReference.child("Member Information").child(account.getId()).setValue(profile);
                     prefs.edit().putBoolean("isFirstRun",false).apply();
+                    firebaseAuthWithGoogle(account, 1);
+                    Log.e("login test: ", "firest");
                     //처음만 true 그다음부터는 false 바꾸는 동작
-
+                }else{
+                    Log.e("login test: ", "second");
+                    firebaseAuthWithGoogle(account, 0);
                 }
                 Log.d(TAG, "이름 =" + account.getDisplayName());
                 Log.d(TAG, "이메일=" + account.getEmail());
@@ -127,28 +131,36 @@ public class LoginActivity extends baseActivity {
                 Log.d(TAG, "getAccount()=" + account.getAccount());
                 Log.d(TAG, "getIdToken()=" + account.getIdToken());
 
-
-                firebaseAuthWithGoogle(account);
             } else {
                showToast("로그인에 실패하였습니다. 다시 시도해주세요.");
             }
         }
     }
 
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct, int num) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
-
+        final int check = num;
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                            Log.d(TAG, "signInWithCredential:success");
+                            switch(check){
+                                case 0 :
+                                    Intent intent = new Intent(getApplicationContext(), LoginEditActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                    break;
+                                case 1 :
+                                    // Sign in success, update UI with the signed-in user's information
+                                    Intent intent2 = new Intent(getApplicationContext(), MainActivity.class);
+                                    startActivity(intent2);
+                                    finish();
+                                    Log.d(TAG, "signInWithCredential:success");
+                                    break;
+                            }
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());

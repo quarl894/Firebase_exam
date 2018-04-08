@@ -1,4 +1,4 @@
-package youngjung.test;
+package youngjung.test.Fragment;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import youngjung.test.R;
 
 /**
  * Created by jy on 25/02/2018.
@@ -91,4 +94,5 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public interface ItemClickListener {
         void onItemClick(View view, int position);
     }
+
 }

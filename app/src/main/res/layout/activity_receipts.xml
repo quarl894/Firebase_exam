@@ -29,7 +29,6 @@
             android:layout_height="wrap_content"
             android:background="#00ff0000"
             android:text="&lt;"
-            android:onClick="onClick_left_btn"
             android:textColor="@color/white" />
 
 
@@ -49,7 +48,6 @@
             android:layout_height="wrap_content"
             android:background="#00ff0000"
             android:text="&gt;"
-            android:onClick="onClick_right_btn"
             android:textColor="@color/white" />
     </LinearLayout>
 
