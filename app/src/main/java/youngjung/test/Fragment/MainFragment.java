@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import youngjung.test.Login.LoginActivity;
+import youngjung.test.MainActivity;
 import youngjung.test.Model.Profile;
 import youngjung.test.R;
 import youngjung.test.View.Eval_Activity;
@@ -92,12 +93,17 @@ public class MainFragment extends Fragment {
             });
 
         // 의뢰하기
+        //Firebase 불러오기가 늦어서 예외처리.
         btn_send = rootView.findViewById(R.id.btn_send);
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(mContext, Eval_Activity.class);
-                startActivity(i);
+                if(MainActivity.receipt.size()==0){
+                    Toast.makeText(getActivity(), "영수증을 불러오는 중입니다. 다시 눌러주세요.",Toast.LENGTH_SHORT).show();
+                }else{
+                    Intent i = new Intent(mContext, Eval_Activity.class);
+                    startActivity(i);
+                }
             }
         });
         //평가하기

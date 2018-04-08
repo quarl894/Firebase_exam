@@ -12,7 +12,7 @@
         android:layout_marginBottom="40dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/receipt_back"
         app:cardCornerRadius="6dp">
 
@@ -37,8 +37,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="14dp"
+                    android:id="@+id/tv_sex"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
                     android:textSize="12sp"
                     android:textColor="#393939"
                     android:text="여성" />
@@ -51,8 +52,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="14dp"
+                    android:id="@+id/tv_money"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
                     android:textSize="12sp"
                     android:textColor="#393939"
                     android:text="400만원" />
@@ -65,9 +67,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/tv_money_month"
                     android:textSize="12sp"
                     android:textColor="#393939"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="6dp"
                     android:text="50만원" />
             </LinearLayout>
             <LinearLayout
@@ -97,6 +100,7 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:adjustViewBounds="true"
+                        android:src="@drawable/a12"
                         android:scaleType="fitCenter" />
 
                     <TextView
@@ -108,7 +112,7 @@
                         android:textStyle="normal"
                         android:textColor="#393939"
                         android:paddingLeft="8dp"
-                        tools:text="15,000원" />
+                        android:text="15,000원" />
                 </LinearLayout>
                 <TextView
                     android:id="@+id/tv_description"

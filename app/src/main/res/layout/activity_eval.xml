@@ -51,6 +51,7 @@
             android:background="#00ff0000"
             android:layout_weight="5"
             android:paddingRight="24dp"
+            android:visibility="invisible"
             android:text="완료" />
     </LinearLayout>
 
@@ -127,6 +128,7 @@
         android:overScrollMode="never"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
-        android:paddingTop="20dp" />
+        android:layout_marginTop="70dp"
+        android:padding="20dp" />
 
 </RelativeLayout>
