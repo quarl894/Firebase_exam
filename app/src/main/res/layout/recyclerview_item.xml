@@ -15,7 +15,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:srcCompat="@drawable/reciept_small" />
+            android:src="@drawable/reciept_small" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,8 +27,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="16.4dp"
-                app:srcCompat="@drawable/ok_stamp" />
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ok_stamp" />
 
             <!--영수증 제목-->
             <TextView
@@ -59,7 +59,7 @@
                 android:id="@+id/line"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/bot_line"
+                android:src="@drawable/bot_line"
                 android:layout_marginLeft="6dp"/>
 
             <LinearLayout
@@ -74,7 +74,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="8dp"
-                    app:srcCompat="@drawable/a12" />
+                    android:src="@drawable/a12" />
 
                 <!--가격-->
                 <TextView

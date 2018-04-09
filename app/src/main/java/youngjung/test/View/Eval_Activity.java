@@ -2,6 +2,7 @@ package youngjung.test.View;
 
 import android.animation.Animator;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -11,28 +12,35 @@ import android.support.annotation.RequiresApi;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.codemybrainsout.onboarder.AhoyOnboarderActivity;
-import com.codemybrainsout.onboarder.AhoyOnboarderAdapter;
-import com.codemybrainsout.onboarder.AhoyOnboarderCard;
+import youngjung.test.MainActivity;
+import youngjung.test.Model.RequestForm;
+import youngjung.test.View.ahoy.AhoyOnboarderAdapter;
+import youngjung.test.View.ahoy.AhoyOnboarderCard;
 import com.codemybrainsout.onboarder.utils.ShadowTransformer;
 import com.codemybrainsout.onboarder.views.CircleIndicatorView;
 import com.codemybrainsout.onboarder.views.FlowingGradientClass;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import youngjung.test.R;
+
+import static youngjung.test.MainActivity.receipt;
 
 /**
  * Created by HANSUNG on 2018-03-11.
@@ -54,15 +62,21 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
     private List<Integer> colorList;
     private boolean solidBackground = false;
     private List<AhoyOnboarderCard> pages;
+    private TextView tv_text;
+    private TextView eval_title;
+    private Button btn_req_ok;
+
+    private DatabaseReference databaseReference;
+    private final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eval);
         setStatusBackgroundColor();
         hideActionBar();
-
         parentLayout = findViewById(com.codemybrainsout.onboarder.R.id.parent_layout);
-        circleIndicatorView = findViewById(com.codemybrainsout.onboarder.R.id.circle_indicator_view);
+        circleIndicatorView = findViewById(R.id.circle_indicator_view);
         btnSkip = findViewById(com.codemybrainsout.onboarder.R.id.btn_skip);
         buttonsLayout = findViewById(com.codemybrainsout.onboarder.R.id.buttons_layout);
         navigationControls = findViewById(com.codemybrainsout.onboarder.R.id.navigation_layout);
@@ -80,9 +94,40 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
         hideFinish(false);
         fadeOut(ivPrev, false);
 
-        AhoyOnboarderCard ahoyOnboarderCard1 = new AhoyOnboarderCard("Scan Barcode", "Label your packages with a barcode before we collect it from you.", R.drawable.barcode);
-        AhoyOnboarderCard ahoyOnboarderCard2 = new AhoyOnboarderCard("Shipping", "Our huge network of shipping partners ensures that your packages are always on schedule.", R.drawable.truck);
-        AhoyOnboarderCard ahoyOnboarderCard3 = new AhoyOnboarderCard("Payment", "Receive payments immediately after the package is delivered.", R.drawable.wallet);
+        tv_text = findViewById(R.id.tv_text);
+        eval_title = findViewById(R.id.eval_title);
+        btn_req_ok = findViewById(R.id.btn_req_ok);
+        btn_req_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "영수증이 전달되었습니다.", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(Eval_Activity.this, MainActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+        /**
+         * 의뢰서 양식
+         1.성별 :  sex
+         2.한달 급여 : money
+         3. 한달 생활비 : monthly_money;
+         4. 제목 : title
+         5. 가격 : price
+         6. 내용 : content
+         */
+        Log.e("receipt size: ", " " +receipt.size());
+
+        RequestForm a1 = receipt.get(0);
+        RequestForm a2 = receipt.get(1);
+        RequestForm a3 = receipt.get(2);
+
+        AhoyOnboarderCard ahoyOnboarderCard1 = new AhoyOnboarderCard(a1.getSex(), a1.getMoney(), a1.getMonthly_money(), a1.getTitle(), a1.getPrice(), a1.getContent());
+        AhoyOnboarderCard ahoyOnboarderCard2 = new AhoyOnboarderCard(a2.getSex(), a2.getMoney(), a2.getMonthly_money(), a2.getTitle(), a2.getPrice(), a2.getContent());
+        AhoyOnboarderCard ahoyOnboarderCard3 = new AhoyOnboarderCard(a3.getSex(), a3.getMoney(), a3.getMonthly_money(), a3.getTitle(), a3.getPrice(), a3.getContent());
+
+//        AhoyOnboarderCard ahoyOnboarderCard1 = new AhoyOnboarderCard("클리오 팬슬 아이라이너", "Label your packages with a barcode before we collect it from you.",R.drawable.gril_icon,R.drawable.a12,"15000원");
+//        AhoyOnboarderCard ahoyOnboarderCard2 = new AhoyOnboarderCard("클리오 팬슬 아이라이너", "Label your packages with a barcode before we collect it from you.",R.drawable.gril_icon,R.drawable.a12,"20000원");
+//        AhoyOnboarderCard ahoyOnboarderCard3 = new AhoyOnboarderCard("클리오 팬슬 아이라이너", "Label your packages with a barcode before we collect it from you.",R.drawable.gril_icon,R.drawable.a12,"17000원");
 
         ahoyOnboarderCard1.setBackgroundColor(R.color.white);
         ahoyOnboarderCard2.setBackgroundColor(R.color.white);
@@ -100,6 +145,7 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
         }
 
         setFinishButtonTitle("Finish");
+
         showNavigationControls(false);
 
         List<Integer> colorList = new ArrayList<>();
@@ -113,11 +159,15 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
         setFont(face);
 
         setOnboardPages(pages);
+        Typeface face2 = Typeface.createFromAsset(getAssets(), "fonts/NotoSansCJKkr-Regular.otf");
+        Typeface face3 = Typeface.createFromAsset(getAssets(), "fonts/NotoSansCJKkr-Medium.otf");
+        tv_text.setTypeface(face2);
+        eval_title.setTypeface(face3);
+        btn_req_ok.setTypeface(face2);
 
     }
 
-
-    public void setOnboardPages(List<AhoyOnboarderCard> pages) {
+    public void setOnboardPages(List<youngjung.test.View.ahoy.AhoyOnboarderCard> pages) {
 
         this.pages = pages;
         ahoyOnboarderAdapter = new AhoyOnboarderAdapter(pages, getSupportFragmentManager(), dpToPixels(0, this), typeface);
@@ -172,19 +222,22 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
 
         if (position == lastPagePosition) {
             fadeOut(circleIndicatorView);
-            showFinish();
+//            showFinish();
             fadeOut(ivNext);
             fadeIn(ivPrev);
+            btn_req_ok.setVisibility(View.VISIBLE);
         } else if (position == firstPagePosition) {
             fadeOut(ivPrev);
             fadeIn(ivNext);
             hideFinish();
             fadeIn(circleIndicatorView);
+            btn_req_ok.setVisibility(View.INVISIBLE);
         } else {
             fadeIn(circleIndicatorView);
             hideFinish();
             fadeIn(ivPrev);
             fadeIn(ivNext);
+            btn_req_ok.setVisibility(View.INVISIBLE);
         }
 
         if (solidBackground && (pages.size() == colorList.size())) {
@@ -383,7 +436,10 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
 
     @Override
     public void onFinishButtonPressed() {
-        Toast.makeText(this, "Finish Pressed", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "영수증이 전달되었습니다.", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(Eval_Activity.this, MainActivity.class);
+        startActivity(i);
+        finish();
     }
 
 }

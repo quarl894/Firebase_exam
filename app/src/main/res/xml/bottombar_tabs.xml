@@ -3,15 +3,15 @@
     <tabs>
         <tab
             id="@+id/tab_list"
-            icon="@drawable/icon"
+            icon="@drawable/my_page"
             title="receipt list" />
         <tab
             id="@+id/tab_home"
-            icon="@drawable/icon"
+            icon="@drawable/home_icon"
             title="Home" />
         <tab
             id="@+id/tab_mypage"
-            icon="@drawable/icon"
+            icon="@drawable/my_page"
             title="Mypage" />
     </tabs>
 </PreferenceScreen>

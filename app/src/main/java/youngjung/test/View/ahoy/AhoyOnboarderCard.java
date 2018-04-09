@@ -6,10 +6,27 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 
 public class AhoyOnboarderCard {
-
+    /**
+     * 의뢰서 양식
+     1.성별 :  sex
+     2.한달 급여 : money
+     3. 한달 생활비 : monthly_money;
+     4. 제목 : title
+     5. 가격 : price
+     6. 내용 : content
+     */
+    public String sex;
+    public int show_money;
+    public int monthly_money;
     public String title;
+    public int price;
+
     public String description;
     public Drawable imageResource;
+    public int image_money;
+
+    public int money;
+
     @StringRes
     public int titleResourceId;
     @StringRes
@@ -26,6 +43,23 @@ public class AhoyOnboarderCard {
     public float titleTextSize;
     public float descriptionTextSize;
     public int iconWidth, iconHeight, marginTop, marginLeft, marginRight, marginBottom;
+
+    public AhoyOnboarderCard(String sex, int show_money, int monthly_money, String title, int price, String description) {
+        this.sex = sex;
+        this.show_money = show_money;
+        this.monthly_money = monthly_money;
+        this.title = title;
+        this.price = price;
+        this.description = description;
+    }
+
+    public AhoyOnboarderCard(String title, String description, int imageResourceId, int image_money, int money) {
+        this.title = title;
+        this.description = description;
+        this.imageResourceId = imageResourceId;
+        this.image_money = image_money;
+        this.money = money;
+    }
 
     public AhoyOnboarderCard(String title, String description) {
         this.title = title;
@@ -59,6 +93,22 @@ public class AhoyOnboarderCard {
         this.titleResourceId = title;
         this.descriptionResourceId = description;
         this.imageResource = imageResource;
+    }
+
+    public int getImage_money() {
+        return image_money;
+    }
+
+    public void setImage_money(int image_money) {
+        this.image_money = image_money;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 
     public String getTitle() {
@@ -156,5 +206,41 @@ public class AhoyOnboarderCard {
 
     public int getMarginBottom() {
         return marginBottom;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public int getMonthly_money() {
+        return monthly_money;
+    }
+
+    public void setMonthly_money(int monthly_money) {
+        this.monthly_money = monthly_money;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getShow_money() {
+        return show_money;
+    }
+
+    public void setShow_money(int show_money) {
+        this.show_money = show_money;
     }
 }

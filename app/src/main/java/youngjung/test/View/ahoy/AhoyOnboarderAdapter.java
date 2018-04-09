@@ -7,9 +7,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.ViewGroup;
-
-import com.codemybrainsout.onboarder.AhoyOnboarderCard;
-import com.codemybrainsout.onboarder.AhoyOnboarderFragment;
+import youngjung.test.View.ahoy.AhoyOnboarderCard;
+import youngjung.test.View.ahoy.AhoyOnboarderFragment;
 import com.codemybrainsout.onboarder.utils.ShadowTransformer;
 
 import java.util.ArrayList;
@@ -17,13 +16,13 @@ import java.util.List;
 
 public class AhoyOnboarderAdapter extends FragmentStatePagerAdapter implements ShadowTransformer.CardAdapter {
 
-    private String TAG = com.codemybrainsout.onboarder.AhoyOnboarderAdapter.class.getSimpleName();
-    List<AhoyOnboarderCard> pages = new ArrayList<AhoyOnboarderCard>();
-    private List<AhoyOnboarderFragment> mFragments = new ArrayList<>();
+    private String TAG = "Adapter_class";
+    List<youngjung.test.View.ahoy.AhoyOnboarderCard> pages = new ArrayList<>();
+    private List<youngjung.test.View.ahoy.AhoyOnboarderFragment> mFragments = new ArrayList<>();
     private float mBaseElevation;
     private Typeface typeface;
 
-    public AhoyOnboarderAdapter(List<AhoyOnboarderCard> pages, FragmentManager fm, float baseElevation, Typeface typeface) {
+    public AhoyOnboarderAdapter(List<youngjung.test.View.ahoy.AhoyOnboarderCard> pages, FragmentManager fm, float baseElevation, Typeface typeface) {
         super(fm);
         this.pages = pages;
         this.typeface = typeface;
@@ -61,7 +60,7 @@ public class AhoyOnboarderAdapter extends FragmentStatePagerAdapter implements S
         return mFragments.get(position).getCardView();
     }
 
-    public void addCardFragment(AhoyOnboarderCard page) {
+    public void addCardFragment(youngjung.test.View.ahoy.AhoyOnboarderCard page) {
         mFragments.add(AhoyOnboarderFragment.newInstance(page));
     }
 
