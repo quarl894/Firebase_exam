@@ -13,6 +13,8 @@ import android.provider.ContactsContract;
  7. 영수증 주인 uid : uuid
  8. 영수증 보낸 날짜 : data
  9. 카테고리 : category
+ 10. 허불허 : check
+ 11. 이유 : why
  */
 
 public class RequestForm{
@@ -24,12 +26,29 @@ public class RequestForm{
     String content;
     String uuid;
     String date;
-    int category;
+    String category;
+    boolean check;
+    String why;
 
-    public RequestForm() {
+    public RequestForm() { }
+
+    // 평가하기 보내는 폼.
+    public RequestForm(String sex, int money, int monthly_money, String title, int price, String content, String uuid, String date, String category, boolean check, String why) {
+        this.sex = sex;
+        this.money = money;
+        this.monthly_money = monthly_money;
+        this.title = title;
+        this.price = price;
+        this.content = content;
+        this.uuid = uuid;
+        this.date = date;
+        this.category = category;
+        this.check = check;
+        this.why = why;
     }
 
-    public RequestForm(String sex, int money, int monthly_money, String title, int price, String content, String uuid, String date, int category) {
+    // 의뢰하기 폼.
+    public RequestForm(String sex, int money, int monthly_money, String title, int price, String content, String uuid, String date, String category) {
         this.sex = sex;
         this.money = money;
         this.monthly_money = monthly_money;
@@ -116,11 +135,27 @@ public class RequestForm{
         this.date = date;
     }
 
-    public int getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(int category) {
+    public void setCategory(String category) {
         this.category = category;
+    }
+
+    public boolean isCheck() {
+        return check;
+    }
+
+    public void setCheck(boolean check) {
+        this.check = check;
+    }
+
+    public String getWhy() {
+        return why;
+    }
+
+    public void setWhy(String why) {
+        this.why = why;
     }
 }

@@ -35,7 +35,6 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity android:name=".View.Eval_Activity"/>
         <activity android:name=".Login.LoginEditActivity"/>
-
     </application>
 
 </manifest>
