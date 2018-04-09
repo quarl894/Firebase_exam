@@ -34,11 +34,12 @@ import youngjung.test.Fragment.ReceiptFramgent;
 import youngjung.test.Model.Profile;
 import youngjung.test.Model.RequestForm;
 import youngjung.test.Model.firechild;
+import youngjung.test.View.CustomViewPager;
 
 public class MainActivity extends FragmentActivity {
     BottomBar bar;
     GestureDetector gd;
-    ViewPager viewPager;
+    CustomViewPager viewPager;
     private DatabaseReference databaseReference;
     private final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     public static ArrayList<RequestForm> receipt = new ArrayList<>();
@@ -54,6 +55,9 @@ public class MainActivity extends FragmentActivity {
         // Fragment home으로 첫화면
         viewPager.setCurrentItem(1);
         bar.setDefaultTabPosition(1);
+
+        //viewpager swipe 막음.
+        viewPager.setPagingEnabled(false);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         DatabaseReference ref = databaseReference.child("Request receipt");
@@ -93,21 +97,6 @@ public class MainActivity extends FragmentActivity {
         adapter.addFragment(new MypageFragment());
 
         viewPager.setAdapter(adapter);
-
-
-        //swipe를 통한 이동 막음.
-        gd = new GestureDetector(new GestureDetector.SimpleOnGestureListener());
-        viewPager.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_MOVE:
-                        gd.onTouchEvent(event);
-                        break;
-                }
-                return true;
-            }
-        });
 
         bar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
