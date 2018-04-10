@@ -17,16 +17,17 @@ import youngjung.test.R;
  */
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>  {
-    private String[] mData = new String[0];
+    private String[] mDate = new String[0];
     private String[] mName = new String[0];
     private String[] mPrice = new String[0];
     private Boolean[] mStamp = new Boolean[0];
+
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
     RecyclerViewAdapter(Context context, String[] data, String[] name, String[] price, Boolean[] stamp) {
         this.mInflater = LayoutInflater.from(context);
-        this.mData = data;
+        this.mDate = data;
         this.mName = name;
         this.mPrice = price;
         this.mStamp = stamp;
@@ -40,13 +41,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String animal = mData[position];
-        String test = mName[position];
+        String date = mDate[position];
+        String name = mName[position];
         String price = mPrice[position];
         Boolean stamp = mStamp[position];
 
-        holder.receiptDate.setText(animal);
-        holder.receiptName.setText(test);
+        holder.receiptDate.setText(date);
+        holder.receiptName.setText(name);
         holder.receiptPrice.setText(price);
         if (stamp) {
             // 허
@@ -83,6 +84,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
+    // 디테일 페이지로 넘기는 역할
     String getItem(int id) {
         return mName[id];
     }

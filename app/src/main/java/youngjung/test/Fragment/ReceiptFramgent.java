@@ -40,7 +40,6 @@ public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter.Ite
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = getActivity();
-
     }
 
     @Nullable
@@ -85,6 +84,7 @@ public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter.Ite
     public void onItemClick(View view, int position) {
         // Detail Activity로 이동
         Intent i = new Intent(getActivity(), MyReceiptDetailActivity.class);
+        i.putExtra("receiptTitle", adapter.getItem(position));
         startActivity(i);
     }
 }

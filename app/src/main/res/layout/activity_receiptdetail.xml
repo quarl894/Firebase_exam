@@ -84,12 +84,11 @@
 
         <!--의뢰서 제목-->
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/detail_title"
             style="@style/TextAppearance.AppCompat.Headline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="13dp"
-            android:text="클리오 펜슬 아이라이너"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -179,12 +178,13 @@
             android:text="펜 아이라인 하나는 다 쓰고 사시죠! 사치인 것 같아요" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btn_saving"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:background="@drawable/main_btn"
-            android:layout_marginTop="77dp"
             android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="77dp"
+            android:background="@drawable/main_btn"
+            android:onClick="onClick_btn_saving"
             android:text="저금하기" />
     </LinearLayout>
 </FrameLayout>
