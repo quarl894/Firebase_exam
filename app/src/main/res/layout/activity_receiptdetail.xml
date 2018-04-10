@@ -15,17 +15,17 @@
         android:src="@drawable/ic_launcher_background" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="60dp"
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/user_info"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="74dp">
+            android:layout_marginTop="74dp"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/iv_image"
@@ -86,7 +86,7 @@
         <TextView
             android:id="@+id/tv_title"
             style="@style/TextAppearance.AppCompat.Headline"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="13dp"
             android:text="클리오 펜슬 아이라이너"
@@ -94,9 +94,9 @@
             android:textSize="18sp" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12.1dp">
+            android:layout_marginTop="18dp">
 
             <!--돈 마크-->
             <ImageView
@@ -125,7 +125,7 @@
         <TextView
             android:id="@+id/tv_description"
             style="@style/TextAppearance.AppCompat.Body1"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="친구 집에 놀러가서 친구 아이라이너를 써봤는데 완전 저한테 딱이더라구요!! 하루종일 안 지워지고 좋아요. 다음 주에 세일하면 사려는데 지금 펜 아이라인이 2개 있는데 고민되는데 어떡하죠?"
@@ -173,7 +173,7 @@
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="펜 아이라인 하나는 다 쓰고 사시죠! 사치인 것 같아요" />
@@ -187,5 +187,5 @@
             android:layout_marginHorizontal="30dp"
             android:text="저금하기" />
     </LinearLayout>
-
 </FrameLayout>
+
