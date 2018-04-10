@@ -2,14 +2,20 @@ package youngjung.test.View;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Html;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,6 +41,8 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
     private String userName;
     ImageButton btn_trip, btn_food, btn_hobby, btn_elec;
     String category = "";
+    String getTime;
+    String[] result = new String[3];
     private final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,6 +65,8 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
         btn_hobby = findViewById(R.id.btn_hobby);
         btn_elec = findViewById(R.id.btn_elec);
 
+        Intent intent = getIntent();
+        result = intent.getExtras().getStringArray("infomation");
         btn_food.setOnClickListener(this);
         btn_trip.setOnClickListener(this);
         btn_hobby.setOnClickListener(this);
@@ -66,16 +76,20 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
         long now = System.currentTimeMillis();
         Date date = new Date(now);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy. MM. dd");
-        final String getTime = sdf.format(date);
+        getTime = sdf.format(date);
+
+        //test용
+//        for(int i=0; i<10; i++) databaseReference.child("Request receipt").child("testuid").push().setValue(new RequestForm(result[0],Integer.parseInt(result[1]),Integer.parseInt(result[2]), Integer.toString(i),10000,"배고프다","testuid", getTime, "음식"));
 
         //의뢰하기 입력하는 값으로 수정해야함.
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                show();
-//                for(int i=0; i<10; i++){
-//                    databaseReference.child("Request receipt").child("test").push().setValue(new RequestForm("남성",2000000,100000, Integer.toString(i),25000,"사고싶은데 이유가 있을까?",uid, getTime,1));
-//                }
+                if(title.getText().toString().equals("") || content.getText().toString().equals("") || price.getText().toString().equals("") || category.equals("")){
+                    Toast.makeText(getApplicationContext(), "의뢰서 양식을 채워주세요.",Toast.LENGTH_SHORT).show();
+                }else{
+                    Dialog();
+                }
             }
         });
     }
@@ -115,39 +129,59 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
     }
 
     //Dialog
-    void show()
-    {
-        final EditText edittext = new EditText(this);
-        edittext.setHint("입력해주세요");
+//    void show()
+//    {
+//        final EditText edittext = new EditText(this);
+//        edittext.setHint("입력해주세요");
+//
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setTitle("구매 이유를 입력하세요");
+//        builder.setView(edittext);
+//        builder.setPositiveButton("추가",
+//                new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        new AlertDialog.Builder(RequestActivity.this)
+//                            .setTitle("의뢰서가 등록되었습니다.")
+//                            .setMessage("평가가 완료되면 푸시알림이 울립니다.")
+//                            .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialogInterface, int id) {
+//                                    databaseReference.child("Request receipt").child(uid).push().setValue(new RequestForm("남성",Integer.parseInt(result[1]),Integer.parseInt(result[2]), title.getText().toString(),Integer.parseInt(price.getText().toString()),content.getText().toString(),uid, getTime, category));
+//                                    //Toast.makeText(getApplicationContext(),edittext.getText().toString() ,Toast.LENGTH_LONG).show();
+//                                    finish();
+//                                }
+//                            })
+//                            .setNegativeButton("알람 설정", null)
+//                            .setCancelable(false)
+//                            .show();
+//                    }
+//                });
+//        builder.setNegativeButton("취소",
+//                new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                    }
+//                });
+//        builder.show();
+//    }
 
+    //버튼 색만 왜 안바뀌지?
+    void Dialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("구매 이유를 입력하세요");
-        builder.setView(edittext);
-        builder.setPositiveButton("추가",
+        builder.setTitle("의뢰서가 등록되었습니다.");
+        builder.setMessage("평가가 완료되면 푸시알림이 울립니다.");
+        builder.setPositiveButton(Html.fromHtml("<font color='#7C70F4'>확인</font>"),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        new AlertDialog.Builder(RequestActivity.this)
-                            .setTitle("의뢰서가 등록되었습니다.")
-                            .setMessage("평가가 완료되면 푸시알림이 울립니다.")
-                            .setPositiveButton("확인", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int id) {
-                                    Toast.makeText(getApplicationContext(),edittext.getText().toString() ,Toast.LENGTH_LONG).show();
-                                    finish();
-                                }
-                            })
-                            .setNegativeButton("알람 설정", null)
-                            .setCancelable(false)
-                            .show();
-                    }
-                });
-        builder.setNegativeButton("취소",
+                                        databaseReference.child("Request receipt").child(uid).push().setValue(new RequestForm(result[0],Integer.parseInt(result[1]),Integer.parseInt(result[2]), title.getText().toString(),Integer.parseInt(price.getText().toString()),content.getText().toString(),uid, getTime, category));
+                                        finish();
+                                    }
+                                });
+        builder.setNegativeButton(Html.fromHtml("<font color='#7C70F4'>취소</font>"),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-
                     }
                 });
         builder.show();
     }
-
 }

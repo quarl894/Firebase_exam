@@ -36,6 +36,7 @@ public class MainFragment extends Fragment {
     Button btn, btn_request,btn_send;
     TextView tv_name, tv_goal, tv_goal_money;
     private DatabaseReference databaseReference;
+    String[] info = new String[3];
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,6 +62,9 @@ public class MainFragment extends Fragment {
                     tv_name.setText(pro.getName());
                     tv_goal.setText(pro.getGoal());
                     tv_goal_money.setText(pro.getGoal_money());
+                    info[0] = pro.getSex();
+                    info[1] = pro.getGoal_money();
+                    info[2] = pro.getMonthly_money();
                 }
             }
 
@@ -111,8 +115,13 @@ public class MainFragment extends Fragment {
         btn_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), RequestActivity.class);
-                startActivity(i);
+                if(info[0]==null){
+                    Toast.makeText(getActivity(), "정보를 불러오는 중입니다. 다시 눌러주세요.",Toast.LENGTH_SHORT).show();
+                }else{
+                    Intent i = new Intent(getActivity(), RequestActivity.class);
+                    i.putExtra("infomation", info);
+                    startActivity(i);
+                }
             }
         });
         return rootView;
