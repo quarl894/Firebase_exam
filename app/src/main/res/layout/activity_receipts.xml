@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/cornflower">
 
@@ -23,6 +24,7 @@
         android:layout_gravity="center">
 
         <Button
+            android:id="@+id/btn_left_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00ff0000"
@@ -31,20 +33,22 @@
 
 
         <TextView
+            android:id="@+id/cur_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
             android:text="2018.02"
-            android:textSize="14sp"
             android:textColor="@color/white"
+            android:textSize="14sp"
             android:textStyle="normal" />
 
         <Button
+            android:id="@+id/btm_right_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00ff0000"
-            android:textColor="@color/white"
-            android:text="&gt;" />
+            android:text="&gt;"
+            android:textColor="@color/white" />
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
