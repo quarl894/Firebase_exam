@@ -11,8 +11,19 @@ public class Profile {
     String goal;
     String goal_money;
     String monthly_money;
+    String sex;
 
     public Profile(){}
+
+    public Profile(String name, String email, String uuid, String goal, String goal_money, String monthly_money, String sex) {
+        this.name = name;
+        this.email = email;
+        this.uuid = uuid;
+        this.goal = goal;
+        this.goal_money = goal_money;
+        this.monthly_money = monthly_money;
+        this.sex = sex;
+    }
 
     public Profile(String name, String email, String uuid, String goal, String goal_money, String monthly_money) {
         this.name = name;
@@ -69,5 +80,13 @@ public class Profile {
 
     public void setMonthly_money(String monthly_money) {
         this.monthly_money = monthly_money;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 }

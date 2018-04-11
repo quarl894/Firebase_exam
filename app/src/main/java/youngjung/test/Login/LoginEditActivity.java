@@ -24,7 +24,7 @@ import youngjung.test.ui.base.baseActivity;
 public class LoginEditActivity extends baseActivity {
     Button btn_editok, btn_male, btn_female;
     EditText edit_name, edit_email, edit_goal, edit_goal_money, edit_month_money;
-    int sex;
+    String sex= "";
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     @Override
@@ -44,14 +44,13 @@ public class LoginEditActivity extends baseActivity {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
-        sex = -1;
 
         btn_male.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 btn_male.setBackgroundResource(R.color.golden_yellow);
                 btn_female.setBackgroundResource(R.color.white);
-                sex = 0;
+                sex = "남성";
             }
         });
         btn_female.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +58,7 @@ public class LoginEditActivity extends baseActivity {
             public void onClick(View v) {
                 btn_female.setBackgroundResource(R.color.golden_yellow);
                 btn_male.setBackgroundResource(R.color.white);
+                sex = "여성";
             }
         });
 
@@ -67,11 +67,11 @@ public class LoginEditActivity extends baseActivity {
             @Override
             public void onClick(View v) {
                 Log.e("information: ",edit_name.getText().toString() + ", "+ edit_email.getText().toString()+ ", "+ edit_goal.getText().toString() + ", " + edit_goal_money.getText().toString() + ", " + edit_month_money.getText());
-                if(sex ==-1 || edit_name.getText().toString().equals("") || edit_email.getText().toString().equals("") || edit_goal.getText().toString().equals("") || edit_goal_money.getText().equals("") || edit_month_money.getText().equals("")){
+                if(sex.equals("") || edit_name.getText().toString().equals("") || edit_email.getText().toString().equals("") || edit_goal.getText().toString().equals("") || edit_goal_money.getText().equals("") || edit_month_money.getText().equals("")){
                     Toast.makeText(getApplicationContext(),"모든 항목을 입력해주세요.",Toast.LENGTH_SHORT).show();
                 }else{
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    Profile profile = new Profile(user.getDisplayName(), user.getEmail(),user.getUid(),edit_goal.getText().toString(),edit_goal_money.getText().toString(),edit_month_money.getText().toString());
+                    Profile profile = new Profile(user.getDisplayName(), user.getEmail(),user.getUid(),edit_goal.getText().toString(),edit_goal_money.getText().toString(),edit_month_money.getText().toString(),sex);
                     databaseReference.child("Member Information").child(user.getUid()).setValue(profile);
                     Intent i = new Intent(LoginEditActivity.this, MainActivity.class);
                     startActivity(i);

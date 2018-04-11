@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray">
+    <FrameLayout
+        android:layout_width="280dp"
+        android:layout_height="230dp"
+        android:paddingHorizontal="22dp"
+        android:background="@color/white"
+        android:layout_centerInParent="@bool/bb_bottom_bar_is_portrait_mode">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:id="@+id/dialog_title"
+        android:textSize="18sp"
+        android:textColor="#202432"
+        android:lineSpacingExtra="10sp"
+        android:text="구매 이유를 입력하세요"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="14sp"
+        android:textColor="@color/warm_grey"
+        android:id="@+id/dialog_edit"
+        android:hint="18자 이내로 작성해주세요 " />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="right|bottom">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_gravity="right"
+                android:id="@+id/btn_no"
+                android:textColor="@color/cornflower"
+                android:text="취소"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:id="@+id/btn_add"
+                android:layout_gravity="right"
+                android:textColor="@color/cornflower"
+                android:text="추가"/>
+        </LinearLayout>
+    </FrameLayout>
+</RelativeLayout>
