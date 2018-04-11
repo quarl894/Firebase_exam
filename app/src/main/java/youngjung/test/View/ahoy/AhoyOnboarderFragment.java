@@ -8,6 +8,7 @@ import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +19,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import youngjung.test.Model.test;
 import youngjung.test.R;
+import youngjung.test.View.Eval_Activity;
 import youngjung.test.View.ahoy.AhoyOnboarderCard;
 
 public class AhoyOnboarderFragment extends Fragment {
@@ -45,6 +48,7 @@ public class AhoyOnboarderFragment extends Fragment {
     private static final String AHOY_PAGE_SEX = "ahoy_page_sex";
     private static final String AHOY_PAGE_SHOW_MONEY = "ahoy_page_show_money";
     private static final String AHOY_PAGE_MONTH_MONEY = "ahoy_page_month_money";
+    private static final String AHOY_PAGE_BTN_CHECK = "ahoy_page_btn_yes";
 
     private String title;
     private String description;
@@ -91,7 +95,10 @@ public class AhoyOnboarderFragment extends Fragment {
     private int month_money;
     private TextView price;
     private int moneyKey;
+    private int check;
+    Eval_Activity eval_activity;
 
+    private CheckListener checkListener;
     public AhoyOnboarderFragment() {
     }
 
@@ -120,6 +127,7 @@ public class AhoyOnboarderFragment extends Fragment {
         args.putString(AHOY_PAGE_SEX, card.getSex());
         args.putInt(AHOY_PAGE_SHOW_MONEY, card.getShow_money());
         args.putInt(AHOY_PAGE_MONTH_MONEY, card.getMonthly_money());
+        args.putInt(AHOY_PAGE_BTN_CHECK, card.getCheck());
 
         AhoyOnboarderFragment fragment = new AhoyOnboarderFragment();
         fragment.setArguments(args);
@@ -129,6 +137,11 @@ public class AhoyOnboarderFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        if(context instanceof CheckListener){
+            checkListener = (CheckListener) context;
+        }else{
+            throw new RuntimeException(context.toString() + "must implement CheckListener");
+        }
     }
 
     @Override
@@ -159,6 +172,7 @@ public class AhoyOnboarderFragment extends Fragment {
         show_money = bundle.getInt(AHOY_PAGE_SHOW_MONEY, 0);
         month_money = bundle.getInt(AHOY_PAGE_MONTH_MONEY, 0);
         moneyKey = bundle.getInt(AHOY_PAGE_MONEY,0);
+        check = bundle.getInt(AHOY_PAGE_BTN_CHECK, -1);
 
         view = inflater.inflate(R.layout.fragment_ahoy, container, false);
         ivOnboarderImage = view.findViewById(R.id.iv_image);
@@ -184,6 +198,9 @@ public class AhoyOnboarderFragment extends Fragment {
                 btn_yes.setBackgroundColor(getResources().getColor(R.color.golden_yellow));
                 btn_no.setBackgroundColor(getResources().getColor(R.color.pale_grey));
                 stamp.setImageResource(R.drawable.ok_stamp);
+                check = 1;
+                checkListener.Btn_Check(check);
+                Log.e("Check: ",Integer.toString(check));
             }
         });
 
@@ -193,8 +210,13 @@ public class AhoyOnboarderFragment extends Fragment {
                 btn_yes.setBackgroundColor(getResources().getColor(R.color.pale_grey));
                 btn_no.setBackgroundColor(getResources().getColor(R.color.golden_yellow));
                 stamp.setImageResource(R.drawable.no_stamp);
+                check = 0;
+                checkListener.Btn_Check(check);
+
+                Log.e("Check: ",Integer.toString(check));
             }
         });
+
         if(sex !=null){
             tv_sex.setText(sex);
         }
@@ -272,6 +294,7 @@ public class AhoyOnboarderFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+        checkListener = null;
     }
 
     public CardView getCardView() {
@@ -285,4 +308,9 @@ public class AhoyOnboarderFragment extends Fragment {
     public TextView getDescriptionView() {
         return tvOnboarderDescription;
     }
+
+    public interface CheckListener{
+        void  Btn_Check(int check);
+    }
+
 }
