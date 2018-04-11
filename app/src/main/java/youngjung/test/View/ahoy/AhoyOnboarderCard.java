@@ -24,8 +24,8 @@ public class AhoyOnboarderCard {
     public String description;
     public Drawable imageResource;
     public int image_money;
-
     public int money;
+    public int check;
 
     @StringRes
     public int titleResourceId;
@@ -43,6 +43,16 @@ public class AhoyOnboarderCard {
     public float titleTextSize;
     public float descriptionTextSize;
     public int iconWidth, iconHeight, marginTop, marginLeft, marginRight, marginBottom;
+
+    public AhoyOnboarderCard(String sex, int show_money, int monthly_money, String title, int price, String description, int check) {
+        this.sex = sex;
+        this.show_money = show_money;
+        this.monthly_money = monthly_money;
+        this.title = title;
+        this.price = price;
+        this.description = description;
+        this.check = check;
+    }
 
     public AhoyOnboarderCard(String sex, int show_money, int monthly_money, String title, int price, String description) {
         this.sex = sex;
@@ -242,5 +252,13 @@ public class AhoyOnboarderCard {
 
     public void setShow_money(int show_money) {
         this.show_money = show_money;
+    }
+
+    public int getCheck() {
+        return check;
+    }
+
+    public void setCheck(int check) {
+        this.check = check;
     }
 }

@@ -27,13 +27,14 @@ public class RequestForm{
     String uuid;
     String date;
     String category;
+    int check;
     Boolean check;
     String why;
 
     public RequestForm() { }
 
     // 평가하기 보내는 폼.
-    public RequestForm(String sex, int money, int monthly_money, String title, int price, String content, String uuid, String date, String category, boolean check, String why) {
+    public RequestForm(String sex, int money, int monthly_money, String title, int price, String content, String uuid, String date, String category, int check) {
         this.sex = sex;
         this.money = money;
         this.monthly_money = monthly_money;
@@ -44,7 +45,6 @@ public class RequestForm{
         this.date = date;
         this.category = category;
         this.check = check;
-        this.why = why;
     }
 
     // 의뢰하기 폼.
@@ -142,12 +142,12 @@ public class RequestForm{
     public void setCategory(String category) {
         this.category = category;
     }
-
-    public Boolean getCheck() {
+  
+    public int getCheck() {
         return check;
     }
 
-    public void setCheck(Boolean check) {
+    public void setCheck(int check) {
         this.check = check;
     }
 

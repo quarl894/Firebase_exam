@@ -34,18 +34,21 @@ import com.codemybrainsout.onboarder.views.CircleIndicatorView;
 import com.codemybrainsout.onboarder.views.FlowingGradientClass;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import youngjung.test.R;
+import youngjung.test.View.ahoy.AhoyOnboarderFragment;
 
 import static youngjung.test.MainActivity.receipt;
 
 /**
  * Created by HANSUNG on 2018-03-11.
  */
-public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivity {
+public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivity implements AhoyOnboarderFragment.CheckListener{
     private CircleIndicatorView circleIndicatorView;
     private ViewPager vpOnboarderPager;
     private AhoyOnboarderAdapter ahoyOnboarderAdapter;
@@ -65,9 +68,13 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
     private TextView tv_text;
     private TextView eval_title;
     private Button btn_req_ok;
+    int ck_stamp = -1;
 
+    HashMap<Integer, Integer> ck_hash = new HashMap<>();
     private DatabaseReference databaseReference;
-    private final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    RequestForm a1;
+    RequestForm a2;
+    RequestForm a3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,13 +104,39 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
         tv_text = findViewById(R.id.tv_text);
         eval_title = findViewById(R.id.eval_title);
         btn_req_ok = findViewById(R.id.btn_req_ok);
+
+        a1 = receipt.get(0);
+        a2 = receipt.get(1);
+        a3 = receipt.get(2);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        /**
+         * 의뢰서 양식
+         1.성별 :  sex
+         2.한달 급여 : money
+         3. 한달 생활비 : monthly_money;
+         4. 제목 : title
+         5. 가격 : price
+         6. 내용 : content
+         7. 영수증 주인 uid : uuid
+         8. 영수증 보낸 날짜 : data
+         9. 카테고리 : category
+         10. 허불허 : check
+         */
         btn_req_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "영수증이 전달되었습니다.", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(Eval_Activity.this, MainActivity.class);
-                startActivity(i);
-                finish();
+                if(ck_hash.size()!=3) Toast.makeText(getApplicationContext(), "평가를 모두 완료해주세요.",Toast.LENGTH_SHORT).show();
+                else{
+                    for(int i=0; i<3; i++){
+                        databaseReference.child("finished receipt").child(a1.getUuid()).push().setValue(new RequestForm(receipt.get(i).getSex(),receipt.get(i).getMoney(),receipt.get(i).getMonthly_money(),receipt.get(i).getTitle(),receipt.get(i).getPrice(),receipt.get(i).getContent(),receipt.get(i).getUuid(),receipt.get(i).getDate(),receipt.get(i).getCategory(),ck_hash.get(i)));
+                        //receipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory()));
+                    }
+                    Toast.makeText(getApplicationContext(), "영수증이 전달되었습니다.", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(Eval_Activity.this, MainActivity.class);
+                    startActivity(i);
+                    finish();
+                }
             }
         });
         /**
@@ -117,17 +150,9 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
          */
         Log.e("receipt size: ", " " +receipt.size());
 
-        RequestForm a1 = receipt.get(0);
-        RequestForm a2 = receipt.get(1);
-        RequestForm a3 = receipt.get(2);
-
-        AhoyOnboarderCard ahoyOnboarderCard1 = new AhoyOnboarderCard(a1.getSex(), a1.getMoney(), a1.getMonthly_money(), a1.getTitle(), a1.getPrice(), a1.getContent());
-        AhoyOnboarderCard ahoyOnboarderCard2 = new AhoyOnboarderCard(a2.getSex(), a2.getMoney(), a2.getMonthly_money(), a2.getTitle(), a2.getPrice(), a2.getContent());
-        AhoyOnboarderCard ahoyOnboarderCard3 = new AhoyOnboarderCard(a3.getSex(), a3.getMoney(), a3.getMonthly_money(), a3.getTitle(), a3.getPrice(), a3.getContent());
-
-//        AhoyOnboarderCard ahoyOnboarderCard1 = new AhoyOnboarderCard("클리오 팬슬 아이라이너", "Label your packages with a barcode before we collect it from you.",R.drawable.gril_icon,R.drawable.a12,"15000원");
-//        AhoyOnboarderCard ahoyOnboarderCard2 = new AhoyOnboarderCard("클리오 팬슬 아이라이너", "Label your packages with a barcode before we collect it from you.",R.drawable.gril_icon,R.drawable.a12,"20000원");
-//        AhoyOnboarderCard ahoyOnboarderCard3 = new AhoyOnboarderCard("클리오 팬슬 아이라이너", "Label your packages with a barcode before we collect it from you.",R.drawable.gril_icon,R.drawable.a12,"17000원");
+        AhoyOnboarderCard ahoyOnboarderCard1 = new AhoyOnboarderCard(a1.getSex(), a1.getMoney(), a1.getMonthly_money(), a1.getTitle(), a1.getPrice(), a1.getContent(),0);
+        AhoyOnboarderCard ahoyOnboarderCard2 = new AhoyOnboarderCard(a2.getSex(), a2.getMoney(), a2.getMonthly_money(), a2.getTitle(), a2.getPrice(), a2.getContent(),0);
+        AhoyOnboarderCard ahoyOnboarderCard3 = new AhoyOnboarderCard(a3.getSex(), a3.getMoney(), a3.getMonthly_money(), a3.getTitle(), a3.getPrice(), a3.getContent(),0);
 
         ahoyOnboarderCard1.setBackgroundColor(R.color.white);
         ahoyOnboarderCard2.setBackgroundColor(R.color.white);
@@ -167,8 +192,18 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
 
     }
 
-    public void setOnboardPages(List<youngjung.test.View.ahoy.AhoyOnboarderCard> pages) {
+    @Override
+    public void Btn_Check(int stamp) {
+        ck_stamp = stamp;
+        ck_hash.put(vpOnboarderPager.getCurrentItem(),ck_stamp);
+        if(ck_hash.containsKey(vpOnboarderPager.getCurrentItem())){
+            ck_hash.remove(vpOnboarderPager.getCurrentItem());
+            ck_hash.put(vpOnboarderPager.getCurrentItem(),ck_stamp);
+        }
+       // Log.e("확인",Integer.toString(ck_stamp) + ", " +vpOnboarderPager.getCurrentItem() + ", " +ck_hash.size());
+    }
 
+    public void setOnboardPages(List<youngjung.test.View.ahoy.AhoyOnboarderCard> pages) {
         this.pages = pages;
         ahoyOnboarderAdapter = new AhoyOnboarderAdapter(pages, getSupportFragmentManager(), dpToPixels(0, this), typeface);
         mCardShadowTransformer = new ShadowTransformer(vpOnboarderPager, ahoyOnboarderAdapter);
@@ -176,7 +211,6 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
         vpOnboarderPager.setAdapter(ahoyOnboarderAdapter);
         vpOnboarderPager.setPageTransformer(false, mCardShadowTransformer);
         circleIndicatorView.setPageIndicators(pages.size());
-
     }
 
     public float dpToPixels(int dp, Context context) {
