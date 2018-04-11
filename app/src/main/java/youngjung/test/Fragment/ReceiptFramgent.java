@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import youngjung.test.MainActivity;
 import youngjung.test.R;
 import youngjung.test.View.MyReceiptDetailActivity;
 import youngjung.test.View.RequestActivity;
@@ -46,6 +47,7 @@ public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter.Ite
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.activity_receipts, container, false);
+
         btn_left = rootView.findViewById(R.id.btn_left_date);
         btn_left.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +60,7 @@ public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter.Ite
                 for (int i = 5; i <= 6; i++) {
                     month += String.valueOf(curDate.getText().charAt(i));
                 }
-                Toast.makeText(getActivity(), "year = " + year + ", month = " + month, Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "year = " + year + ", month = " + month, Toast.LENGTH_SHORT).show();
             }
         });
         btn_right = rootView.findViewById(R.id.btm_right_date);
@@ -66,7 +68,7 @@ public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter.Ite
             @Override
             public void onClick(View view) {
                 TextView curDate = rootView.findViewById(R.id.cur_date);
-                Toast.makeText(getActivity(), "after !" + curDate.getText(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "after !" + curDate.getText(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -83,7 +85,7 @@ public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter.Ite
     @Override
     public void onItemClick(View view, int position) {
         // Detail Activity로 이동
-        Intent i = new Intent(getActivity(), MyReceiptDetailActivity.class);
+        Intent i = new Intent(mContext, MyReceiptDetailActivity.class);
         i.putExtra("receiptTitle", adapter.getItem(position));
         startActivity(i);
     }

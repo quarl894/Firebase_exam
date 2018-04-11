@@ -39,6 +39,7 @@ import youngjung.test.View.CustomViewPager;
 public class MainActivity extends FragmentActivity {
     BottomBar bar;
     CustomViewPager viewPager;
+    static Profile curProfile;
     private DatabaseReference databaseReference;
     private final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     public static ArrayList<RequestForm> receipt = new ArrayList<>();
@@ -115,4 +116,13 @@ public class MainActivity extends FragmentActivity {
             }
         });
     }
+
+    public void saveCurUser(Profile p) {
+        curProfile = p;
+    }
+
+    public Profile getCurUser() {
+        return curProfile;
+    }
+
 }

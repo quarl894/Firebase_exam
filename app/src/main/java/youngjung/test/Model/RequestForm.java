@@ -28,6 +28,7 @@ public class RequestForm{
     String date;
     String category;
     int check;
+    Boolean check;
     String why;
 
     public RequestForm() { }
@@ -141,7 +142,7 @@ public class RequestForm{
     public void setCategory(String category) {
         this.category = category;
     }
-
+  
     public int getCheck() {
         return check;
     }

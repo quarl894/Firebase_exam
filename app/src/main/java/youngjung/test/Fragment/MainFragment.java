@@ -51,6 +51,7 @@ public class MainFragment extends Fragment {
         tv_name = rootView.findViewById(R.id.tv_name);
         tv_goal = rootView.findViewById(R.id.tv_goal);
         tv_goal_money = rootView.findViewById(R.id.tv_goal_money);
+
         databaseReference = FirebaseDatabase.getInstance().getReference();
         final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         databaseReference.child("Member Information").addChildEventListener(new ChildEventListener() {
@@ -65,6 +66,9 @@ public class MainFragment extends Fragment {
                     info[0] = pro.getSex();
                     info[1] = pro.getGoal_money();
                     info[2] = pro.getMonthly_money();
+
+                    MainActivity a = (MainActivity) getActivity();
+                    a.saveCurUser(pro);
                 }
             }
 
@@ -124,6 +128,7 @@ public class MainFragment extends Fragment {
                 }
             }
         });
+
         return rootView;
     }
 }
