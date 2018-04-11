@@ -27,7 +27,7 @@ public class RequestForm{
     String uuid;
     String date;
     String category;
-    boolean check;
+    Boolean check;
     String why;
 
     public RequestForm() { }
@@ -143,11 +143,11 @@ public class RequestForm{
         this.category = category;
     }
 
-    public boolean isCheck() {
+    public Boolean getCheck() {
         return check;
     }
 
-    public void setCheck(boolean check) {
+    public void setCheck(Boolean check) {
         this.check = check;
     }
 
