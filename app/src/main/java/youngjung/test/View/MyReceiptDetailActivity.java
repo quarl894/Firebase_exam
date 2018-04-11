@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import youngjung.test.MainActivity;
+import youngjung.test.Model.Profile;
 import youngjung.test.R;
 import youngjung.test.ui.base.baseActivity;
 
@@ -16,13 +18,23 @@ import youngjung.test.ui.base.baseActivity;
  */
 
 public class MyReceiptDetailActivity extends AppCompatActivity {
-    TextView receipt_title;
+    TextView receipt_title, cur_sex, cur_goal_money, cur_month_money;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receiptdetail);
+
         receipt_title = findViewById(R.id.detail_title);
+        cur_sex = findViewById(R.id.cur_sex);
+        cur_goal_money = findViewById(R.id.cur_goal_money);
+        cur_month_money = findViewById(R.id.cur_month_money);
+
+        MainActivity a = new MainActivity();
+        Profile curUser = a.getCurUser();
+        cur_sex.setText(curUser.getSex());
+        cur_goal_money.setText(curUser.getGoal_money() + "원");
+        cur_month_money.setText(curUser.getMonthly_money() + "원");
 
         Intent i = getIntent();
         String title = i.getStringExtra("receiptTitle");

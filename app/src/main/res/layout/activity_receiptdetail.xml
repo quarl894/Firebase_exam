@@ -36,13 +36,12 @@
                 android:src="@drawable/gril_icon" />
 
             <TextView
-                android:id="@+id/tv_sex"
+                android:id="@+id/cur_sex"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_marginLeft="6dp"
                 android:layout_marginRight="6dp"
-                android:text="여성"
                 android:textColor="#393939"
                 android:textSize="12sp" />
 
@@ -54,13 +53,12 @@
                 android:src="@drawable/money" />
 
             <TextView
-                android:id="@+id/tv_money"
+                android:id="@+id/cur_goal_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_marginLeft="6dp"
                 android:layout_marginRight="6dp"
-                android:text="400만원"
                 android:textColor="#393939"
                 android:textSize="12sp" />
 
@@ -72,12 +70,11 @@
                 android:src="@drawable/group_5" />
 
             <TextView
-                android:id="@+id/tv_money_month"
+                android:id="@+id/cur_month_money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_marginLeft="6dp"
-                android:text="50만원"
                 android:textColor="#393939"
                 android:textSize="12sp" />
         </LinearLayout>
