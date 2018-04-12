@@ -1,7 +1,10 @@
 package youngjung.test;
 
+import android.content.Intent;
 import android.support.annotation.IdRes;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.text.Html;
@@ -25,8 +28,10 @@ import org.json.JSONObject;
 import org.json.JSONStringer;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import youngjung.test.Fragment.MainFragment;
 import youngjung.test.Fragment.MypageFragment;
@@ -43,7 +48,10 @@ public class MainActivity extends FragmentActivity {
     private DatabaseReference databaseReference;
     private final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     public static ArrayList<RequestForm> receipt = new ArrayList<>();
+    public static ArrayList<RequestForm> myRequestReceipt = new ArrayList<>();
     static int i = 0;
+    SectionPagerAdapter adapter;
+    public static Set<String> uidSet = new HashSet<>();
     StringBuilder st = new StringBuilder();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +69,6 @@ public class MainActivity extends FragmentActivity {
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         DatabaseReference ref = databaseReference.child("Request receipt");
-
 
         ref.addChildEventListener(new ChildEventListener() {
             @Override
@@ -87,12 +94,55 @@ public class MainActivity extends FragmentActivity {
             public void onCancelled(DatabaseError databaseError) {}
         });
 
+        DatabaseReference ref2 = databaseReference.child("finished receipt");
+        ref2.addChildEventListener(new ChildEventListener() {
+            int flag = 0;
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Iterable<DataSnapshot> child = dataSnapshot.getChildren();
+                if (dataSnapshot.getKey().equals(uid)){
+                    for (DataSnapshot contact : child){
+                        RequestForm rf = contact.getValue(RequestForm.class);
+                        if (!uidSet.contains(contact.getKey())) {
+                            flag = 1;
+                            uidSet.add(contact.getKey());
+                            myRequestReceipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory(),rf.getCheck()));
+                        }
+                    }
+                }
+                if (flag == 1) {
+                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(i);
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
 
     // tab들
     private void setupViewPager() {
-        SectionPagerAdapter adapter = new SectionPagerAdapter(getSupportFragmentManager());
+        adapter = new SectionPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new ReceiptFramgent());
         adapter.addFragment(new MainFragment());
         adapter.addFragment(new MypageFragment());

@@ -100,7 +100,7 @@ public class MainFragment extends Fragment {
                     }
             });
 
-        // 의뢰하기
+        // 평가하기
         //Firebase 불러오기가 늦어서 예외처리.
         btn_send = rootView.findViewById(R.id.btn_send);
         btn_send.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +114,7 @@ public class MainFragment extends Fragment {
                 }
             }
         });
-        //평가하기
+        // 의뢰하기
         btn_request = rootView.findViewById(R.id.btn_request);
         btn_request.setOnClickListener(new View.OnClickListener() {
             @Override
