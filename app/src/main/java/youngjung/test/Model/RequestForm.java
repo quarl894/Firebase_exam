@@ -28,7 +28,6 @@ public class RequestForm{
     String date;
     String category;
     int check;
-    Boolean check;
     String why;
 
     public RequestForm() { }
