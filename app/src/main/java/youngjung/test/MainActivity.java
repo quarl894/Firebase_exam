@@ -38,8 +38,8 @@ import youngjung.test.View.CustomViewPager;
 
 public class MainActivity extends FragmentActivity {
     BottomBar bar;
-    GestureDetector gd;
     CustomViewPager viewPager;
+    static Profile curProfile;
     private DatabaseReference databaseReference;
     private final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     public static ArrayList<RequestForm> receipt = new ArrayList<>();
@@ -61,6 +61,7 @@ public class MainActivity extends FragmentActivity {
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         DatabaseReference ref = databaseReference.child("Request receipt");
+
 
         ref.addChildEventListener(new ChildEventListener() {
             @Override
@@ -112,8 +113,16 @@ public class MainActivity extends FragmentActivity {
                         viewPager.setCurrentItem(2);
                         break;
                 }
-
             }
         });
     }
+
+    public void saveCurUser(Profile p) {
+        curProfile = p;
+    }
+
+    public Profile getCurUser() {
+        return curProfile;
+    }
+
 }

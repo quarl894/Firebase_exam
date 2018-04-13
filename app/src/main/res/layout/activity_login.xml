@@ -2,27 +2,53 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/logo"
+        android:layout_marginTop="120dp"
+        android:layout_marginHorizontal="118dp"/>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="76dp">
 
-        <ImageView
+        <TextView
+            android:id="@+id/login_text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="100dp"
-            android:src="@drawable/logo" />
+            android:textSize="18sp"
+            android:textColor="#202432"
+            android:text="똑똑한 소비인지 의심된다면"
+            android:layout_gravity="center"
+            android:layout_marginBottom="0dp"/>
 
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/sign_in_button"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="100dp"
-            android:layout_marginHorizontal="47dp"
-            android:text="@string/google_sign_up"
-            app:isDarkTheme="true" />
-    </FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:textSize="18sp"
+            android:textColor="#202432"
+            android:text="가볍게 허불허하세요!"
+            android:layout_below="@+id/login_text1"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"/>
+
+    </RelativeLayout>
+
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="97dp"
+        android:layout_marginHorizontal="47dp"
+        android:text="@string/google_sign_up"
+        app:isDarkTheme="true"
+        android:layout_gravity="center" />
 </LinearLayout>
