@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "582848161131-bavv3fb3nn3lelc7gn5jm7f8r7j2km0t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "youngjung.test.free",
+            "certificate_hash": "03911cb542878f8f34bbad0ca3336afea0d2c7a0"
+          }
+        },
+        {
           "client_id": "582848161131-jjsjkdndc7t71dltn3b61kap7lsbaiah.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -90,6 +98,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "582848161131-5b6oonevlc4np4s93v5u1rpsa8th3tcl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "youngjung.test.paid",
+            "certificate_hash": "03911cb542878f8f34bbad0ca3336afea0d2c7a0"
+          }
+        },
         {
           "client_id": "582848161131-719n1b1t71cohe41u8jj50quhhppk5lm.apps.googleusercontent.com",
           "client_type": 1,
