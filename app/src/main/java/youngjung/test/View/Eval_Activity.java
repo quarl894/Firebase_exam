@@ -75,6 +75,7 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
     RequestForm a1;
     RequestForm a2;
     RequestForm a3;
+    int num1, num2, num3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,9 +106,21 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
         eval_title = findViewById(R.id.eval_title);
         btn_req_ok = findViewById(R.id.btn_req_ok);
 
-        a1 = receipt.get(0);
-        a2 = receipt.get(1);
-        a3 = receipt.get(2);
+        //랜덤 3개 뽑기
+        num1 = (int)(Math.random()*receipt.size()-1);
+        num2 = (int)(Math.random()*receipt.size()-1);
+        num3 = (int)(Math.random()*receipt.size()-1);
+
+        while(num1==num2 || num1==num3 || num2==num3){
+            num2 = (int)(Math.random()*receipt.size()-1);
+            num3 = (int)(Math.random()*receipt.size()-1);
+         //   Log.e("while what's num: ", Integer.toString(num1) + ", " + num2 + ", "+ num3);
+        }
+        //Log.e("what's num: ", Integer.toString(num1) + ", " + num2 + ", "+ num3);
+
+        a1 = receipt.get(num1);
+        a2 = receipt.get(num2);
+        a3 = receipt.get(num3);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         /**
@@ -128,13 +141,17 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
             public void onClick(View v) {
                 if(ck_hash.size()!=3) Toast.makeText(getApplicationContext(), "평가를 모두 완료해주세요.",Toast.LENGTH_SHORT).show();
                 else{
-                    for(int i=0; i<3; i++){
-                        databaseReference.child("finished receipt").child(a1.getUuid()).push().setValue(new RequestForm(receipt.get(i).getSex(),receipt.get(i).getMoney(),receipt.get(i).getMonthly_money(),receipt.get(i).getTitle(),receipt.get(i).getPrice(),receipt.get(i).getContent(),receipt.get(i).getUuid(),receipt.get(i).getDate(),receipt.get(i).getCategory(),ck_hash.get(i)));
-                        //receipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory()));
-                    }
+                    databaseReference.child("finished receipt").child(a1.getUuid()).push().setValue(new RequestForm(a1.getSex(),a1.getMoney(),a1.getMonthly_money(),a1.getTitle(),a1.getPrice(),a1.getContent(),a1.getUuid(),a1.getDate(),a1.getCategory(),ck_hash.get(0)));
+                    databaseReference.child("finished receipt").child(a2.getUuid()).push().setValue(new RequestForm(a2.getSex(),a2.getMoney(),a2.getMonthly_money(),a2.getTitle(),a2.getPrice(),a2.getContent(),a2.getUuid(),a2.getDate(),a2.getCategory(),ck_hash.get(1)));
+                    databaseReference.child("finished receipt").child(a3.getUuid()).push().setValue(new RequestForm(a3.getSex(),a3.getMoney(),a3.getMonthly_money(),a3.getTitle(),a3.getPrice(),a3.getContent(),a3.getUuid(),a3.getDate(),a3.getCategory(),ck_hash.get(2)));
+
+//                    for(int i=0; i<3; i++){
+//                        databaseReference.child("finished receipt").child(a1.getUuid()).push().setValue(new RequestForm(receipt.get(i).getSex(),receipt.get(i).getMoney(),receipt.get(i).getMonthly_money(),receipt.get(i).getTitle(),receipt.get(i).getPrice(),receipt.get(i).getContent(),receipt.get(i).getUuid(),receipt.get(i).getDate(),receipt.get(i).getCategory(),ck_hash.get(i)));
+//                    }
                     Toast.makeText(getApplicationContext(), "영수증이 전달되었습니다.", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(Eval_Activity.this, MainActivity.class);
                     startActivity(i);
+                    receipt.clear();
                     finish();
                 }
             }

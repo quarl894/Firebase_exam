@@ -16,6 +16,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
@@ -62,7 +64,7 @@ public class MainActivity extends FragmentActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference();
         DatabaseReference ref = databaseReference.child("Request receipt");
 
-
+        //최대 100개만 받기. 먼저 온 순대로 해줘야함.
         ref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
