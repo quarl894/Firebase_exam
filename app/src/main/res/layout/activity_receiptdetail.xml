@@ -106,12 +106,11 @@
 
             <!--얼마-->
             <TextView
-                android:id="@+id/money"
+                android:id="@+id/detail_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-medium"
                 android:paddingLeft="8dp"
-                android:text="15,000원"
                 android:textColor="#202432"
                 android:textSize="18sp"
                 android:textStyle="normal" />
@@ -119,7 +118,7 @@
 
         <!--의뢰서 설명-->
         <TextView
-            android:id="@+id/tv_description"
+            android:id="@+id/detail_content"
             style="@style/TextAppearance.AppCompat.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -130,7 +129,7 @@
 
         <!--도장-->
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/detail_stamp_imgview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="14.7dp"
