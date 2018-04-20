@@ -107,22 +107,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "582848161131-pn6rcp7894po7su1cgptipde4jvdbsqg.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "youngjung.test.paid",
-            "certificate_hash": "b0dece39ed9f0b2b6e14e63b5762fda5ba7f0e85"
-          }
-        },
-        {
-          "client_id": "582848161131-5b6oonevlc4np4s93v5u1rpsa8th3tcl.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "youngjung.test.paid",
-            "certificate_hash": "03911cb542878f8f34bbad0ca3336afea0d2c7a0"
-          }
-        },
-        {
           "client_id": "582848161131-719n1b1t71cohe41u8jj50quhhppk5lm.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
