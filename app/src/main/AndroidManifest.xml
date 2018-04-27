@@ -26,8 +26,6 @@
         </activity>
         <activity android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"></activity>
-        <activity android:name=".DB.DBActivity"
-            android:windowSoftInputMode="adjustResize"/>
 
         <activity android:name=".View.RequestActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
