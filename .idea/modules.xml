@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Firebase_exam.iml" filepath="$PROJECT_DIR$/Firebase_exam.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/huhbulhuh.iml" filepath="$PROJECT_DIR$/huhbulhuh.iml" />
-      <module fileurl="file://$PROJECT_DIR$/yapp.iml" filepath="$PROJECT_DIR$/yapp.iml" />
     </modules>
   </component>
 </project>
