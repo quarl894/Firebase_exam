@@ -4,7 +4,14 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Firebase_exam.iml" filepath="$PROJECT_DIR$/Firebase_exam.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+      <module fileurl="file://$PROJECT_DIR$/huhbulhuh.iml" filepath="$PROJECT_DIR$/huhbulhuh.iml" />
       <module fileurl="file://$PROJECT_DIR$/yapp.iml" filepath="$PROJECT_DIR$/yapp.iml" />
+>>>>>>> ba58d6469ca62a39f7ccf9500ff59920a641c3bf
+=======
+>>>>>>> 7184a4b2... SQLite 생성.
     </modules>
   </component>
 </project>
