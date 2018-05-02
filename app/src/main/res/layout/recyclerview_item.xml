@@ -35,12 +35,11 @@
                 android:id="@+id/receipt_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:layout_marginLeft="10dp"
-                android:textColor="#1f2431"
                 android:layout_marginHorizontal="10dp"
+                android:layout_marginLeft="10dp"
                 android:gravity="center"
-                android:text="이니스프리 파운데이션"/>
+                android:textColor="#1f2431"
+                android:textSize="14sp" />
 
             <!--날짜-->
             <TextView
