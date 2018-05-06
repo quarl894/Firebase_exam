@@ -29,11 +29,30 @@ public class RequestForm{
     String category;
     int check;
     String why;
+    String token;
+    String value;
 
     public RequestForm() { }
 
+    //삭제하기 위해 저장
+    public RequestForm(String value, String sex, int money, int monthly_money, String title, int price, String content, String uuid, String date, String category, String token) {
+        this.value = value;
+        this.sex = sex;
+        this.money = money;
+        this.monthly_money = monthly_money;
+        this.title = title;
+        this.price = price;
+        this.content = content;
+        this.uuid = uuid;
+        this.date = date;
+        this.category = category;
+        this.token = token;
+    }
+
+
+
     // 평가하기 보내는 폼.
-    public RequestForm(String sex, int money, int monthly_money, String title, int price, String content, String uuid, String date, String category, int check) {
+    public RequestForm(String sex, int money, int monthly_money, String title, int price, String content, String uuid, String date, String category, int check, String token) {
         this.sex = sex;
         this.money = money;
         this.monthly_money = monthly_money;
@@ -44,10 +63,11 @@ public class RequestForm{
         this.date = date;
         this.category = category;
         this.check = check;
+        this.token = token;
     }
 
     // 의뢰하기 폼.
-    public RequestForm(String sex, int money, int monthly_money, String title, int price, String content, String uuid, String date, String category) {
+    public RequestForm(String sex, int money, int monthly_money, String title, int price, String content, String uuid, String date, String category, String token) {
         this.sex = sex;
         this.money = money;
         this.monthly_money = monthly_money;
@@ -57,6 +77,7 @@ public class RequestForm{
         this.uuid = uuid;
         this.date = date;
         this.category = category;
+        this.token = token;
     }
 
     public RequestForm(String sex, int money, int monthly_money, String title, int price, String content, String uuid, String date) {
@@ -156,5 +177,21 @@ public class RequestForm{
 
     public void setWhy(String why) {
         this.why = why;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 }

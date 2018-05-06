@@ -67,6 +67,7 @@ public class MainFragment extends Fragment {
                     info[1] = pro.getGoal_money();
                     info[2] = pro.getMonthly_money();
 
+                    // 영수증 디테일페이지에서 자기 정보 가져오기 위한 것
                     MainActivity a = (MainActivity) getActivity();
                     a.saveCurUser(pro);
                 }
