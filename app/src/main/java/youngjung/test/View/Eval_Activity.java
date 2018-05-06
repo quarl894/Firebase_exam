@@ -32,10 +32,6 @@ import youngjung.test.View.ahoy.AhoyOnboarderCard;
 import com.codemybrainsout.onboarder.utils.ShadowTransformer;
 import com.codemybrainsout.onboarder.views.CircleIndicatorView;
 import com.codemybrainsout.onboarder.views.FlowingGradientClass;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -149,11 +145,10 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
                     databaseReference.child("finished receipt").child(a2.getUuid()).push().setValue(new RequestForm(a2.getSex(),a2.getMoney(),a2.getMonthly_money(),a2.getTitle(),a2.getPrice(),a2.getContent(),a2.getUuid(),a2.getDate(),a2.getCategory(),ck_hash.get(1),a2.getToken()));
                     databaseReference.child("finished receipt").child(a3.getUuid()).push().setValue(new RequestForm(a3.getSex(),a3.getMoney(),a3.getMonthly_money(),a3.getTitle(),a3.getPrice(),a3.getContent(),a3.getUuid(),a3.getDate(),a3.getCategory(),ck_hash.get(2),a3.getToken()));
 
-                    Log.e("what? " ,a1.getValue());
-                    // 아 안지워짐!!!!!!!
-                    databaseReference.child("Request receipt").child(a1.getValue()).setValue(null);
-                    databaseReference.child("Request receipt").child(a2.getValue()).removeValue();
-                    databaseReference.child("Request receipt").child(a3.getValue()).removeValue();
+                    databaseReference.child("Request receipt").child(a1.getUuid()).child(a1.getValue()).removeValue();
+                    databaseReference.child("Request receipt").child(a2.getUuid()).child(a2.getValue()).removeValue();
+                    databaseReference.child("Request receipt").child(a3.getUuid()).child(a3.getValue()).removeValue();
+
                     Toast.makeText(getApplicationContext(), "영수증이 전달되었습니다.", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(Eval_Activity.this, MainActivity.class);
                     startActivity(i);
