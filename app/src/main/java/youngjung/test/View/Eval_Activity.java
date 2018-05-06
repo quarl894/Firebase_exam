@@ -150,8 +150,8 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
                     databaseReference.child("finished receipt").child(a3.getUuid()).push().setValue(new RequestForm(a3.getSex(),a3.getMoney(),a3.getMonthly_money(),a3.getTitle(),a3.getPrice(),a3.getContent(),a3.getUuid(),a3.getDate(),a3.getCategory(),ck_hash.get(2),a3.getToken()));
 
                     Log.e("what? " ,a1.getValue());
-
-                    databaseReference.child("Request receipt").child(a1.getValue()).removeValue();
+                    // 아 안지워짐!!!!!!!
+                    databaseReference.child("Request receipt").child(a1.getValue()).setValue(null);
                     databaseReference.child("Request receipt").child(a2.getValue()).removeValue();
                     databaseReference.child("Request receipt").child(a3.getValue()).removeValue();
                     Toast.makeText(getApplicationContext(), "영수증이 전달되었습니다.", Toast.LENGTH_SHORT).show();
