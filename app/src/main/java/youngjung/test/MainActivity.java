@@ -41,6 +41,10 @@ public class MainActivity extends FragmentActivity {
     public static Set<String> uidSet = new HashSet<>();
     StringBuilder st = new StringBuilder();
     int count = 0;
+<<<<<<< HEAD
+    String token = "";
+=======
+>>>>>>> a868f088c8848a4fc7256e82beb0af1d31e86750
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +60,7 @@ public class MainActivity extends FragmentActivity {
         viewPager.setPagingEnabled(false);
 
         //FCM
-        FirebaseInstanceId.getInstance().getToken();
+        token = FirebaseInstanceId.getInstance().getToken();
 
         if (FirebaseInstanceId.getInstance().getToken() != null) {
             Log.d("FCM :", "token = " + FirebaseInstanceId.getInstance().getToken());
@@ -77,7 +81,13 @@ public class MainActivity extends FragmentActivity {
                 if(!dataSnapshot.getKey().equals(uid)){
                     for(DataSnapshot contact : child){
                         RequestForm rf = contact.getValue(RequestForm.class);
-                        receipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory()));
+
+                        receipt.add(new RequestForm(contact.getKey(),rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory(),rf.getToken()));
+                    }
+                }else {
+                    for (DataSnapshot contact : child) {
+                        RequestForm rf = contact.getValue(RequestForm.class);
+                        myRequestReceipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(), rf.getDate(), rf.getCategory(),rf.getToken()));
                     }
                 }
             }
@@ -91,7 +101,36 @@ public class MainActivity extends FragmentActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
+    }
 
+<<<<<<< HEAD
+    //값 들어올때까지 재귀 호출
+    // count값은 애초에 finsih영수증이 없을 경우에 대비해서 애초에 없다면 그냥 보여주기.
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(myRequestReceipt.size() ==0) {
+            Toast.makeText(getApplicationContext(),"데이터를 읽어오고 있습니다.",Toast.LENGTH_SHORT).show();
+//            Log.e("what the size: ", "" + myRequestReceipt.size());
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if(myRequestReceipt.size() ==0 && count<=3){
+                        onResume();
+                        count++;
+                    }else{
+                        setupViewPager();
+                        Toast.makeText(getApplicationContext(),"데이터 완료.",Toast.LENGTH_SHORT).show();
+                        Log.e("what the size33: ", "" + myRequestReceipt.size() + ", " +count);
+                    }
+                }
+            }, 2000);
+      //      recreate();
+        }else{
+            Log.e("what the size: ", "" + myRequestReceipt.size());
+        }
+=======
         // 평가받은 영수증 경로 따로 빼서 가져오는 것
         // 위에 else문에 같이넣으면 평가 요청한 영수증 목록을 가져옴
         DatabaseReference responseReceipt = databaseReference.child("finished receipt");
@@ -120,6 +159,7 @@ public class MainActivity extends FragmentActivity {
             public void onCancelled(DatabaseError databaseError) {}
         });
 
+>>>>>>> a868f088c8848a4fc7256e82beb0af1d31e86750
     }
 
     // 값 들어올때까지 재귀 호출
@@ -149,6 +189,7 @@ public class MainActivity extends FragmentActivity {
             Log.e("what the size: ", "" + myRequestReceipt.size());
         }
     }
+
 
 
 

@@ -36,7 +36,11 @@ public class MyPageListAdapter extends RecyclerView.Adapter<MyPageListAdapter.My
 
         // dummy Data
         for (int i = 0; i < 3; i++)
+<<<<<<< HEAD
             list.add(new EvalForm("남", (i + 1) * 10000, (i + 1) * 1000, "title", (i + 1) * 100, "content", "uuid", "date", i + 4, i % 2 == 0 ? true : false));
+=======
+            list.add(new RequestForm("남", (i + 1) * 10000, (i + 1) * 1000, "title", (i + 1) * 100, "content", "uuid", "date", "여행", "1"));
+>>>>>>> 87b8c351... FCM 추가
     }
 
     public void add(EvalForm data) {
