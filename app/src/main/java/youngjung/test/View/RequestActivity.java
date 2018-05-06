@@ -3,11 +3,15 @@ package youngjung.test.View;
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Html;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -23,8 +27,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
+import youngjung.test.DB.MyDBHelper;
 import youngjung.test.Model.RequestForm;
 import youngjung.test.R;
 import youngjung.test.ui.base.baseActivity;
@@ -44,6 +50,9 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
     String getTime;
     String[] result = new String[3];
     private final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    MyDBHelper dbHelper;
+    ArrayList<String> arr_date;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,11 +81,26 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
         btn_hobby.setOnClickListener(this);
         btn_elec.setOnClickListener(this);
 
+        dbHelper = new MyDBHelper(RequestActivity.this);
+
+        arr_date = new ArrayList<>();
+        try{
+            if(dbHelper.get_date()==null) {
+                Log.e("get_date: ", "is null");
+            }else{
+                arr_date.addAll(dbHelper.get_date());
+                Log.e("db test: " , ""+dbHelper.get_date().size());
+            }
+        }catch(Exception e){
+            Log.e("error : ","" +e.getStackTrace());
+        }
+
         //영수증 보낼 날짜
         long now = System.currentTimeMillis();
         Date date = new Date(now);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy. MM. dd");
         getTime = sdf.format(date);
+        Log.e("getdate: ",""+ getTime.substring(0,8));
 
         //test용
 //        for(int i=0; i<10; i++) databaseReference.child("Request receipt").child("testuid").push().setValue(new RequestForm(result[0],Integer.parseInt(result[1]),Integer.parseInt(result[2]), Integer.toString(i),10000,"배고프다","testuid", getTime, "음식"));
@@ -128,43 +152,6 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
         }
     }
 
-    //Dialog
-//    void show()
-//    {
-//        final EditText edittext = new EditText(this);
-//        edittext.setHint("입력해주세요");
-//
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//        builder.setTitle("구매 이유를 입력하세요");
-//        builder.setView(edittext);
-//        builder.setPositiveButton("추가",
-//                new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        new AlertDialog.Builder(RequestActivity.this)
-//                            .setTitle("의뢰서가 등록되었습니다.")
-//                            .setMessage("평가가 완료되면 푸시알림이 울립니다.")
-//                            .setPositiveButton("확인", new DialogInterface.OnClickListener() {
-//                                @Override
-//                                public void onClick(DialogInterface dialogInterface, int id) {
-//                                    databaseReference.child("Request receipt").child(uid).push().setValue(new RequestForm("남성",Integer.parseInt(result[1]),Integer.parseInt(result[2]), title.getText().toString(),Integer.parseInt(price.getText().toString()),content.getText().toString(),uid, getTime, category));
-//                                    //Toast.makeText(getApplicationContext(),edittext.getText().toString() ,Toast.LENGTH_LONG).show();
-//                                    finish();
-//                                }
-//                            })
-//                            .setNegativeButton("알람 설정", null)
-//                            .setCancelable(false)
-//                            .show();
-//                    }
-//                });
-//        builder.setNegativeButton("취소",
-//                new DialogInterface.OnClickListener() {
-//                    public void onClick(DialogInterface dialog, int which) {
-//
-//                    }
-//                });
-//        builder.show();
-//    }
-
     //버튼 색만 왜 안바뀌지?
     void Dialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -174,6 +161,11 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                                         databaseReference.child("Request receipt").child(uid).push().setValue(new RequestForm(result[0],Integer.parseInt(result[1]),Integer.parseInt(result[2]), title.getText().toString(),Integer.parseInt(price.getText().toString()),content.getText().toString(),uid, getTime, category));
+                                        dbHelper.insert_ctg(category);
+                                        if(!arr_date.contains(getTime.substring(0,8))){
+                                            dbHelper.insert_date(getTime.substring(0,8));
+//                                            Log.e("dbtest_ok: ", ""+dbHelper.get_date());
+                                        }
                                         finish();
                                     }
                                 });

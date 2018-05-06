@@ -13,7 +13,17 @@ public class Profile {
     String monthly_money;
     String sex;
 
+    //내부 db에 저장할 추가 데이터
+    int acc_money;
+    String ctg; //카테고리
+    String date;
+
     public Profile(){}
+
+    //내부 DB에서 사용할 생성자.
+    public Profile(String ctg){
+        this.ctg = ctg;
+    }
 
     public Profile(String name, String email, String uuid, String goal, String goal_money, String monthly_money, String sex) {
         this.name = name;
@@ -88,5 +98,29 @@ public class Profile {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public int getAcc_money() {
+        return acc_money;
+    }
+
+    public void setAcc_money(int acc_money) {
+        this.acc_money = acc_money;
+    }
+
+    public String getCtg() {
+        return ctg;
+    }
+
+    public void setCtg(String ctg) {
+        this.ctg = ctg;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

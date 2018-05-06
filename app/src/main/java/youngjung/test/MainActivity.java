@@ -19,6 +19,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
@@ -67,9 +70,19 @@ public class MainActivity extends FragmentActivity {
         //viewpager swipe 막음.
         viewPager.setPagingEnabled(false);
 
+        //FCM
+        FirebaseInstanceId.getInstance().getToken();
+
+        if (FirebaseInstanceId.getInstance().getToken() != null) {
+            Log.d("FCM :", "token = " + FirebaseInstanceId.getInstance().getToken());
+        }
         databaseReference = FirebaseDatabase.getInstance().getReference();
         DatabaseReference ref = databaseReference.child("Request receipt");
 
+<<<<<<< HEAD
+        //최대 100개만 받기. 먼저 온 순대로 해줘야함.
+=======
+>>>>>>> ba58d6469ca62a39f7ccf9500ff59920a641c3bf
         ref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
