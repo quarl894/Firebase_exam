@@ -36,7 +36,7 @@ public class MyPageListAdapter extends RecyclerView.Adapter<MyPageListAdapter.My
 
         // dummy Data
         for (int i = 0; i < 3; i++)
-            list.add(new RequestForm("남", (i + 1) * 10000, (i + 1) * 1000, "title", (i + 1) * 100, "content", "uuid", "date", "여행", 1));
+            list.add(new RequestForm("남", (i + 1) * 10000, (i + 1) * 1000, "title", (i + 1) * 100, "content", "uuid", "date", "여행", "1"));
     }
 
     public void add(RequestForm data) {

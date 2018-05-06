@@ -41,6 +41,7 @@ public class MainActivity extends FragmentActivity {
     public static Set<String> uidSet = new HashSet<>();
     StringBuilder st = new StringBuilder();
     int count = 0;
+    String token = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +57,7 @@ public class MainActivity extends FragmentActivity {
         viewPager.setPagingEnabled(false);
 
         //FCM
-        FirebaseInstanceId.getInstance().getToken();
+        token = FirebaseInstanceId.getInstance().getToken();
 
         if (FirebaseInstanceId.getInstance().getToken() != null) {
             Log.d("FCM :", "token = " + FirebaseInstanceId.getInstance().getToken());
@@ -74,7 +75,8 @@ public class MainActivity extends FragmentActivity {
                 if(!dataSnapshot.getKey().equals(uid)){
                     for(DataSnapshot contact : child){
                         RequestForm rf = contact.getValue(RequestForm.class);
-                        receipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory()));
+
+                        receipt.add(new RequestForm(contact.getKey(),rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory(),rf.getToken()));
                     }
                 }
             }
@@ -101,8 +103,9 @@ public class MainActivity extends FragmentActivity {
                         RequestForm rf = contact.getValue(RequestForm.class);
                         if (!uidSet.contains(contact.getKey())) {
                             uidSet.add(contact.getKey());
-                            myRequestReceipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory(),rf.getCheck()));
+                            myRequestReceipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory(),rf.getCheck(),rf.getToken()));
                         }
+                        myRequestReceipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(), rf.getDate(), rf.getCategory(),rf.getToken()));
                     }
                 }
             }
@@ -116,10 +119,9 @@ public class MainActivity extends FragmentActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {}
         });
-
     }
 
-    // 값 들어올때까지 재귀 호출
+    //값 들어올때까지 재귀 호출
     // count값은 애초에 finsih영수증이 없을 경우에 대비해서 애초에 없다면 그냥 보여주기.
     @Override
     protected void onResume() {
