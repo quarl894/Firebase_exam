@@ -41,6 +41,7 @@ public class MainActivity extends FragmentActivity {
     public static Set<String> uidSet = new HashSet<>();
     StringBuilder st = new StringBuilder();
     int count = 0;
+    String token = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +57,7 @@ public class MainActivity extends FragmentActivity {
         viewPager.setPagingEnabled(false);
 
         //FCM
-        FirebaseInstanceId.getInstance().getToken();
+        token = FirebaseInstanceId.getInstance().getToken();
 
         if (FirebaseInstanceId.getInstance().getToken() != null) {
             Log.d("FCM :", "token = " + FirebaseInstanceId.getInstance().getToken());
@@ -74,12 +75,13 @@ public class MainActivity extends FragmentActivity {
                 if(!dataSnapshot.getKey().equals(uid)){
                     for(DataSnapshot contact : child){
                         RequestForm rf = contact.getValue(RequestForm.class);
-                        receipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory()));
+
+                        receipt.add(new RequestForm(contact.getKey(),rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory(),rf.getToken()));
                     }
                 }else {
                     for (DataSnapshot contact : child) {
                         RequestForm rf = contact.getValue(RequestForm.class);
-                        myRequestReceipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(), rf.getDate(), rf.getCategory()));
+                        myRequestReceipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(), rf.getDate(), rf.getCategory(),rf.getToken()));
                     }
                 }
             }
