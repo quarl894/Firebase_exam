@@ -78,9 +78,33 @@ public class MainActivity extends FragmentActivity {
 
                         receipt.add(new RequestForm(contact.getKey(),rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory(),rf.getToken()));
                     }
-                }else {
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
+
+        // 평가받은 영수증 경로 따로 빼서 가져오는 것
+        // 위에 else문에 같이넣으면 평가 요청한 영수증 목록을 가져옴
+        DatabaseReference responseReceipt = databaseReference.child("finished receipt");
+        responseReceipt.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Iterable<DataSnapshot> child = dataSnapshot.getChildren();
+                if (dataSnapshot.getKey().equals(uid)) {
                     for (DataSnapshot contact : child) {
                         RequestForm rf = contact.getValue(RequestForm.class);
+                        if (!uidSet.contains(contact.getKey())) {
+                            uidSet.add(contact.getKey());
+                            myRequestReceipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory(),rf.getCheck(),rf.getToken()));
+                        }
                         myRequestReceipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(), rf.getDate(), rf.getCategory(),rf.getToken()));
                     }
                 }
@@ -102,7 +126,7 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(myRequestReceipt.size() ==0) {
+        if(myRequestReceipt.size() == 0) {
             Toast.makeText(getApplicationContext(),"데이터를 읽어오고 있습니다.",Toast.LENGTH_SHORT).show();
 //            Log.e("what the size: ", "" + myRequestReceipt.size());
             Handler handler = new Handler();
