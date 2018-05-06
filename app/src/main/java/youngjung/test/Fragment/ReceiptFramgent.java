@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ import static youngjung.test.MainActivity.uidSet;
 
 public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter.ItemClickListener{
     static int numUid = -1;
+    ArrayList<RequestForm> myReceipt;
 
     private Context mContext;
     RecyclerViewAdapter adapter;
@@ -103,9 +105,22 @@ public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter.Ite
         adapter = new RecyclerViewAdapter(mContext, dates, names, prices, stamps);
         recyclerView.setAdapter(adapter);
         adapter.setClickListener(this);
+        check();
+
 
         return rootView;
     }
+
+    // 데이터 갱신시 확인
+    public void check(){
+        if(myRequestReceipt.size()==0){
+            //check();
+        }else{
+            adapter.notifyDataSetChanged();
+            Log.e("abcd: ", "" + myRequestReceipt.size());
+        }
+    }
+
 
     @Override
     public void onItemClick(View view, int position) {

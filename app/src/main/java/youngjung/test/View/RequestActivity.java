@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -52,6 +53,7 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
     private final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     MyDBHelper dbHelper;
     ArrayList<String> arr_date;
+    String token = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,6 +70,9 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
         userName = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+
+        token = FirebaseInstanceId.getInstance().getToken();
+
 
         btn_food = findViewById(R.id.btn_food);
         btn_trip = findViewById(R.id.btn_trip);
@@ -160,7 +165,7 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
         builder.setPositiveButton(Html.fromHtml("<font color='#7C70F4'>확인</font>"),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                                        databaseReference.child("Request receipt").child(uid).push().setValue(new RequestForm(result[0],Integer.parseInt(result[1]),Integer.parseInt(result[2]), title.getText().toString(),Integer.parseInt(price.getText().toString()),content.getText().toString(),uid, getTime, category));
+                                        databaseReference.child("Request receipt").child(uid).push().setValue(new RequestForm(result[0],Integer.parseInt(result[1]),Integer.parseInt(result[2]), title.getText().toString(),Integer.parseInt(price.getText().toString()),content.getText().toString(),uid, getTime, category,token));
                                         dbHelper.insert_ctg(category);
                                         if(!arr_date.contains(getTime.substring(0,8))){
                                             dbHelper.insert_date(getTime.substring(0,8));
