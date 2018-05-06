@@ -67,8 +67,8 @@ public class MainFragment extends Fragment {
                     info[1] = pro.getGoal_money();
                     info[2] = pro.getMonthly_money();
 
-                    MainActivity a = (MainActivity) getActivity();
-                    a.saveCurUser(pro);
+            //        MainActivity a = (MainActivity) getActivity();
+            //        a.saveCurUser(pro);
                 }
             }
 
