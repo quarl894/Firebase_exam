@@ -96,7 +96,6 @@ public class AhoyOnboarderFragment extends Fragment {
     private TextView price;
     private int moneyKey;
     private int check;
-    Eval_Activity eval_activity;
 
     private CheckListener checkListener;
     public AhoyOnboarderFragment() {
@@ -186,7 +185,6 @@ public class AhoyOnboarderFragment extends Fragment {
         tv_show_money = view.findViewById(R.id.tv_money);
         tv_month_money = view.findViewById(R.id.tv_money_month);
 
-
         price = view.findViewById(R.id.money);
         btn_yes = view.findViewById(R.id.btn_yes);
         btn_no = view.findViewById(R.id.btn_no);
@@ -216,6 +214,9 @@ public class AhoyOnboarderFragment extends Fragment {
                 Log.e("Check: ",Integer.toString(check));
             }
         });
+
+        //영수증 배경화면 수정
+        cardView.setBackgroundResource(R.drawable.receipt_back);
 
         if(sex !=null){
             tv_sex.setText(sex);

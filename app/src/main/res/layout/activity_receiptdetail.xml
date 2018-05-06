@@ -2,82 +2,27 @@
 
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cornflower">
 
+    <!--배경-->
     <ImageView
         android:id="@+id/background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="45dp"
-        android:src="@drawable/ic_launcher_background" />
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/copy_2" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
         android:layout_marginHorizontal="60dp"
         android:orientation="vertical">
-
-        <LinearLayout
-            android:id="@+id/user_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="74dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/iv_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                android:src="@drawable/gril_icon" />
-
-            <TextView
-                android:id="@+id/cur_sex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginLeft="6dp"
-                android:layout_marginRight="6dp"
-                android:textColor="#393939"
-                android:textSize="12sp" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                android:src="@drawable/money" />
-
-            <TextView
-                android:id="@+id/cur_goal_money"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginLeft="6dp"
-                android:layout_marginRight="6dp"
-                android:textColor="#393939"
-                android:textSize="12sp" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                android:src="@drawable/group_5" />
-
-            <TextView
-                android:id="@+id/cur_month_money"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginLeft="6dp"
-                android:textColor="#393939"
-                android:textSize="12sp" />
-        </LinearLayout>
 
         <!--의뢰서 제목-->
         <TextView
@@ -85,14 +30,13 @@
             style="@style/TextAppearance.AppCompat.Headline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="13dp"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp">
+            android:layout_marginTop="19dp">
 
             <!--돈 마크-->
             <ImageView
@@ -123,63 +67,121 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="친구 집에 놀러가서 친구 아이라이너를 써봤는데 완전 저한테 딱이더라구요!! 하루종일 안 지워지고 좋아요. 다음 주에 세일하면 사려는데 지금 펜 아이라인이 2개 있는데 고민되는데 어떡하죠?"
             android:textColor="#202432"
             android:textSize="12sp" />
+    </LinearLayout>
 
-        <!--도장-->
-        <ImageView
-            android:id="@+id/detail_stamp_imgview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14.7dp"
-            android:src="@drawable/ok_stamp" />
-
-        <!--노란 선-->
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12.3dp"
-            android:src="@drawable/bot_line" />
+    <!--유저 정보-->
+    <LinearLayout
+        android:id="@+id/user_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="73dp"
+        android:layout_marginTop="309dp"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal">
+            android:layout_weight="1"
+            android:orientation="vertical">
 
+            <!--현재 유저 성별-->
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/cur_sex"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="깐깐이"
-                android:textColor="#06e3ba"
+                android:textColor="#202432"
+                android:layout_gravity="center"
+                android:layout_marginBottom="3dp"
                 android:textSize="12sp" />
 
+            <!--성별-->
             <TextView
-                android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="님의 답변"
-                android:textColor="#393939"
-                android:textSize="12sp" />
+                android:layout_gravity="center"
+                android:textSize="8sp"
+                android:textColor="@color/warm_grey"
+                android:text="성별" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView4"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="펜 아이라인 하나는 다 쓰고 사시죠! 사치인 것 같아요" />
+            android:layout_weight="1"
+            android:orientation="vertical">
 
+            <!--현재 유저 목표 금액-->
+            <TextView
+                android:id="@+id/cur_goal_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#393939"
+                android:layout_gravity="center"
+                android:layout_marginBottom="3dp"
+                android:textSize="12sp" />
+
+            <!--목표 금액-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="8sp"
+                android:textColor="@color/warm_grey"
+                android:text="목표금액" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!--현재 유저 한달 생활비-->
+            <TextView
+                android:id="@+id/cur_month_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#393939"
+                android:layout_gravity="center"
+                android:layout_marginBottom="3dp"
+                android:textSize="12sp" />
+
+            <!--한달 생활비-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="8sp"
+                android:textColor="@color/warm_grey"
+                android:text="한달 생활비" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="368dp">
+
+        <!--도장-->
+        <ImageView
+            android:id="@+id/detail_stamp_imgview"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ok_stamp" />
+
+        <!--저금하기 버튼-->
         <Button
             android:id="@+id/btn_saving"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:layout_marginHorizontal="30dp"
+            android:layout_marginHorizontal="90dp"
             android:layout_marginTop="77dp"
             android:background="@drawable/main_btn"
+            android:layout_gravity="center"
             android:onClick="onClick_btn_saving"
             android:text="저금하기" />
     </LinearLayout>

@@ -32,7 +32,6 @@ import youngjung.test.View.ahoy.AhoyOnboarderCard;
 import com.codemybrainsout.onboarder.utils.ShadowTransformer;
 import com.codemybrainsout.onboarder.views.CircleIndicatorView;
 import com.codemybrainsout.onboarder.views.FlowingGradientClass;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -122,6 +121,7 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
         a2 = receipt.get(num2);
         a3 = receipt.get(num3);
 
+        Log.e("value : ", a1.getValue());
         databaseReference = FirebaseDatabase.getInstance().getReference();
         /**
          * 의뢰서 양식
@@ -141,13 +141,14 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
             public void onClick(View v) {
                 if(ck_hash.size()!=3) Toast.makeText(getApplicationContext(), "평가를 모두 완료해주세요.",Toast.LENGTH_SHORT).show();
                 else{
-                    databaseReference.child("finished receipt").child(a1.getUuid()).push().setValue(new RequestForm(a1.getSex(),a1.getMoney(),a1.getMonthly_money(),a1.getTitle(),a1.getPrice(),a1.getContent(),a1.getUuid(),a1.getDate(),a1.getCategory(),ck_hash.get(0)));
-                    databaseReference.child("finished receipt").child(a2.getUuid()).push().setValue(new RequestForm(a2.getSex(),a2.getMoney(),a2.getMonthly_money(),a2.getTitle(),a2.getPrice(),a2.getContent(),a2.getUuid(),a2.getDate(),a2.getCategory(),ck_hash.get(1)));
-                    databaseReference.child("finished receipt").child(a3.getUuid()).push().setValue(new RequestForm(a3.getSex(),a3.getMoney(),a3.getMonthly_money(),a3.getTitle(),a3.getPrice(),a3.getContent(),a3.getUuid(),a3.getDate(),a3.getCategory(),ck_hash.get(2)));
+                    databaseReference.child("finished receipt").child(a1.getUuid()).push().setValue(new RequestForm(a1.getSex(),a1.getMoney(),a1.getMonthly_money(),a1.getTitle(),a1.getPrice(),a1.getContent(),a1.getUuid(),a1.getDate(),a1.getCategory(),ck_hash.get(0),a1.getToken()));
+                    databaseReference.child("finished receipt").child(a2.getUuid()).push().setValue(new RequestForm(a2.getSex(),a2.getMoney(),a2.getMonthly_money(),a2.getTitle(),a2.getPrice(),a2.getContent(),a2.getUuid(),a2.getDate(),a2.getCategory(),ck_hash.get(1),a2.getToken()));
+                    databaseReference.child("finished receipt").child(a3.getUuid()).push().setValue(new RequestForm(a3.getSex(),a3.getMoney(),a3.getMonthly_money(),a3.getTitle(),a3.getPrice(),a3.getContent(),a3.getUuid(),a3.getDate(),a3.getCategory(),ck_hash.get(2),a3.getToken()));
 
-//                    for(int i=0; i<3; i++){
-//                        databaseReference.child("finished receipt").child(a1.getUuid()).push().setValue(new RequestForm(receipt.get(i).getSex(),receipt.get(i).getMoney(),receipt.get(i).getMonthly_money(),receipt.get(i).getTitle(),receipt.get(i).getPrice(),receipt.get(i).getContent(),receipt.get(i).getUuid(),receipt.get(i).getDate(),receipt.get(i).getCategory(),ck_hash.get(i)));
-//                    }
+                    databaseReference.child("Request receipt").child(a1.getUuid()).child(a1.getValue()).removeValue();
+                    databaseReference.child("Request receipt").child(a2.getUuid()).child(a2.getValue()).removeValue();
+                    databaseReference.child("Request receipt").child(a3.getUuid()).child(a3.getValue()).removeValue();
+
                     Toast.makeText(getApplicationContext(), "영수증이 전달되었습니다.", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(Eval_Activity.this, MainActivity.class);
                     startActivity(i);
