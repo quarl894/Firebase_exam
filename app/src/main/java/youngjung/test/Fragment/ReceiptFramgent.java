@@ -14,16 +14,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 import java.util.ArrayList;
 
+import youngjung.test.DB.MyDBHelper;
 import youngjung.test.R;
 import youngjung.test.View.MyReceiptDetailActivity;
 import youngjung.test.Model.RequestForm;
 import static youngjung.test.MainActivity.myRequestReceipt;
-import static youngjung.test.MainActivity.uidSet;
 
 /**
  * Created by HANSUNG on 2018-03-25.
@@ -31,75 +29,94 @@ import static youngjung.test.MainActivity.uidSet;
 
 public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter.ItemClickListener{
     static int numUid = -1;
-    ArrayList<RequestForm> myReceipt;
+    static int cursor;
+    MyDBHelper dbHelper;
+    RecyclerView recyclerView;
 
     private Context mContext;
     RecyclerViewAdapter adapter;
     Button btn_left;
     Button btn_right;
-    TextView msg;
+    TextView msg, curDate;
 
     ArrayList<String> dates = new ArrayList<>();
     ArrayList<String> names = new ArrayList<>();
     ArrayList<Integer> prices = new ArrayList<>();
     ArrayList<Integer> stamps = new ArrayList<>();
     ArrayList<String> contents = new ArrayList<>();
+    ArrayList<String> myRequestDates = new ArrayList<>();
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = getActivity();
+        dbHelper = new MyDBHelper(getActivity());
     }
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.activity_receipts, container, false);
-
         msg = rootView.findViewById(R.id.no_receipt_msg);
-
+        curDate = rootView.findViewById(R.id.cur_date);
         btn_left = rootView.findViewById(R.id.btn_left_date);
-        btn_left.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TextView curDate = rootView.findViewById(R.id.cur_date);
-                String year = "", month = "";
-                for (int i = 0; i < 4; i++) {
-                    year += String.valueOf(curDate.getText().charAt(i));
-                }
-                for (int i = 5; i <= 6; i++) {
-                    month += String.valueOf(curDate.getText().charAt(i));
-                }
-                Toast.makeText(mContext, "year = " + year + ", month = " + month, Toast.LENGTH_SHORT).show();
-            }
-        });
         btn_right = rootView.findViewById(R.id.btm_right_date);
-        btn_right.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TextView curDate = rootView.findViewById(R.id.cur_date);
-                Toast.makeText(mContext, "after !" + curDate.getText(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        cursor = myRequestDates.size() - 1;
 
-        if (uidSet.size() == 0) msg.setVisibility(TextView.VISIBLE);
-        else if (uidSet.size() > numUid) {
-            // 데이터 들어오면
-            numUid = uidSet.size();
-            msg.setVisibility(TextView.INVISIBLE);
-            for (RequestForm r : myRequestReceipt) {
-                dates.add(r.getDate());
-                names.add(r.getTitle());
-                prices.add(r.getPrice());
-                stamps.add((r.getCheck() != 0) ? 1 : 0);
-                contents.add(r.getContent());
+        for (String date : dbHelper.get_date()) {
+            if (!myRequestDates.contains(date)) {
+                myRequestDates.add(date);
             }
+        }
+        if (cursor >= 0) {
+            curDate.setText(myRequestDates.get(cursor));
+        }
+
+        if (myRequestReceipt.size() == 0) {
+            msg.setVisibility(TextView.VISIBLE);
+            curDate.setVisibility(TextView.INVISIBLE);
+            btn_left.setVisibility(Button.INVISIBLE);
+            btn_right.setVisibility(Button.INVISIBLE);
+        } else if (myRequestReceipt.size() > numUid) {
+            numUid = myRequestReceipt.size();
+            msg.setVisibility(TextView.INVISIBLE);
+            addReceipts();
         } else {
             // 삭제됐지만 1개이상은 남아있는 경우
             msg.setVisibility(TextView.INVISIBLE);
         }
 
-        RecyclerView recyclerView = rootView.findViewById(R.id.recyclerView);
+        btn_left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cursor--;
+                if (cursor < 0) {
+                    cursor = myRequestDates.size() - 1;
+                }
+                curDate.setText(myRequestDates.get(cursor));
+
+                addReceipts();
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+        btn_right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cursor++;
+                if (cursor >= myRequestDates.size()) {
+                    cursor = 0;
+                }
+                curDate.setText(myRequestDates.get(cursor));
+
+                addReceipts();
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+        recyclerView = rootView.findViewById(R.id.recyclerView);
         int numberOfColumns = 2;
         recyclerView.setLayoutManager(new GridLayoutManager(mContext, numberOfColumns));
         adapter = new RecyclerViewAdapter(mContext, dates, names, prices, stamps);
@@ -107,17 +124,35 @@ public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter.Ite
         adapter.setClickListener(this);
         check();
 
-
         return rootView;
     }
 
+
     // 데이터 갱신시 확인
     public void check(){
-        if(myRequestReceipt.size()==0){
+        if (myRequestReceipt.size() == 0){
             //check();
-        }else{
+        } else {
             adapter.notifyDataSetChanged();
-            Log.e("abcd: ", "" + myRequestReceipt.size());
+        }
+    }
+
+
+    public void addReceipts() {
+        dates.clear();
+        names.clear();
+        prices.clear();
+        stamps.clear();
+        contents.clear();
+
+        for (RequestForm r : myRequestReceipt) {
+            if (r.getDate().substring(0, 8).equals(myRequestDates.get(cursor))) {
+                dates.add(r.getDate());
+                names.add(r.getTitle());
+                prices.add(r.getPrice());
+                stamps.add((r.getCheck() != 0) ? 1 : 0);
+                contents.add(r.getContent());
+            }
         }
     }
 
