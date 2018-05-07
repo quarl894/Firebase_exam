@@ -75,6 +75,7 @@ public class LoginEditActivity extends baseActivity {
                     databaseReference.child("Member Information").child(user.getUid()).setValue(profile);
                     Intent i = new Intent(LoginEditActivity.this, MainActivity.class);
                     startActivity(i);
+                    finish();
                 }
             }
         });
