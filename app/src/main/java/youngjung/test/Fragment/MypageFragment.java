@@ -7,10 +7,21 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import youngjung.test.MainActivity;
+import youngjung.test.Model.Profile;
 import youngjung.test.R;
 
 /**
@@ -18,6 +29,9 @@ import youngjung.test.R;
  */
 
 public class MypageFragment extends Fragment {
+    private DatabaseReference databaseReference;
+    private TextView tv_name, tv_goal, tv_goal_money, tv_acc_money;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +55,53 @@ public class MypageFragment extends Fragment {
         mProgressBar.setProgress(0.0F);
         mProgressBar.setProgressWithAnimation(50);
 
+        tv_name = rootView.findViewById(R.id.tv_name);
+        tv_goal = rootView.findViewById(R.id.tv_goal);
+        tv_goal_money = rootView.findViewById(R.id.tv_goal_money);
+        tv_acc_money = rootView.findViewById(R.id.tv_acc_money);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        databaseReference.child("Member Information").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                if (dataSnapshot.getKey().equals(uid)) {
+                    Profile pro = dataSnapshot.getValue(Profile.class);
+                    Log.e("test:", pro.getEmail());
+                    tv_name.setText(pro.getName());
+                    tv_goal.setText(pro.getGoal());
+                    tv_goal_money.setText(pro.getGoal_money());
+                    tv_acc_money.setText("abcd");
+
+                    MainActivity a = (MainActivity) getActivity();
+                    a.saveCurUser(pro);
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
         RecyclerView main_myPage_list = rootView.findViewById(R.id.main_myPage_list);
-        main_myPage_list.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        main_myPage_list.setAdapter(new MyPageListAdapter(getActivity()));
+
+        LinearLayoutManager lm = new LinearLayoutManager(getActivity());
+        main_myPage_list.setLayoutManager(lm);
+
+        MyPageListAdapter adapter = new MyPageListAdapter(getActivity());
+        main_myPage_list.setAdapter(adapter);
 
         return rootView;
     }
