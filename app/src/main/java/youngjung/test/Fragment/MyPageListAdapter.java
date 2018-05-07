@@ -14,7 +14,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+<<<<<<< HEAD
 import youngjung.test.Model.EvalForm;
+=======
+import youngjung.test.DefaultApplication;
+import youngjung.test.Model.Category;
+>>>>>>> 3d946e8c... ridickle7
 import youngjung.test.R;
 
 /**
@@ -23,8 +28,12 @@ import youngjung.test.R;
 
 public class MyPageListAdapter extends RecyclerView.Adapter<MyPageListAdapter.MyPageHolder> {
     Context context;
+<<<<<<< HEAD
     ArrayList<EvalForm> list = new ArrayList<EvalForm>();
     String[] dummy = {"패션", "음식", "뷰티"};
+=======
+    ArrayList<Category> list = new ArrayList<>();
+>>>>>>> 3d946e8c... ridickle7
 
     public MyPageListAdapter(Context context) {
         this.context = context;
@@ -33,6 +42,7 @@ public class MyPageListAdapter extends RecyclerView.Adapter<MyPageListAdapter.My
 
     public void listInit() {
         list.clear();
+<<<<<<< HEAD
 
         // dummy Data
         for (int i = 0; i < 3; i++)
@@ -53,22 +63,36 @@ public class MyPageListAdapter extends RecyclerView.Adapter<MyPageListAdapter.My
         list.addAll(dataList);
         notifyDataSetChanged();
     }
+=======
+        list = DefaultApplication.getDbHelper().getCategoryRankingList();
+    }
+
+>>>>>>> 3d946e8c... ridickle7
 
     @Override
-    public MyPageListAdapter.MyPageHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_category_mypage, parent, false);
+    public MyPageHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(context).inflate(R.layout.item_category_mypage, parent, false);
         MyPageHolder holder = new MyPageHolder(itemView);
 
         return holder;
     }
 
     @Override
+<<<<<<< HEAD
     public void onBindViewHolder(MyPageListAdapter.MyPageHolder holder, int position) {
         EvalForm item = list.get(position);
         holder.category_ranking.setText((item.getCategory() - 3) + "");
 //        holder.category_image.setBackground()
         holder.category_title.setText(dummy[position]);
         holder.category_num.setText(item.getCategory() + "");
+=======
+    public void onBindViewHolder(MyPageHolder holder, int position) {
+        Category item = list.get(position);
+        holder.category_ranking.setText(position + "");
+        holder.category_image.setImageResource(item.getImageId());
+        holder.category_title.setText(item.getName());
+        holder.category_num.setText(item.getNumber() + "");
+>>>>>>> 3d946e8c... ridickle7
 
         if (position == 0) {
             ConstraintLayout layout = holder.category_layout;
@@ -80,7 +104,7 @@ public class MyPageListAdapter extends RecyclerView.Adapter<MyPageListAdapter.My
             layout.setLayoutParams(params);
 
             holder.category_ranking.setTextColor(Color.WHITE);
-//        holder.category_image.setBackground()
+            holder.category_image.setImageResource(item.getImageId());
             holder.category_title.setTextColor(Color.WHITE);
             holder.category_num.setTextColor(Color.WHITE);
         }
@@ -102,7 +126,6 @@ public class MyPageListAdapter extends RecyclerView.Adapter<MyPageListAdapter.My
             super(itemView);
 
             category_layout = itemView.findViewById(R.id.category_layout);
-
             category_ranking = itemView.findViewById(R.id.category_ranking);
             category_image = itemView.findViewById(R.id.category_image);
             category_title = itemView.findViewById(R.id.category_title);
