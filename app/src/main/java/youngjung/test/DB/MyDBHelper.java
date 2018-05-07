@@ -141,6 +141,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext()) {
                 arr.add(cursor.getString(1));
             }
+            Collections.sort(arr);
             cursor.close();
             db.close();
             return arr;
