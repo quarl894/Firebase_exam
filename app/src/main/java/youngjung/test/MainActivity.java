@@ -28,7 +28,7 @@ import youngjung.test.Model.Profile;
 import youngjung.test.Model.RequestForm;
 import youngjung.test.View.CustomViewPager;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity{
     BottomBar bar;
     CustomViewPager viewPager;
     static Profile curProfile;
@@ -52,7 +52,7 @@ public class MainActivity extends FragmentActivity {
         bar = findViewById(R.id.bottomBar);
         viewPager = findViewById(R.id.container);
         setupViewPager();
-        // Fragment home으로 첫화면
+        // Fragmentf home으로 첫화면
         viewPager.setCurrentItem(1);
         bar.setDefaultTabPosition(1);
 
@@ -69,9 +69,12 @@ public class MainActivity extends FragmentActivity {
         DatabaseReference ref = databaseReference.child("Request receipt");
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         //최대 100개만 받기. 먼저 온 순대로 해줘야함.
 =======
 >>>>>>> ba58d6469ca62a39f7ccf9500ff59920a641c3bf
+=======
+>>>>>>> 25df959b... DefaultApplication에서 money 컴마 형식 함수 구현.
         ref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -133,6 +136,7 @@ public class MainActivity extends FragmentActivity {
 =======
         // 평가받은 영수증 경로 따로 빼서 가져오는 것
         // 위에 else문에 같이넣으면 평가 요청한 영수증 목록을 가져옴
+        // 여기서 uidSet 사용이유와 myRequestReceipt를 두번 저장 하는 것이 이상함.
         DatabaseReference responseReceipt = databaseReference.child("finished receipt");
         responseReceipt.addChildEventListener(new ChildEventListener() {
             @Override
@@ -180,7 +184,9 @@ public class MainActivity extends FragmentActivity {
                     }else{
                         setupViewPager();
                         Toast.makeText(getApplicationContext(),"데이터 완료.",Toast.LENGTH_SHORT).show();
-                        Log.e("what the size33: ", "" + myRequestReceipt.size() + ", " +count);
+                        Log.e("myRequestReceipt size: ", "" + myRequestReceipt.size() + ", " +count);
+                        Log.e("receipt size: ", "" + receipt.size());
+
                     }
                 }
             }, 2000);

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -19,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import youngjung.test.DefaultApplication;
 import youngjung.test.Model.test;
 import youngjung.test.R;
 import youngjung.test.View.Eval_Activity;
@@ -52,7 +54,7 @@ public class AhoyOnboarderFragment extends Fragment {
 
     private String title;
     private String description;
-
+    DefaultApplication app;
 
     @StringRes
     private int titleResId;
@@ -144,6 +146,12 @@ public class AhoyOnboarderFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        app = new DefaultApplication();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         Bundle bundle = getArguments();
@@ -223,15 +231,15 @@ public class AhoyOnboarderFragment extends Fragment {
         }
 
         if(show_money !=0){
-            tv_show_money.setText(Integer.toString(show_money)+"원");
+            tv_show_money.setText(app.Moneyfomat(show_money)+"");
         }
 
         if(month_money !=0){
-            tv_month_money.setText(Integer.toString(month_money)+"원");
+            tv_month_money.setText(app.Moneyfomat(month_money)+"");
         }
 
         if(moneyKey !=0){
-            price.setText(Integer.toString(moneyKey)+"원");
+            price.setText(app.Moneyfomat(moneyKey)+"");
         }
 
         if(imageMoneyKey !=0){
