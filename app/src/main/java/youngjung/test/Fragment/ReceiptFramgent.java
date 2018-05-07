@@ -22,7 +22,6 @@ import youngjung.test.R;
 import youngjung.test.View.MyReceiptDetailActivity;
 import youngjung.test.Model.RequestForm;
 import static youngjung.test.MainActivity.myRequestReceipt;
-import static youngjung.test.MainActivity.uidSet;
 
 /**
  * Created by HANSUNG on 2018-03-25.
@@ -75,13 +74,13 @@ public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter.Ite
             curDate.setText(myRequestDates.get(cursor));
         }
 
-        if (uidSet.size() == 0) {
+        if (myRequestReceipt.size() == 0) {
             msg.setVisibility(TextView.VISIBLE);
             curDate.setVisibility(TextView.INVISIBLE);
             btn_left.setVisibility(Button.INVISIBLE);
             btn_right.setVisibility(Button.INVISIBLE);
-        } else if (uidSet.size() > numUid) {
-            numUid = uidSet.size();
+        } else if (myRequestReceipt.size() > numUid) {
+            numUid = myRequestReceipt.size();
             msg.setVisibility(TextView.INVISIBLE);
             addReceipts();
         } else {
