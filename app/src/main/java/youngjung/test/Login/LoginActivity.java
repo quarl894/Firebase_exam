@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -23,8 +24,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import youngjung.test.MainActivity;
@@ -108,23 +113,24 @@ public class LoginActivity extends baseActivity {
             if (result.isSuccess()) {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
-//                boolean isFirstRun = prefs.getBoolean("isFirstRun",true);
-                boolean isFirstRun = true;
 
-                if(isFirstRun)
-                {
-                    //회원 DB 저장
-//                    Profile profile = new Profile(account.getDisplayName(), account.getEmail(), FirebaseInstanceId.getInstance().getToken());
+                //회원 DB 저장
+//                Profile profile = new Profile(account.getDisplayName(), account.getEmail(), FirebaseInstanceId.getInstance().getToken());
 //
-//                    databaseReference.child("Member Information").child(account.getId()).setValue(profile);
-                    prefs.edit().putBoolean("isFirstRun",false).apply();
-                    firebaseAuthWithGoogle(account, 0);
-                    Log.e("login test: ", "처음");
-                    //처음만 true 그다음부터는 false 바꾸는 동작
-                }else{
-                    Log.e("login test: ", "처음아님");
-                    firebaseAuthWithGoogle(account, 1);
-                }
+//                databaseReference.child("Member Information").child(account.getId()).setValue(profile);
+                prefs.edit().putBoolean("isFirstRun",false).apply();
+                firebaseAuthWithGoogle(account);
+
+//                boolean isFirstRun = prefs.getBoolean("isFirstRun",true);
+
+//                if(isFirstRun)
+//                {
+//                    Log.e("login test: ", "처음");
+//                    //처음만 true 그다음부터는 false 바꾸는 동작
+//                }else{
+//                    Log.e("login test: ", "처음아님");
+//                    firebaseAuthWithGoogle(account);
+//                }
 //                Log.d(TAG, "이름 =" + account.getDisplayName());
 //                Log.d(TAG, "이메일=" + account.getEmail());
 //                Log.d(TAG, "getId()=" + account.getId());
@@ -137,30 +143,38 @@ public class LoginActivity extends baseActivity {
         }
     }
 
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acct, int num) {
+    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
-        final int check = num;
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            switch(check){
-                                case 0 :
-                                    Intent intent = new Intent(getApplicationContext(), LoginEditActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                    break;
-                                case 1 :
-                                    // Sign in success, update UI with the signed-in user's information
-                                    Intent intent2 = new Intent(getApplicationContext(), MainActivity.class);
-                                    startActivity(intent2);
-                                    finish();
-                                    Log.d(TAG, "signInWithCredential:success");
-                                    break;
-                            }
+                            final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
+                            Query query = databaseReference.child("Member Information").orderByChild("uuid").equalTo(uid);
+                            query.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    if (dataSnapshot.exists()) {
+                                        // 데이터를 넣어준 후(?) 메인으로 인텐트
+                                        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                                        startActivity(i);
+                                        finish();
+                                    }
+                                    else {
+                                        Intent intent = new Intent(getApplicationContext(), LoginEditActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
