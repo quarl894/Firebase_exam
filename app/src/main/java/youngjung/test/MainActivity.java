@@ -38,7 +38,6 @@ public class MainActivity extends FragmentActivity {
     public static ArrayList<RequestForm> myRequestReceipt = new ArrayList<>();
     static int i = 0;
     SectionPagerAdapter adapter;
-    public static Set<String> uidSet = new HashSet<>();
     StringBuilder st = new StringBuilder();
     int count = 0;
     String token = "";

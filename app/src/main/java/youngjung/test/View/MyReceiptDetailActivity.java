@@ -42,9 +42,9 @@ public class MyReceiptDetailActivity extends AppCompatActivity {
         cur_month_money.setText(curUser.getMonthly_money() + "원");
 
         Intent i = getIntent();
-        receipt_title.setText(i.getStringExtra("name"));
+        receipt_title.setText(i.getStringExtra("title"));
         price.setText(i.getIntExtra("price", 0) + "원");
-        if (i.getIntExtra("stamp",0) == 1) {
+        if (i.getIntExtra("check", 0) == 1) {
             stamp.setImageResource(R.drawable.ok_stamp);
         } else {
             stamp.setImageResource(R.drawable.no_stamp);
