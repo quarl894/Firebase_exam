@@ -49,7 +49,14 @@ public class RequestForm{
         this.token = token;
     }
 
-
+    // 영수증 리스트에서 이용
+    public RequestForm(String title, int price, String content, String date, int check) {
+        this.title = title;
+        this.price = price;
+        this.content = content;
+        this.date = date;
+        this.check = check;
+    }
 
     // 평가하기 보내는 폼.
     public RequestForm(String sex, int money, int monthly_money, String title, int price, String content, String uuid, String date, String category, int check, String token) {
