@@ -101,11 +101,7 @@ public class MainActivity extends FragmentActivity{
                 if (dataSnapshot.getKey().equals(uid)) {
                     for (DataSnapshot contact : child) {
                         RequestForm rf = contact.getValue(RequestForm.class);
-                        if (!uidSet.contains(contact.getKey())) {
-                            uidSet.add(contact.getKey());
-                            myRequestReceipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory(),rf.getCheck(),rf.getToken()));
-                        }
-                        myRequestReceipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(), rf.getDate(), rf.getCategory(),rf.getToken()));
+                        myRequestReceipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory(),rf.getCheck(),rf.getToken()));
                     }
                 }
             }

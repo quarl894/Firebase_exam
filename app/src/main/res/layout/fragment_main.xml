@@ -76,7 +76,7 @@
                         android:autoSizeTextType="uniform"
                         android:textSize="14sp"
                         android:textColor="#7f6ff1"
-                        android:text="불러오는 중" />
+                        android:text="탕진이" />
                 </LinearLayout>
                     <TextView
                         android:layout_width="wrap_content"
