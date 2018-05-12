@@ -7,6 +7,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 import youngjung.test.ui.dialog.LodingDialog;
 
