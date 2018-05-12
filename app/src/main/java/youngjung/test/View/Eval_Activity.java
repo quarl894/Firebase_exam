@@ -74,7 +74,7 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
     RequestForm a1;
     RequestForm a2;
     RequestForm a3;
-    int num1, num2, num3;
+    int num1 =0 , num2 = 1, num3 = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,23 +105,24 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
         eval_title = findViewById(R.id.eval_title);
         btn_req_ok = findViewById(R.id.btn_req_ok);
 
-        //랜덤 3개 뽑기
-        num1 = (int)(Math.random()*receipt.size()-1);
-        num2 = (int)(Math.random()*receipt.size()-1);
-        num3 = (int)(Math.random()*receipt.size()-1);
-
-        while(num1==num2 || num1==num3 || num2==num3){
+        if(receipt.size() >3){
+            //랜덤 3개 뽑기
+            num1 = (int)(Math.random()*receipt.size()-1);
             num2 = (int)(Math.random()*receipt.size()-1);
             num3 = (int)(Math.random()*receipt.size()-1);
-         //   Log.e("while what's num: ", Integer.toString(num1) + ", " + num2 + ", "+ num3);
+
+            while(num1==num2 || num1==num3 || num2==num3){
+                num2 = (int)(Math.random()*receipt.size()-1);
+                num3 = (int)(Math.random()*receipt.size()-1);
+             //   Log.e("while what's num: ", Integer.toString(num1) + ", " + num2 + ", "+ num3);
+            }
         }
-        //Log.e("what's num: ", Integer.toString(num1) + ", " + num2 + ", "+ num3);
+        Log.e("what's num: ", Integer.toString(num1) + ", " + num2 + ", "+ num3);
 
         a1 = receipt.get(num1);
         a2 = receipt.get(num2);
         a3 = receipt.get(num3);
 
-        Log.e("value : ", a1.getValue());
         databaseReference = FirebaseDatabase.getInstance().getReference();
         /**
          * 의뢰서 양식

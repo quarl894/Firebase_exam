@@ -2,12 +2,16 @@ package youngjung.test.Login;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -46,7 +50,6 @@ import static com.google.android.gms.auth.api.credentials.CredentialPickerConfig
 public class LoginActivity extends baseActivity {
     private FirebaseAuth mAuth;
     private GoogleApiClient mGoogleApiClient;
-    private SignInButton signInButton;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     public SharedPreferences prefs;
@@ -81,14 +84,7 @@ public class LoginActivity extends baseActivity {
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
-        signInButton = findViewById(R.id.sign_in_button);
-
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loginGoogle();
-            }
-        });
+        googleBtnUi();
 
     }
 
@@ -198,4 +194,38 @@ public class LoginActivity extends baseActivity {
             //처음만 true 그다음부터는 false 바꾸는 동작
         }
     }
+
+    private void googleBtnUi() {
+        // TODO Auto-generated method stub
+
+        SignInButton googleButton = findViewById(R.id.sign_in_button);
+        googleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginGoogle();
+            }
+        });
+
+        for (int i = 0; i < googleButton.getChildCount(); i++) {
+            View v = googleButton.getChildAt(i);
+
+            if (v instanceof TextView)
+            {
+                TextView tv = (TextView) v;
+                tv.setTextSize(14);
+                tv.setTypeface(null, Typeface.NORMAL);
+                tv.setText("");
+               tv.setTextColor(getResources().getColor(R.color.dark));
+                tv.setSingleLine(true);
+                tv.setBackground(getResources().getDrawable(R.drawable.icon_g));
+                tv.setPadding(15, 15, 15, 15);
+
+                ViewGroup.LayoutParams params = tv.getLayoutParams();
+                tv.setLayoutParams(params);
+
+                return;
+            }
+        }
+    }
+
 }
