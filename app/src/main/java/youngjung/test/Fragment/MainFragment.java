@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,6 +24,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 import youngjung.test.DefaultApplication;
+import youngjung.test.DB.MyDBHelper;
 import youngjung.test.Login.LoginActivity;
 import youngjung.test.MainActivity;
 import youngjung.test.Model.Profile;
@@ -39,7 +39,8 @@ import youngjung.test.View.RequestActivity;
 public class MainFragment extends Fragment{
     private Context mContext;
     Button btn, btn_request,btn_send;
-    TextView tv_name, tv_goal, tv_goal_money;
+    TextView tv_name, tv_goal, tv_goal_money, tv_acc_money;
+    private MyDBHelper dbHelper;
     private DatabaseReference databaseReference;
     String[] info = new String[3];
     DefaultApplication app;
@@ -49,7 +50,7 @@ public class MainFragment extends Fragment{
         super.onCreate(savedInstanceState);
         mContext = getActivity();
         app = new DefaultApplication();
-
+        dbHelper = new MyDBHelper(getContext());
     }
 
     @Nullable
@@ -59,6 +60,8 @@ public class MainFragment extends Fragment{
         tv_name = rootView.findViewById(R.id.tv_name);
         tv_goal = rootView.findViewById(R.id.tv_goal);
         tv_goal_money = rootView.findViewById(R.id.tv_goal_money);
+        tv_acc_money = rootView.findViewById(R.id.tv_acc_money);
+        tv_acc_money.setText(dbHelper.get_money());
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -71,6 +74,7 @@ public class MainFragment extends Fragment{
                     tv_name.setText(pro.getName());
                     tv_goal.setText(pro.getGoal());
                     tv_goal_money.setText(app.Moneyfomat(Integer.parseInt(pro.getGoal_money())));
+                  
                     info[0] = pro.getSex();
                     info[1] = pro.getGoal_money();
                     info[2] = pro.getMonthly_money();
@@ -139,5 +143,11 @@ public class MainFragment extends Fragment{
         });
 
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        tv_acc_money.setText(dbHelper.get_money());
     }
 }
