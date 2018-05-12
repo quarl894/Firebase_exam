@@ -1,7 +1,9 @@
 package youngjung.test;
 
 import android.app.Application;
-import android.support.v7.app.ActionBar;
+
+import java.text.NumberFormat;
+import java.util.Locale;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import youngjung.test.DB.MyDBHelper;
@@ -25,7 +27,7 @@ public class DefaultApplication extends Application {
         initFont();
     }
 
-    private void initFont(){
+    public void initFont(){
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/NotoSansCJKkr-Regular.otf")
                 .setFontAttrId(R.attr.fontPath)
@@ -35,5 +37,8 @@ public class DefaultApplication extends Application {
 
     public static MyDBHelper getDbHelper() {
         return dbHelper;
+    }
+    public String Moneyfomat(int amount){
+        return NumberFormat.getNumberInstance(Locale.KOREA).format(amount) +"원";
     }
 }

@@ -20,6 +20,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
+import youngjung.test.DefaultApplication;
 import youngjung.test.DB.MyDBHelper;
 import youngjung.test.Login.LoginActivity;
 import youngjung.test.MainActivity;
@@ -32,18 +36,20 @@ import youngjung.test.View.RequestActivity;
  * Created by YoungJung on 2018-03-25.
  */
 
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment{
     private Context mContext;
     Button btn, btn_request,btn_send;
     TextView tv_name, tv_goal, tv_goal_money, tv_acc_money;
     private MyDBHelper dbHelper;
     private DatabaseReference databaseReference;
     String[] info = new String[3];
+    DefaultApplication app;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = getActivity();
+        app = new DefaultApplication();
         dbHelper = new MyDBHelper(getContext());
     }
 
@@ -67,8 +73,8 @@ public class MainFragment extends Fragment {
                     Log.e("test:", pro.getEmail());
                     tv_name.setText(pro.getName());
                     tv_goal.setText(pro.getGoal());
-                    tv_goal_money.setText(pro.getGoal_money());
-
+                    tv_goal_money.setText(app.Moneyfomat(Integer.parseInt(pro.getGoal_money())));
+                  
                     info[0] = pro.getSex();
                     info[1] = pro.getGoal_money();
                     info[2] = pro.getMonthly_money();
