@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +37,7 @@ public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter.Ite
     Button btn_right;
     TextView msg, curDate;
 
-    ArrayList<RequestForm> receipts = new ArrayList<>();
+    public static ArrayList<RequestForm> receipts = new ArrayList<>();
     ArrayList<String> myRequestDates = new ArrayList<>();
 
     @Override
@@ -57,13 +56,14 @@ public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter.Ite
         curDate = rootView.findViewById(R.id.cur_date);
         btn_left = rootView.findViewById(R.id.btn_left_date);
         btn_right = rootView.findViewById(R.id.btm_right_date);
-        cursor = myRequestDates.size() - 1;
 
         for (String date : dbHelper.get_date()) {
             if (!myRequestDates.contains(date)) {
                 myRequestDates.add(date);
             }
         }
+
+        cursor = myRequestDates.size() - 1;
         if (cursor >= 0) {
             curDate.setText(myRequestDates.get(cursor));
         }
@@ -117,12 +117,15 @@ public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter.Ite
         return rootView;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+    }
 
     // 데이터 갱신시 확인
     public void check(){
-        if (myRequestReceipt.size() == 0){
-            //check();
-        } else {
+        if (myRequestReceipt.size() != 0){
             adapter.notifyDataSetChanged();
         }
     }
@@ -131,9 +134,12 @@ public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter.Ite
     public void addReceipts() {
         receipts.clear();
 
-        for (RequestForm r : myRequestReceipt) {
+        for (int i = 0; i < myRequestReceipt.size(); i++) {
+            RequestForm r = myRequestReceipt.get(i);
             if (r.getDate().substring(0, 8).equals(myRequestDates.get(cursor))) {
-                RequestForm form = new RequestForm(r.getTitle(), r.getPrice(), r.getContent(), r.getDate(), r.getCheck());
+                // i는 원래 myRequestReceipt 내 해당 영수증의 인덱스(prePosition)
+                // 저금하기 이후 myRequestReceipt 내 saving 변경에 사용
+                RequestForm form = new RequestForm(r.getTitle(), r.getPrice(), r.getContent(), r.getDate(), r.getCheck(), r.getSaving(), r.getUid(), i);
                 receipts.add(form);
             }
         }
@@ -149,6 +155,10 @@ public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter.Ite
         i.putExtra("price", receipts.get(position).getPrice());
         i.putExtra("check", receipts.get(position).getCheck());
         i.putExtra("content", receipts.get(position).getContent());
+        i.putExtra("saving", receipts.get(position).getSaving());
+        i.putExtra("position", position);
+        i.putExtra("uid", receipts.get(position).getUid());
+        i.putExtra("prePosition", receipts.get(position).getPrePosition());
 
         startActivity(i);
     }

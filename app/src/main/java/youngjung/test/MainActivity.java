@@ -18,9 +18,8 @@ import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
+import youngjung.test.DB.MyDBHelper;
 import youngjung.test.Fragment.MainFragment;
 import youngjung.test.Fragment.MypageFragment;
 import youngjung.test.Fragment.ReceiptFramgent;
@@ -33,9 +32,11 @@ public class MainActivity extends FragmentActivity {
     CustomViewPager viewPager;
     static Profile curProfile;
     private DatabaseReference databaseReference;
-    private final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    private MyDBHelper dbHelper;
+    private static final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     public static ArrayList<RequestForm> receipt = new ArrayList<>();
     public static ArrayList<RequestForm> myRequestReceipt = new ArrayList<>();
+    private ArrayList<String> saving_items;
     static int i = 0;
     SectionPagerAdapter adapter;
     StringBuilder st = new StringBuilder();
@@ -54,6 +55,9 @@ public class MainActivity extends FragmentActivity {
 
         //viewpager swipe 막음.
         viewPager.setPagingEnabled(false);
+
+        dbHelper = new MyDBHelper(getApplicationContext());
+        saving_items = dbHelper.get_saving_item();
 
         //FCM
         token = FirebaseInstanceId.getInstance().getToken();
@@ -74,7 +78,6 @@ public class MainActivity extends FragmentActivity {
                 if(!dataSnapshot.getKey().equals(uid)){
                     for(DataSnapshot contact : child){
                         RequestForm rf = contact.getValue(RequestForm.class);
-
                         receipt.add(new RequestForm(contact.getKey(),rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory(),rf.getToken()));
                     }
                 }
@@ -100,7 +103,17 @@ public class MainActivity extends FragmentActivity {
                 if (dataSnapshot.getKey().equals(uid)) {
                     for (DataSnapshot contact : child) {
                         RequestForm rf = contact.getValue(RequestForm.class);
-                        myRequestReceipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory(),rf.getCheck(),rf.getToken()));
+
+                        int saving = 0;
+                        if (saving_items != null) {
+                            if (saving_items.contains(contact.getKey())) {
+                                // 0: 저금하기, 1: 저금완료
+                                saving = 1;
+                            } else {
+                                saving = 0;
+                            }
+                        }
+                        myRequestReceipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory(),rf.getCheck(),rf.getToken(), saving, contact.getKey()));
                     }
                 }
             }
