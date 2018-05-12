@@ -26,6 +26,8 @@ public class MyDBHelper extends SQLiteOpenHelper {
     private static final String TABLE_ctg = "sum_ctg";      // 카테고리 랭킹
     private static final String TABLE_date = "tb_date";     // 날짜별 개수
     private static final String TABLE_money = "sum_money";  // 누적 금액
+    private static final String TABLE_saving_item = "tb_saving_item";
+
     public static final String CREATE_TABLE_ctg = "create table "
             + TABLE_ctg + "(_index INTEGER PRIMARY KEY AUTOINCREMENT, ctg TEXT);";
 
@@ -34,6 +36,9 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
     public static final String CREATE_TABLE_money = "create table "
             + TABLE_money + "(_index INTEGER PRIMARY KEY AUTOINCREMENT, money Integer);";
+
+    public static final String CREATE_TABLE_item = "create table "
+            + TABLE_saving_item + "(_index INTEGER PRIMARY KEY AUTOINCREMENT, uid String);";
 
     public MyDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -44,6 +49,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_TABLE_ctg);
         db.execSQL(CREATE_TABLE_date);
         db.execSQL(CREATE_TABLE_money);
+        db.execSQL(CREATE_TABLE_item);
     }
 
     @Override
@@ -174,17 +180,78 @@ public class MyDBHelper extends SQLiteOpenHelper {
         return (int) rowID;
     }
 
-    //누적금액 저장
-    public int insert_money(int money) {
-        // 읽고 쓰기가 가능하게 DB 열기
+    // 누적금액 저장
+    public void insert_money(int money) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        // 최신값 빼고 다 지우기
+        db.rawQuery("DELETE FROM sum_money WHERE _index != (SELECT max(_index) FROM sum_money)", null);
+
+        Cursor c = db.rawQuery("SELECT * FROM sum_money", null);
+        int maxMoney = 0;
+        while (c.moveToNext()) {
+            maxMoney = c.getInt(1);
+        }
+        int curMoney = maxMoney + money;
+
+        ContentValues cv = new ContentValues();
+        cv.put("money", curMoney);
+
+        db.update(TABLE_money, cv, null, null);
+        db.close();
+    }
+
+    // 누적금액 불러오기
+    public String get_money() {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM sum_money WHERE _index = (SELECT max(_index) FROM sum_money)", null);
+        if (cursor.getCount() == 0) {
+            Log.e("sum_money : ", "0");
+            return "";
+        } else {
+            String lastmoney = "";
+            while (cursor.moveToNext()) {
+                lastmoney = cursor.getString(1);
+            }
+            cursor.close();
+            db.close();
+            return lastmoney;
+        }
+    }
+
+    // 저금할 아이템 저장
+    public int insert_saving_item(String uid) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("money", money);
-        long rowID = db.insert(TABLE_money, null, values);
-        Log.i("db.insert()", "rowID : " + rowID);
+        values.put("uid", uid);
+        long rowID = db.insert(TABLE_saving_item, null, values);
+        Log.i("db.insert_saving_item", "rowID : " + rowID);
 
         db.close();
         return (int) rowID;
+    }
+
+    // 저금된 아이템 불러오기
+    public ArrayList<String> get_saving_item() {
+        SQLiteDatabase db = getReadableDatabase();
+
+        String CREATE_tb = "create table if not exists "
+                + TABLE_saving_item + "(_index INTEGER PRIMARY KEY AUTOINCREMENT, uid String);";
+        db.execSQL(CREATE_tb);
+
+        Cursor cursor = db.rawQuery("SELECT * from tb_saving_item", null);
+        if (cursor.getCount() == 0) {
+            Log.e("get_item : ", "0");
+            return null;
+        } else {
+            ArrayList<String> arr = new ArrayList<>();
+            while (cursor.moveToNext()) {
+                arr.add(cursor.getString(1));
+            }
+            cursor.close();
+            db.close();
+            return arr;
+        }
     }
 
 

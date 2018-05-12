@@ -31,6 +31,9 @@ public class RequestForm{
     String why;
     String token;
     String value;
+    int saving;
+    String uid;
+    int prePosition;
 
     public RequestForm() { }
 
@@ -49,7 +52,17 @@ public class RequestForm{
         this.token = token;
     }
 
-
+    // 영수증 리스트에서 이용
+    public RequestForm(String title, int price, String content, String date, int check, int saving, String uid, int prePosition) {
+        this.title = title;
+        this.price = price;
+        this.content = content;
+        this.date = date;
+        this.check = check;
+        this.saving = saving;
+        this.uid = uid;
+        this.prePosition = prePosition;
+    }
 
     // 평가하기 보내는 폼.
     public RequestForm(String sex, int money, int monthly_money, String title, int price, String content, String uuid, String date, String category, int check, String token) {
@@ -64,6 +77,23 @@ public class RequestForm{
         this.category = category;
         this.check = check;
         this.token = token;
+    }
+
+    // '저금하기'에 이용
+    public RequestForm(String sex, int money, int monthly_money, String title, int price, String content, String uuid, String date, String category, int check, String token, int saving, String uid) {
+        this.sex = sex;
+        this.money = money;
+        this.monthly_money = monthly_money;
+        this.title = title;
+        this.price = price;
+        this.content = content;
+        this.uuid = uuid;
+        this.date = date;
+        this.category = category;
+        this.check = check;
+        this.token = token;
+        this.saving = saving;
+        this.uid = uid;
     }
 
     // 의뢰하기 폼.
@@ -194,4 +224,16 @@ public class RequestForm{
     public void setValue(String value) {
         this.value = value;
     }
+
+    public int getSaving() { return saving; }
+
+    public void setSaving(int saving) { this.saving = saving; }
+
+    public String getUid() { return uid; }
+
+    public void setUid(String uid) { this.uid = uid; }
+
+    public int getPrePosition() { return prePosition; }
+
+    public void setPrePosition(int prePosition) { this.prePosition = prePosition; }
 }
