@@ -96,7 +96,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
         Iterator it = sortByValue(categoryHashMap).iterator();
 
         ArrayList<Category> output = new ArrayList<>();
-        while(it.hasNext()){
+        while (it.hasNext()) {
             String temp = (String) it.next();
             output.add(new Category(temp, categoryHashMap.get(temp), R.mipmap.ic_launcher));
         }
@@ -209,7 +209,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put("money", curMoney);
 
-        db.update(TABLE_money, cv, null, null);
+        db.insert(TABLE_money, null, cv);
         db.close();
     }
 
@@ -221,16 +221,20 @@ public class MyDBHelper extends SQLiteOpenHelper {
             Log.e("sum_money : ", "0");
             return "0";
         } else {
+<<<<<<< HEAD
+            String lastMoney = "";
+=======
             String lastmoney = "0";
+>>>>>>> 4774997836055dc312548aac5cc443dc5fd806e3
             while (cursor.moveToNext()) {
-                lastmoney = cursor.getString(1);
+                lastMoney = cursor.getString(1);
             }
-            if (lastmoney.equals("")) {
-                lastmoney = "0";
+            if (lastMoney.equals("")) {
+                lastMoney = "0";
             }
             cursor.close();
             db.close();
-            return lastmoney;
+            return lastMoney;
         }
     }
 
