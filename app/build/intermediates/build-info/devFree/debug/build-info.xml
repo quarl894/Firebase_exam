@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="x86"
+    api-level="25"
+    build-mode="COLD"
+    density="mdpi"
+    format="10"
+    ir-eligibility="COMPATIBLE"
+    plugin-version="3.0.1"
+    timestamp="1526203593006"
+    token="-1791161452014685707"
+    verifier="COLD_SWAP_REQUESTED" >
+
+    <task
+        name="javac"
+        duration="633" />
+    <task
+        name="instant-run-dex"
+        duration="0" />
+    <task
+        name="instant-run-transform"
+        duration="41" />
+    <task
+        name="verifier"
+        duration="1" />
+
+    <artifact
+        location="/Users/Park_Soo_Young/Firebase_exam/app/build/intermediates/split-apk/devFree/debug/slices/slice_1.apk"
+        type="SPLIT" />
+
+    <build
+        build-mode="FULL"
+        timestamp="1526203072248"
+        verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="/Users/Park_Soo_Young/Firebase_exam/app/build/intermediates/split-apk/devFree/debug/dep/dependencies.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Park_Soo_Young/Firebase_exam/app/build/intermediates/split-apk/devFree/debug/slices/slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Park_Soo_Young/Firebase_exam/app/build/intermediates/split-apk/devFree/debug/slices/slice_1.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Park_Soo_Young/Firebase_exam/app/build/intermediates/split-apk/devFree/debug/slices/slice_2.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Park_Soo_Young/Firebase_exam/app/build/intermediates/split-apk/devFree/debug/slices/slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Park_Soo_Young/Firebase_exam/app/build/intermediates/split-apk/devFree/debug/slices/slice_5.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Park_Soo_Young/Firebase_exam/app/build/intermediates/split-apk/devFree/debug/slices/slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Park_Soo_Young/Firebase_exam/app/build/intermediates/split-apk/devFree/debug/slices/slice_6.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Park_Soo_Young/Firebase_exam/app/build/intermediates/split-apk/devFree/debug/slices/slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Park_Soo_Young/Firebase_exam/app/build/intermediates/split-apk/devFree/debug/slices/slice_8.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Park_Soo_Young/Firebase_exam/app/build/intermediates/split-apk/devFree/debug/slices/slice_9.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Park_Soo_Young/Firebase_exam/app/build/outputs/apk/devFree/debug/app-dev-free-x86-debug.apk"
+            type="SPLIT_MAIN" />
+    </build>
+    <build
+        build-mode="COLD"
+        ir-eligibility="COMPATIBLE"
+        timestamp="1526203593006"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/Users/Park_Soo_Young/Firebase_exam/app/build/intermediates/split-apk/devFree/debug/slices/slice_1.apk"
+            type="SPLIT" />
+    </build>
+
+</instant-run>
