@@ -1,5 +1,6 @@
 package youngjung.test;
 
+import android.content.Context;
 import android.os.Handler;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentActivity;
@@ -19,6 +20,7 @@ import com.roughike.bottombar.OnTabSelectListener;
 
 import java.util.ArrayList;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 import youngjung.test.DB.MyDBHelper;
 import youngjung.test.Fragment.MainFragment;
 import youngjung.test.Fragment.MypageFragment;
@@ -52,6 +54,7 @@ public class MainActivity extends FragmentActivity{
         // Fragmentf home으로 첫화면
         viewPager.setCurrentItem(1);
         bar.setDefaultTabPosition(1);
+        bar.setActiveTabColor(getResources().getColor(R.color.golden_yellow));
 
         //viewpager swipe 막음.
         viewPager.setPagingEnabled(false);
@@ -194,6 +197,11 @@ public class MainActivity extends FragmentActivity{
 
     public Profile getCurUser() {
         return curProfile;
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
 }

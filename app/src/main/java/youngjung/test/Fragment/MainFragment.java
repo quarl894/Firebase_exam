@@ -51,6 +51,7 @@ public class MainFragment extends Fragment{
         mContext = getActivity();
         app = new DefaultApplication();
         dbHelper = new MyDBHelper(getContext());
+
     }
 
     @Nullable
