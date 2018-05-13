@@ -1,6 +1,7 @@
 package youngjung.test.View.ahoy;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
@@ -90,6 +91,10 @@ public class AhoyOnboarderFragment extends Fragment {
     private TextView tv_sex;
     private TextView tv_show_money;
     private TextView tv_month_money;
+
+    private TextView tv1;
+    private TextView tv2;
+    private TextView tv3;
 
     //추가
     private String sex;
@@ -198,11 +203,15 @@ public class AhoyOnboarderFragment extends Fragment {
         btn_no = view.findViewById(R.id.btn_no);
         stamp = view.findViewById(R.id.stamp);
 
+        tv1 = view.findViewById(R.id.tv1);
+        tv2 = view.findViewById(R.id.tv2);
+        tv3 = view.findViewById(R.id.tv3);
+
         btn_yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btn_yes.setBackgroundColor(getResources().getColor(R.color.golden_yellow));
-                btn_no.setBackgroundColor(getResources().getColor(R.color.pale_grey));
+                btn_yes.setBackground(getResources().getDrawable(R.drawable.aboy_btn2));
+                btn_no.setBackground(getResources().getDrawable(R.drawable.aboy_btn));
                 stamp.setImageResource(R.drawable.ok_stamp);
                 check = 1;
                 checkListener.Btn_Check(check);
@@ -213,8 +222,8 @@ public class AhoyOnboarderFragment extends Fragment {
         btn_no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btn_yes.setBackgroundColor(getResources().getColor(R.color.pale_grey));
-                btn_no.setBackgroundColor(getResources().getColor(R.color.golden_yellow));
+                btn_no.setBackground(getResources().getDrawable(R.drawable.aboy_btn2));
+                btn_yes.setBackground(getResources().getDrawable(R.drawable.aboy_btn));
                 stamp.setImageResource(R.drawable.no_stamp);
                 check = 0;
                 checkListener.Btn_Check(check);
@@ -222,6 +231,24 @@ public class AhoyOnboarderFragment extends Fragment {
                 Log.e("Check: ",Integer.toString(check));
             }
         });
+
+        Typeface face = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Medium.ttf");
+        Typeface face2 = Typeface.createFromAsset(getActivity().getAssets(), "fonts/NotoSansCJKkr-Regular.otf");
+        Typeface face3 = Typeface.createFromAsset(getActivity().getAssets(), "fonts/NotoSansCJKkr-Bold.otf");
+
+        price.setTypeface(face);
+        tv_show_money.setTypeface(face3);
+        btn_no.setTypeface(face2);
+        btn_yes.setTypeface(face2);
+        btn_yes.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        btn_no.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        tv_sex.setTypeface(face3);
+        tv_month_money.setTypeface(face3);
+        tv1.setTypeface(face2);
+        tv2.setTypeface(face2);
+        tv3.setTypeface(face2);
+        tvOnboarderDescription.setTypeface(face2);
+
 
         //영수증 배경화면 수정
         cardView.setBackgroundResource(R.drawable.receipt_back);

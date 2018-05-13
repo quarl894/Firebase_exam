@@ -197,10 +197,13 @@ public class MyDBHelper extends SQLiteOpenHelper {
             int maxMoney = 0;
             while (c.moveToNext()) {
                 maxMoney = c.getInt(1);
+
             }
             curMoney = maxMoney + money;
+            Log.e("누적금액: ", " " +curMoney);
         } else {
             curMoney = money;
+            Log.e("누적금액2: ", " " +curMoney);
         }
 
         ContentValues cv = new ContentValues();
@@ -218,7 +221,11 @@ public class MyDBHelper extends SQLiteOpenHelper {
             Log.e("sum_money : ", "0");
             return "0";
         } else {
+<<<<<<< HEAD
             String lastMoney = "";
+=======
+            String lastmoney = "0";
+>>>>>>> 4774997836055dc312548aac5cc443dc5fd806e3
             while (cursor.moveToNext()) {
                 lastMoney = cursor.getString(1);
             }

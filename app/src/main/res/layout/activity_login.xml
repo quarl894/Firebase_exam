@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="#202432"
+<<<<<<< HEAD
             android:text="똑똑한 소비인지 의심된다면"
             android:layout_gravity="center"
             android:layout_marginBottom="0dp"/>
@@ -38,6 +39,10 @@
             android:layout_below="@+id/login_text1"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"/>
+=======
+            android:text="똑똑한 소비인지 의심된다면\n 가볍게 허불허하세요!"
+            android:layout_gravity="center" />
+>>>>>>> fa88e668... 메인, 의뢰하기, 평가하기 디자인 대폭 수정.
 
     </RelativeLayout>
 
