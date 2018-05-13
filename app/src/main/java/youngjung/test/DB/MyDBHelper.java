@@ -225,6 +225,9 @@ public class MyDBHelper extends SQLiteOpenHelper {
             while (cursor.moveToNext()) {
                 lastmoney = cursor.getString(1);
             }
+            if (lastmoney.equals("")) {
+                lastmoney = "0";
+            }
             cursor.close();
             db.close();
             return lastmoney;
