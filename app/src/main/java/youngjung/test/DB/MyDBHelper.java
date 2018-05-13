@@ -184,15 +184,27 @@ public class MyDBHelper extends SQLiteOpenHelper {
     public void insert_money(int money) {
         SQLiteDatabase db = getWritableDatabase();
 
-        // 최신값 빼고 다 지우기
-        db.rawQuery("DELETE FROM sum_money WHERE _index != (SELECT max(_index) FROM sum_money)", null);
-
-        Cursor c = db.rawQuery("SELECT * FROM sum_money", null);
-        int maxMoney = 0;
-        while (c.moveToNext()) {
-            maxMoney = c.getInt(1);
+        Cursor tmp = db.rawQuery("SELECT count(*) FROM sum_money", null);
+        int cnt = 0, curMoney;
+        while (tmp.moveToNext()) {
+            cnt = tmp.getInt(0);
         }
-        int curMoney = maxMoney + money;
+        if (cnt != 0) {
+            // 최신값 빼고 다 지우기
+            db.rawQuery("DELETE FROM sum_money WHERE _index != (SELECT max(_index) FROM sum_money)", null);
+
+            Cursor c = db.rawQuery("SELECT * FROM sum_money", null);
+            int maxMoney = 0;
+            while (c.moveToNext()) {
+                maxMoney = c.getInt(1);
+
+            }
+            curMoney = maxMoney + money;
+            Log.e("누적금액: ", " " +curMoney);
+        } else {
+            curMoney = money;
+            Log.e("누적금액2: ", " " +curMoney);
+        }
 
         ContentValues cv = new ContentValues();
         cv.put("money", curMoney);
@@ -207,9 +219,9 @@ public class MyDBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM sum_money WHERE _index = (SELECT max(_index) FROM sum_money)", null);
         if (cursor.getCount() == 0) {
             Log.e("sum_money : ", "0");
-            return "";
+            return "0";
         } else {
-            String lastmoney = "";
+            String lastmoney = "0";
             while (cursor.moveToNext()) {
                 lastmoney = cursor.getString(1);
             }
