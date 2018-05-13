@@ -222,10 +222,14 @@ public class MyDBHelper extends SQLiteOpenHelper {
             return "0";
         } else {
 <<<<<<< HEAD
+<<<<<<< HEAD
             String lastMoney = "";
 =======
             String lastmoney = "0";
 >>>>>>> 4774997836055dc312548aac5cc443dc5fd806e3
+=======
+            String lastMoney = "0";
+>>>>>>> c7dd6586... 초기 내부디비 수정.
             while (cursor.moveToNext()) {
                 lastMoney = cursor.getString(1);
             }
