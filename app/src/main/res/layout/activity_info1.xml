@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp"
+        android:text="STEP 1"
+        android:textColor="@color/dark_two"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:text="선저축 후지출!"
+        android:textColor="@color/cornflower"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:text="자동이체를 걸어서 매달 지출 전 먼저 돈이 빠져나가게 해요!"
+        android:textColor="#292d7a"
+        android:textSize="12sp" />
+
+    <TextViewd
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="155dp"
+        android:text="통장잔고사 0원일 때까지 써야 직성이 풀린다구요?
+선저축 후지출로 소비와 지출 패턴을 바꿔보는 건 어떠세요?
+선저축 후지출이란!
+목표를 달성하기 위한 저축금액을 도출해서 매월 급여일에 자동이체가  후, 나머지 금액으로 지출하는 방법이예요.
+오늘 부터 일상 속 불필요한 소비부터 하나씩 차근차근 줄여보는 건 어떨까요?"
+        android:textColor="@color/dark_two"
+        android:textSize="12sp" />
+
+</RelativeLayout>

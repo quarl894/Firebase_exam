@@ -139,13 +139,15 @@ public class MyDBHelper extends SQLiteOpenHelper {
     public ArrayList<String> get_date() {
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery("Select * from tb_date", null);
+        ArrayList<String> arr = new ArrayList<>();
         if (cursor.getCount() == 0) {
             Log.e("get_date : ", "0");
-            return null;
+            arr.add("0");
+            return arr;
         } else {
-            ArrayList<String> arr = new ArrayList<>();
+//            ArrayList<String> arr = new ArrayList<>();
             while (cursor.moveToNext()) {
-                arr.add(cursor.getString(1));
+                arr.add(cursor.getString(0));
             }
             Collections.sort(arr);
             cursor.close();

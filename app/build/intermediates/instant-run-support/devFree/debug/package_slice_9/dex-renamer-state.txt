@@ -1,0 +1,4 @@
+#Sun May 13 18:18:13 KST 2018
+base.0=/Users/Park_Soo_Young/Firebase_exam/app/build/intermediates/transforms/dexMerger/devFree/debug/9
+path.0=classes.dex
+renamed.0=classes.dex
