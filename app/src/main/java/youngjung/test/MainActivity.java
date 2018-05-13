@@ -1,5 +1,6 @@
 package youngjung.test;
 
+import android.content.Context;
 import android.os.Handler;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentActivity;
@@ -18,9 +19,9 @@ import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+import youngjung.test.DB.MyDBHelper;
 import youngjung.test.Fragment.MainFragment;
 import youngjung.test.Fragment.MypageFragment;
 import youngjung.test.Fragment.ReceiptFramgent;
@@ -33,12 +34,13 @@ public class MainActivity extends FragmentActivity{
     CustomViewPager viewPager;
     static Profile curProfile;
     private DatabaseReference databaseReference;
-    private final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    private MyDBHelper dbHelper;
+    private static final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     public static ArrayList<RequestForm> receipt = new ArrayList<>();
     public static ArrayList<RequestForm> myRequestReceipt = new ArrayList<>();
+    private ArrayList<String> saving_items;
     static int i = 0;
     SectionPagerAdapter adapter;
-    public static Set<String> uidSet = new HashSet<>();
     StringBuilder st = new StringBuilder();
     int count = 0;
 <<<<<<< HEAD
@@ -55,9 +57,13 @@ public class MainActivity extends FragmentActivity{
         // Fragmentf home으로 첫화면
         viewPager.setCurrentItem(1);
         bar.setDefaultTabPosition(1);
+        bar.setActiveTabColor(getResources().getColor(R.color.golden_yellow));
 
         //viewpager swipe 막음.
         viewPager.setPagingEnabled(false);
+
+        dbHelper = new MyDBHelper(getApplicationContext());
+        saving_items = dbHelper.get_saving_item();
 
         //FCM
         token = FirebaseInstanceId.getInstance().getToken();
@@ -84,7 +90,6 @@ public class MainActivity extends FragmentActivity{
                 if(!dataSnapshot.getKey().equals(uid)){
                     for(DataSnapshot contact : child){
                         RequestForm rf = contact.getValue(RequestForm.class);
-
                         receipt.add(new RequestForm(contact.getKey(),rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory(),rf.getToken()));
                     }
                 }else {
@@ -146,6 +151,7 @@ public class MainActivity extends FragmentActivity{
                     for (DataSnapshot contact : child) {
                         RequestForm rf = contact.getValue(RequestForm.class);
 <<<<<<< HEAD
+<<<<<<< HEAD
                         if (!uidSet.contains(contact.getKey())) {
                             uidSet.add(contact.getKey());
                             myRequestReceipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory(),rf.getCheck()));
@@ -153,6 +159,19 @@ public class MainActivity extends FragmentActivity{
 =======
                         myRequestReceipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory(),rf.getCheck(),rf.getToken()));
 >>>>>>> 26649a6a... 두번받아오는 문제 수정 & uidSet 없앰
+=======
+
+                        int saving = 0;
+                        if (saving_items != null) {
+                            if (saving_items.contains(contact.getKey())) {
+                                // 0: 저금하기, 1: 저금완료
+                                saving = 1;
+                            } else {
+                                saving = 0;
+                            }
+                        }
+                        myRequestReceipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory(),rf.getCheck(),rf.getToken(), saving, contact.getKey()));
+>>>>>>> bce1a129... 저금하기 완료
                     }
                 }
             }
@@ -236,6 +255,11 @@ public class MainActivity extends FragmentActivity{
 
     public Profile getCurUser() {
         return curProfile;
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
 }

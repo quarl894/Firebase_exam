@@ -3,7 +3,7 @@
     <tabs>
         <tab
             id="@+id/tab_list"
-            icon="@drawable/my_page"
+            icon="@drawable/list"
             title="receipt list" />
         <tab
             id="@+id/tab_home"

@@ -15,4 +15,6 @@
     <color name="dark">#1f2431</color>
     <color name="pale_grey">#eaeef4</color>
     <color name="pale_grey_two">#eaedf4</color>
+    <color name="aquamarine">#00e8b8</color>
+    <color name="dark_two">#202432</color>
 </resources>
