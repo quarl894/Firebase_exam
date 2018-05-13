@@ -51,6 +51,7 @@ public class MainFragment extends Fragment{
         mContext = getActivity();
         app = new DefaultApplication();
         dbHelper = new MyDBHelper(getContext());
+
     }
 
     @Nullable
@@ -61,7 +62,9 @@ public class MainFragment extends Fragment{
         tv_goal = rootView.findViewById(R.id.tv_goal);
         tv_goal_money = rootView.findViewById(R.id.tv_goal_money);
         tv_acc_money = rootView.findViewById(R.id.tv_acc_money);
-        tv_acc_money.setText(app.Moneyfomat(Integer.parseInt(dbHelper.get_money())));
+        tv_acc_money.setText(dbHelper.get_money());
+
+        Log.e("acc_money: ","" +dbHelper.get_money());
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -148,6 +151,5 @@ public class MainFragment extends Fragment{
     @Override
     public void onResume() {
         super.onResume();
-        tv_acc_money.setText(app.Moneyfomat(Integer.parseInt(dbHelper.get_money())));
     }
 }

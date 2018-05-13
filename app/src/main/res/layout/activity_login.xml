@@ -25,8 +25,9 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="#202432"
-            android:text="똑똑한 소비인지 의심된다면\n 가볍게 허불허하세요."
+            android:text="똑똑한 소비인지 의심된다면\n 가볍게 허불허하세요!"
             android:layout_gravity="center" />
+
     </RelativeLayout>
 
 
