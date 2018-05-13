@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import youngjung.test.View.ahoy.AhoyOnboarderAdapter;
 import youngjung.test.View.ahoy.AhoyOnboarderCard;
+import youngjung.test.ui.base.baseActivity;
 //import com.codemybrainsout.onboarder.AhoyOnboarderCard;
 import com.codemybrainsout.onboarder.utils.ShadowTransformer;
 import com.codemybrainsout.onboarder.views.CircleIndicatorView;
@@ -31,7 +32,7 @@ import com.codemybrainsout.onboarder.views.FlowingGradientClass;
 
 import java.util.List;
 
-public abstract class AhoyOnboarderActivity extends AppCompatActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
+public abstract class AhoyOnboarderActivity extends baseActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
 
         private CircleIndicatorView circleIndicatorView;
         private ViewPager vpOnboarderPager;

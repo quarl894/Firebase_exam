@@ -16,8 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="18sp"
-            android:fontFamily="@string/font_Title_bold"
-            android:textStyle="normal"
+            android:textAppearance="@style/font_robo_md"
             android:textColor="@color/dark"
             android:text="HOME"
             android:layout_gravity="center_vertical"
@@ -28,7 +27,7 @@
     <FrameLayout
         android:layout_below="@+id/lin_home"
         android:layout_width="match_parent"
-        android:layout_height="102dp"
+        android:layout_height="120dp"
         android:id="@+id/go_mypage"
         android:layout_marginHorizontal="16dp">
 
@@ -36,7 +35,8 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/main_paper" />
+            android:src="@drawable/main_paper"
+            android:scaleType="fitXY"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,24 +52,25 @@
                 android:src="@drawable/page_1" />
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="22dp"
                 android:layout_marginLeft="26dp"
                 android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="-20dp"
                     android:orientation="horizontal">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textAppearance="@style/font_noto_bo"
                         android:id="@+id/tv_name"
                         android:autoSizeTextType="uniform"
                         android:textSize="14sp"
                         android:textColor="#1f2431"
                         android:text="불러오는 중"
-                        android:paddingRight="8dp"
-                        />
+                        android:paddingRight="8dp" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -82,16 +83,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/tv_goal"
-                        android:autoSizeTextType="uniform"
                         android:textSize="12sp"
                         android:textColor="#1f2431"
                         android:text="불러오는 중"
+                        android:textAppearance="@style/font_noto_re"
                         android:layout_marginTop="2dp" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="2dp">
+                    android:layout_marginTop="-18dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -104,17 +105,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
-                        android:fontFamily="sans-serif"
-                        android:textStyle="normal"
+                        android:textAppearance="@style/font_noto_re"
                         android:textColor="@color/lipstick"
                         android:text="2.5%" />
                 </LinearLayout>
             </LinearLayout>
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/next_icon"/>
         </LinearLayout>
     </FrameLayout>
 
@@ -142,7 +137,7 @@
                 android:id="@+id/tv_goal_money"
                 android:layout_gravity="center"
                 android:textSize="20sp"
-                android:fontFamily="font_Title_bold"
+                android:textAppearance="@style/font_robo_md"
                 android:textStyle="bold"
                 android:textColor="#1f2431"
                 android:text="불러오는 중"
@@ -181,7 +176,7 @@
                 android:id="@+id/tv_acc_money"
                 android:layout_gravity="center"
                 android:textSize="20sp"
-                android:fontFamily="font_Title_bold"
+                android:textAppearance="@style/font_robo_md"
                 android:textStyle="bold"
                 android:textColor="#1f2431"
                 android:text="불러오는 중"
@@ -209,6 +204,7 @@
         android:text="의뢰하기"
         android:background="@drawable/main_btn"
         android:layout_marginHorizontal="34dp"
+        android:textAppearance="@style/font_noto_md"
         android:layout_marginTop="62dp"/>
 
     <Button
@@ -220,6 +216,7 @@
         android:textColor="@color/dark"
         android:text="평가하기"
         android:background="@drawable/main_btn"
+        android:textAppearance="@style/font_noto_md"
         android:layout_marginHorizontal="34dp"
         android:layout_marginTop="40dp"/>
 

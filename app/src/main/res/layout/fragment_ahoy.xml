@@ -20,70 +20,70 @@
             android:layout_height="match_parent"
             android:background="@drawable/receipt_back"
             android:orientation="vertical"
-            android:padding="23dp">
+            android:paddingHorizontal="23dp"
+            android:paddingBottom="23dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
 
-                <ImageView
-                    android:id="@+id/iv_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/gril_icon" />
+                <!--<ImageView-->
+                    <!--android:id="@+id/iv_image"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:adjustViewBounds="true"-->
+                    <!--android:scaleType="fitCenter"-->
+                    <!--android:src="@drawable/gril_icon" />-->
 
-                <TextView
-                    android:id="@+id/tv_sex"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginRight="6dp"
-                    android:text="여성"
-                    android:textColor="#393939"
-                    android:textSize="12sp" />
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_sex"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="6dp"-->
+                    <!--android:layout_marginRight="6dp"-->
+                    <!--android:text="여성"-->
+                    <!--android:textColor="#393939"-->
+                    <!--android:textSize="12sp" />-->
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/money" />
+                <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:adjustViewBounds="true"-->
+                    <!--android:scaleType="fitCenter"-->
+                    <!--android:src="@drawable/money" />-->
 
-                <TextView
-                    android:id="@+id/tv_money"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginRight="6dp"
-                    android:text="400만원"
-                    android:textColor="#393939"
-                    android:textSize="12sp" />
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_money"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="6dp"-->
+                    <!--android:layout_marginRight="6dp"-->
+                    <!--android:text="400만원"-->
+                    <!--android:textColor="#393939"-->
+                    <!--android:textSize="12sp" />-->
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/group_5" />
+                <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:adjustViewBounds="true"-->
+                    <!--android:scaleType="fitCenter"-->
+                    <!--android:src="@drawable/group_5" />-->
 
-                <TextView
-                    android:id="@+id/tv_money_month"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="50만원"
-                    android:textColor="#393939"
-                    android:textSize="12sp" />
-            </LinearLayout>
+                <!--<TextView-->
+                    <!--android:id="@+id/tv_money_month"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="6dp"-->
+                    <!--android:text="50만원"-->
+                    <!--android:textColor="#393939"-->
+                    <!--android:textSize="12sp" />-->
+            <!--</LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
-                android:layout_marginTop="10dp"
                 android:orientation="vertical"
                 android:paddingTop="14dp">
 
@@ -119,7 +119,6 @@
                         android:id="@+id/money"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-medium"
                         android:paddingLeft="8dp"
                         android:text="15,000원"
                         android:textColor="#393939"
@@ -129,7 +128,6 @@
 
                 <TextView
                     android:id="@+id/tv_description"
-                    style="@style/TextAppearance.AppCompat.Body1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="20dp"
@@ -137,6 +135,114 @@
                     android:textColor="#393939"
                     android:textSize="12sp" />
             </LinearLayout>
+
+            <!--유저 정보-->
+            <LinearLayout
+                android:id="@+id/user_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="77dp"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <!--현재 유저 성별-->
+                    <TextView
+                        android:id="@+id/tv_sex"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#202432"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center"
+                        android:textSize="12sp" />
+
+                    <!--성별-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-10dp"
+                        android:id="@+id/tv1"
+                        android:layout_gravity="center"
+                        android:textSize="8sp"
+                        android:textColor="@color/warm_grey"
+                        android:text="성별" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:background="@color/pale_grey_two" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <!--현재 유저 목표 금액-->
+                    <TextView
+                        android:id="@+id/tv_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textColor="#393939"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="3dp"
+                        android:textSize="12sp" />
+
+                    <!--목표 금액-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-10dp"
+                        android:id="@+id/tv2"
+                        android:layout_gravity="center"
+                        android:textSize="8sp"
+                        android:textColor="@color/warm_grey"
+                        android:text="목표금액" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:background="@color/pale_grey_two" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <!--현재 유저 한달 생활비-->
+                    <TextView
+                        android:id="@+id/tv_money_month"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textColor="#393939"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="3dp"
+                        android:textSize="12sp" />
+
+                    <!--한달 생활비-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-10dp"
+                        android:id="@+id/tv3"
+                        android:layout_gravity="center"
+                        android:textSize="8sp"
+                        android:textColor="@color/warm_grey"
+                        android:text="한달 생활비" />
+                </LinearLayout>
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -148,10 +254,12 @@
                 <Button
                     android:id="@+id/btn_yes"
                     android:layout_width="match_parent"
-                    android:layout_height="32dp"
+                    android:layout_height="35dp"
                     android:layout_weight="1"
-                    android:background="@color/pale_grey"
+                    android:background="@drawable/aboy_btn"
                     android:text="허"
+                    android:textColor="@color/dark_two"
+                    style="?android:attr/borderlessButtonStyle"
                     android:textSize="14sp" />
 
                 <View
@@ -161,10 +269,12 @@
                 <Button
                     android:id="@+id/btn_no"
                     android:layout_width="match_parent"
-                    android:layout_height="32dp"
+                    android:layout_height="35dp"
                     android:layout_weight="1"
-                    android:background="@color/pale_grey"
+                    android:background="@drawable/aboy_btn"
                     android:text="불허"
+                    android:textColor="@color/dark_two"
+                    style="?android:attr/borderlessButtonStyle"
                     android:textSize="14sp" />
             </LinearLayout>
 
