@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="100dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:id="@+id/tv_nick"
+            android:textSize="14sp"
+            android:textAppearance="@style/font_noto_md"
+            android:textColor="@color/dark_two"
+            android:layout_weight="2"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="탕진이" />
+        <ImageButton
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:id="@+id/img_tech1"
+            android:scaleType="fitXY"
+            android:layout_marginRight="18dp"
+            android:layout_weight="1"/>
+        <ImageButton
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:id="@+id/img_tech2"
+            android:layout_marginRight="18dp"
+            android:layout_weight="1"/>
+        <ImageButton
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:id="@+id/img_tech3"
+            android:layout_marginRight="18dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+</RelativeLayout>
