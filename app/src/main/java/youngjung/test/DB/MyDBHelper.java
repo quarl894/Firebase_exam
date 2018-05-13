@@ -221,7 +221,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
             Log.e("sum_money : ", "0");
             return "0";
         } else {
-            String lastmoney = "0";
+            String lastMoney = "0";
             while (cursor.moveToNext()) {
                 lastMoney = cursor.getString(1);
             }

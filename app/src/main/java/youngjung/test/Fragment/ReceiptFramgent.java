@@ -106,7 +106,7 @@ public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter.Ite
                     adapter.notifyDataSetChanged();
                 }
             });
-
+        }
             recyclerView = rootView.findViewById(R.id.recyclerView);
             int numberOfColumns = 2;
             recyclerView.setLayoutManager(new GridLayoutManager(mContext, numberOfColumns));
@@ -114,7 +114,6 @@ public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter.Ite
             recyclerView.setAdapter(adapter);
             adapter.setClickListener(this);
             check();
-        }
 
         return rootView;
     }
