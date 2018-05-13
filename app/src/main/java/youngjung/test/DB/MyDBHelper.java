@@ -216,18 +216,18 @@ public class MyDBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM sum_money WHERE _index = (SELECT max(_index) FROM sum_money)", null);
         if (cursor.getCount() == 0) {
             Log.e("sum_money : ", "0");
-            return "";
+            return "0";
         } else {
-            String lastmoney = "";
+            String lastMoney = "";
             while (cursor.moveToNext()) {
-                lastmoney = cursor.getString(1);
+                lastMoney = cursor.getString(1);
             }
-            if (lastmoney.equals("")) {
-                lastmoney = "0";
+            if (lastMoney.equals("")) {
+                lastMoney = "0";
             }
             cursor.close();
             db.close();
-            return lastmoney;
+            return lastMoney;
         }
     }
 
