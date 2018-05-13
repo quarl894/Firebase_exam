@@ -22,6 +22,7 @@ import java.util.ArrayList;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 import youngjung.test.DB.MyDBHelper;
+import youngjung.test.Fragment.FinancialFragment;
 import youngjung.test.Fragment.MainFragment;
 import youngjung.test.Fragment.MypageFragment;
 import youngjung.test.Fragment.ReceiptFramgent;
@@ -170,6 +171,7 @@ public class MainActivity extends FragmentActivity{
         adapter.addFragment(new ReceiptFramgent());
         adapter.addFragment(new MainFragment());
         adapter.addFragment(new MypageFragment());
+        adapter.addFragment(new FinancialFragment());
 
         viewPager.setAdapter(adapter);
 
@@ -185,6 +187,9 @@ public class MainActivity extends FragmentActivity{
                         break;
                     case R.id.tab_mypage:
                         viewPager.setCurrentItem(2);
+                        break;
+                    case R.id.tab_financial:
+                        viewPager.setCurrentItem(3);
                         break;
                 }
             }
