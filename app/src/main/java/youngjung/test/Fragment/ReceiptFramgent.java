@@ -57,62 +57,63 @@ public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter.Ite
         btn_left = rootView.findViewById(R.id.btn_left_date);
         btn_right = rootView.findViewById(R.id.btm_right_date);
 
-        for (String date : dbHelper.get_date()) {
-            if (!myRequestDates.contains(date)) {
-                myRequestDates.add(date);
-            }
-        }
-
-        cursor = myRequestDates.size() - 1;
-        if (cursor >= 0) {
-            curDate.setText(myRequestDates.get(cursor));
-        }
-
-        if (myRequestReceipt.size() == 0) {
-            msg.setVisibility(TextView.VISIBLE);
-            curDate.setVisibility(TextView.INVISIBLE);
-            btn_left.setVisibility(Button.INVISIBLE);
-            btn_right.setVisibility(Button.INVISIBLE);
-        } else {
-            msg.setVisibility(TextView.INVISIBLE);
-            addReceipts();
-        }
-
-        btn_left.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cursor--;
-                if (cursor < 0) {
-                    cursor = myRequestDates.size() - 1;
+        if(dbHelper.get_date()!=null) {
+            for (String date : dbHelper.get_date()) {
+                if (!myRequestDates.contains(date)) {
+                    myRequestDates.add(date);
                 }
-                curDate.setText(myRequestDates.get(cursor));
-
-                addReceipts();
-                adapter.notifyDataSetChanged();
             }
-        });
 
-        btn_right.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cursor++;
-                if (cursor >= myRequestDates.size()) {
-                    cursor = 0;
+            cursor = myRequestDates.size() - 1;
+            if (cursor >= 0) {
+                curDate.setText(myRequestDates.get(cursor));
+            }
+
+            if (myRequestReceipt.size() == 0) {
+                msg.setVisibility(TextView.VISIBLE);
+                curDate.setVisibility(TextView.INVISIBLE);
+                btn_left.setVisibility(Button.INVISIBLE);
+                btn_right.setVisibility(Button.INVISIBLE);
+            } else {
+                msg.setVisibility(TextView.INVISIBLE);
+                addReceipts();
+            }
+
+            btn_left.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    cursor--;
+                    if (cursor < 0) {
+                        cursor = myRequestDates.size() - 1;
+                    }
+                    curDate.setText(myRequestDates.get(cursor));
+
+                    addReceipts();
+                    adapter.notifyDataSetChanged();
                 }
-                curDate.setText(myRequestDates.get(cursor));
+            });
 
-                addReceipts();
-                adapter.notifyDataSetChanged();
-            }
-        });
+            btn_right.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    cursor++;
+                    if (cursor >= myRequestDates.size()) {
+                        cursor = 0;
+                    }
+                    curDate.setText(myRequestDates.get(cursor));
 
-        recyclerView = rootView.findViewById(R.id.recyclerView);
-        int numberOfColumns = 2;
-        recyclerView.setLayoutManager(new GridLayoutManager(mContext, numberOfColumns));
-        adapter = new RecyclerViewAdapter(mContext, receipts);
-        recyclerView.setAdapter(adapter);
-        adapter.setClickListener(this);
-        check();
+                    addReceipts();
+                    adapter.notifyDataSetChanged();
+                }
+            });
+        }
+            recyclerView = rootView.findViewById(R.id.recyclerView);
+            int numberOfColumns = 2;
+            recyclerView.setLayoutManager(new GridLayoutManager(mContext, numberOfColumns));
+            adapter = new RecyclerViewAdapter(mContext, receipts);
+            recyclerView.setAdapter(adapter);
+            adapter.setClickListener(this);
+            check();
 
         return rootView;
     }

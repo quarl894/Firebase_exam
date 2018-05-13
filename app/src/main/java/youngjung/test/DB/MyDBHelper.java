@@ -96,7 +96,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
         Iterator it = sortByValue(categoryHashMap).iterator();
 
         ArrayList<Category> output = new ArrayList<>();
-        while(it.hasNext()){
+        while (it.hasNext()) {
             String temp = (String) it.next();
             output.add(new Category(temp, categoryHashMap.get(temp), R.mipmap.ic_launcher));
         }
@@ -197,16 +197,19 @@ public class MyDBHelper extends SQLiteOpenHelper {
             int maxMoney = 0;
             while (c.moveToNext()) {
                 maxMoney = c.getInt(1);
+
             }
             curMoney = maxMoney + money;
+            Log.e("누적금액: ", " " +curMoney);
         } else {
             curMoney = money;
+            Log.e("누적금액2: ", " " +curMoney);
         }
 
         ContentValues cv = new ContentValues();
         cv.put("money", curMoney);
 
-        db.update(TABLE_money, cv, null, null);
+        db.insert(TABLE_money, null, cv);
         db.close();
     }
 
@@ -216,18 +219,15 @@ public class MyDBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM sum_money WHERE _index = (SELECT max(_index) FROM sum_money)", null);
         if (cursor.getCount() == 0) {
             Log.e("sum_money : ", "0");
-            return "";
+            return "0";
         } else {
-            String lastmoney = "";
+            String lastMoney = "0";
             while (cursor.moveToNext()) {
-                lastmoney = cursor.getString(1);
-            }
-            if (lastmoney.equals("")) {
-                lastmoney = "0";
+                lastMoney = cursor.getString(1);
             }
             cursor.close();
             db.close();
-            return lastmoney;
+            return lastMoney;
         }
     }
 

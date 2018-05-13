@@ -3,11 +3,13 @@ package youngjung.test.Login;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +55,7 @@ public class LoginActivity extends baseActivity {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     public SharedPreferences prefs;
+    private TextView tv;
   
     String TAG = getClass().getName().toString();
 
@@ -63,6 +66,9 @@ public class LoginActivity extends baseActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         mAuth = FirebaseAuth.getInstance();
+        tv = findViewById(R.id.login_text1);
+        tv.setText(Html.fromHtml("<strong>똑똑한 소비</strong>인지 의심된다면<br> 가볍게 <strong>허불허</strong>하세요!"));
+        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
