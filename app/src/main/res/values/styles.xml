@@ -12,4 +12,17 @@
         <item name="android:windowActionBar">false</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     </style>
+
+    <style name="font_noto_md">
+        <item name="fontPath">fonts/NotoSansCJKkr-Medium.otf</item>
+    </style>
+    <style name="font_robo_md">
+        <item name="fontPath">fonts/Roboto-Medium.ttf</item>
+    </style>
+    <style name="font_noto_re">
+        <item name="fontPath">fonts/NotoSansCJKkr-Regular.otf</item>
+    </style>
+    <style name="font_noto_bo">
+        <item name="fontPath">fonts/NotoSansCJKkr-Bold.otf</item>
+    </style>
 </resources>

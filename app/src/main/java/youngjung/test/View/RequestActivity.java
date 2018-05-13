@@ -46,7 +46,7 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private String userName;
-    ImageButton btn_trip, btn_food, btn_hobby, btn_elec;
+    ImageButton btn_trip, btn_food, btn_hobby, btn_elec, btn_etc, btn_beauty;
     String category = "";
     String getTime;
     String[] result = new String[3];
@@ -78,6 +78,8 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
         btn_trip = findViewById(R.id.btn_trip);
         btn_hobby = findViewById(R.id.btn_hobby);
         btn_elec = findViewById(R.id.btn_elec);
+        btn_etc = findViewById(R.id.btn_etc);
+        btn_beauty = findViewById(R.id.btn_beauty);
 
         Intent intent = getIntent();
         result = intent.getExtras().getStringArray("infomation");
@@ -85,6 +87,8 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
         btn_trip.setOnClickListener(this);
         btn_hobby.setOnClickListener(this);
         btn_elec.setOnClickListener(this);
+        btn_etc.setOnClickListener(this);
+        btn_beauty.setOnClickListener(this);
 
         dbHelper = new MyDBHelper(RequestActivity.this);
 
@@ -132,6 +136,8 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
                 btn_elec.setBackgroundResource(R.color.white);
                 btn_food.setBackgroundResource(R.color.white);
                 btn_hobby.setBackgroundResource(R.color.white);
+                btn_beauty.setBackgroundResource(R.color.white);
+                btn_etc.setBackgroundResource(R.color.white);
                 break;
             case R.id.btn_food :
                 category = "음식";
@@ -139,6 +145,8 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
                 btn_elec.setBackgroundResource(R.color.white);
                 btn_trip.setBackgroundResource(R.color.white);
                 btn_hobby.setBackgroundResource(R.color.white);
+                btn_beauty.setBackgroundResource(R.color.white);
+                btn_etc.setBackgroundResource(R.color.white);
                 break;
             case R.id.btn_elec:
                 category ="전자기기";
@@ -146,6 +154,8 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
                 btn_food.setBackgroundResource(R.color.white);
                 btn_trip.setBackgroundResource(R.color.white);
                 btn_hobby.setBackgroundResource(R.color.white);
+                btn_beauty.setBackgroundResource(R.color.white);
+                btn_etc.setBackgroundResource(R.color.white);
                 break;
             case R.id.btn_hobby :
                 category = "취미생활";
@@ -153,6 +163,26 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
                 btn_elec.setBackgroundResource(R.color.white);
                 btn_trip.setBackgroundResource(R.color.white);
                 btn_food.setBackgroundResource(R.color.white);
+                btn_beauty.setBackgroundResource(R.color.white);
+                btn_etc.setBackgroundResource(R.color.white);
+                break;
+            case R.id.btn_etc :
+                category = "기타";
+                btn_etc.setBackgroundResource(R.color.golden_yellow);
+                btn_elec.setBackgroundResource(R.color.white);
+                btn_trip.setBackgroundResource(R.color.white);
+                btn_food.setBackgroundResource(R.color.white);
+                btn_beauty.setBackgroundResource(R.color.white);
+                btn_hobby.setBackgroundResource(R.color.white);
+                break;
+            case R.id.btn_beauty :
+                category = "패션및뷰티";
+                btn_beauty.setBackgroundResource(R.color.golden_yellow);
+                btn_elec.setBackgroundResource(R.color.white);
+                btn_trip.setBackgroundResource(R.color.white);
+                btn_food.setBackgroundResource(R.color.white);
+                btn_hobby.setBackgroundResource(R.color.white);
+                btn_etc.setBackgroundResource(R.color.white);
                 break;
         }
     }

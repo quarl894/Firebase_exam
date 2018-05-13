@@ -1,5 +1,6 @@
 package youngjung.test;
 
+import android.content.Context;
 import android.os.Handler;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentActivity;
@@ -19,10 +20,12 @@ import com.roughike.bottombar.OnTabSelectListener;
 
 import java.util.ArrayList;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 import youngjung.test.DB.MyDBHelper;
 import youngjung.test.Fragment.MainFragment;
 import youngjung.test.Fragment.MypageFragment;
 import youngjung.test.Fragment.ReceiptFramgent;
+import youngjung.test.Fragment.financialFragment;
 import youngjung.test.Model.Profile;
 import youngjung.test.Model.RequestForm;
 import youngjung.test.View.CustomViewPager;
@@ -53,8 +56,9 @@ public class MainActivity extends FragmentActivity{
         viewPager = findViewById(R.id.container);
         setupViewPager();
         // Fragmentf home으로 첫화면
-        viewPager.setCurrentItem(1);
-        bar.setDefaultTabPosition(1);
+        viewPager.setCurrentItem(0);
+        bar.setDefaultTabPosition(0);
+        bar.setActiveTabColor(getResources().getColor(R.color.golden_yellow));
 
         //viewpager swipe 막음.
         viewPager.setPagingEnabled(false);
@@ -222,8 +226,9 @@ public class MainActivity extends FragmentActivity{
     // tab들
     private void setupViewPager() {
         adapter = new SectionPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new ReceiptFramgent());
         adapter.addFragment(new MainFragment());
+        adapter.addFragment(new ReceiptFramgent());
+        adapter.addFragment(new financialFragment());
         adapter.addFragment(new MypageFragment());
 
         viewPager.setAdapter(adapter);
@@ -232,14 +237,17 @@ public class MainActivity extends FragmentActivity{
             @Override
             public void onTabSelected(@IdRes int tabId) {
                 switch(tabId){
-                    case R.id.tab_list:
+                    case R.id.tab_home:
                         viewPager.setCurrentItem(0);
                         break;
-                    case R.id.tab_home:
+                    case R.id.tab_list:
                         viewPager.setCurrentItem(1);
                         break;
-                    case R.id.tab_mypage:
+                    case R.id.tab_finan:
                         viewPager.setCurrentItem(2);
+                        break;
+                    case R.id.tab_mypage:
+                        viewPager.setCurrentItem(3);
                         break;
                 }
             }
@@ -252,6 +260,11 @@ public class MainActivity extends FragmentActivity{
 
     public Profile getCurUser() {
         return curProfile;
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
 }

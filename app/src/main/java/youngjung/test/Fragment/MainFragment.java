@@ -47,6 +47,7 @@ public class MainFragment extends Fragment{
     private DatabaseReference databaseReference;
     String[] info = new String[3];
     DefaultApplication app;
+    String sum_money ="0";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,7 +58,11 @@ public class MainFragment extends Fragment{
 
 =======
         dbHelper = new MyDBHelper(getContext());
+<<<<<<< HEAD
 >>>>>>> 7a084cc4c75521f54cd651c587c5cf38976c3fd5
+=======
+
+>>>>>>> fa88e668... 메인, 의뢰하기, 평가하기 디자인 대폭 수정.
     }
 
     @Nullable
@@ -68,7 +73,9 @@ public class MainFragment extends Fragment{
         tv_goal = rootView.findViewById(R.id.tv_goal);
         tv_goal_money = rootView.findViewById(R.id.tv_goal_money);
         tv_acc_money = rootView.findViewById(R.id.tv_acc_money);
-        tv_acc_money.setText(app.Moneyfomat(Integer.parseInt(dbHelper.get_money())));
+        tv_acc_money.setText(app.Moneyfomat(Integer.parseInt(sum_money)));
+
+        Log.e("acc_money: ","" +dbHelper.get_money());
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -164,6 +171,7 @@ public class MainFragment extends Fragment{
     @Override
     public void onResume() {
         super.onResume();
-        tv_acc_money.setText(app.Moneyfomat(Integer.parseInt(dbHelper.get_money())));
+        sum_money = dbHelper.get_money();
+        tv_acc_money.setText(app.Moneyfomat(Integer.parseInt(sum_money)));
     }
 }

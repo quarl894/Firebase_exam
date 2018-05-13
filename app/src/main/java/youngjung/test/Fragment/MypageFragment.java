@@ -76,8 +76,6 @@ public class MypageFragment extends Fragment {
                     Log.e("test:", pro.getEmail());
                     tv_name.setText(pro.getName());
                     tv_goal.setText(pro.getGoal());
-                    tv_goal_money.setText(app.Moneyfomat(Integer.parseInt(pro.getGoal_money())));
-                    tv_acc_money.setText(app.Moneyfomat(Integer.parseInt(dbHelper.get_money())));
 
                     MainActivity a = (MainActivity) getActivity();
                     a.saveCurUser(pro);
@@ -115,6 +113,5 @@ public class MypageFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        tv_acc_money.setText(app.Moneyfomat(Integer.parseInt(dbHelper.get_money())));
     }
 }
