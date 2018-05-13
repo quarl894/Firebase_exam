@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import youngjung.test.DB.MyDBHelper;
 import youngjung.test.MainActivity;
 import youngjung.test.Model.Profile;
 import youngjung.test.R;
@@ -30,6 +31,7 @@ import youngjung.test.R;
 
 public class MypageFragment extends Fragment {
     private DatabaseReference databaseReference;
+    private MyDBHelper dbHelper;
     private TextView tv_name, tv_goal, tv_goal_money, tv_acc_money;
 
     @Override
@@ -60,6 +62,7 @@ public class MypageFragment extends Fragment {
         tv_goal_money = rootView.findViewById(R.id.tv_goal_money);
         tv_acc_money = rootView.findViewById(R.id.tv_acc_money);
 
+        dbHelper = new MyDBHelper(getContext());
         databaseReference = FirebaseDatabase.getInstance().getReference();
         final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         databaseReference.child("Member Information").addChildEventListener(new ChildEventListener() {
@@ -71,7 +74,7 @@ public class MypageFragment extends Fragment {
                     tv_name.setText(pro.getName());
                     tv_goal.setText(pro.getGoal());
                     tv_goal_money.setText(pro.getGoal_money());
-                    tv_acc_money.setText("abcd");
+                    tv_acc_money.setText(dbHelper.get_money());
 
                     MainActivity a = (MainActivity) getActivity();
                     a.saveCurUser(pro);
@@ -104,5 +107,11 @@ public class MypageFragment extends Fragment {
         main_myPage_list.setAdapter(adapter);
 
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        tv_acc_money.setText(dbHelper.get_money());
     }
 }
