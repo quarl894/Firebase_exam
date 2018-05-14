@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import youngjung.test.DB.MyDBHelper;
+import youngjung.test.DefaultApplication;
 import youngjung.test.MainActivity;
 import youngjung.test.Model.Profile;
 import youngjung.test.R;
@@ -33,10 +34,12 @@ public class MypageFragment extends Fragment {
     private DatabaseReference databaseReference;
     private MyDBHelper dbHelper;
     private TextView tv_name, tv_goal, tv_goal_money, tv_acc_money;
+    private DefaultApplication app;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        app = new DefaultApplication();
     }
 
     @Nullable
@@ -73,8 +76,6 @@ public class MypageFragment extends Fragment {
                     Log.e("test:", pro.getEmail());
                     tv_name.setText(pro.getName());
                     tv_goal.setText(pro.getGoal());
-                    tv_goal_money.setText(pro.getGoal_money());
-                    tv_acc_money.setText(dbHelper.get_money());
 
                     MainActivity a = (MainActivity) getActivity();
                     a.saveCurUser(pro);
@@ -112,6 +113,5 @@ public class MypageFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        tv_acc_money.setText(dbHelper.get_money());
     }
 }

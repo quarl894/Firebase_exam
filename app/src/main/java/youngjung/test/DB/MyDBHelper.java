@@ -96,7 +96,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
         Iterator it = sortByValue(categoryHashMap).iterator();
 
         ArrayList<Category> output = new ArrayList<>();
-        while(it.hasNext()){
+        while (it.hasNext()) {
             String temp = (String) it.next();
             output.add(new Category(temp, categoryHashMap.get(temp), R.mipmap.ic_launcher));
         }
@@ -184,20 +184,29 @@ public class MyDBHelper extends SQLiteOpenHelper {
     public void insert_money(int money) {
         SQLiteDatabase db = getWritableDatabase();
 
-        // 최신값 빼고 다 지우기
-        db.rawQuery("DELETE FROM sum_money WHERE _index != (SELECT max(_index) FROM sum_money)", null);
-
-        Cursor c = db.rawQuery("SELECT * FROM sum_money", null);
-        int maxMoney = 0;
-        while (c.moveToNext()) {
-            maxMoney = c.getInt(1);
+        Cursor tmp = db.rawQuery("SELECT count(*) FROM sum_money", null);
+        int cnt = 0, curMoney;
+        while (tmp.moveToNext()) {
+            cnt = tmp.getInt(0);
         }
-        int curMoney = maxMoney + money;
+        if (cnt != 0) {
+            // 최신값 빼고 다 지우기
+            db.rawQuery("DELETE FROM sum_money WHERE _index != (SELECT max(_index) FROM sum_money)", null);
+
+            Cursor c = db.rawQuery("SELECT * FROM sum_money", null);
+            int maxMoney = 0;
+            while (c.moveToNext()) {
+                maxMoney = c.getInt(1);
+            }
+            curMoney = maxMoney + money;
+        } else {
+            curMoney = money;
+        }
 
         ContentValues cv = new ContentValues();
         cv.put("money", curMoney);
 
-        db.update(TABLE_money, cv, null, null);
+        db.insert(TABLE_money, null, cv);
         db.close();
     }
 
@@ -207,15 +216,15 @@ public class MyDBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM sum_money WHERE _index = (SELECT max(_index) FROM sum_money)", null);
         if (cursor.getCount() == 0) {
             Log.e("sum_money : ", "0");
-            return "";
+            return "0";
         } else {
-            String lastmoney = "";
+            String lastMoney = "0";
             while (cursor.moveToNext()) {
-                lastmoney = cursor.getString(1);
+                lastMoney = cursor.getString(1);
             }
             cursor.close();
             db.close();
-            return lastmoney;
+            return lastMoney;
         }
     }
 

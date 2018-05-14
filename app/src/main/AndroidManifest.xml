@@ -35,7 +35,7 @@
         <activity android:name=".View.Eval_Activity"/>
         <activity android:name=".Login.LoginEditActivity"/>
         <activity android:name=".View.MyReceiptDetailActivity"/>
-
+        <activity android:name=".View.finanActivity"/>
         <!-- [START firebase_service] -->
         <service
             android:name=".fcm.MyFirebaseMessagingService">

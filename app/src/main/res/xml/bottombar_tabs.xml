@@ -2,13 +2,17 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <tabs>
         <tab
+            id="@+id/tab_home"
+            icon="@drawable/home_icon"
+            title="Home" />
+        <tab
             id="@+id/tab_list"
             icon="@drawable/list"
             title="receipt list" />
         <tab
-            id="@+id/tab_home"
-            icon="@drawable/home_icon"
-            title="Home" />
+            id="@+id/tab_finan"
+            icon="@drawable/fr_3"
+            title="finanical" />
         <tab
             id="@+id/tab_mypage"
             icon="@drawable/my_page"

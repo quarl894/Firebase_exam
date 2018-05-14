@@ -1,5 +1,6 @@
 package youngjung.test.View;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 import youngjung.test.DB.MyDBHelper;
 import youngjung.test.MainActivity;
 import youngjung.test.Model.Profile;
@@ -96,5 +98,10 @@ public class MyReceiptDetailActivity extends AppCompatActivity {
 
             finish();
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }
