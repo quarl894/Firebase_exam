@@ -1,32 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical">
+
     <ImageView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="120dp"
         android:scaleType="fitXY"
-        android:src="@drawable/logo"
-        android:layout_marginTop="120dp"/>
+        android:src="@drawable/logo" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="76dp">
+        android:layout_marginLeft="76dp"
+        android:layout_marginTop="40dp">
 
-        <TextView
-            android:id="@+id/login_text1"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="#202432"
-            android:text="똑똑한 소비인지 의심된다면\n 가볍게 허불허하세요!"
-            android:layout_gravity="center" />
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/login_text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="똑똑한 소비"
+                    android:textColor="#202432"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/login_text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@string/font_reqular"
+                    android:text="인지 의심된다면"
+                    android:textColor="#202432"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/login_text3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@string/font_reqular"
+                    android:text="가볍게 "
+                    android:textColor="#202432"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/login_text4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@string/font_bold"
+                    android:text="허불허"
+                    android:textColor="#202432"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/login_text5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@string/font_reqular"
+                    android:text="하세요!"
+                    android:textColor="#202432"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
 
     </RelativeLayout>
 
@@ -35,8 +98,8 @@
         android:id="@+id/sign_in_button"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="67dp"
-        android:layout_marginHorizontal="47dp"
+        android:layout_gravity="center"
         android:layout_marginBottom="50dp"
-        android:layout_gravity="center" />
+        android:layout_marginHorizontal="47dp"
+        android:layout_marginTop="67dp" />
 </LinearLayout>
