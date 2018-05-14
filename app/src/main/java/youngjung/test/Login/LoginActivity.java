@@ -3,19 +3,31 @@ package youngjung.test.Login;
 import android.content.Intent;
 import android.content.SharedPreferences;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import android.graphics.Color;
 import android.graphics.Paint;
+=======
+>>>>>>> 0eebac84... ridickle7
 import android.graphics.Typeface;
 >>>>>>> fa88e668... 메인, 의뢰하기, 평가하기 디자인 대폭 수정.
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.text.Html;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.BackgroundColorSpan;
 import android.util.Log;
 import android.view.View;
+<<<<<<< HEAD
 import android.widget.Toast;
+=======
+import android.view.ViewGroup;
+import android.widget.TextView;
+>>>>>>> 0eebac84... ridickle7
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -37,10 +49,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.iid.FirebaseInstanceId;
 
 import youngjung.test.MainActivity;
-import youngjung.test.Model.Profile;
 import youngjung.test.R;
 import youngjung.test.ui.base.baseActivity;
 
@@ -57,8 +67,8 @@ public class LoginActivity extends baseActivity {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     public SharedPreferences prefs;
-    private TextView tv;
-  
+    private TextView tv1, tv4;
+
     String TAG = getClass().getName().toString();
 
     @Override
@@ -68,9 +78,17 @@ public class LoginActivity extends baseActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         mAuth = FirebaseAuth.getInstance();
-        tv = findViewById(R.id.login_text1);
-        tv.setText(Html.fromHtml("<strong>똑똑한 소비</strong>인지 의심된다면<br> 가볍게 <strong>허불허</strong>하세요!"));
-        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        tv1 = findViewById(R.id.login_text1);
+        SpannableString str = new SpannableString(Html.fromHtml("<strong> 똑똑한 소비</strong>"));
+        str.setSpan(new HightlighterSpan(ContextCompat.getColor(this, R.color.aquamarine), ContextCompat.getColor(this, R.color.dark_two)), 0, str.length() - 1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+        tv1.setText(str);
+
+        tv4 = findViewById(R.id.login_text4);
+        SpannableString str4 = new SpannableString(Html.fromHtml("<strong> 허불허</strong>"));
+        str4.setSpan(new HightlighterSpan(ContextCompat.getColor(this, R.color.aquamarine), ContextCompat.getColor(this, R.color.dark_two)), 0, str4.length() - 1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+        tv4.setText(str4);
+//        tv1.setText(Html.fromHtml("<strong>똑똑한 소비</strong>인지 의심된다면<br> 가볍게 <strong>허불허</strong>하세요!"));
+//        tv1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
@@ -107,7 +125,7 @@ public class LoginActivity extends baseActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser!=null){
+        if (currentUser != null) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
             finish();
@@ -129,7 +147,7 @@ public class LoginActivity extends baseActivity {
 //                Profile profile = new Profile(account.getDisplayName(), account.getEmail(), FirebaseInstanceId.getInstance().getToken());
 //
 //                databaseReference.child("Member Information").child(account.getId()).setValue(profile);
-                prefs.edit().putBoolean("isFirstRun",false).apply();
+                prefs.edit().putBoolean("isFirstRun", false).apply();
                 firebaseAuthWithGoogle(account);
 
 //                boolean isFirstRun = prefs.getBoolean("isFirstRun",true);
@@ -149,7 +167,7 @@ public class LoginActivity extends baseActivity {
 //                Log.d(TAG, "getIdToken()=" + account.getIdToken());
 
             } else {
-               showToast("로그인에 실패하였습니다. 다시 시도해주세요.");
+                showToast("로그인에 실패하였습니다. 다시 시도해주세요.");
             }
         }
     }
@@ -173,8 +191,7 @@ public class LoginActivity extends baseActivity {
                                         Intent i = new Intent(getApplicationContext(), MainActivity.class);
                                         startActivity(i);
                                         finish();
-                                    }
-                                    else {
+                                    } else {
                                         Intent intent = new Intent(getApplicationContext(), LoginEditActivity.class);
                                         startActivity(intent);
                                         finish();
@@ -201,12 +218,47 @@ public class LoginActivity extends baseActivity {
     }
 
     //최초인지 확인
-    public void checkFirstRun(){
-        boolean isFirstRun = prefs.getBoolean("isFirstRun",true);
-        if(isFirstRun)
-        {
-            prefs.edit().putBoolean("isFirstRun",false).apply();
+    public void checkFirstRun() {
+        boolean isFirstRun = prefs.getBoolean("isFirstRun", true);
+        if (isFirstRun) {
+            prefs.edit().putBoolean("isFirstRun", false).apply();
             //처음만 true 그다음부터는 false 바꾸는 동작
         }
     }
+<<<<<<< HEAD
+=======
+
+    private void googleBtnUi() {
+        // TODO Auto-generated method stub
+
+        SignInButton googleButton = findViewById(R.id.sign_in_button);
+        googleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginGoogle();
+            }
+        });
+
+        for (int i = 0; i < googleButton.getChildCount(); i++) {
+            View v = googleButton.getChildAt(i);
+
+            if (v instanceof TextView) {
+                TextView tv = (TextView) v;
+                tv.setTextSize(14);
+                tv.setTypeface(null, Typeface.NORMAL);
+                tv.setText("");
+                tv.setTextColor(getResources().getColor(R.color.dark));
+                tv.setSingleLine(true);
+                tv.setBackground(getResources().getDrawable(R.drawable.icon_g));
+                tv.setPadding(15, 15, 15, 15);
+
+                ViewGroup.LayoutParams params = tv.getLayoutParams();
+                tv.setLayoutParams(params);
+
+                return;
+            }
+        }
+    }
+
+>>>>>>> 0eebac84... ridickle7
 }
