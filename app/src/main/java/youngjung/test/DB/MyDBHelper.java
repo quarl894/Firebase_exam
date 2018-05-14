@@ -197,13 +197,10 @@ public class MyDBHelper extends SQLiteOpenHelper {
             int maxMoney = 0;
             while (c.moveToNext()) {
                 maxMoney = c.getInt(1);
-
             }
             curMoney = maxMoney + money;
-            Log.e("누적금액: ", " " +curMoney);
         } else {
             curMoney = money;
-            Log.e("누적금액2: ", " " +curMoney);
         }
 
         ContentValues cv = new ContentValues();
