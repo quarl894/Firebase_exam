@@ -34,6 +34,7 @@ import youngjung.test.Model.Profile;
 import youngjung.test.R;
 import youngjung.test.View.Eval_Activity;
 import youngjung.test.View.RequestActivity;
+import youngjung.test.ui.dialog.LodingDialog;
 
 /**
  * Created by YoungJung on 2018-03-25.
@@ -59,11 +60,15 @@ public class MainFragment extends Fragment{
 =======
         dbHelper = new MyDBHelper(getContext());
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 7a084cc4c75521f54cd651c587c5cf38976c3fd5
 =======
 
 >>>>>>> fa88e668... 메인, 의뢰하기, 평가하기 디자인 대폭 수정.
     }
+=======
+        }
+>>>>>>> b4115316... 재테크 코인 디자인 수정.
 
     @Nullable
     @Override
@@ -174,4 +179,5 @@ public class MainFragment extends Fragment{
         sum_money = dbHelper.get_money();
         tv_acc_money.setText(app.Moneyfomat(Integer.parseInt(sum_money)));
     }
+
 }

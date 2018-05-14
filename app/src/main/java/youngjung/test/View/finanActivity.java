@@ -51,7 +51,7 @@ public class finanActivity extends baseActivity {
                     tv_step.setText("STEP"+(arr[1]+1));
                     tv_title1.setText(Html.fromHtml(title[1]));
                     tv_title2.setText(Html.fromHtml(title2[1]));
-                    img_fnan.setImageResource(R.drawable.group);
+                    img_fnan.setImageResource(R.drawable.step_2_illust);
                 }else if(arr[1]==2){
                     tv_content.setText(Html.fromHtml(content[2]));
                     tv_step.setText("STEP"+(arr[1]+1));

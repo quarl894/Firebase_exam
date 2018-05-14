@@ -9,7 +9,7 @@
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="47dp"
+            android:layout_height="65dp"
             android:orientation="horizontal"
             android:id="@+id/login_titlebar">
             <TextView
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_title1"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:textSize="20sp"
             android:textAppearance="@style/font_noto_bo"
             android:textColor="@color/cornflower"
@@ -47,7 +47,7 @@
             android:id="@+id/tv_title2"
             android:textSize="12sp"
             android:textColor="#292d7a"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="25dp"
             android:layout_gravity="center"
             android:textAppearance="@style/font_noto_bo"
             android:text="자동이체를 걸어서 매달 지출 전 먼저 돈이 빠져나가게 해요!" />

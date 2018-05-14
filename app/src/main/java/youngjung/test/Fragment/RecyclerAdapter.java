@@ -23,7 +23,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     private RecyclerAdapter.ItemClickListener mClickListener;
 
     private String[] titles = {"탕진이", "충동이", "결심이", "깐깐이"};
-    private String[] imgs = {};
+    private int[] imgs = {R.drawable.step1, R.drawable.coin_gray_4, R.drawable.coin_gray_7, R.drawable.coin_gray_10};
+    private int[] imgs2 = {R.drawable.coin_yellow_2, R.drawable.coin_gray_5, R.drawable.coin_gray_8, R.drawable.coin_gray_11};
+    private int[] imgs3 = {R.drawable.coin_yellow_3, R.drawable.coin_gray_6, R.drawable.coin_gray_9, R.drawable.coin_gray_12};
 
     public RecyclerAdapter() {
     }
@@ -56,9 +58,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         final int position = i;
         viewHolder.tv_nick.setText(titles[i]);
-        viewHolder.img_tech1.setBackgroundResource(R.drawable.step1);
-        viewHolder.img_tech2.setBackgroundResource(R.drawable.step1);
-        viewHolder.img_tech3.setBackgroundResource(R.drawable.step1);
+        viewHolder.img_tech1.setBackgroundResource(imgs[i]);
+        viewHolder.img_tech2.setBackgroundResource(imgs2[i]);
+        viewHolder.img_tech3.setBackgroundResource(imgs3[i]);
 
         viewHolder.img_tech1.setOnClickListener(new View.OnClickListener() {
             @Override
