@@ -12,16 +12,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import youngjung.test.R;
+import youngjung.test.View.finanActivity;
 
 /**
  * Created by DWU on 2018-04-30.
  */
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
-    static Context mContext ;
+    Context  context;
+    private RecyclerAdapter.ItemClickListener mClickListener;
 
     private String[] titles = {"탕진이", "충동이", "결심이", "깐깐이"};
     private String[] imgs = {};
+
+    public RecyclerAdapter() {
+    }
+
+    public RecyclerAdapter(Context context) {
+        this.context = context;
+    }
 
     class ViewHolder extends RecyclerView.ViewHolder {
         public TextView tv_nick;
@@ -54,15 +63,30 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         viewHolder.img_tech1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("test:", "" + position);
+                if (mClickListener != null) mClickListener.onItemClick(v, position, 0);
+                Log.e("testtest : " , "" + 0);
             }
         });
+
         viewHolder.img_tech2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("test:", "" + position);
+                if (mClickListener != null) mClickListener.onItemClick(v, position, 1);
             }
         });
+        viewHolder.img_tech3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mClickListener != null) mClickListener.onItemClick(v, position, 2);
+            }
+        });
+    }
+    void setClickListener(RecyclerAdapter.ItemClickListener itemClickListener) {
+        this.mClickListener = itemClickListener;
+    }
+
+    public interface ItemClickListener {
+        void onItemClick(View view, int position, int pos);
     }
 
     @Override

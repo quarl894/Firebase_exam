@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="34dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:orientation="horizontal"
+            android:id="@+id/login_titlebar">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_step_title"
+                android:textSize="18sp"
+                android:textAppearance="@style/font_noto_md"
+                android:textStyle="normal"
+                android:textColor="#1f2431"
+                android:text="STEP1"
+                android:autoSizeTextType="uniform"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:gravity="center" />
+        </LinearLayout>
+        <View
+            android:layout_width="27dp"
+            android:layout_height="4dp"
+            android:background="@color/cornflower"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_title1"
+            android:layout_marginTop="40dp"
+            android:textSize="20sp"
+            android:textAppearance="@style/font_noto_bo"
+            android:textColor="@color/cornflower"
+            android:layout_gravity="center"
+            android:text="선저축 후지출!" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_title2"
+            android:textSize="12sp"
+            android:textColor="#292d7a"
+            android:layout_marginTop="25dp"
+            android:layout_gravity="center"
+            android:textAppearance="@style/font_noto_bo"
+            android:text="자동이체를 걸어서 매달 지출 전 먼저 돈이 빠져나가게 해요!" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:id="@+id/img_finan"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="25dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/finan_1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_content"
+            android:textSize="12sp"
+            android:textColor="@color/dark_two"
+            android:textAppearance="@style/font_noto_re"
+            android:text="통장잔고사 0원일 때까지 써야 직성이 풀린다구요?
+선저축 후지출로 소비와 지출 패턴을 바꿔보는 건 어떠세요?
+
+선저축 후지출이란!
+목표를 달성하기 위한 저축금액을 도출해서 매월 급여일에 자동이체가  후, 나머지 금액으로 지출하는 방법이예요.
+
+오늘 부터 일상 속 불필요한 소비부터 하나씩 차근차근 줄여보는 건 어떨까요?" />
+    </LinearLayout>
+
+
+</RelativeLayout>
