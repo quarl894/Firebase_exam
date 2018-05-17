@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,6 +16,7 @@ import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,21 +90,38 @@ public class financialFragment extends Fragment implements RecyclerAdapter.ItemC
         }
     }
 
-    //버튼 색만 왜 안바뀌지?
     void Dialog(){
-        String str = "확인";
-        SpannableStringBuilder ssb = new SpannableStringBuilder(str);
-        ssb.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.cornflower)), 0, 2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("잠깐! 코인을 열지 못합니다");
-        builder.setMessage("충동이 이상부터 STEP4을 열 수 있어요");
-        builder.setPositiveButton(Html.fromHtml(ssb.toString()),
+
+        TextView tv_title = new TextView(getContext());
+        tv_title.setText("잠깐! 코인을 열지 못합니다");
+        tv_title.setPadding(dp2px(22), dp2px(32), dp2px(57), dp2px(16));
+        tv_title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+        tv_title.setTextColor(getContext().getResources().getColor(R.color.dark_two));
+        Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "fonts/NotoSansCJKkr-Medium.otf");
+        tv_title.setTypeface(tf);
+
+        builder.setCustomTitle(tv_title);
+        builder.setMessage("충동이 이상부터 STEP4을 열 수 있어요.");
+        final AlertDialog dialog = builder.setPositiveButton("확인",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
                     }
-                });
-        builder.show();
+                }).create();
+
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getContext().getResources().getColor(R.color.cornflower));
+
+            }
+        });
+
+        dialog.show();
+    }
+
+    int dp2px(int dp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, this.getResources().getDisplayMetrics());
     }
 }

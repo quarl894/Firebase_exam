@@ -1,13 +1,16 @@
 package youngjung.test;
 
+import android.animation.Animator;
 import android.content.Context;
 import android.os.Handler;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -29,6 +32,7 @@ import youngjung.test.Fragment.financialFragment;
 import youngjung.test.Model.Profile;
 import youngjung.test.Model.RequestForm;
 import youngjung.test.View.CustomViewPager;
+import youngjung.test.ui.dialog.LodingDialog;
 
 public class MainActivity extends FragmentActivity{
     BottomBar bar;
@@ -42,9 +46,10 @@ public class MainActivity extends FragmentActivity{
     private ArrayList<String> saving_items;
     static int i = 0;
     SectionPagerAdapter adapter;
-    StringBuilder st = new StringBuilder();
+
     int count = 0;
     String token = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +61,7 @@ public class MainActivity extends FragmentActivity{
         viewPager.setCurrentItem(0);
         bar.setDefaultTabPosition(0);
         bar.setActiveTabColor(getResources().getColor(R.color.golden_yellow));
+
 
         //viewpager swipe 막음.
         viewPager.setPagingEnabled(false);
@@ -148,6 +154,7 @@ public class MainActivity extends FragmentActivity{
                     if(myRequestReceipt.size() ==0 && count<=3){
                         onResume();
                         count++;
+
                     }else{
                         setupViewPager();
                         Toast.makeText(getApplicationContext(),"데이터 완료.",Toast.LENGTH_SHORT).show();
@@ -208,5 +215,4 @@ public class MainActivity extends FragmentActivity{
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
-
 }

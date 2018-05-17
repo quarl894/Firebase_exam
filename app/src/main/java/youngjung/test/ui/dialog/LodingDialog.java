@@ -1,11 +1,13 @@
 package youngjung.test.ui.dialog;
 
+import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
+import android.view.View;
 import android.view.WindowManager;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -43,11 +45,35 @@ public class LodingDialog extends Dialog {
     }
 
     private void initLoadingView(){
-        LottieAnimationView lottieView = findViewById(R.id.lottie);
+        final LottieAnimationView lottieView = findViewById(R.id.lottie);
 
-        lottieView.setAnimation("loading_animation.json");
+        lottieView.setAnimation("cash.json");
         lottieView.loop(true);
-        lottieView.setRepeatCount(10);
+        lottieView.setRepeatCount(5);
         lottieView.playAnimation();
+
+        lottieView.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                lottieView.setVisibility(View.GONE);
+
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
     }
+
 }
