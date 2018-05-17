@@ -46,7 +46,7 @@ public class MainActivity extends FragmentActivity{
     private ArrayList<String> saving_items;
     static int i = 0;
     SectionPagerAdapter adapter;
-    StringBuilder st = new StringBuilder();
+
     int count = 0;
     String token = "";
 
