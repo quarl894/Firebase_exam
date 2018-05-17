@@ -10,6 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 <<<<<<< HEAD
+<<<<<<< HEAD
         app:srcCompat="@drawable/logo"
         android:layout_marginTop="120dp"
         android:layout_marginHorizontal="118dp"/>
@@ -19,10 +20,17 @@
         android:scaleType="fitXY"
         android:src="@drawable/logo" />
 >>>>>>> 0eebac84... ridickle7
+=======
+        android:layout_gravity="center"
+        android:layout_marginTop="120dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/logo" />
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
 <<<<<<< HEAD
         android:layout_marginTop="70dp"
         android:layout_marginLeft="76dp">
@@ -30,10 +38,15 @@
         android:layout_marginLeft="76dp"
         android:layout_marginTop="40dp">
 >>>>>>> 0eebac84... ridickle7
+=======
+        android:layout_marginLeft="76dp"
+        android:layout_marginTop="40dp">
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
 <<<<<<< HEAD
             android:textSize="18sp"
             android:textColor="#202432"
@@ -59,6 +72,10 @@
 =======
             android:orientation="vertical">
 
+=======
+            android:orientation="vertical">
+
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -124,13 +141,17 @@
 
 
         </LinearLayout>
+<<<<<<< HEAD
 >>>>>>> 0eebac84... ridickle7
+=======
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 
     </RelativeLayout>
 
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
+<<<<<<< HEAD
 <<<<<<< HEAD
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -147,4 +168,12 @@
         android:layout_marginHorizontal="47dp"
         android:layout_marginTop="67dp" />
 >>>>>>> 0eebac84... ridickle7
+=======
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="50dp"
+        android:layout_marginHorizontal="47dp"
+        android:layout_marginTop="67dp" />
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 </LinearLayout>

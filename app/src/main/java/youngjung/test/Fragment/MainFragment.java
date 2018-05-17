@@ -21,13 +21,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 import java.text.NumberFormat;
 import java.util.Locale;
 
 import youngjung.test.DefaultApplication;
+<<<<<<< HEAD
 =======
 import youngjung.test.DB.MyDBHelper;
 >>>>>>> 7a084cc4c75521f54cd651c587c5cf38976c3fd5
+=======
+import youngjung.test.DB.MyDBHelper;
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 import youngjung.test.Login.LoginActivity;
 import youngjung.test.MainActivity;
 import youngjung.test.Model.Profile;
@@ -55,6 +62,7 @@ public class MainFragment extends Fragment{
         super.onCreate(savedInstanceState);
         mContext = getActivity();
 <<<<<<< HEAD
+<<<<<<< HEAD
         app = new DefaultApplication();
 
 =======
@@ -69,6 +77,11 @@ public class MainFragment extends Fragment{
 =======
         }
 >>>>>>> b4115316... 재테크 코인 디자인 수정.
+=======
+        app = new DefaultApplication();
+        dbHelper = new MyDBHelper(getContext());
+        }
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 
     @Nullable
     @Override
@@ -93,19 +106,27 @@ public class MainFragment extends Fragment{
                     tv_name.setText(pro.getName());
                     tv_goal.setText(pro.getGoal());
 <<<<<<< HEAD
+<<<<<<< HEAD
                     tv_goal_money.setText(app.Moneyfomat(Integer.parseInt(pro.getGoal_money())));
 =======
                     tv_goal_money.setText(pro.getGoal_money());
 
 >>>>>>> 7a084cc4c75521f54cd651c587c5cf38976c3fd5
+=======
+                    tv_goal_money.setText(app.Moneyfomat(Integer.parseInt(pro.getGoal_money())));
+                  
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
                     info[0] = pro.getSex();
                     info[1] = pro.getGoal_money();
                     info[2] = pro.getMonthly_money();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             //        MainActivity a = (MainActivity) getActivity();
             //        a.saveCurUser(pro);
 =======
+=======
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
                     // 영수증 디테일페이지에서 자기 정보 가져오기 위한 것
                     MainActivity a = (MainActivity) getActivity();
                     a.saveCurUser(pro);

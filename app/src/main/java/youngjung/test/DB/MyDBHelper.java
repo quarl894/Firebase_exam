@@ -220,6 +220,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
         } else {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             String lastMoney = "";
 =======
             String lastmoney = "0";
@@ -233,6 +234,12 @@ public class MyDBHelper extends SQLiteOpenHelper {
             if (lastMoney.equals("")) {
                 lastMoney = "0";
             }
+=======
+            String lastMoney = "0";
+            while (cursor.moveToNext()) {
+                lastMoney = cursor.getString(1);
+            }
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
             cursor.close();
             db.close();
             return lastMoney;

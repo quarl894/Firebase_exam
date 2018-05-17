@@ -40,6 +40,7 @@ public class DefaultApplication extends Application {
         );
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     public String Moneyfomat(int amount){
         return NumberFormat.getNumberInstance(Locale.KOREA).format(amount) +"원";
 =======
@@ -47,6 +48,14 @@ public class DefaultApplication extends Application {
     public static MyDBHelper getDbHelper() {
         return dbHelper;
 >>>>>>> 430b10cdb7f85a7184d6ff15125626a5b57f5ff3
+=======
+
+    public static MyDBHelper getDbHelper() {
+        return dbHelper;
+    }
+    public String Moneyfomat(int amount){
+        return NumberFormat.getNumberInstance(Locale.KOREA).format(amount) +"원";
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
     }
 
     public static int dpToPx(int dp) {

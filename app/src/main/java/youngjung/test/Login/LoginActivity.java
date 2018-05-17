@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -11,6 +12,9 @@ import android.graphics.Paint;
 >>>>>>> 0eebac84... ridickle7
 import android.graphics.Typeface;
 >>>>>>> fa88e668... 메인, 의뢰하기, 평가하기 디자인 대폭 수정.
+=======
+import android.graphics.Typeface;
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -23,11 +27,16 @@ import android.text.style.BackgroundColorSpan;
 import android.util.Log;
 import android.view.View;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import android.widget.Toast;
 =======
 import android.view.ViewGroup;
 import android.widget.TextView;
 >>>>>>> 0eebac84... ridickle7
+=======
+import android.view.ViewGroup;
+import android.widget.TextView;
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -63,7 +72,6 @@ import static com.google.android.gms.auth.api.credentials.CredentialPickerConfig
 public class LoginActivity extends baseActivity {
     private FirebaseAuth mAuth;
     private GoogleApiClient mGoogleApiClient;
-    private SignInButton signInButton;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     public SharedPreferences prefs;
@@ -110,14 +118,7 @@ public class LoginActivity extends baseActivity {
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
-        signInButton = findViewById(R.id.sign_in_button);
-
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loginGoogle();
-            }
-        });
+        googleBtnUi();
 
     }
 
@@ -226,7 +227,10 @@ public class LoginActivity extends baseActivity {
         }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 
     private void googleBtnUi() {
         // TODO Auto-generated method stub
@@ -260,5 +264,8 @@ public class LoginActivity extends baseActivity {
         }
     }
 
+<<<<<<< HEAD
 >>>>>>> 0eebac84... ridickle7
+=======
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 }

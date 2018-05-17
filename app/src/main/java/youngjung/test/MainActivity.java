@@ -49,6 +49,7 @@ public class MainActivity extends FragmentActivity{
     StringBuilder st = new StringBuilder();
     int count = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
     String token = "";
 <<<<<<< HEAD
 =======
@@ -56,6 +57,10 @@ public class MainActivity extends FragmentActivity{
 =======
 
 >>>>>>> b4115316... 재테크 코인 디자인 수정.
+=======
+    String token = "";
+
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,11 +106,14 @@ public class MainActivity extends FragmentActivity{
                     for(DataSnapshot contact : child){
                         RequestForm rf = contact.getValue(RequestForm.class);
                         receipt.add(new RequestForm(contact.getKey(),rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory(),rf.getToken()));
+<<<<<<< HEAD
                     }
                 }else {
                     for (DataSnapshot contact : child) {
                         RequestForm rf = contact.getValue(RequestForm.class);
                         myRequestReceipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(), rf.getDate(), rf.getCategory(),rf.getToken()));
+=======
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
                     }
                 }
             }
@@ -121,6 +129,7 @@ public class MainActivity extends FragmentActivity{
         });
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     //값 들어올때까지 재귀 호출
     // count값은 애초에 finsih영수증이 없을 경우에 대비해서 애초에 없다면 그냥 보여주기.
@@ -149,6 +158,8 @@ public class MainActivity extends FragmentActivity{
             Log.e("what the size: ", "" + myRequestReceipt.size());
         }
 =======
+=======
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
         // 평가받은 영수증 경로 따로 빼서 가져오는 것
         // 위에 else문에 같이넣으면 평가 요청한 영수증 목록을 가져옴
         // 여기서 uidSet 사용이유와 myRequestReceipt를 두번 저장 하는 것이 이상함.
@@ -160,6 +171,7 @@ public class MainActivity extends FragmentActivity{
                 if (dataSnapshot.getKey().equals(uid)) {
                     for (DataSnapshot contact : child) {
                         RequestForm rf = contact.getValue(RequestForm.class);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
                         if (!uidSet.contains(contact.getKey())) {
@@ -182,6 +194,19 @@ public class MainActivity extends FragmentActivity{
                         }
                         myRequestReceipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory(),rf.getCheck(),rf.getToken(), saving, contact.getKey()));
 >>>>>>> bce1a129... 저금하기 완료
+=======
+
+                        int saving = 0;
+                        if (saving_items != null) {
+                            if (saving_items.contains(contact.getKey())) {
+                                // 0: 저금하기, 1: 저금완료
+                                saving = 1;
+                            } else {
+                                saving = 0;
+                            }
+                        }
+                        myRequestReceipt.add(new RequestForm(rf.getSex(), rf.getMoney(), rf.getMonthly_money(), rf.getTitle(), rf.getPrice(), rf.getContent(), rf.getUuid(),rf.getDate(),rf.getCategory(),rf.getCheck(),rf.getToken(), saving, contact.getKey()));
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
                     }
                 }
             }
@@ -190,6 +215,7 @@ public class MainActivity extends FragmentActivity{
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {}
+<<<<<<< HEAD
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
             @Override
@@ -200,6 +226,16 @@ public class MainActivity extends FragmentActivity{
     }
 
     // 값 들어올때까지 재귀 호출
+=======
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+        });
+    }
+
+    //값 들어올때까지 재귀 호출
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
     // count값은 애초에 finsih영수증이 없을 경우에 대비해서 애초에 없다면 그냥 보여주기.
     @Override
     protected void onResume() {
@@ -232,7 +268,10 @@ public class MainActivity extends FragmentActivity{
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
     // tab들
     private void setupViewPager() {
         adapter = new SectionPagerAdapter(getSupportFragmentManager());
