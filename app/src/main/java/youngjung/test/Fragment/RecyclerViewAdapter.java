@@ -2,11 +2,16 @@ package youngjung.test.Fragment;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+import youngjung.test.Model.RequestForm;
 import youngjung.test.R;
 
 /**
@@ -14,17 +19,13 @@ import youngjung.test.R;
  */
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>  {
-    private String[] mData = new String[0];
-    private String[] mName = new String[0];
-    private String[] mPrice = new String[0];
+    private ArrayList<RequestForm> receipts;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
-    RecyclerViewAdapter(Context context, String[] data, String[] name, String[] price) {
+    public RecyclerViewAdapter(Context context, ArrayList<RequestForm> receipts) {
         this.mInflater = LayoutInflater.from(context);
-        this.mData = data;
-        this.mName = name;
-        this.mPrice = price;
+        this.receipts = receipts;
     }
 
     @Override
@@ -35,29 +36,41 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String animal = mData[position];
-        String test = mName[position];
-        String price = mPrice[position];
-        holder.receiptDate.setText(animal);
-        holder.receiptName.setText(test);
-        holder.receiptPrice.setText(price);
+        String date = receipts.get(position).getDate();
+        String title = receipts.get(position).getTitle();
+        int price = receipts.get(position).getPrice();
+        int stamp = receipts.get(position).getCheck();
+
+        holder.receiptDate.setText(date);
+        holder.receiptName.setText(title);
+        holder.receiptPrice.setText(price + "원");
+
+        if (stamp == 1) {
+            holder.receiptStamp.setImageResource(R.drawable.ok_stamp);
+        } else if (stamp == 0){
+            holder.receiptStamp.setImageResource(R.drawable.no_stamp);
+        } else {
+            Log.e("stamp값 이상", stamp + "");
+        }
     }
 
     @Override
     public int getItemCount() {
-        return mData.length;
+        return receipts.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView receiptName;
         TextView receiptDate;
         TextView receiptPrice;
+        ImageView receiptStamp;
 
         public ViewHolder(View itemView) {
             super(itemView);
             receiptName = itemView.findViewById(R.id.receipt_name);
             receiptDate = itemView.findViewById(R.id.receipt_date);
             receiptPrice = itemView.findViewById(R.id.receipt_price);
+            receiptStamp = itemView.findViewById(R.id.receipt_list_stamp);
             itemView.setOnClickListener(this);
         }
 
@@ -67,10 +80,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
-    String getItem(int id) {
-        return mData[id];
-    }
-
     void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }
@@ -78,4 +87,5 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public interface ItemClickListener {
         void onItemClick(View view, int position);
     }
+
 }

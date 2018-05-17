@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:orientation="horizontal"
+        android:background="@color/white"
         android:id="@+id/request_titlebar">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:fontFamily="@string/font_Title_bold"
-            android:textStyle="normal"
+            android:textAppearance="@style/font_noto_md"
             android:textColor="#1f2431"
             android:text="의뢰서 작성"
             android:paddingLeft="40dp"
@@ -39,84 +42,163 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginHorizontal="24dp"
+        android:background="@color/white"
         android:layout_below="@+id/request_titlebar">
+
         <EditText
+            android:id="@+id/request_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-           android:id="@+id/request_title"
-            android:textSize="18sp"
+            android:autoSizeTextType="uniform"
+            android:hint="무엇을 구매할 예정인가요?"
             android:textColor="@color/dark"
-            android:hint="제목을 입력하세요"
-            android:autoSizeTextType="uniform"/>
+            android:background="@color/white"
+            android:layout_marginHorizontal="24dp"
+            android:paddingVertical="6dp"
+            android:textSize="18sp" />
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="8dp"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="24dp"
             android:background="@color/pale_grey"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/request_content"
-                android:textSize="14sp"
-                android:textColor="@color/dark"
-                android:hint="이번 이니스프리 파운데이션이 50가지 종류로 되어 있 고 지금 제가 쓰는 파운데이션은 제 피부에 잘 떠요. 그 리고 지금 신상 프로모션도 진행 중이라구요!! 살까요 말까요?? 고민돼요"
-                />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/pale_grey"/>
+            <EditText
+                android:id="@+id/request_content"
+                android:layout_width="match_parent"
+                android:layout_height="203dp"
+                android:gravity="top"
+                android:paddingTop="11dp"
+                android:paddingHorizontal="24dp"
+                android:hint="내용을 간단하게 기입해주세요."
+                android:textColor="@color/dark"
+                android:background="@color/ice_blue"
+                android:textSize="14sp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="24dp"
+                android:background="@color/pale_grey"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="42dp"
+            android:paddingHorizontal="24dp"
+            android:background="@color/ice_blue"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textSize="14sp"
-                android:gravity="center|left"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="가격 "
+                android:background="@color/ice_blue"
                 android:textColor="@color/warm_grey"
                 android:layout_weight="1"
-                android:text="가격 " />
+                android:textSize="14sp"/>
+
             <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/request_price"
-                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:fontFamily="font_Title_bold"
-                android:textStyle="bold"
-                android:textColor="@color/dark"
-                android:gravity="center"
-                android:layout_gravity="end"
+                android:layout_gravity="center_vertical"
+                android:gravity="right|center_vertical"
+                android:hint="단위 : 원"
+                android:background="@color/ice_blue"
                 android:inputType="number"
-                android:hint="18,000원" />
+                android:textColor="@color/dark"
+                android:textSize="18sp"
+                android:maxLength="9"
+                android:layout_weight="4"
+                android:textStyle="bold" />
         </LinearLayout>
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="8dp"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="24dp"
             android:background="@color/pale_grey"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:textColor="@color/warm_grey"
             android:autoSizeTextType="uniform"
-            android:text="구매하려는 이유 " />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btn_list"
-                android:text="move"/>
+            android:text="카테고리"
+            android:textColor="@color/warm_grey"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="16dp"
+            android:paddingLeft="24dp"
+            android:textSize="14sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="24dp"
+                    android:paddingBottom="16dp">
+                    <ImageButton
+                        android:id="@+id/btn_beauty"
+                        android:layout_width="144dp"
+                        android:layout_height="48dp"
+                        android:background="@color/white"
+                        android:src="@drawable/group_3"
+                        android:scaleType="fitXY"
+                        android:onClick="onClick"/>
+
+                    <ImageButton
+                        android:id="@+id/btn_elec"
+                        android:layout_width="144dp"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="24dp"
+                        android:background="@color/white"
+                        android:src="@drawable/electronic_icon"
+                        android:scaleType="fitXY"
+                        android:onClick="onClick"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:paddingBottom="16dp"
+                    android:orientation="horizontal">
+                    <ImageButton
+                        android:id="@+id/btn_hobby"
+                        android:layout_width="144dp"
+                        android:layout_height="48dp"
+                        android:background="@color/white"
+                        android:src="@drawable/hobby_icon"
+                        android:scaleType="fitXY"
+                        android:onClick="onClick"/>
+                    <ImageButton
+                        android:id="@+id/btn_food"
+                        android:layout_width="144dp"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="24dp"
+                        android:background="@color/white"
+                        android:src="@drawable/food_icon"
+                        android:scaleType="fitXY"
+                        android:onClick="onClick"/>
+                </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/btn_trip"
+                android:layout_width="144dp"
+                android:layout_height="48dp"
+                android:background="@color/white"
+                android:src="@drawable/travel_icon"
+                android:scaleType="fitXY"
+                android:onClick="onClick"/>
+
+            <ImageButton
+                android:id="@+id/btn_etc"
+                android:layout_width="144dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="24dp"
+                android:background="@color/white"
+                android:src="@drawable/group"
+                android:scaleType="fitXY"
+                android:onClick="onClick"/>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cornflower">
+
+    <!--배경-->
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/copy_2" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:layout_marginHorizontal="60dp"
+        android:orientation="vertical">
+
+        <!--의뢰서 제목-->
+        <TextView
+            android:id="@+id/detail_title"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_marginBottom="4dp"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/pale_grey_two" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp">
+
+            <!--돈 마크-->
+            <ImageView
+                android:id="@+id/image_money"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/a12" />
+
+            <!--얼마-->
+            <TextView
+                android:id="@+id/detail_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:paddingLeft="8dp"
+                android:textColor="#202432"
+                android:textSize="18sp"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <!--의뢰서 설명-->
+        <TextView
+            android:id="@+id/detail_content"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="#202432"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!--유저 정보-->
+    <LinearLayout
+        android:id="@+id/user_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="73dp"
+        android:layout_marginTop="309dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!--현재 유저 성별-->
+            <TextView
+                android:id="@+id/cur_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#202432"
+                android:layout_gravity="center"
+                android:layout_marginBottom="3dp"
+                android:textSize="12sp" />
+
+            <!--성별-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="8sp"
+                android:textColor="@color/warm_grey"
+                android:text="성별" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="24dp"
+            android:background="@color/pale_grey_two" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!--현재 유저 목표 금액-->
+            <TextView
+                android:id="@+id/cur_goal_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#393939"
+                android:layout_gravity="center"
+                android:layout_marginBottom="3dp"
+                android:textSize="12sp" />
+
+            <!--목표 금액-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="8sp"
+                android:textColor="@color/warm_grey"
+                android:text="목표금액" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="24dp"
+            android:background="@color/pale_grey_two" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!--현재 유저 한달 생활비-->
+            <TextView
+                android:id="@+id/cur_month_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#393939"
+                android:layout_gravity="center"
+                android:layout_marginBottom="3dp"
+                android:textSize="12sp" />
+
+            <!--한달 생활비-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="8sp"
+                android:textColor="@color/warm_grey"
+                android:text="한달 생활비" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="368dp">
+
+        <!--도장-->
+        <ImageView
+            android:id="@+id/detail_stamp_imgview"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ok_stamp" />
+
+        <!--저금하기 버튼-->
+        <Button
+            android:id="@+id/btn_saving"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginHorizontal="90dp"
+            android:layout_marginTop="77dp"
+            android:background="@drawable/main_btn"
+            android:layout_gravity="center"
+            android:onClick="onClick_btn_saving"
+            android:text="저금하기" />
+    </LinearLayout>
+</FrameLayout>
+

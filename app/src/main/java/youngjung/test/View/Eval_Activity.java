@@ -18,6 +18,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -25,31 +26,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import youngjung.test.MainActivity;
-import youngjung.test.Model.firechild;
+import youngjung.test.Model.RequestForm;
 import youngjung.test.View.ahoy.AhoyOnboarderAdapter;
 import youngjung.test.View.ahoy.AhoyOnboarderCard;
 import com.codemybrainsout.onboarder.utils.ShadowTransformer;
 import com.codemybrainsout.onboarder.views.CircleIndicatorView;
 import com.codemybrainsout.onboarder.views.FlowingGradientClass;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import youngjung.test.R;
+import youngjung.test.View.ahoy.AhoyOnboarderFragment;
 
-import static youngjung.test.MainActivity.form;
+import static youngjung.test.MainActivity.receipt;
 
 /**
  * Created by HANSUNG on 2018-03-11.
  */
-public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivity {
+public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivity implements AhoyOnboarderFragment.CheckListener{
     private CircleIndicatorView circleIndicatorView;
     private ViewPager vpOnboarderPager;
     private AhoyOnboarderAdapter ahoyOnboarderAdapter;
@@ -66,9 +64,17 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
     private List<Integer> colorList;
     private boolean solidBackground = false;
     private List<AhoyOnboarderCard> pages;
+    private TextView tv_text;
+    private TextView eval_title;
+    private Button btn_req_ok;
+    int ck_stamp = -1;
 
+    HashMap<Integer, Integer> ck_hash = new HashMap<>();
     private DatabaseReference databaseReference;
-    private final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    RequestForm a1;
+    RequestForm a2;
+    RequestForm a3;
+    int num1 =0 , num2 = 1, num3 = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,15 +101,78 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
         hideFinish(false);
         fadeOut(ivPrev, false);
 
+        tv_text = findViewById(R.id.tv_text);
+        eval_title = findViewById(R.id.eval_title);
+        btn_req_ok = findViewById(R.id.btn_req_ok);
 
-        if(form.size()!=0) Log.e("test: ", form.get(0).getId() +" size: "+form.size());
-        else Log.e("왜 안나오지?", " "+ MainActivity.form.size());
-//        Query query2 = ref.child(arr.get(0)).orderByValue();
-//        Log.e("getkey: ",query2.getRef().getKey());
+        if(receipt.size() >3){
+            //랜덤 3개 뽑기
+            num1 = (int)(Math.random()*receipt.size()-1);
+            num2 = (int)(Math.random()*receipt.size()-1);
+            num3 = (int)(Math.random()*receipt.size()-1);
 
-        AhoyOnboarderCard ahoyOnboarderCard1 = new AhoyOnboarderCard("클리오 팬슬 아이라이너", "Label your packages with a barcode before we collect it from you.",R.drawable.barcode,R.drawable.a12,"15000원");
-        AhoyOnboarderCard ahoyOnboarderCard2 = new AhoyOnboarderCard("클리오 팬슬 아이라이너", "Label your packages with a barcode before we collect it from you.",R.drawable.barcode,R.drawable.a12,"20000원");
-        AhoyOnboarderCard ahoyOnboarderCard3 = new AhoyOnboarderCard("클리오 팬슬 아이라이너", "Label your packages with a barcode before we collect it from you.",R.drawable.barcode,R.drawable.a12,"17000원");
+            while(num1==num2 || num1==num3 || num2==num3){
+                num2 = (int)(Math.random()*receipt.size()-1);
+                num3 = (int)(Math.random()*receipt.size()-1);
+             //   Log.e("while what's num: ", Integer.toString(num1) + ", " + num2 + ", "+ num3);
+            }
+        }
+        Log.e("what's num: ", Integer.toString(num1) + ", " + num2 + ", "+ num3);
+
+        a1 = receipt.get(num1);
+        a2 = receipt.get(num2);
+        a3 = receipt.get(num3);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        /**
+         * 의뢰서 양식
+         1.성별 :  sex
+         2.한달 급여 : money
+         3. 한달 생활비 : monthly_money;
+         4. 제목 : title
+         5. 가격 : price
+         6. 내용 : content
+         7. 영수증 주인 uid : uuid
+         8. 영수증 보낸 날짜 : data
+         9. 카테고리 : category
+         10. 허불허 : check
+         */
+        btn_req_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ck_hash.size()!=3) Toast.makeText(getApplicationContext(), "평가를 모두 완료해주세요.",Toast.LENGTH_SHORT).show();
+                else{
+                    databaseReference.child("finished receipt").child(a1.getUuid()).push().setValue(new RequestForm(a1.getSex(),a1.getMoney(),a1.getMonthly_money(),a1.getTitle(),a1.getPrice(),a1.getContent(),a1.getUuid(),a1.getDate(),a1.getCategory(),ck_hash.get(0),a1.getToken()));
+                    databaseReference.child("finished receipt").child(a2.getUuid()).push().setValue(new RequestForm(a2.getSex(),a2.getMoney(),a2.getMonthly_money(),a2.getTitle(),a2.getPrice(),a2.getContent(),a2.getUuid(),a2.getDate(),a2.getCategory(),ck_hash.get(1),a2.getToken()));
+                    databaseReference.child("finished receipt").child(a3.getUuid()).push().setValue(new RequestForm(a3.getSex(),a3.getMoney(),a3.getMonthly_money(),a3.getTitle(),a3.getPrice(),a3.getContent(),a3.getUuid(),a3.getDate(),a3.getCategory(),ck_hash.get(2),a3.getToken()));
+
+                    //개발 기간 동안은 주석처리.
+//                    databaseReference.child("Request receipt").child(a1.getUuid()).child(a1.getValue()).removeValue();
+//                    databaseReference.child("Request receipt").child(a2.getUuid()).child(a2.getValue()).removeValue();
+//                    databaseReference.child("Request receipt").child(a3.getUuid()).child(a3.getValue()).removeValue();
+
+                    Toast.makeText(getApplicationContext(), "영수증이 전달되었습니다.", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(Eval_Activity.this, MainActivity.class);
+                    startActivity(i);
+                    receipt.clear();
+                    finish();
+                }
+            }
+        });
+        /**
+         * 의뢰서 양식
+         1.성별 :  sex
+         2.한달 급여 : money
+         3. 한달 생활비 : monthly_money;
+         4. 제목 : title
+         5. 가격 : price
+         6. 내용 : content
+         */
+        Log.e("receipt size: ", " " +receipt.size());
+
+        AhoyOnboarderCard ahoyOnboarderCard1 = new AhoyOnboarderCard(a1.getSex(), a1.getMoney(), a1.getMonthly_money(), a1.getTitle(), a1.getPrice(), a1.getContent(),0);
+        AhoyOnboarderCard ahoyOnboarderCard2 = new AhoyOnboarderCard(a2.getSex(), a2.getMoney(), a2.getMonthly_money(), a2.getTitle(), a2.getPrice(), a2.getContent(),0);
+        AhoyOnboarderCard ahoyOnboarderCard3 = new AhoyOnboarderCard(a3.getSex(), a3.getMoney(), a3.getMonthly_money(), a3.getTitle(), a3.getPrice(), a3.getContent(),0);
 
         ahoyOnboarderCard1.setBackgroundColor(R.color.white);
         ahoyOnboarderCard2.setBackgroundColor(R.color.white);
@@ -135,11 +204,26 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
         setFont(face);
 
         setOnboardPages(pages);
+        Typeface face2 = Typeface.createFromAsset(getAssets(), "fonts/NotoSansCJKkr-Regular.otf");
+        Typeface face3 = Typeface.createFromAsset(getAssets(), "fonts/NotoSansCJKkr-Medium.otf");
+        tv_text.setTypeface(face2);
+        eval_title.setTypeface(face3);
+        btn_req_ok.setTypeface(face2);
 
     }
 
-    public void setOnboardPages(List<youngjung.test.View.ahoy.AhoyOnboarderCard> pages) {
+    @Override
+    public void Btn_Check(int stamp) {
+        ck_stamp = stamp;
+        ck_hash.put(vpOnboarderPager.getCurrentItem(),ck_stamp);
+        if(ck_hash.containsKey(vpOnboarderPager.getCurrentItem())){
+            ck_hash.remove(vpOnboarderPager.getCurrentItem());
+            ck_hash.put(vpOnboarderPager.getCurrentItem(),ck_stamp);
+        }
+       // Log.e("확인",Integer.toString(ck_stamp) + ", " +vpOnboarderPager.getCurrentItem() + ", " +ck_hash.size());
+    }
 
+    public void setOnboardPages(List<youngjung.test.View.ahoy.AhoyOnboarderCard> pages) {
         this.pages = pages;
         ahoyOnboarderAdapter = new AhoyOnboarderAdapter(pages, getSupportFragmentManager(), dpToPixels(0, this), typeface);
         mCardShadowTransformer = new ShadowTransformer(vpOnboarderPager, ahoyOnboarderAdapter);
@@ -147,7 +231,6 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
         vpOnboarderPager.setAdapter(ahoyOnboarderAdapter);
         vpOnboarderPager.setPageTransformer(false, mCardShadowTransformer);
         circleIndicatorView.setPageIndicators(pages.size());
-
     }
 
     public float dpToPixels(int dp, Context context) {
@@ -193,19 +276,22 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
 
         if (position == lastPagePosition) {
             fadeOut(circleIndicatorView);
-            showFinish();
+//            showFinish();
             fadeOut(ivNext);
             fadeIn(ivPrev);
+            btn_req_ok.setVisibility(View.VISIBLE);
         } else if (position == firstPagePosition) {
             fadeOut(ivPrev);
             fadeIn(ivNext);
             hideFinish();
             fadeIn(circleIndicatorView);
+            btn_req_ok.setVisibility(View.INVISIBLE);
         } else {
             fadeIn(circleIndicatorView);
             hideFinish();
             fadeIn(ivPrev);
             fadeIn(ivNext);
+            btn_req_ok.setVisibility(View.INVISIBLE);
         }
 
         if (solidBackground && (pages.size() == colorList.size())) {

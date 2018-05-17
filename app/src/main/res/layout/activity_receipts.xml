@@ -1,56 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/cornflower">
+    android:id="@+id/test"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cornflower"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="내 의뢰서 리스트"
-        android:textColor="@color/white"
+        android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="117dp"
+        android:text="내 의뢰서"
+        android:textColor="@color/white"
         android:textSize="18sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btn_left_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00ff0000"
             android:text="&lt;"
             android:textColor="@color/white" />
 
-
+        <!--년도. 월-->
         <TextView
+            android:id="@+id/cur_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
-            android:text="2018.02"
-            android:textSize="14sp"
+            android:text=""
             android:textColor="@color/white"
+            android:textSize="14sp"
             android:textStyle="normal" />
 
         <Button
+            android:id="@+id/btm_right_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00ff0000"
-            android:textColor="@color/white"
-            android:text="&gt;" />
+            android:text="&gt;"
+            android:textColor="@color/white" />
+
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="15dp"/>
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/no_receipt_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="평가된 의뢰서가 없습니다."
+            android:textColor="@color/white"
+            android:layout_gravity="center"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp" />
+
+    </FrameLayout>
+
 
 </LinearLayout>
