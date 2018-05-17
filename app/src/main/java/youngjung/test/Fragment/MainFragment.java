@@ -31,6 +31,7 @@ import youngjung.test.Model.Profile;
 import youngjung.test.R;
 import youngjung.test.View.Eval_Activity;
 import youngjung.test.View.RequestActivity;
+import youngjung.test.ui.dialog.LodingDialog;
 
 /**
  * Created by YoungJung on 2018-03-25.
@@ -52,8 +53,7 @@ public class MainFragment extends Fragment{
         mContext = getActivity();
         app = new DefaultApplication();
         dbHelper = new MyDBHelper(getContext());
-
-    }
+        }
 
     @Nullable
     @Override
@@ -155,4 +155,5 @@ public class MainFragment extends Fragment{
         sum_money = dbHelper.get_money();
         tv_acc_money.setText(app.Moneyfomat(Integer.parseInt(sum_money)));
     }
+
 }
