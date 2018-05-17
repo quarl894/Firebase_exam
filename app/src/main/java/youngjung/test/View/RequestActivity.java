@@ -8,10 +8,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Html;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -19,6 +21,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -187,11 +190,19 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
         }
     }
 
-    //버튼 색만 왜 안바뀌지?
     void Dialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("의뢰서가 등록되었습니다.");
-        builder.setMessage("평가가 완료되면 푸시알림이 울립니다.");
+
+        TextView tv_title = new TextView(this);
+        tv_title.setText("의뢰서가 등록되었습니다");
+        tv_title.setPadding(dp2px(22), dp2px(32), dp2px(71), dp2px(16));
+        tv_title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+        tv_title.setTextColor(getApplicationContext().getResources().getColor(R.color.dark_two));
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/NotoSansCJKkr-Medium.otf");
+        tv_title.setTypeface(tf);
+
+        builder.setCustomTitle(tv_title);
+        builder.setMessage("평가가 완료되면 푸시알림이 울려요.");
         builder.setPositiveButton(Html.fromHtml("<font color='#7C70F4'>확인</font>"),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -204,11 +215,15 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
                                         finish();
                                     }
                                 });
-        builder.setNegativeButton(Html.fromHtml("<font color='#7C70F4'>취소</font>"),
+        builder.setNegativeButton(Html.fromHtml("<font color='#9b9b9b'>취소</font>"),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                     }
                 });
         builder.show();
+    }
+
+    int dp2px(int dp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, this.getResources().getDisplayMetrics());
     }
 }
