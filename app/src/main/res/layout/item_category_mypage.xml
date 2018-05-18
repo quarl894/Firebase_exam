@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="36dp"
     android:layout_marginVertical="8dp"
-    android:background="@color/white">
+    android:background="@drawable/mypage_ranking_other">
 
     <TextView
         android:id="@+id/category_ranking"

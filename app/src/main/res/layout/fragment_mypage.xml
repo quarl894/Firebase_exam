@@ -26,7 +26,7 @@
             android:textStyle="normal" />
     </LinearLayout>
 
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -79,6 +79,7 @@
                                 android:autoSizeTextType="uniform"
                                 android:paddingRight="8dp"
                                 android:text="불러오는 중"
+                                android:textAppearance="@style/font_noto_bo"
                                 android:textColor="#1f2431"
                                 android:textSize="14sp" />
 
@@ -86,7 +87,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:autoSizeTextType="uniform"
-                                android:text="불러오는 중"
+                                android:text="탕진이"
                                 android:textColor="#7f6ff1"
                                 android:textSize="14sp" />
                         </LinearLayout>
@@ -96,8 +97,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:autoSizeTextType="uniform"
                             android:text="불러오는 중"
+                            android:textAppearance="@style/font_noto_re"
                             android:textColor="#1f2431"
                             android:textSize="12sp" />
                     </LinearLayout>
@@ -148,8 +149,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:autoSizeTextType="uniform"
-                            android:fontFamily="font_Title_bold"
                             android:text="불러오는 중"
+                            android:textAppearance="@style/font_robo_md"
                             android:textColor="#1f2431"
                             android:textSize="20sp"
                             android:textStyle="bold" />
@@ -190,8 +191,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:autoSizeTextType="uniform"
-                            android:fontFamily="font_Title_bold"
                             android:text="불러오는 중"
+                            android:textAppearance="@style/font_robo_md"
                             android:textColor="#1f2431"
                             android:textSize="20sp"
                             android:textStyle="bold" />
@@ -242,5 +243,5 @@
 
             </android.support.constraint.ConstraintLayout>
         </LinearLayout>
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 </LinearLayout>
