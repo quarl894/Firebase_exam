@@ -2,9 +2,12 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:paddingBottom="5dp"
         android:orientation="horizontal"
         android:id="@+id/login_titlebar">
         <TextView
@@ -13,7 +16,7 @@
             android:textSize="18sp"
             android:textAppearance="@style/font_noto_md"
             android:textStyle="normal"
-            android:textColor="#1f2431"
+            android:textColor="@color/dark_two"
             android:text="회원 정보 수정"
             android:paddingLeft="40dp"
             android:autoSizeTextType="uniform"
@@ -33,124 +36,153 @@
             android:paddingRight="24dp"
             android:text="완료" />
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/lin_login_edit"
+        android:layout_marginHorizontal="24dp"
+        android:background="@color/pale_grey_two"
+        android:layout_below="@+id/login_titlebar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/lin_login_edit"
+        android:layout_marginTop="21dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/login_titlebar"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp"
-            android:orientation="vertical">
+            android:layout_height="40dp"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingRight="29dp"
-                    android:text="성별" />
-
-                <Button
-                    android:id="@+id/btn_male"
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:gravity="center"
-                    android:text="남" />
-
-                <View
-                    android:layout_width="5dp"
-                    android:layout_height="wrap_content" />
-
-                <Button
-                    android:id="@+id/btn_female"
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:gravity="center"
-                    android:text="여" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:textColor="@color/dark_two"
+                android:paddingRight="29dp"
+                android:text="성별" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="29dp"
-                    android:text="이름              " />
+            <Button
+                android:id="@+id/btn_male"
+                android:background="@drawable/saving_finish_btn"
+                android:layout_width="100dp"
+                android:layout_height="32dp"
+                android:gravity="center"
+                android:text="남" />
 
-                <EditText
-                    android:id="@+id/edit_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+            <View
+                android:layout_width="15dp"
+                android:layout_height="wrap_content" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="29dp"
-                    android:text="나의 목표    " />
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint=""
-                    android:id="@+id/edit_goal" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="29dp"
-                    android:text="목표 금액    " />
-
-                <EditText
-                    android:id="@+id/edit_goal_money"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="29dp"
-                    android:text="한달 생활비" />
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint=""
-                    android:id="@+id/edit_month_money" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="51dp"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/checkBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="이용약관과 개인정보보호정책에 동의(필수)" />
-            </LinearLayout>
+            <Button
+                android:id="@+id/btn_female"
+                android:background="@drawable/saving_finish_btn"
+                android:layout_width="100dp"
+                android:layout_height="32dp"
+                android:gravity="center"
+                android:text="여" />
         </LinearLayout>
-    </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="29dp"
+                android:textColor="@color/dark_two"
+                android:text="이름              " />
+
+            <EditText
+                android:id="@+id/edit_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="29dp"
+                android:textColor="@color/dark_two"
+                android:text="나의 목표    " />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=""
+                android:id="@+id/edit_goal" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="29dp"
+                android:textColor="@color/dark_two"
+                android:text="목표 금액    " />
+
+            <EditText
+                android:id="@+id/edit_goal_money"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="원"
+                android:textAlignment="viewEnd"
+                android:inputType="number"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="29dp"
+                android:textColor="@color/dark_two"
+                android:text="한달 생활비" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="원"
+                android:textAlignment="viewEnd"
+                android:textSize="12sp"
+                android:inputType="number"
+                android:id="@+id/edit_month_money" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="27dp"
+            android:layout_height="51dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="10sp"
+                android:text="이용약관과 개인정보보호정책에 동의(필수)" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -3,12 +3,17 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/cornflower">
 
     <!--배경-->
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/shadow_full" />
+
     <ImageView
         android:id="@+id/background"
         android:layout_width="wrap_content"
@@ -31,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
+            android:textAppearance="@style/font_noto_md"
             android:layout_marginBottom="4dp"
             android:textSize="18sp" />
 
@@ -59,11 +65,18 @@
                 android:id="@+id/detail_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
+                android:textAppearance="@style/font_noto_md"
                 android:paddingLeft="8dp"
                 android:textColor="#202432"
                 android:textSize="18sp"
                 android:textStyle="normal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/font_noto_md"
+                android:textSize="14sp"
+                android:text="원" />
         </LinearLayout>
 
         <!--의뢰서 설명-->
@@ -100,6 +113,7 @@
                 android:textColor="#202432"
                 android:layout_gravity="center"
                 android:layout_marginBottom="3dp"
+                android:textAppearance="@style/font_noto_bo"
                 android:textSize="12sp" />
 
             <!--성별-->
@@ -131,6 +145,7 @@
                 android:textColor="#393939"
                 android:layout_gravity="center"
                 android:layout_marginBottom="3dp"
+                android:textAppearance="@style/font_noto_bo"
                 android:textSize="12sp" />
 
             <!--목표 금액-->
@@ -162,6 +177,7 @@
                 android:textColor="#393939"
                 android:layout_gravity="center"
                 android:layout_marginBottom="3dp"
+                android:textAppearance="@style/font_noto_bo"
                 android:textSize="12sp" />
 
             <!--한달 생활비-->
