@@ -41,7 +41,6 @@ public class MyProgressBar extends View {
     private Rect text1;
     private Paint text1Paint;
 
-
     public float getStrokeWidth() {
         return strokeWidth;
     }
