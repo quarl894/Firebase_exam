@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 import youngjung.test.DB.MyDBHelper;
+import youngjung.test.DefaultApplication;
 import youngjung.test.MainActivity;
 import youngjung.test.Model.Profile;
 import youngjung.test.R;
@@ -34,6 +35,7 @@ public class MyReceiptDetailActivity extends AppCompatActivity {
     private MyDBHelper dbHelper;
     Profile curUser;
     Intent intent;
+    DefaultApplication app;
 
 
     @Override
@@ -41,6 +43,7 @@ public class MyReceiptDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         dbHelper = new MyDBHelper(getApplicationContext());
         setContentView(R.layout.activity_receiptdetail);
+        app = new DefaultApplication();
 
         receipt_title = findViewById(R.id.detail_title);
         cur_sex = findViewById(R.id.cur_sex);
@@ -54,12 +57,12 @@ public class MyReceiptDetailActivity extends AppCompatActivity {
         MainActivity a = new MainActivity();
         curUser = a.getCurUser();
         cur_sex.setText(curUser.getSex());
-        cur_goal_money.setText(curUser.getGoal_money() + "원");
-        cur_month_money.setText(curUser.getMonthly_money() + "원");
+        cur_goal_money.setText(app.Moneyfomat(Integer.parseInt(curUser.getGoal_money())));
+        cur_month_money.setText(app.Moneyfomat(Integer.parseInt(curUser.getMonthly_money())));
 
         intent = getIntent();
         receipt_title.setText(intent.getStringExtra("title"));
-        price.setText(intent.getIntExtra("price", 0) + "원");
+        price.setText(app.MoneyfomatWithoutWon(intent.getIntExtra("price", 0)));
         if (intent.getIntExtra("check", 0) == 1) {
             stamp.setImageResource(R.drawable.ok_stamp);
         } else {
