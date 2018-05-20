@@ -1,5 +1,6 @@
 package youngjung.test.Login;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 import youngjung.test.MainActivity;
 import youngjung.test.Model.Profile;
 import youngjung.test.R;
@@ -36,6 +38,7 @@ public class LoginEditActivity extends baseActivity {
     private DatabaseReference databaseReference;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     String str = "이용약관과 개인정보보호정책에 동의(필수)";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +54,7 @@ public class LoginEditActivity extends baseActivity {
         edit_month_money = findViewById(R.id.edit_month_money);
         ch = findViewById(R.id.checkBox);
         SpannableStringBuilder ssb = new SpannableStringBuilder(str);
-        ssb.setSpan(new ForegroundColorSpan(Color.parseColor("#d0021b")), 19, 22, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        ssb.setSpan(new ForegroundColorSpan(Color.parseColor("#d0021b")), 18, 22, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         ch.setText(ssb);
 
@@ -63,16 +66,16 @@ public class LoginEditActivity extends baseActivity {
         btn_male.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btn_male.setBackgroundResource(R.color.golden_yellow);
-                btn_female.setBackgroundResource(R.color.white);
+                btn_male.setBackgroundResource(R.drawable.main_btn);
+                btn_female.setBackgroundResource(R.drawable.saving_finish_btn);
                 sex = "남성";
             }
         });
         btn_female.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btn_female.setBackgroundResource(R.color.golden_yellow);
-                btn_male.setBackgroundResource(R.color.white);
+                btn_female.setBackgroundResource(R.drawable.main_btn);
+                btn_male.setBackgroundResource(R.drawable.saving_finish_btn);
                 sex = "여성";
             }
         });
@@ -93,5 +96,10 @@ public class LoginEditActivity extends baseActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

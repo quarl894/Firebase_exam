@@ -36,6 +36,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="14dp"
+                android:textAppearance="@style/font_noto_md"
                 android:layout_marginLeft="10dp"
                 android:gravity="center"
                 android:textColor="#1f2431"
@@ -63,7 +65,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="7dp"
                 android:gravity="right">
@@ -81,11 +83,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
-                    android:fontFamily="sans-serif-medium"
-                    android:textStyle="normal"
-                    android:textColor="#202432"
+                    android:textAppearance="@style/font_noto_md"
+                    android:textColor="@color/dark_two"
+                    android:text="15000"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="@color/dark_two"
                     android:layout_marginRight="10dp"
-                    android:text="15000원"/>
+                    android:text="원" />
 
             </LinearLayout>
 

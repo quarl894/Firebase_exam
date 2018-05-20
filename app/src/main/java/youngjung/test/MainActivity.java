@@ -72,9 +72,9 @@ public class MainActivity extends FragmentActivity{
         //FCM
         token = FirebaseInstanceId.getInstance().getToken();
 
-        if (FirebaseInstanceId.getInstance().getToken() != null) {
-            Log.d("FCM :", "token = " + FirebaseInstanceId.getInstance().getToken());
-        }
+//        if (FirebaseInstanceId.getInstance().getToken() != null) {
+//            Log.d("FCM :", "token = " + FirebaseInstanceId.getInstance().getToken());
+//        }
         databaseReference = FirebaseDatabase.getInstance().getReference();
         DatabaseReference ref = databaseReference.child("Request receipt");
 

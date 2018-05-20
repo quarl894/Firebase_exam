@@ -71,6 +71,10 @@ public class DefaultApplication extends Application {
         return NumberFormat.getNumberInstance(Locale.KOREA).format(amount) + "원";
     }
 
+    public String MoneyfomatWithoutWon(int amount){
+        return NumberFormat.getNumberInstance(Locale.KOREA).format(amount);
+    }
+
     public static int dpToPx(int dp) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         float density = displayMetrics.density;
