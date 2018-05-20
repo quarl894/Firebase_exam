@@ -3,9 +3,9 @@ package youngjung.test.Model;
 public class Category {
     String name;
     int number;
-    int imageId;
+    Integer[] imageId;
 
-    public Category(String name, int number, int imageId) {
+    public Category(String name, int number, Integer[] imageId) {
         this.name = name;
         this.number = number;
         this.imageId = imageId;
@@ -27,11 +27,11 @@ public class Category {
         this.number = number;
     }
 
-    public int getImageId() {
+    public Integer[] getImageId() {
         return imageId;
     }
 
-    public void setImageId(int imageId) {
+    public void setImageId(Integer[] imageId) {
         this.imageId = imageId;
     }
 }
