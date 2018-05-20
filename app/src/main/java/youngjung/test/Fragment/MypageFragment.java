@@ -34,7 +34,9 @@ public class MypageFragment extends Fragment {
     private DatabaseReference databaseReference;
     private MyDBHelper dbHelper;
     private TextView tv_name, tv_goal, tv_goal_money, tv_acc_money;
+    String[] info = new String[3];
     private DefaultApplication app;
+    String sum_money ="0";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,6 +66,7 @@ public class MypageFragment extends Fragment {
         tv_goal = rootView.findViewById(R.id.tv_goal);
         tv_goal_money = rootView.findViewById(R.id.tv_goal_money);
         tv_acc_money = rootView.findViewById(R.id.tv_acc_money);
+        tv_acc_money.setText(app.Moneyfomat(Integer.parseInt(sum_money)));
 
         dbHelper = new MyDBHelper(getContext());
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -76,7 +79,13 @@ public class MypageFragment extends Fragment {
                     Log.e("test:", pro.getEmail());
                     tv_name.setText(pro.getName());
                     tv_goal.setText(pro.getGoal());
+                    tv_goal_money.setText(app.Moneyfomat(Integer.parseInt(pro.getGoal_money())));
 
+                    info[0] = pro.getSex();
+                    info[1] = pro.getGoal_money();
+                    info[2] = pro.getMonthly_money();
+
+                    // 영수증 디테일페이지에서 자기 정보 가져오기 위한 것
                     MainActivity a = (MainActivity) getActivity();
                     a.saveCurUser(pro);
                 }
@@ -113,5 +122,7 @@ public class MypageFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        sum_money = dbHelper.get_money();
+        tv_acc_money.setText(app.Moneyfomat(Integer.parseInt(sum_money)));
     }
 }
