@@ -53,7 +53,7 @@ public class MyPageListAdapter extends RecyclerView.Adapter<MyPageListAdapter.My
     public void onBindViewHolder(MyPageHolder holder, int position) {
         Category item = list.get(position);
         holder.category_ranking.setText((position + 1) + "위");
-        holder.category_image.setImageResource(item.getImageId());
+        holder.category_image.setImageResource(item.getImageId()[DefaultApplication.PURPLE]);
         holder.category_title.setText(item.getName());
         holder.category_num.setText(item.getNumber() + "");
 
@@ -67,7 +67,7 @@ public class MyPageListAdapter extends RecyclerView.Adapter<MyPageListAdapter.My
             layout.setLayoutParams(params);
 
             holder.category_ranking.setTextColor(Color.WHITE);
-            holder.category_image.setImageResource(item.getImageId());
+            holder.category_image.setImageResource(item.getImageId()[DefaultApplication.WHITE]);
             holder.category_title.setTextColor(Color.WHITE);
             holder.category_num.setTextColor(Color.WHITE);
         }
@@ -75,7 +75,11 @@ public class MyPageListAdapter extends RecyclerView.Adapter<MyPageListAdapter.My
 
     @Override
     public int getItemCount() {
-        return list.size();
+        int size = list.size();
+        if (size < 3)
+            return size;
+        else
+            return 3;
     }
 
     public class MyPageHolder extends RecyclerView.ViewHolder {
