@@ -146,7 +146,6 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
                     databaseReference.child("finished receipt").child(a2.getUuid()).push().setValue(new RequestForm(a2.getSex(),a2.getMoney(),a2.getMonthly_money(),a2.getTitle(),a2.getPrice(),a2.getContent(),a2.getUuid(),a2.getDate(),a2.getCategory(),ck_hash.get(1),a2.getToken()));
                     databaseReference.child("finished receipt").child(a3.getUuid()).push().setValue(new RequestForm(a3.getSex(),a3.getMoney(),a3.getMonthly_money(),a3.getTitle(),a3.getPrice(),a3.getContent(),a3.getUuid(),a3.getDate(),a3.getCategory(),ck_hash.get(2),a3.getToken()));
 
-                    //개발 기간 동안은 주석처리.
                     databaseReference.child("Request receipt").child(a1.getUuid()).child(a1.getValue()).removeValue();
                     databaseReference.child("Request receipt").child(a2.getUuid()).child(a2.getValue()).removeValue();
                     databaseReference.child("Request receipt").child(a3.getUuid()).child(a3.getValue()).removeValue();
