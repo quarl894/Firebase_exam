@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import youngjung.test.DefaultApplication;
 import youngjung.test.Model.RequestForm;
 import youngjung.test.R;
 
@@ -22,6 +23,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private ArrayList<RequestForm> receipts;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
+    private DefaultApplication app;
 
     public RecyclerViewAdapter(Context context, ArrayList<RequestForm> receipts) {
         this.mInflater = LayoutInflater.from(context);
@@ -30,6 +32,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        app = new DefaultApplication();
         View view = mInflater.inflate(R.layout.recyclerview_item, parent, false);
         return new ViewHolder(view);
     }
@@ -43,7 +46,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.receiptDate.setText(date);
         holder.receiptName.setText(title);
-        holder.receiptPrice.setText(price + "원");
+        holder.receiptPrice.setText(app.MoneyfomatWithoutWon(price));
 
         if (stamp == 1) {
             holder.receiptStamp.setImageResource(R.drawable.ok_stamp);
