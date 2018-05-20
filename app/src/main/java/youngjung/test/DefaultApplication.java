@@ -2,9 +2,11 @@ package youngjung.test;
 
 import android.app.Application;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 
 import java.text.NumberFormat;
+import java.util.HashMap;
 import java.util.Locale;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
@@ -15,8 +17,14 @@ import youngjung.test.DB.MyDBHelper;
  */
 
 public class DefaultApplication extends Application {
+    public static final int PURPLE = 0;
+    public static final int WHITE = 1;
     private static MyDBHelper dbHelper = null;
     private static Context context;
+    private static HashMap<String, Integer[]> categoryHashMap;
+
+    private static int[] category_image_purple = {R.drawable.ranking_beauty_purplee, R.drawable.ranking_elec_purple, R.drawable.ranking_hobby_purplee, R.drawable.ranking_food_purplee, R.drawable.ranking_trip_purplee, R.drawable.ranking_else_purplee};
+    private static int[] category_image_white = {R.drawable.ranking_beauty_whitee, R.drawable.ranking_elec_whitee, R.drawable.ranking_hobby_whitee, R.drawable.ranking_food_whitee, R.drawable.ranking_trip_whitee, R.drawable.ranking_else_whitee};
 
     @Override
     public void onCreate() {
@@ -25,14 +33,21 @@ public class DefaultApplication extends Application {
         dbHelper = new MyDBHelper(getApplicationContext());
         context = this;
 
+        String[] category_text = {"패션 및 뷰티", "전자기기", "취미생활", "음식", "여행", "기타"};
+
+        categoryHashMap = new HashMap<>();
+        for (int i = 0; i < category_image_purple.length; i++) {
+            categoryHashMap.put(category_text[i], new Integer[]{category_image_purple[i], category_image_white[i]});
+        }
+
         init();
     }
 
-    private void init(){
+    private void init() {
         initFont();
     }
 
-    public void initFont(){
+    public void initFont() {
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
                 .setDefaultFontPath("fonts/NotoSansCJKkr-Regular.otf")
                 .setFontAttrId(R.attr.fontPath)
@@ -43,8 +58,17 @@ public class DefaultApplication extends Application {
     public static MyDBHelper getDbHelper() {
         return dbHelper;
     }
-    public String Moneyfomat(int amount){
-        return NumberFormat.getNumberInstance(Locale.KOREA).format(amount) +"원";
+
+    public static HashMap<String, Integer[]> getCategoryHashMap() {
+        return categoryHashMap;
+    }
+
+    public static int[] getCategory_image_white() {
+        return category_image_white;
+    }
+
+    public String Moneyfomat(int amount) {
+        return NumberFormat.getNumberInstance(Locale.KOREA).format(amount) + "원";
     }
 
     public String MoneyfomatWithoutWon(int amount){

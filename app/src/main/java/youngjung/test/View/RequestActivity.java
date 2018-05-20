@@ -135,57 +135,57 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
         switch(v.getId()){
             case R.id.btn_trip :
                 category = "여행";
-                btn_trip.setBackgroundResource(R.color.golden_yellow);
-                btn_elec.setBackgroundResource(R.color.white);
-                btn_food.setBackgroundResource(R.color.white);
-                btn_hobby.setBackgroundResource(R.color.white);
-                btn_beauty.setBackgroundResource(R.color.white);
-                btn_etc.setBackgroundResource(R.color.white);
+                btn_trip.setBackgroundResource(R.drawable.cate_click_trip);
+                btn_elec.setBackgroundResource(R.drawable.cate_elec);
+                btn_food.setBackgroundResource(R.drawable.cate_food);
+                btn_hobby.setBackgroundResource(R.drawable.cate_hobby);
+                btn_beauty.setBackgroundResource(R.drawable.cate_beauty);
+                btn_etc.setBackgroundResource(R.drawable.cate_ese);
                 break;
             case R.id.btn_food :
                 category = "음식";
-                btn_food.setBackgroundResource(R.color.golden_yellow);
-                btn_elec.setBackgroundResource(R.color.white);
-                btn_trip.setBackgroundResource(R.color.white);
-                btn_hobby.setBackgroundResource(R.color.white);
-                btn_beauty.setBackgroundResource(R.color.white);
-                btn_etc.setBackgroundResource(R.color.white);
+                btn_food.setBackgroundResource(R.drawable.cate_click_food);
+                btn_trip.setBackgroundResource(R.drawable.cate_trip);
+                btn_elec.setBackgroundResource(R.drawable.cate_elec);
+                btn_hobby.setBackgroundResource(R.drawable.cate_hobby);
+                btn_beauty.setBackgroundResource(R.drawable.cate_beauty);
+                btn_etc.setBackgroundResource(R.drawable.cate_ese);
                 break;
             case R.id.btn_elec:
                 category ="전자기기";
-                btn_elec.setBackgroundResource(R.color.golden_yellow);
-                btn_food.setBackgroundResource(R.color.white);
-                btn_trip.setBackgroundResource(R.color.white);
-                btn_hobby.setBackgroundResource(R.color.white);
-                btn_beauty.setBackgroundResource(R.color.white);
-                btn_etc.setBackgroundResource(R.color.white);
+                btn_elec.setBackgroundResource(R.drawable.cate_click_elec);
+                btn_trip.setBackgroundResource(R.drawable.cate_trip);
+                btn_food.setBackgroundResource(R.drawable.cate_food);
+                btn_hobby.setBackgroundResource(R.drawable.cate_hobby);
+                btn_beauty.setBackgroundResource(R.drawable.cate_beauty);
+                btn_etc.setBackgroundResource(R.drawable.cate_ese);
                 break;
             case R.id.btn_hobby :
                 category = "취미생활";
-                btn_hobby.setBackgroundResource(R.color.golden_yellow);
-                btn_elec.setBackgroundResource(R.color.white);
-                btn_trip.setBackgroundResource(R.color.white);
-                btn_food.setBackgroundResource(R.color.white);
-                btn_beauty.setBackgroundResource(R.color.white);
-                btn_etc.setBackgroundResource(R.color.white);
+                btn_hobby.setBackgroundResource(R.drawable.cate_click_hobby);
+                btn_trip.setBackgroundResource(R.drawable.cate_trip);
+                btn_elec.setBackgroundResource(R.drawable.cate_elec);
+                btn_food.setBackgroundResource(R.drawable.cate_food);
+                btn_beauty.setBackgroundResource(R.drawable.cate_beauty);
+                btn_etc.setBackgroundResource(R.drawable.cate_ese);
                 break;
             case R.id.btn_etc :
                 category = "기타";
-                btn_etc.setBackgroundResource(R.color.golden_yellow);
-                btn_elec.setBackgroundResource(R.color.white);
-                btn_trip.setBackgroundResource(R.color.white);
-                btn_food.setBackgroundResource(R.color.white);
-                btn_beauty.setBackgroundResource(R.color.white);
-                btn_hobby.setBackgroundResource(R.color.white);
+                btn_etc.setBackgroundResource(R.drawable.cate_click_else);
+                btn_trip.setBackgroundResource(R.drawable.cate_trip);
+                btn_elec.setBackgroundResource(R.drawable.cate_elec);
+                btn_food.setBackgroundResource(R.drawable.cate_food);
+                btn_hobby.setBackgroundResource(R.drawable.cate_hobby);
+                btn_beauty.setBackgroundResource(R.drawable.cate_beauty);
                 break;
             case R.id.btn_beauty :
-                category = "패션및뷰티";
-                btn_beauty.setBackgroundResource(R.color.golden_yellow);
-                btn_elec.setBackgroundResource(R.color.white);
-                btn_trip.setBackgroundResource(R.color.white);
-                btn_food.setBackgroundResource(R.color.white);
-                btn_hobby.setBackgroundResource(R.color.white);
-                btn_etc.setBackgroundResource(R.color.white);
+                category = "패션 및 뷰티";
+                btn_beauty.setBackgroundResource(R.drawable.cate_click_beauty);
+                btn_trip.setBackgroundResource(R.drawable.cate_trip);
+                btn_elec.setBackgroundResource(R.drawable.cate_elec);
+                btn_food.setBackgroundResource(R.drawable.cate_food);
+                btn_hobby.setBackgroundResource(R.drawable.cate_hobby);
+                btn_etc.setBackgroundResource(R.drawable.cate_ese);
                 break;
         }
     }

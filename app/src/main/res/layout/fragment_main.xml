@@ -161,6 +161,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -219,12 +220,12 @@
         android:layout_marginHorizontal="34dp"
         android:layout_marginTop="40dp"/>
 
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/btn_send"
-        android:layout_below="@+id/btn_send"
-        android:layout_marginTop="17dp"
-        android:text="logout" />
+    <!--<Button-->
+        <!--android:id="@+id/btn"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignEnd="@+id/btn_send"-->
+        <!--android:layout_below="@+id/btn_send"-->
+        <!--android:layout_marginTop="17dp"-->
+        <!--android:text="logout" />-->
 </RelativeLayout>
