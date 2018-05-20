@@ -179,7 +179,7 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
                 btn_beauty.setBackgroundResource(R.drawable.cate_beauty);
                 break;
             case R.id.btn_beauty :
-                category = "패션및뷰티";
+                category = "패션 및 뷰티";
                 btn_beauty.setBackgroundResource(R.drawable.cate_click_beauty);
                 btn_trip.setBackgroundResource(R.drawable.cate_trip);
                 btn_elec.setBackgroundResource(R.drawable.cate_elec);
