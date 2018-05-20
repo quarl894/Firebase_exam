@@ -203,24 +203,33 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
 
         builder.setCustomTitle(tv_title);
         builder.setMessage("평가가 완료되면 푸시알림이 울려요.");
-        builder.setPositiveButton(Html.fromHtml("<font color='#7C70F4'>확인</font>"),
+        builder.setPositiveButton("확인",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                                        databaseReference.child("Request receipt").child(uid).push().setValue(new RequestForm(result[0],Integer.parseInt(result[1]),Integer.parseInt(result[2]), title.getText().toString(),Integer.parseInt(price.getText().toString()),content.getText().toString(),uid, getTime, category,token));
-                                        dbHelper.insert_ctg(category);
-                                        if(!arr_date.contains(getTime.substring(0,8))){
-                                            dbHelper.insert_date(getTime.substring(0,8));
-//                                            Log.e("dbtest_ok: ", ""+dbHelper.get_date());
-                                        }
-                                        finish();
-                                    }
-                                });
-        builder.setNegativeButton(Html.fromHtml("<font color='#9b9b9b'>취소</font>"),
+                        databaseReference.child("Request receipt").child(uid).push().setValue(new RequestForm(result[0], Integer.parseInt(result[1]), Integer.parseInt(result[2]), title.getText().toString(), Integer.parseInt(price.getText().toString()), content.getText().toString(), uid, getTime, category, token));
+                        dbHelper.insert_ctg(category);
+                        if (!arr_date.contains(getTime.substring(0, 8))) {
+                            dbHelper.insert_date(getTime.substring(0, 8));
+                        }
+                        finish();
+                    }
+
+        });
+        final AlertDialog dialog = builder.setNegativeButton("취소",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                     }
-                });
-        builder.show();
+                }).create();
+
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getApplicationContext().getResources().getColor(R.color.cornflower));
+                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getApplicationContext().getResources().getColor(R.color.warm_grey));
+            }
+        });
+
+        dialog.show();
     }
 
     int dp2px(int dp) {
