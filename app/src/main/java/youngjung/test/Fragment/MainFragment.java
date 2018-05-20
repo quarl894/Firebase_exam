@@ -107,15 +107,15 @@ public class MainFragment extends Fragment{
         });
 
         //로그아웃
-        btn = rootView.findViewById(R.id.btn);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent i = new Intent(mContext, LoginActivity.class);
-                startActivity(i);
-                    }
-            });
+//        btn = rootView.findViewById(R.id.btn);
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                FirebaseAuth.getInstance().signOut();
+//                Intent i = new Intent(mContext, LoginActivity.class);
+//                startActivity(i);
+//                    }
+//            });
 
         // 평가하기
         //Firebase 불러오기가 늦어서 예외처리.
@@ -123,8 +123,8 @@ public class MainFragment extends Fragment{
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(MainActivity.receipt.size()==0){
-                    Toast.makeText(getActivity(), "영수증을 불러오는 중입니다. 다시 눌러주세요.",Toast.LENGTH_SHORT).show();
+                if(MainActivity.receipt.size()<3){
+                    Toast.makeText(getActivity(), "현재 평가할 영수증이 없습니다.",Toast.LENGTH_SHORT).show();
                 }else{
                     Intent i = new Intent(mContext, Eval_Activity.class);
                     startActivity(i);

@@ -16,6 +16,7 @@
         android:text="내 의뢰서"
         android:textAppearance="@style/font_noto_md"
         android:textColor="@color/white"
+        android:layout_marginBottom="10dp"
         android:textSize="18sp" />
 
     <LinearLayout
