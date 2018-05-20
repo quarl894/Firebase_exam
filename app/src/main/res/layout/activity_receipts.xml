@@ -14,6 +14,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:text="내 의뢰서"
+        android:textAppearance="@style/font_noto_md"
         android:textColor="@color/white"
         android:textSize="18sp" />
 
@@ -21,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="-6dp"
         android:orientation="horizontal">
 
         <Button
@@ -31,6 +32,7 @@
             android:background="#00ff0000"
             android:gravity="right"
             android:layout_marginRight="16dp"
+            android:textSize="14sp"
             android:text="&lt;"
             android:textColor="@color/white" />
 
@@ -52,6 +54,7 @@
             android:background="#00ff0000"
             android:gravity="left"
             android:layout_marginLeft="16dp"
+            android:textSize="14sp"
             android:text="&gt;"
             android:textColor="@color/white" />
 
