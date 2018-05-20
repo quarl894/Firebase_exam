@@ -15,7 +15,7 @@
             title="finanical" />
         <tab
             id="@+id/tab_mypage"
-            icon="@drawable/my_page"
+            icon="@drawable/menu_mypage"
             title="Mypage" />
     </tabs>
 </PreferenceScreen>
