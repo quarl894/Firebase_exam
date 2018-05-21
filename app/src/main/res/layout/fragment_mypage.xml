@@ -30,18 +30,7 @@
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-<<<<<<< HEAD
-<<<<<<< HEAD
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:background="@drawable/mypage_paper"
-        android:paddingVertical="25dp">
-=======
         android:layout_height="match_parent">
->>>>>>> 3d946e8c... ridickle7
-=======
-        android:layout_height="match_parent">
->>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -76,50 +65,6 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-<<<<<<< HEAD
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="26dp"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/tv_name"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:autoSizeTextType="uniform"
-                                android:paddingRight="8dp"
-                                android:text="불러오는 중"
-                                android:textColor="#1f2431"
-                                android:textSize="14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:autoSizeTextType="uniform"
-                                android:text="불러오는 중"
-                                android:textColor="#7f6ff1"
-                                android:textSize="14sp" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:id="@+id/tv_goal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:autoSizeTextType="uniform"
-                            android:text="불러오는 중"
-                            android:textColor="#1f2431"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-=======
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="26dp"
                         android:orientation="vertical">
@@ -163,7 +108,6 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
->>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
                         android:layout_gravity="center_vertical"
                         android:src="@drawable/next_icon" />
                 </LinearLayout>
@@ -177,7 +121,6 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/main_myPage_info" />
-<<<<<<< HEAD
 
                 <LinearLayout
                     android:id="@+id/main_myPage_data"
@@ -202,32 +145,6 @@
                             android:layout_gravity="center"
                             android:src="@drawable/main_money" />
 
-=======
-
-                <LinearLayout
-                    android:id="@+id/main_myPage_data"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="27dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/main_myPage_progressbar">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/main_money" />
-
->>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
                         <TextView
                             android:id="@+id/tv_goal_money"
                             android:layout_width="wrap_content"
@@ -269,35 +186,6 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:src="@drawable/main_hand" />
-<<<<<<< HEAD
-
-                        <TextView
-                            android:id="@+id/tv_acc_money"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:autoSizeTextType="uniform"
-                            android:fontFamily="font_Title_bold"
-                            android:text="불러오는 중"
-                            android:textColor="#1f2431"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="1dp"
-                            android:layout_marginVertical="2dp"
-                            android:gravity="center"
-                            android:text="현재 누적"
-                            android:textColor="@color/warm_grey"
-                            android:textSize="10sp" />
-                    </LinearLayout>
-                </LinearLayout>
-            </android.support.constraint.ConstraintLayout>
-
-=======
 
                         <TextView
                             android:id="@+id/tv_acc_money"
@@ -325,7 +213,6 @@
                 </LinearLayout>
             </android.support.constraint.ConstraintLayout>
 
->>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
             <TextView
                 android:id="@+id/main_myPage_listTitle"
                 android:layout_width="match_parent"
@@ -344,75 +231,11 @@
                 android:layout_marginTop="8dp"
                 android:orientation="vertical">
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-                <TextView
-                    android:id="@+id/tv_acc_money"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:autoSizeTextType="uniform"
-                    android:fontFamily="font_Title_bold"
-                    android:text="불러오는 중"
-                    android:textColor="#1f2431"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginVertical="2dp"
-                    android:gravity="center"
-                    android:text="현재 누적"
-                    android:textColor="@color/warm_grey"
-                    android:textSize="10sp" />
-            </LinearLayout>
-        </LinearLayout>
-    </android.support.constraint.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/main_myPage_listTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:gravity="center"
-        android:textColor="#1f2431"
-        android:textSize="12sp"
-        android:text="나의 카테고리 랭킹" />
-
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/main_myPage_lowerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/mypage_paper" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/main_myPage_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingVertical="34dp" />
-=======
-=======
->>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
                 <ImageView
                     android:id="@+id/imageView2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/mypage_paper" />
-<<<<<<< HEAD
->>>>>>> 3d946e8c... ridickle7
-=======
->>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/main_myPage_list"
