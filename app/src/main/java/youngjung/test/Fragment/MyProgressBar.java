@@ -163,7 +163,7 @@ public class MyProgressBar extends View {
         String tempProgress;
         float angle;
 
-        tempProgress = (int) progress + "%";
+        tempProgress = String.format("%.0f", progress) + "%";
         angle = 360 * progress / max;
 
         text1Paint.getTextBounds(tempProgress, 0, tempProgress.length(), text1);
