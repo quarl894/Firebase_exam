@@ -12,14 +12,18 @@ import android.util.DisplayMetrics;
 
 import youngjung.test.DefaultApplication;
 
+// type : 0 LoginActivity
+// type : 1 finanActivity
 public class HightlighterSpan extends ReplacementSpan {
     int backgroundColor;
     int foregroundColor;
     int mWidth;
+    int type;
 
-    public HightlighterSpan(int backgroundColor, int foregroundColor) {
+    public HightlighterSpan(int backgroundColor, int foregroundColor, int type) {
         this.backgroundColor = backgroundColor;
         this.foregroundColor = foregroundColor;
+        this.type = type;
     }
 
     @Override
@@ -31,13 +35,25 @@ public class HightlighterSpan extends ReplacementSpan {
 
     @Override
     public void draw(@NonNull Canvas canvas, CharSequence text, int start, int end, float left, int top, int right, int bottom, @NonNull Paint paint) {
-        int highlighterMargin = DefaultApplication.dpToPx(8);
-        if (backgroundColor != 0) {
-            paint.setColor(backgroundColor);
-            canvas.drawRect(left, top + highlighterMargin, right + mWidth, bottom - highlighterMargin, paint);
-        }
 
-        paint.setColor(foregroundColor);
-        canvas.drawText(text, start, end, left, right, paint);
+        if (type == 0) {
+            int highlighterMargin = DefaultApplication.dpToPx(8);
+            if (backgroundColor != 0) {
+                paint.setColor(backgroundColor);
+                canvas.drawRect(left, top + highlighterMargin, right + mWidth, bottom - highlighterMargin, paint);
+            }
+
+            paint.setColor(foregroundColor);
+            canvas.drawText(text, start, end, left, right, paint);
+        } else if (type == 1) {
+            int highlighterMargin = DefaultApplication.dpToPx(8);
+            if (backgroundColor != 0) {
+                paint.setColor(backgroundColor);
+                canvas.drawRect(left, top + highlighterMargin * 2, right + mWidth, bottom, paint);
+            }
+
+            paint.setColor(foregroundColor);
+            canvas.drawText(text, start, end, left, right, paint);
+        }
     }
 }

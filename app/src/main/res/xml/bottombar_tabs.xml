@@ -3,7 +3,7 @@
     <tabs>
         <tab
             id="@+id/tab_home"
-            icon="@drawable/home_icon"
+            icon="@drawable/homeicon"
             title="Home" />
         <tab
             id="@+id/tab_list"
