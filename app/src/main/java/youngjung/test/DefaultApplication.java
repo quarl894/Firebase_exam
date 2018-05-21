@@ -2,6 +2,7 @@ package youngjung.test;
 
 import android.app.Application;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 
@@ -32,6 +33,12 @@ public class DefaultApplication extends Application {
 
         dbHelper = new MyDBHelper(getApplicationContext());
         context = this;
+
+//        SQLiteDatabase db = dbHelper.getWritableDatabase();
+//        db.delete("sum_ctg", null, null);
+//        db.delete("tb_date", null, null);
+//        db.delete("sum_money", null, null);
+//        db.delete("tb_saving_item", null, null);
 
         String[] category_text = {"패션 및 뷰티", "전자기기", "취미생활", "음식", "여행", "기타"};
 
@@ -71,7 +78,7 @@ public class DefaultApplication extends Application {
         return NumberFormat.getNumberInstance(Locale.KOREA).format(amount) + "원";
     }
 
-    public String MoneyfomatWithoutWon(int amount){
+    public String MoneyfomatWithoutWon(int amount) {
         return NumberFormat.getNumberInstance(Locale.KOREA).format(amount);
     }
 
@@ -81,5 +88,14 @@ public class DefaultApplication extends Application {
 
         int px = Math.round((float) dp * density);
         return px;
+    }
+
+    public static float getPercentage(int num1, int num2) {
+        if (num2 == 0) {
+            return 0;
+        }
+
+        float result = num1 / (float) num2 * 100;
+        return result > 100 ? 100 : result;
     }
 }

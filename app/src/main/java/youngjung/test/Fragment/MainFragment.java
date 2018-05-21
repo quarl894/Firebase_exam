@@ -37,15 +37,16 @@ import youngjung.test.ui.dialog.LodingDialog;
  * Created by YoungJung on 2018-03-25.
  */
 
-public class MainFragment extends Fragment{
+public class MainFragment extends Fragment {
     private Context mContext;
-    Button btn, btn_request,btn_send;
-    TextView tv_name, tv_goal, tv_goal_money, tv_acc_money;
+    Button btn, btn_request, btn_send;
+    TextView tv_name, tv_goal, tv_goal_money, tv_acc_money, tv_percentage;
     private MyDBHelper dbHelper;
     private DatabaseReference databaseReference;
     String[] info = new String[3];
     DefaultApplication app;
-    String sum_money ="0";
+    String sum_money = "0";
+    String goal_money = "0";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class MainFragment extends Fragment{
         mContext = getActivity();
         app = new DefaultApplication();
         dbHelper = new MyDBHelper(getContext());
-        }
+    }
 
     @Nullable
     @Override
@@ -63,22 +64,27 @@ public class MainFragment extends Fragment{
         tv_goal = rootView.findViewById(R.id.tv_goal);
         tv_goal_money = rootView.findViewById(R.id.tv_goal_money);
         tv_acc_money = rootView.findViewById(R.id.tv_acc_money);
+        tv_percentage = rootView.findViewById(R.id.tv_percentage);
         tv_acc_money.setText(app.Moneyfomat(Integer.parseInt(sum_money)));
 
-        Log.e("acc_money: ","" +dbHelper.get_money());
+        Log.e("acc_money: ", "" + dbHelper.get_money());
+        sum_money = dbHelper.get_money();
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         databaseReference.child("Member Information").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                if(dataSnapshot.getKey().equals(uid)){
+                if (dataSnapshot.getKey().equals(uid)) {
                     Profile pro = dataSnapshot.getValue(Profile.class);
+                    goal_money = pro.getGoal_money();
+
                     Log.e("test:", pro.getEmail());
                     tv_name.setText(pro.getName());
                     tv_goal.setText(pro.getGoal());
-                    tv_goal_money.setText(app.Moneyfomat(Integer.parseInt(pro.getGoal_money())));
-                  
+                    tv_goal_money.setText(app.Moneyfomat(Integer.parseInt(goal_money)));
+                    tv_percentage.setText((int)DefaultApplication.getPercentage(Integer.parseInt(sum_money), Integer.parseInt(goal_money)) + "%");
+
                     info[0] = pro.getSex();
                     info[1] = pro.getGoal_money();
                     info[2] = pro.getMonthly_money();
@@ -123,9 +129,9 @@ public class MainFragment extends Fragment{
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(MainActivity.receipt.size()<3){
-                    Toast.makeText(getActivity(), "현재 평가할 영수증이 없습니다.",Toast.LENGTH_SHORT).show();
-                }else{
+                if (MainActivity.receipt.size() < 3) {
+                    Toast.makeText(getActivity(), "현재 평가할 영수증이 없습니다.", Toast.LENGTH_SHORT).show();
+                } else {
                     Intent i = new Intent(mContext, Eval_Activity.class);
                     startActivity(i);
                 }
@@ -136,9 +142,9 @@ public class MainFragment extends Fragment{
         btn_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(info[0]==null){
-                    Toast.makeText(getActivity(), "정보를 불러오는 중입니다. 다시 눌러주세요.",Toast.LENGTH_SHORT).show();
-                }else{
+                if (info[0] == null) {
+                    Toast.makeText(getActivity(), "정보를 불러오는 중입니다. 다시 눌러주세요.", Toast.LENGTH_SHORT).show();
+                } else {
                     Intent i = new Intent(getActivity(), RequestActivity.class);
                     i.putExtra("infomation", info);
                     startActivity(i);
@@ -154,6 +160,7 @@ public class MainFragment extends Fragment{
         super.onResume();
         sum_money = dbHelper.get_money();
         tv_acc_money.setText(app.Moneyfomat(Integer.parseInt(sum_money)));
+        DefaultApplication.getPercentage(Integer.parseInt(goal_money), Integer.parseInt(sum_money));
     }
 
 }
