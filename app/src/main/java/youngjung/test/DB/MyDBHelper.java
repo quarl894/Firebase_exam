@@ -219,10 +219,28 @@ public class MyDBHelper extends SQLiteOpenHelper {
             Log.e("sum_money : ", "0");
             return "0";
         } else {
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+            String lastMoney = "";
+=======
+            String lastmoney = "0";
+>>>>>>> 4774997836055dc312548aac5cc443dc5fd806e3
+=======
+            String lastMoney = "0";
+>>>>>>> c7dd6586... 초기 내부디비 수정.
+            while (cursor.moveToNext()) {
+                lastMoney = cursor.getString(1);
+            }
+            if (lastMoney.equals("")) {
+                lastMoney = "0";
+            }
+=======
             String lastMoney = "0";
             while (cursor.moveToNext()) {
                 lastMoney = cursor.getString(1);
             }
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
             cursor.close();
             db.close();
             return lastMoney;

@@ -19,8 +19,17 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+import youngjung.test.Model.EvalForm;
+=======
 import youngjung.test.DefaultApplication;
 import youngjung.test.Model.Category;
+>>>>>>> 3d946e8c... ridickle7
+=======
+import youngjung.test.DefaultApplication;
+import youngjung.test.Model.Category;
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 import youngjung.test.R;
 
 /**
@@ -29,7 +38,16 @@ import youngjung.test.R;
 
 public class MyPageListAdapter extends RecyclerView.Adapter<MyPageListAdapter.MyPageHolder> {
     Context context;
+<<<<<<< HEAD
+<<<<<<< HEAD
+    ArrayList<EvalForm> list = new ArrayList<EvalForm>();
+    String[] dummy = {"패션", "음식", "뷰티"};
+=======
     ArrayList<Category> list = new ArrayList<>();
+>>>>>>> 3d946e8c... ridickle7
+=======
+    ArrayList<Category> list = new ArrayList<>();
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 
     public MyPageListAdapter(Context context) {
         this.context = context;
@@ -38,9 +56,38 @@ public class MyPageListAdapter extends RecyclerView.Adapter<MyPageListAdapter.My
 
     public void listInit() {
         list.clear();
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+        // dummy Data
+        for (int i = 0; i < 3; i++)
+<<<<<<< HEAD
+            list.add(new EvalForm("남", (i + 1) * 10000, (i + 1) * 1000, "title", (i + 1) * 100, "content", "uuid", "date", i + 4, i % 2 == 0 ? true : false));
+=======
+            list.add(new RequestForm("남", (i + 1) * 10000, (i + 1) * 1000, "title", (i + 1) * 100, "content", "uuid", "date", "여행", "1"));
+>>>>>>> 87b8c351... FCM 추가
+    }
+
+    public void add(EvalForm data) {
+        list.add(data);
+        notifyDataSetChanged();
+    }
+
+    public void add(ArrayList<EvalForm> dataList) {
+        listInit();
+        list.addAll(dataList);
+        notifyDataSetChanged();
+    }
+=======
         list = DefaultApplication.getDbHelper().getCategoryRankingList();
     }
 
+>>>>>>> 3d946e8c... ridickle7
+=======
+        list = DefaultApplication.getDbHelper().getCategoryRankingList();
+    }
+
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 
     @Override
     public MyPageHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -51,12 +98,27 @@ public class MyPageListAdapter extends RecyclerView.Adapter<MyPageListAdapter.My
     }
 
     @Override
+<<<<<<< HEAD
+<<<<<<< HEAD
+    public void onBindViewHolder(MyPageListAdapter.MyPageHolder holder, int position) {
+        EvalForm item = list.get(position);
+        holder.category_ranking.setText((item.getCategory() - 3) + "");
+//        holder.category_image.setBackground()
+        holder.category_title.setText(dummy[position]);
+        holder.category_num.setText(item.getCategory() + "");
+=======
+=======
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
     public void onBindViewHolder(MyPageHolder holder, int position) {
         Category item = list.get(position);
         holder.category_ranking.setText((position + 1) + "위");
         holder.category_image.setImageResource(item.getImageId()[DefaultApplication.PURPLE]);
         holder.category_title.setText(item.getName());
         holder.category_num.setText(item.getNumber() + "");
+<<<<<<< HEAD
+>>>>>>> 3d946e8c... ridickle7
+=======
+>>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 
         if (position == 0) {
             ConstraintLayout layout = holder.category_layout;
