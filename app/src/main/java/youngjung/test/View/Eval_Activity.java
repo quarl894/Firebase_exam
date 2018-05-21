@@ -74,11 +74,7 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
     RequestForm a1;
     RequestForm a2;
     RequestForm a3;
-<<<<<<< HEAD
-    int num1, num2, num3;
-=======
     int num1 =0 , num2 = 1, num3 = 2;
->>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,12 +105,6 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
         eval_title = findViewById(R.id.eval_title);
         btn_req_ok = findViewById(R.id.btn_req_ok);
 
-<<<<<<< HEAD
-        //랜덤 3개 뽑기
-        num1 = (int)(Math.random()*receipt.size()-1);
-        num2 = (int)(Math.random()*receipt.size()-1);
-        num3 = (int)(Math.random()*receipt.size()-1);
-=======
         if(receipt.size() >3){
             //랜덤 3개 뽑기
             num1 = (int)(Math.random()*receipt.size()-1);
@@ -132,20 +122,7 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
         a1 = receipt.get(num1);
         a2 = receipt.get(num2);
         a3 = receipt.get(num3);
->>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 
-        while(num1==num2 || num1==num3 || num2==num3){
-            num2 = (int)(Math.random()*receipt.size()-1);
-            num3 = (int)(Math.random()*receipt.size()-1);
-         //   Log.e("while what's num: ", Integer.toString(num1) + ", " + num2 + ", "+ num3);
-        }
-        //Log.e("what's num: ", Integer.toString(num1) + ", " + num2 + ", "+ num3);
-
-        a1 = receipt.get(num1);
-        a2 = receipt.get(num2);
-        a3 = receipt.get(num3);
-
-        Log.e("value : ", a1.getValue());
         databaseReference = FirebaseDatabase.getInstance().getReference();
         /**
          * 의뢰서 양식
@@ -169,14 +146,6 @@ public class Eval_Activity extends youngjung.test.View.ahoy.AhoyOnboarderActivit
                     databaseReference.child("finished receipt").child(a2.getUuid()).push().setValue(new RequestForm(a2.getSex(),a2.getMoney(),a2.getMonthly_money(),a2.getTitle(),a2.getPrice(),a2.getContent(),a2.getUuid(),a2.getDate(),a2.getCategory(),ck_hash.get(1),a2.getToken()));
                     databaseReference.child("finished receipt").child(a3.getUuid()).push().setValue(new RequestForm(a3.getSex(),a3.getMoney(),a3.getMonthly_money(),a3.getTitle(),a3.getPrice(),a3.getContent(),a3.getUuid(),a3.getDate(),a3.getCategory(),ck_hash.get(2),a3.getToken()));
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    //개발 기간 동안은 주석처리.
-=======
->>>>>>> 7a084cc4c75521f54cd651c587c5cf38976c3fd5
-=======
-                    //개발 기간 동안은 주석처리.
->>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 //                    databaseReference.child("Request receipt").child(a1.getUuid()).child(a1.getValue()).removeValue();
 //                    databaseReference.child("Request receipt").child(a2.getUuid()).child(a2.getValue()).removeValue();
 //                    databaseReference.child("Request receipt").child(a3.getUuid()).child(a3.getValue()).removeValue();

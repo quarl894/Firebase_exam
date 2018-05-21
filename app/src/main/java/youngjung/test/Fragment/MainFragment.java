@@ -20,21 +20,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 import java.text.NumberFormat;
 import java.util.Locale;
 
 import youngjung.test.DefaultApplication;
-<<<<<<< HEAD
-=======
 import youngjung.test.DB.MyDBHelper;
->>>>>>> 7a084cc4c75521f54cd651c587c5cf38976c3fd5
-=======
-import youngjung.test.DB.MyDBHelper;
->>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 import youngjung.test.Login.LoginActivity;
 import youngjung.test.MainActivity;
 import youngjung.test.Model.Profile;
@@ -47,41 +37,24 @@ import youngjung.test.ui.dialog.LodingDialog;
  * Created by YoungJung on 2018-03-25.
  */
 
-public class MainFragment extends Fragment{
+public class MainFragment extends Fragment {
     private Context mContext;
-    Button btn, btn_request,btn_send;
-    TextView tv_name, tv_goal, tv_goal_money, tv_acc_money;
+    Button btn, btn_request, btn_send;
+    TextView tv_name, tv_goal, tv_goal_money, tv_acc_money, tv_percentage;
     private MyDBHelper dbHelper;
     private DatabaseReference databaseReference;
     String[] info = new String[3];
     DefaultApplication app;
-    String sum_money ="0";
+    String sum_money = "0";
+    String goal_money = "0";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = getActivity();
-<<<<<<< HEAD
-<<<<<<< HEAD
         app = new DefaultApplication();
-
-=======
         dbHelper = new MyDBHelper(getContext());
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 7a084cc4c75521f54cd651c587c5cf38976c3fd5
-=======
-
->>>>>>> fa88e668... 메인, 의뢰하기, 평가하기 디자인 대폭 수정.
     }
-=======
-        }
->>>>>>> b4115316... 재테크 코인 디자인 수정.
-=======
-        app = new DefaultApplication();
-        dbHelper = new MyDBHelper(getContext());
-        }
->>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
 
     @Nullable
     @Override
@@ -91,46 +64,34 @@ public class MainFragment extends Fragment{
         tv_goal = rootView.findViewById(R.id.tv_goal);
         tv_goal_money = rootView.findViewById(R.id.tv_goal_money);
         tv_acc_money = rootView.findViewById(R.id.tv_acc_money);
+        tv_percentage = rootView.findViewById(R.id.tv_percentage);
         tv_acc_money.setText(app.Moneyfomat(Integer.parseInt(sum_money)));
 
-        Log.e("acc_money: ","" +dbHelper.get_money());
+        Log.e("acc_money: ", "" + dbHelper.get_money());
+        sum_money = dbHelper.get_money();
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         databaseReference.child("Member Information").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                if(dataSnapshot.getKey().equals(uid)){
+                if (dataSnapshot.getKey().equals(uid)) {
                     Profile pro = dataSnapshot.getValue(Profile.class);
+                    goal_money = pro.getGoal_money();
+
                     Log.e("test:", pro.getEmail());
                     tv_name.setText(pro.getName());
                     tv_goal.setText(pro.getGoal());
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    tv_goal_money.setText(app.Moneyfomat(Integer.parseInt(pro.getGoal_money())));
-=======
-                    tv_goal_money.setText(pro.getGoal_money());
+                    tv_goal_money.setText(app.Moneyfomat(Integer.parseInt(goal_money)));
+                    tv_percentage.setText((int)DefaultApplication.getPercentage(Integer.parseInt(sum_money), Integer.parseInt(goal_money)) + "%");
 
->>>>>>> 7a084cc4c75521f54cd651c587c5cf38976c3fd5
-=======
-                    tv_goal_money.setText(app.Moneyfomat(Integer.parseInt(pro.getGoal_money())));
-                  
->>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
                     info[0] = pro.getSex();
                     info[1] = pro.getGoal_money();
                     info[2] = pro.getMonthly_money();
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-            //        MainActivity a = (MainActivity) getActivity();
-            //        a.saveCurUser(pro);
-=======
-=======
->>>>>>> b4115316cce1a02a87523a3f2f88f15b95addb34
                     // 영수증 디테일페이지에서 자기 정보 가져오기 위한 것
                     MainActivity a = (MainActivity) getActivity();
                     a.saveCurUser(pro);
->>>>>>> a868f088c8848a4fc7256e82beb0af1d31e86750
                 }
             }
 
@@ -152,15 +113,15 @@ public class MainFragment extends Fragment{
         });
 
         //로그아웃
-        btn = rootView.findViewById(R.id.btn);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent i = new Intent(mContext, LoginActivity.class);
-                startActivity(i);
-                    }
-            });
+//        btn = rootView.findViewById(R.id.btn);
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                FirebaseAuth.getInstance().signOut();
+//                Intent i = new Intent(mContext, LoginActivity.class);
+//                startActivity(i);
+//                    }
+//            });
 
         // 평가하기
         //Firebase 불러오기가 늦어서 예외처리.
@@ -168,9 +129,9 @@ public class MainFragment extends Fragment{
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(MainActivity.receipt.size()==0){
-                    Toast.makeText(getActivity(), "영수증을 불러오는 중입니다. 다시 눌러주세요.",Toast.LENGTH_SHORT).show();
-                }else{
+                if (MainActivity.receipt.size() < 3) {
+                    Toast.makeText(getActivity(), "현재 평가할 영수증이 없습니다.", Toast.LENGTH_SHORT).show();
+                } else {
                     Intent i = new Intent(mContext, Eval_Activity.class);
                     startActivity(i);
                 }
@@ -181,9 +142,9 @@ public class MainFragment extends Fragment{
         btn_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(info[0]==null){
-                    Toast.makeText(getActivity(), "정보를 불러오는 중입니다. 다시 눌러주세요.",Toast.LENGTH_SHORT).show();
-                }else{
+                if (info[0] == null) {
+                    Toast.makeText(getActivity(), "정보를 불러오는 중입니다. 다시 눌러주세요.", Toast.LENGTH_SHORT).show();
+                } else {
                     Intent i = new Intent(getActivity(), RequestActivity.class);
                     i.putExtra("infomation", info);
                     startActivity(i);
@@ -199,6 +160,7 @@ public class MainFragment extends Fragment{
         super.onResume();
         sum_money = dbHelper.get_money();
         tv_acc_money.setText(app.Moneyfomat(Integer.parseInt(sum_money)));
+        DefaultApplication.getPercentage(Integer.parseInt(goal_money), Integer.parseInt(sum_money));
     }
 
 }

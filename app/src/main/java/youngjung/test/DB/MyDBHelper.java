@@ -15,6 +15,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import youngjung.test.DefaultApplication;
 import youngjung.test.Model.Category;
 import youngjung.test.R;
 
@@ -98,7 +99,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
         ArrayList<Category> output = new ArrayList<>();
         while (it.hasNext()) {
             String temp = (String) it.next();
-            output.add(new Category(temp, categoryHashMap.get(temp), R.mipmap.ic_launcher));
+            output.add(new Category(temp, categoryHashMap.get(temp), DefaultApplication.getCategoryHashMap().get(temp)));
         }
 
         cursor.close();

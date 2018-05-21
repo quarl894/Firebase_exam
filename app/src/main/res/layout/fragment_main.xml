@@ -48,8 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="14dp"
-                android:src="@drawable/page_1" />
+                android:src="@drawable/finalprofile" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -68,8 +67,13 @@
                         android:autoSizeTextType="uniform"
                         android:textSize="14sp"
                         android:textColor="#1f2431"
-                        android:text="불러오는 중"
-                        android:paddingRight="8dp" />
+                        android:text="불러오는 중" />
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="8dp"
+                        android:layout_marginHorizontal="3dp"
+                        android:layout_gravity="center"
+                        android:background="@color/pale_grey_two"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -98,9 +102,15 @@
                         android:textSize="12sp"
                         android:textColor="@color/warm_grey"
                         android:text="달성"
-                        android:paddingRight="10dp"
                         />
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="8dp"
+                        android:layout_marginHorizontal="4dp"
+                        android:layout_gravity="center"
+                        android:background="@color/pale_grey_two"/>
                     <TextView
+                        android:id="@+id/tv_percentage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
@@ -118,7 +128,7 @@
         android:orientation="horizontal"
         android:id="@+id/show_money"
         android:layout_below="@+id/go_mypage"
-        android:layout_marginTop="27dp">
+        android:layout_marginTop="38dp">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -129,6 +139,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginBottom="8dp"
                 android:src="@drawable/main_money" />
             <TextView
                 android:layout_width="wrap_content"
@@ -149,18 +160,20 @@
                 android:textColor="@color/warm_grey"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="4dp"
                 android:text="목표 금액"
                 android:layout_marginVertical="2dp" />
         </LinearLayout>
+
         <View
-            android:layout_width="2dp"
+            android:layout_width="1dp"
             android:layout_height="63dp"
             android:layout_gravity="center"
-            android:textColor="#eaeef4"></View>
+            android:background="@color/pale_grey_two"></View>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -168,6 +181,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginBottom="8dp"
                 android:src="@drawable/main_hand" />
             <TextView
                 android:layout_width="wrap_content"
@@ -187,7 +201,7 @@
                 android:textColor="@color/warm_grey"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="4dp"
                 android:text="현재 누적"
                 android:layout_marginVertical="2dp"/>
         </LinearLayout>
@@ -204,6 +218,7 @@
         android:background="@drawable/main_btn"
         android:layout_marginHorizontal="34dp"
         android:textAppearance="@style/font_noto_md"
+        android:stateListAnimator="@null"
         android:layout_marginTop="62dp"/>
 
     <Button
@@ -217,14 +232,15 @@
         android:background="@drawable/main_btn"
         android:textAppearance="@style/font_noto_md"
         android:layout_marginHorizontal="34dp"
+        android:stateListAnimator="@null"
         android:layout_marginTop="40dp"/>
 
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/btn_send"
-        android:layout_below="@+id/btn_send"
-        android:layout_marginTop="17dp"
-        android:text="logout" />
+    <!--<Button-->
+        <!--android:id="@+id/btn"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignEnd="@+id/btn_send"-->
+        <!--android:layout_below="@+id/btn_send"-->
+        <!--android:layout_marginTop="17dp"-->
+        <!--android:text="logout" />-->
 </RelativeLayout>

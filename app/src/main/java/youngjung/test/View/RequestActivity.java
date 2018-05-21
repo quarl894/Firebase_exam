@@ -8,10 +8,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Html;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -19,6 +21,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -132,83 +135,104 @@ public class RequestActivity extends baseActivity implements View.OnClickListene
         switch(v.getId()){
             case R.id.btn_trip :
                 category = "여행";
-                btn_trip.setBackgroundResource(R.color.golden_yellow);
-                btn_elec.setBackgroundResource(R.color.white);
-                btn_food.setBackgroundResource(R.color.white);
-                btn_hobby.setBackgroundResource(R.color.white);
-                btn_beauty.setBackgroundResource(R.color.white);
-                btn_etc.setBackgroundResource(R.color.white);
+                btn_trip.setBackgroundResource(R.drawable.cate_click_trip);
+                btn_elec.setBackgroundResource(R.drawable.cate_elec);
+                btn_food.setBackgroundResource(R.drawable.cate_food);
+                btn_hobby.setBackgroundResource(R.drawable.cate_hobby);
+                btn_beauty.setBackgroundResource(R.drawable.cate_beauty);
+                btn_etc.setBackgroundResource(R.drawable.cate_ese);
                 break;
             case R.id.btn_food :
                 category = "음식";
-                btn_food.setBackgroundResource(R.color.golden_yellow);
-                btn_elec.setBackgroundResource(R.color.white);
-                btn_trip.setBackgroundResource(R.color.white);
-                btn_hobby.setBackgroundResource(R.color.white);
-                btn_beauty.setBackgroundResource(R.color.white);
-                btn_etc.setBackgroundResource(R.color.white);
+                btn_food.setBackgroundResource(R.drawable.cate_click_food);
+                btn_trip.setBackgroundResource(R.drawable.cate_trip);
+                btn_elec.setBackgroundResource(R.drawable.cate_elec);
+                btn_hobby.setBackgroundResource(R.drawable.cate_hobby);
+                btn_beauty.setBackgroundResource(R.drawable.cate_beauty);
+                btn_etc.setBackgroundResource(R.drawable.cate_ese);
                 break;
             case R.id.btn_elec:
                 category ="전자기기";
-                btn_elec.setBackgroundResource(R.color.golden_yellow);
-                btn_food.setBackgroundResource(R.color.white);
-                btn_trip.setBackgroundResource(R.color.white);
-                btn_hobby.setBackgroundResource(R.color.white);
-                btn_beauty.setBackgroundResource(R.color.white);
-                btn_etc.setBackgroundResource(R.color.white);
+                btn_elec.setBackgroundResource(R.drawable.cate_click_elec);
+                btn_trip.setBackgroundResource(R.drawable.cate_trip);
+                btn_food.setBackgroundResource(R.drawable.cate_food);
+                btn_hobby.setBackgroundResource(R.drawable.cate_hobby);
+                btn_beauty.setBackgroundResource(R.drawable.cate_beauty);
+                btn_etc.setBackgroundResource(R.drawable.cate_ese);
                 break;
             case R.id.btn_hobby :
                 category = "취미생활";
-                btn_hobby.setBackgroundResource(R.color.golden_yellow);
-                btn_elec.setBackgroundResource(R.color.white);
-                btn_trip.setBackgroundResource(R.color.white);
-                btn_food.setBackgroundResource(R.color.white);
-                btn_beauty.setBackgroundResource(R.color.white);
-                btn_etc.setBackgroundResource(R.color.white);
+                btn_hobby.setBackgroundResource(R.drawable.cate_click_hobby);
+                btn_trip.setBackgroundResource(R.drawable.cate_trip);
+                btn_elec.setBackgroundResource(R.drawable.cate_elec);
+                btn_food.setBackgroundResource(R.drawable.cate_food);
+                btn_beauty.setBackgroundResource(R.drawable.cate_beauty);
+                btn_etc.setBackgroundResource(R.drawable.cate_ese);
                 break;
             case R.id.btn_etc :
                 category = "기타";
-                btn_etc.setBackgroundResource(R.color.golden_yellow);
-                btn_elec.setBackgroundResource(R.color.white);
-                btn_trip.setBackgroundResource(R.color.white);
-                btn_food.setBackgroundResource(R.color.white);
-                btn_beauty.setBackgroundResource(R.color.white);
-                btn_hobby.setBackgroundResource(R.color.white);
+                btn_etc.setBackgroundResource(R.drawable.cate_click_else);
+                btn_trip.setBackgroundResource(R.drawable.cate_trip);
+                btn_elec.setBackgroundResource(R.drawable.cate_elec);
+                btn_food.setBackgroundResource(R.drawable.cate_food);
+                btn_hobby.setBackgroundResource(R.drawable.cate_hobby);
+                btn_beauty.setBackgroundResource(R.drawable.cate_beauty);
                 break;
             case R.id.btn_beauty :
-                category = "패션및뷰티";
-                btn_beauty.setBackgroundResource(R.color.golden_yellow);
-                btn_elec.setBackgroundResource(R.color.white);
-                btn_trip.setBackgroundResource(R.color.white);
-                btn_food.setBackgroundResource(R.color.white);
-                btn_hobby.setBackgroundResource(R.color.white);
-                btn_etc.setBackgroundResource(R.color.white);
+                category = "패션 및 뷰티";
+                btn_beauty.setBackgroundResource(R.drawable.cate_click_beauty);
+                btn_trip.setBackgroundResource(R.drawable.cate_trip);
+                btn_elec.setBackgroundResource(R.drawable.cate_elec);
+                btn_food.setBackgroundResource(R.drawable.cate_food);
+                btn_hobby.setBackgroundResource(R.drawable.cate_hobby);
+                btn_etc.setBackgroundResource(R.drawable.cate_ese);
                 break;
         }
     }
 
-    //버튼 색만 왜 안바뀌지?
     void Dialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("의뢰서가 등록되었습니다.");
-        builder.setMessage("평가가 완료되면 푸시알림이 울립니다.");
-        builder.setPositiveButton(Html.fromHtml("<font color='#7C70F4'>확인</font>"),
+
+        TextView tv_title = new TextView(this);
+        tv_title.setText("의뢰서가 등록되었습니다");
+        tv_title.setPadding(dp2px(22), dp2px(32), dp2px(71), dp2px(16));
+        tv_title.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+        tv_title.setTextColor(getApplicationContext().getResources().getColor(R.color.dark_two));
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/NotoSansCJKkr-Medium.otf");
+        tv_title.setTypeface(tf);
+
+        builder.setCustomTitle(tv_title);
+        builder.setMessage("평가가 완료되면 푸시알림이 울려요.");
+        builder.setPositiveButton("확인",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                                        databaseReference.child("Request receipt").child(uid).push().setValue(new RequestForm(result[0],Integer.parseInt(result[1]),Integer.parseInt(result[2]), title.getText().toString(),Integer.parseInt(price.getText().toString()),content.getText().toString(),uid, getTime, category,token));
-                                        dbHelper.insert_ctg(category);
-                                        if(!arr_date.contains(getTime.substring(0,8))){
-                                            dbHelper.insert_date(getTime.substring(0,8));
-//                                            Log.e("dbtest_ok: ", ""+dbHelper.get_date());
-                                        }
-                                        finish();
-                                    }
-                                });
-        builder.setNegativeButton(Html.fromHtml("<font color='#7C70F4'>취소</font>"),
+                        databaseReference.child("Request receipt").child(uid).push().setValue(new RequestForm(result[0], Integer.parseInt(result[1]), Integer.parseInt(result[2]), title.getText().toString(), Integer.parseInt(price.getText().toString()), content.getText().toString(), uid, getTime, category, token));
+                        dbHelper.insert_ctg(category);
+                        if (!arr_date.contains(getTime.substring(0, 8))) {
+                            dbHelper.insert_date(getTime.substring(0, 8));
+                        }
+                        finish();
+                    }
+
+        });
+        final AlertDialog dialog = builder.setNegativeButton("취소",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                     }
-                });
-        builder.show();
+                }).create();
+
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getApplicationContext().getResources().getColor(R.color.cornflower));
+                dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(getApplicationContext().getResources().getColor(R.color.warm_grey));
+            }
+        });
+
+        dialog.show();
+    }
+
+    int dp2px(int dp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, this.getResources().getDisplayMetrics());
     }
 }

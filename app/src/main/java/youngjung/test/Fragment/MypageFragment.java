@@ -34,7 +34,11 @@ public class MypageFragment extends Fragment {
     private DatabaseReference databaseReference;
     private MyDBHelper dbHelper;
     private TextView tv_name, tv_goal, tv_goal_money, tv_acc_money;
+    String[] info = new String[3];
     private DefaultApplication app;
+    int sum_money = 0;
+    int goal_money = 0;
+    MyProgressBar mProgressBar;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,7 +51,7 @@ public class MypageFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_mypage, container, false);
 
-        MyProgressBar mProgressBar = rootView.findViewById(R.id.main_myPage_progressbar);
+        mProgressBar = rootView.findViewById(R.id.main_myPage_progressbar);
         int titleSize = getResources().getDimensionPixelSize(R.dimen.main_progressbar_title);
         int convertColor = ContextCompat.getColor(getActivity(), R.color.colorPrimary);
 
@@ -58,12 +62,12 @@ public class MypageFragment extends Fragment {
         mProgressBar.setTextSize(titleSize);
         mProgressBar.setMax(100, 0);
         mProgressBar.setProgress(0.0F);
-        mProgressBar.setProgressWithAnimation(50);
 
         tv_name = rootView.findViewById(R.id.tv_name);
         tv_goal = rootView.findViewById(R.id.tv_goal);
         tv_goal_money = rootView.findViewById(R.id.tv_goal_money);
         tv_acc_money = rootView.findViewById(R.id.tv_acc_money);
+        tv_acc_money.setText(app.Moneyfomat(sum_money));
 
         dbHelper = new MyDBHelper(getContext());
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -74,9 +78,18 @@ public class MypageFragment extends Fragment {
                 if (dataSnapshot.getKey().equals(uid)) {
                     Profile pro = dataSnapshot.getValue(Profile.class);
                     Log.e("test:", pro.getEmail());
+                    goal_money = Integer.parseInt(pro.getGoal_money());
+
                     tv_name.setText(pro.getName());
                     tv_goal.setText(pro.getGoal());
+                    tv_goal_money.setText(app.Moneyfomat(goal_money));
 
+                    info[0] = pro.getSex();
+                    info[1] = pro.getGoal_money();
+                    info[2] = pro.getMonthly_money();
+                    mProgressBar.setProgressWithAnimation(DefaultApplication.getPercentage(sum_money, goal_money));
+
+                    // 영수증 디테일페이지에서 자기 정보 가져오기 위한 것
                     MainActivity a = (MainActivity) getActivity();
                     a.saveCurUser(pro);
                 }
@@ -113,5 +126,8 @@ public class MypageFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        sum_money = Integer.parseInt(dbHelper.get_money());
+        tv_acc_money.setText(app.Moneyfomat(sum_money));
+        mProgressBar.setProgressWithAnimation(DefaultApplication.getPercentage(sum_money, goal_money));
     }
 }

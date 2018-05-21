@@ -88,12 +88,12 @@ public class LoginActivity extends baseActivity {
         mAuth = FirebaseAuth.getInstance();
         tv1 = findViewById(R.id.login_text1);
         SpannableString str = new SpannableString(Html.fromHtml("<strong> 똑똑한 소비</strong>"));
-        str.setSpan(new HightlighterSpan(ContextCompat.getColor(this, R.color.aquamarine), ContextCompat.getColor(this, R.color.dark_two)), 0, str.length() - 1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+        str.setSpan(new HightlighterSpan(ContextCompat.getColor(this, R.color.aquamarine), ContextCompat.getColor(this, R.color.dark_two), 0), 0, str.length() - 1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         tv1.setText(str);
 
         tv4 = findViewById(R.id.login_text4);
         SpannableString str4 = new SpannableString(Html.fromHtml("<strong> 허불허</strong>"));
-        str4.setSpan(new HightlighterSpan(ContextCompat.getColor(this, R.color.aquamarine), ContextCompat.getColor(this, R.color.dark_two)), 0, str4.length() - 1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+        str4.setSpan(new HightlighterSpan(ContextCompat.getColor(this, R.color.aquamarine), ContextCompat.getColor(this, R.color.dark_two), 0), 0, str4.length() - 1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         tv4.setText(str4);
 //        tv1.setText(Html.fromHtml("<strong>똑똑한 소비</strong>인지 의심된다면<br> 가볍게 <strong>허불허</strong>하세요!"));
 //        tv1.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);

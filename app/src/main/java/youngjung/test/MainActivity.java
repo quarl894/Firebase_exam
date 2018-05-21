@@ -46,7 +46,7 @@ public class MainActivity extends FragmentActivity{
     private ArrayList<String> saving_items;
     static int i = 0;
     SectionPagerAdapter adapter;
-    StringBuilder st = new StringBuilder();
+
     int count = 0;
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -83,9 +83,9 @@ public class MainActivity extends FragmentActivity{
         //FCM
         token = FirebaseInstanceId.getInstance().getToken();
 
-        if (FirebaseInstanceId.getInstance().getToken() != null) {
-            Log.d("FCM :", "token = " + FirebaseInstanceId.getInstance().getToken());
-        }
+//        if (FirebaseInstanceId.getInstance().getToken() != null) {
+//            Log.d("FCM :", "token = " + FirebaseInstanceId.getInstance().getToken());
+//        }
         databaseReference = FirebaseDatabase.getInstance().getReference();
         DatabaseReference ref = databaseReference.child("Request receipt");
 
