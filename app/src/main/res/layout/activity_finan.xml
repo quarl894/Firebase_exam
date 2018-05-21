@@ -9,7 +9,9 @@
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal"
             android:id="@+id/login_titlebar">
             <TextView

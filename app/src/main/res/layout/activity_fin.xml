@@ -8,8 +8,10 @@
         android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="8dp"
         android:id="@+id/login_titlebar">
         <TextView
             android:layout_width="match_parent"
