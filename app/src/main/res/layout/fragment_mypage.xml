@@ -11,14 +11,16 @@
     <LinearLayout
         android:id="@+id/lin_myPage"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="8dp"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:textAppearance="@style/font_robo_md"
+            android:textAppearance="@style/font_noto_md"
             android:gravity="center"
             android:text="마이페이지"
             android:textColor="@color/dark"

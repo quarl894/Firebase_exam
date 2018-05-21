@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import youngjung.test.R;
 import youngjung.test.View.ahoy.AhoyOnboarderAdapter;
 import youngjung.test.View.ahoy.AhoyOnboarderCard;
 import youngjung.test.ui.base.baseActivity;
