@@ -3,23 +3,37 @@ package youngjung.test.View;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.text.Html;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import youngjung.test.Login.HightlighterSpan;
 import youngjung.test.R;
 import youngjung.test.ui.base.baseActivity;
 
 public class finanActivity extends baseActivity {
-    TextView tv_title1, tv_title2, tv_content, tv_step;
+    TextView tv_title1_1, tv_title1_2, tv_title2, tv_content, tv_step;
     ImageView img_fnan;
     int[] arr;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finan);
 
-        tv_title1 = findViewById(R.id.tv_title1);
+        tv_title1_1 = findViewById(R.id.tv_title1_1);
+        SpannableString str1 = new SpannableString(Html.fromHtml("<strong>선저축 </strong>"));
+        str1.setSpan(new HightlighterSpan(ContextCompat.getColor(this, R.color.aquamarine), ContextCompat.getColor(this, R.color.cornflower), 1), 0, str1.length() - 1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+        tv_title1_1.setText(str1);
+
+        tv_title1_2 = findViewById(R.id.tv_title1_2);
+        SpannableString str2 = new SpannableString(Html.fromHtml("<strong>후지출</strong>"));
+        str2.setSpan(new HightlighterSpan(ContextCompat.getColor(this, R.color.aquamarine), ContextCompat.getColor(this, R.color.dark_two), 1), 0, str2.length() - 1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+        tv_title1_2.setText(str2);
+
         tv_title2 = findViewById(R.id.tv_title2);
         tv_content = findViewById(R.id.tv_content);
         tv_step = findViewById(R.id.tv_step_title);
@@ -30,8 +44,11 @@ public class finanActivity extends baseActivity {
         String[] title = new String[12];
         String[] title2 = new String[12];
         title[0] = "자동이체를 걸어서 매달 지출 전 먼저 돈이 빠져나가게 해요!";
-        title[1] = "최고의 재테크, 미니멀리즘!";
-        title[2] = "통장 쪼개기!";
+        title[1] = "<strong>최고의 재테크, </strong>";
+        title[2] = "<strong>통장 </strong>";
+
+        String step2_2 = "<strong>미니멀리즘!</strong>";
+        String step3_2 = "<strong>쪼개기!</strong>";
 
         title2[0] = "통장잔고가 0원일 때까지 써야 직성이 풀린다구요?<br> 선저축 후지출로 소비와 지출 패턴을 바꿔보는 건 어떠세요?<br><br> <strong>선저축 후지출이란!</strong><br> 목표를 달성하기 위한 저축금액을 도출해서 매월 급여일에 자동이체가 된 후, 나머지 금액으로 지출하는 방법이예요.<br><br> 오늘 부터 일상 속 불필요한 소비부터 하나씩 차근차근 줄여보는 건 어떨까요?";
         title2[1] = "나를 알고 소비를 하는 미니멀리즘을 실천해봐요!";
@@ -44,18 +61,34 @@ public class finanActivity extends baseActivity {
         Intent i = getIntent();
         arr = i.getExtras().getIntArray("send");
         tv_content.setText(Html.fromHtml(content[0]));
-        switch(arr[0]){
-            case 0 :
-                if(arr[1]==1){
+        switch (arr[0]) {
+            case 0:
+                if (arr[1] == 1) {
                     tv_content.setText(Html.fromHtml(content[1]));
-                    tv_step.setText("STEP"+(arr[1]+1));
-                    tv_title1.setText(Html.fromHtml(title[1]));
+                    tv_step.setText("STEP" + (arr[1] + 1));
+
+                    SpannableString str3 = new SpannableString(Html.fromHtml(title[1]));
+                    str3.setSpan(new HightlighterSpan(ContextCompat.getColor(this, R.color.aquamarine), ContextCompat.getColor(this, R.color.cornflower), 1), 0, str3.length() - 1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+                    tv_title1_1.setText(str3);
+
+                    SpannableString str4 = new SpannableString(Html.fromHtml(step2_2));
+                    str4.setSpan(new HightlighterSpan(ContextCompat.getColor(this, R.color.aquamarine), ContextCompat.getColor(this, R.color.dark_two), 1), 0, str4.length() - 1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+                    tv_title1_2.setText(str4);
+
                     tv_title2.setText(Html.fromHtml(title2[1]));
                     img_fnan.setImageResource(R.drawable.step_2_illust);
-                }else if(arr[1]==2){
+                } else if (arr[1] == 2) {
                     tv_content.setText(Html.fromHtml(content[2]));
-                    tv_step.setText("STEP"+(arr[1]+1));
-                    tv_title1.setText(Html.fromHtml(title[2]));
+                    tv_step.setText("STEP" + (arr[1] + 1));
+
+                    SpannableString str3 = new SpannableString(Html.fromHtml(title[2]));
+                    str3.setSpan(new HightlighterSpan(ContextCompat.getColor(this, R.color.aquamarine), ContextCompat.getColor(this, R.color.cornflower), 1), 0, str3.length() - 1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+                    tv_title1_1.setText(str3);
+
+                    SpannableString str4 = new SpannableString(Html.fromHtml(step3_2));
+                    str4.setSpan(new HightlighterSpan(ContextCompat.getColor(this, R.color.aquamarine), ContextCompat.getColor(this, R.color.dark_two), 1), 0, str4.length() - 1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+                    tv_title1_2.setText(str4);
+
                     tv_title2.setText(Html.fromHtml(title2[2]));
                     img_fnan.setImageResource(R.drawable.group_2);
                 }

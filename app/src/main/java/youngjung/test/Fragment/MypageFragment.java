@@ -128,6 +128,6 @@ public class MypageFragment extends Fragment {
         super.onResume();
         sum_money = Integer.parseInt(dbHelper.get_money());
         tv_acc_money.setText(app.Moneyfomat(sum_money));
-        mProgressBar.setProgressWithAnimation(DefaultApplication.getPercentage(goal_money, sum_money));
+        mProgressBar.setProgressWithAnimation(DefaultApplication.getPercentage(sum_money, goal_money));
     }
 }
