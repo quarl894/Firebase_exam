@@ -63,8 +63,9 @@
 
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp">
 
         <TextView
             android:id="@+id/no_receipt_msg"
@@ -76,9 +77,8 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="15dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </FrameLayout>
 

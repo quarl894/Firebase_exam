@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
-    android:padding="5dp"
-    android:layout_width="157dp"
-    android:layout_height="231dp">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/minishadow" />
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="157dp"
+        android:layout_height="231dp">
 
         <!--하얀 영수증-->
         <ImageView
@@ -24,10 +28,10 @@
             <!--도장-->
             <ImageView
                 android:id="@+id/receipt_list_stamp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="105dp"
+                android:layout_height="105dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="15dp"
                 android:src="@drawable/ok_stamp" />
 
             <!--영수증 제목-->
@@ -36,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="27dp"
                 android:textAppearance="@style/font_noto_md"
                 android:layout_marginLeft="10dp"
                 android:gravity="center"
@@ -61,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/bot_line"
-                android:layout_marginLeft="6dp"/>
+                android:layout_marginLeft="8dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -101,4 +105,4 @@
 
     </FrameLayout>
 
-</LinearLayout>
+</FrameLayout>
