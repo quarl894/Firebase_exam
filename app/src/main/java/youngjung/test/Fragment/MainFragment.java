@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +42,7 @@ public class MainFragment extends Fragment {
     private Context mContext;
     Button btn, btn_request, btn_send;
     TextView tv_name, tv_goal, tv_goal_money, tv_acc_money, tv_percentage;
+    ImageView img_profile;
     private MyDBHelper dbHelper;
     private DatabaseReference databaseReference;
     String[] info = new String[3];
@@ -66,6 +68,7 @@ public class MainFragment extends Fragment {
         tv_acc_money = rootView.findViewById(R.id.tv_acc_money);
         tv_percentage = rootView.findViewById(R.id.tv_percentage);
         tv_acc_money.setText(app.Moneyfomat(Integer.parseInt(sum_money)));
+        img_profile = rootView.findViewById(R.id.img_profile);
 
         Log.e("acc_money: ", "" + dbHelper.get_money());
         sum_money = dbHelper.get_money();
@@ -89,6 +92,11 @@ public class MainFragment extends Fragment {
                     info[1] = pro.getGoal_money();
                     info[2] = pro.getMonthly_money();
 
+                    if (info[0].equals("남성")) {
+                        img_profile.setImageResource(R.drawable.page_1);
+                    } else {
+                        img_profile.setImageResource(R.drawable.finalprofile);
+                    }
                     // 영수증 디테일페이지에서 자기 정보 가져오기 위한 것
                     MainActivity a = (MainActivity) getActivity();
                     a.saveCurUser(pro);

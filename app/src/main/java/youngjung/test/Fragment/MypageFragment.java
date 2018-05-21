@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,6 +40,7 @@ public class MypageFragment extends Fragment {
     int sum_money = 0;
     int goal_money = 0;
     MyProgressBar mProgressBar;
+    ImageView img_myprofile;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,6 +70,7 @@ public class MypageFragment extends Fragment {
         tv_goal_money = rootView.findViewById(R.id.tv_goal_money);
         tv_acc_money = rootView.findViewById(R.id.tv_acc_money);
         tv_acc_money.setText(app.Moneyfomat(sum_money));
+        img_myprofile = rootView.findViewById(R.id.img_myprofile);
 
         dbHelper = new MyDBHelper(getContext());
         databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -89,6 +92,11 @@ public class MypageFragment extends Fragment {
                     info[2] = pro.getMonthly_money();
                     mProgressBar.setProgressWithAnimation(DefaultApplication.getPercentage(sum_money, goal_money));
 
+                    if (info[0].equals("남성")) {
+                        img_myprofile.setImageResource(R.drawable.page_1);
+                    } else {
+                        img_myprofile.setImageResource(R.drawable.finalprofile);
+                    }
                     // 영수증 디테일페이지에서 자기 정보 가져오기 위한 것
                     MainActivity a = (MainActivity) getActivity();
                     a.saveCurUser(pro);
