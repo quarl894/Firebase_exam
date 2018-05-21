@@ -12,17 +12,17 @@
         android:id="@+id/lin_myPage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginTop="20dp"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
-            android:textAppearance="@style/font_noto_md"
             android:gravity="center"
             android:text="마이페이지"
+            android:textAppearance="@style/font_noto_md"
             android:textColor="@color/dark"
             android:textSize="18sp"
             android:textStyle="normal" />
@@ -60,13 +60,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="14dp"
-                        android:src="@drawable/page_1" />
+                        android:src="@drawable/finalprofile" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="26dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="22dp"
                         android:orientation="vertical">
 
                         <LinearLayout
@@ -79,11 +78,17 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:autoSizeTextType="uniform"
-                                android:paddingRight="8dp"
                                 android:text="불러오는 중"
                                 android:textAppearance="@style/font_noto_bo"
                                 android:textColor="#1f2431"
                                 android:textSize="14sp" />
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="8dp"
+                                android:layout_gravity="center"
+                                android:layout_marginHorizontal="3dp"
+                                android:background="@color/pale_grey_two" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -103,6 +108,7 @@
                             android:textAppearance="@style/font_noto_re"
                             android:textColor="#1f2431"
                             android:textSize="12sp" />
+
                     </LinearLayout>
 
                     <ImageView
