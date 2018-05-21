@@ -93,7 +93,7 @@ public class MypageFragment extends Fragment {
                     mProgressBar.setProgressWithAnimation(DefaultApplication.getPercentage(sum_money, goal_money));
 
                     if (info[0].equals("남성")) {
-                        img_myprofile.setImageResource(R.drawable.page_1);
+                        img_myprofile.setImageResource(R.drawable.man);
                     } else {
                         img_myprofile.setImageResource(R.drawable.finalprofile);
                     }

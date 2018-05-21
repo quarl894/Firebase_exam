@@ -93,7 +93,7 @@ public class MainFragment extends Fragment {
                     info[2] = pro.getMonthly_money();
 
                     if (info[0].equals("남성")) {
-                        img_profile.setImageResource(R.drawable.page_1);
+                        img_profile.setImageResource(R.drawable.man);
                     } else {
                         img_profile.setImageResource(R.drawable.finalprofile);
                     }
