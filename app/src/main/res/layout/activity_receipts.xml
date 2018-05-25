@@ -65,9 +65,8 @@
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp">
-
-
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="15dp">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
