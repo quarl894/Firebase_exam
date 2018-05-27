@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,7 +32,7 @@ import static youngjung.test.MainActivity.myRequestReceipt;
 public class MyReceiptDetailActivity extends AppCompatActivity {
     TextView receipt_title, cur_sex, cur_goal_money, cur_month_money, price, content;
     Button btn_saving;
-    ImageView stamp;
+    ImageView stamp, img_receipt;
     private MyDBHelper dbHelper;
     Profile curUser;
     Intent intent;
@@ -53,6 +54,16 @@ public class MyReceiptDetailActivity extends AppCompatActivity {
         stamp = findViewById(R.id.detail_stamp_imgview);
         content = findViewById(R.id.detail_content);
         btn_saving = findViewById(R.id.btn_saving);
+        img_receipt = findViewById(R.id.img_receipt);
+
+        img_receipt.getLayoutParams().height = dpToPx(404);
+        img_receipt.getLayoutParams().width = dpToPx(280);
+        img_receipt.requestLayout();
+
+        int abc = img_receipt.getLayoutParams().height;
+        int a2 = img_receipt.getLayoutParams().width;
+        Log.e("dpto: ", "width: " + a2 + " height: " + abc);
+
 
         MainActivity a = new MainActivity();
         curUser = a.getCurUser();
@@ -106,5 +117,13 @@ public class MyReceiptDetailActivity extends AppCompatActivity {
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    public int dpToPx(int dp) {
+        DisplayMetrics displayMetrics = getApplicationContext().getResources().getDisplayMetrics();
+        float density = displayMetrics.density;
+
+        int px = Math.round((float) dp * density);
+        return px;
     }
 }

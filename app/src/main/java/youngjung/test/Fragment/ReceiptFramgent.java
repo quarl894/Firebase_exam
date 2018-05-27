@@ -141,7 +141,7 @@ public class ReceiptFramgent extends Fragment implements RecyclerViewAdapter.Ite
                 // i는 원래 myRequestReceipt 내 해당 영수증의 인덱스(prePosition)
                 // 저금하기 이후 myRequestReceipt 내 saving 변경에 사용
                 RequestForm form = new RequestForm(r.getTitle(), r.getPrice(), r.getContent(), r.getDate(), r.getCheck(), r.getSaving(), r.getUid(), i);
-                receipts.add(form);
+                receipts.add(0, form);
             }
         }
     }
